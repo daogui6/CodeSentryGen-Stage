@@ -1,0 +1,1961 @@
+{
+  "distribution": "Flask",
+  "ecosystem": "PyPI",
+  "groups_with_affected_release_set_disagreement": 0,
+  "groups_with_affected_version_list_disagreement": 0,
+  "groups_with_range_disagreement": 1,
+  "groups_with_release_range_disagreement": 0,
+  "normalized_distribution": "flask",
+  "resolved_vulnerability_count": 4,
+  "schema_version": "vulnerability_constraint_v0.5",
+  "source_mode": "osv_package_catalog",
+  "source_record_count": 10,
+  "source_schema_version": "avcs_osv_package_catalog_v0.2",
+  "status": "partial",
+  "unresolved_vulnerability_count": 1,
+  "vulnerabilities": [
+    {
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "affected_versions": [
+            "3.1.0"
+          ],
+          "source_record_ids": [
+            "GHSA-4grg-w6v8-c28g",
+            "PYSEC-2026-1377"
+          ],
+          "variant_id": "versions_597964024fb4"
+        }
+      ],
+      "affected_version_specifier": ">=3.1,<=3.1.1,!=3.1.1",
+      "affected_versions": [
+        "3.1.0"
+      ],
+      "aliases": [
+        "CVE-2025-47278",
+        "PYSEC-2026-1377"
+      ],
+      "constraint_notes": [
+        "Legacy range/list disagreement flags describe JSON structure only.",
+        "Release consensus is evaluated source by source, including explicit versions.",
+        "GIT ranges are retained without a commit-to-PyPI-release mapping.",
+        "Single-interval constraints use public PEP 440 versions; disjoint unions remain unsupported."
+      ],
+      "constraint_status": "resolved",
+      "evidence_ref": "osvgrp_31eb711ea624",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-4grg-w6v8-c28g",
+          "PYSEC-2026-1377"
+        ]
+      },
+      "evidence_type": "osv_package_catalog_group",
+      "fixed_version_specifier": ">=3.1.1",
+      "fixed_versions": [
+        "3.1.1"
+      ],
+      "identity_group_id": "osvgrp_31eb711ea624",
+      "identity_group_identifiers": [
+        "CVE-2025-47278",
+        "GHSA-4grg-w6v8-c28g",
+        "PYSEC-2026-1377"
+      ],
+      "range_disagreement": false,
+      "range_disagreement_basis": "legacy_structure_only",
+      "range_evidence_variants": [
+        {
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "3.1.0"
+                },
+                {
+                  "fixed": "3.1.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "3.1.1"
+          ],
+          "source_record_ids": [
+            "GHSA-4grg-w6v8-c28g",
+            "PYSEC-2026-1377"
+          ],
+          "variant_id": "range_0538b6608eac"
+        }
+      ],
+      "release_range_analysis": {
+        "affected_release_intervals": [
+          {
+            "lower": "3.1",
+            "lower_inclusive": true,
+            "upper": "3.1.1",
+            "upper_inclusive": false
+          }
+        ],
+        "affected_release_set_disagreement": false,
+        "affected_version_specifier": ">=3.1,<=3.1.1,!=3.1.1",
+        "affected_versions": [
+          "3.1.0"
+        ],
+        "analysis_version": "osv_pypi_release_consensus_v1",
+        "classification": "consistent_release_evidence",
+        "constraint_status": "resolved",
+        "fixed_version_specifier": ">=3.1.1",
+        "fixed_versions": [
+          "3.1.1"
+        ],
+        "range_disagreement": false,
+        "release_version_domain": "public_pep440",
+        "source_evidence": [
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "3.1.0"
+                  },
+                  {
+                    "fixed": "3.1.1"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": "3.1",
+                "lower_inclusive": true,
+                "upper": "3.1.1",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "3.1.0"
+            ],
+            "evidence_hash": "sha256:07bb5c7e6a917f76e8062f8ff00982f7f76a33cda3d6577e2657744c7ab2e533",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "3.1.1"
+            ],
+            "fixed_versions": [
+              "3.1.1"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/GHSA-4grg-w6v8-c28g.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/GHSA-4grg-w6v8-c28g.json",
+            "release_intervals": [
+              {
+                "lower": "3.1",
+                "lower_inclusive": true,
+                "upper": "3.1.1",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "3.1.1"
+            ],
+            "source_record_id": "GHSA-4grg-w6v8-c28g",
+            "source_url": "https://api.osv.dev/v1/vulns/GHSA-4grg-w6v8-c28g",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          },
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "3.1.0"
+                  },
+                  {
+                    "fixed": "3.1.1"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": "3.1",
+                "lower_inclusive": true,
+                "upper": "3.1.1",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "3.1.0"
+            ],
+            "evidence_hash": "sha256:657018ba14ece7c76928e2fd8b9705df6945672e551c9940994d20c044f737be",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "3.1.1"
+            ],
+            "fixed_versions": [
+              "3.1.1"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/PYSEC-2026-1377.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/PYSEC-2026-1377.json",
+            "release_intervals": [
+              {
+                "lower": "3.1",
+                "lower_inclusive": true,
+                "upper": "3.1.1",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "3.1.1"
+            ],
+            "source_record_id": "PYSEC-2026-1377",
+            "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-1377",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          }
+        ],
+        "supplemental_git_evidence_unmapped": false
+      },
+      "release_range_disagreement": false,
+      "safe_api_symbols": [],
+      "severity": "not_calibrated",
+      "source_record_count": 2,
+      "source_record_ids": [
+        "GHSA-4grg-w6v8-c28g",
+        "PYSEC-2026-1377"
+      ],
+      "trigger_conditions": {},
+      "vulnerability_id": "GHSA-4grg-w6v8-c28g"
+    },
+    {
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "affected_versions": [
+            "0.1",
+            "0.10",
+            "0.10.1",
+            "0.11",
+            "0.11.1",
+            "0.12",
+            "0.12.1",
+            "0.12.2",
+            "0.2",
+            "0.3",
+            "0.3.1",
+            "0.4",
+            "0.5",
+            "0.5.1",
+            "0.5.2",
+            "0.6",
+            "0.6.1",
+            "0.7",
+            "0.7.1",
+            "0.7.2",
+            "0.8",
+            "0.8.1",
+            "0.9"
+          ],
+          "source_record_ids": [
+            "GHSA-562c-5r94-xh97",
+            "PYSEC-2018-66"
+          ],
+          "variant_id": "versions_163a199f45ae"
+        }
+      ],
+      "affected_version_specifier": "<=0.12.3,!=0.12.3",
+      "affected_versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.3.1",
+        "0.4",
+        "0.5",
+        "0.5.1",
+        "0.5.2",
+        "0.6",
+        "0.6.1",
+        "0.7",
+        "0.7.1",
+        "0.7.2",
+        "0.8",
+        "0.8.1",
+        "0.9",
+        "0.10",
+        "0.10.1",
+        "0.11",
+        "0.11.1",
+        "0.12",
+        "0.12.1",
+        "0.12.2"
+      ],
+      "aliases": [
+        "CVE-2018-1000656",
+        "PYSEC-2018-66"
+      ],
+      "constraint_notes": [
+        "Legacy range/list disagreement flags describe JSON structure only.",
+        "Release consensus is evaluated source by source, including explicit versions.",
+        "GIT ranges are retained without a commit-to-PyPI-release mapping.",
+        "Single-interval constraints use public PEP 440 versions; disjoint unions remain unsupported."
+      ],
+      "constraint_status": "resolved",
+      "evidence_ref": "osvgrp_7cd41b7167c2",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-562c-5r94-xh97",
+          "PYSEC-2018-66"
+        ]
+      },
+      "evidence_type": "osv_package_catalog_group",
+      "fixed_version_specifier": ">=0.12.3",
+      "fixed_versions": [
+        "0.12.3"
+      ],
+      "identity_group_id": "osvgrp_7cd41b7167c2",
+      "identity_group_identifiers": [
+        "CVE-2018-1000656",
+        "GHSA-562c-5r94-xh97",
+        "PYSEC-2018-66"
+      ],
+      "range_disagreement": false,
+      "range_disagreement_basis": "legacy_structure_only",
+      "range_evidence_variants": [
+        {
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0.12.3"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "0.12.3"
+          ],
+          "source_record_ids": [
+            "GHSA-562c-5r94-xh97",
+            "PYSEC-2018-66"
+          ],
+          "variant_id": "range_515ebd2796c2"
+        }
+      ],
+      "release_range_analysis": {
+        "affected_release_intervals": [
+          {
+            "lower": null,
+            "lower_inclusive": true,
+            "upper": "0.12.3",
+            "upper_inclusive": false
+          }
+        ],
+        "affected_release_set_disagreement": false,
+        "affected_version_specifier": "<=0.12.3,!=0.12.3",
+        "affected_versions": [
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.3.1",
+          "0.4",
+          "0.5",
+          "0.5.1",
+          "0.5.2",
+          "0.6",
+          "0.6.1",
+          "0.7",
+          "0.7.1",
+          "0.7.2",
+          "0.8",
+          "0.8.1",
+          "0.9",
+          "0.10",
+          "0.10.1",
+          "0.11",
+          "0.11.1",
+          "0.12",
+          "0.12.1",
+          "0.12.2"
+        ],
+        "analysis_version": "osv_pypi_release_consensus_v1",
+        "classification": "consistent_release_evidence",
+        "constraint_status": "resolved",
+        "fixed_version_specifier": ">=0.12.3",
+        "fixed_versions": [
+          "0.12.3"
+        ],
+        "range_disagreement": false,
+        "release_version_domain": "public_pep440",
+        "source_evidence": [
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "0.12.3"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "0.12.3",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9"
+            ],
+            "evidence_hash": "sha256:6f60716747d21f205df00d3c8174dcd76ca5515d250be0f64a1b6216d857fda6",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "0.12.3"
+            ],
+            "fixed_versions": [
+              "0.12.3"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/GHSA-562c-5r94-xh97.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/GHSA-562c-5r94-xh97.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "0.12.3",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "0.12.3"
+            ],
+            "source_record_id": "GHSA-562c-5r94-xh97",
+            "source_url": "https://api.osv.dev/v1/vulns/GHSA-562c-5r94-xh97",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          },
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "0.12.3"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "0.12.3",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9"
+            ],
+            "evidence_hash": "sha256:e80b5f15640cedc5781a548e4d98fdb2e22595640f9819155324d9f985313661",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "0.12.3"
+            ],
+            "fixed_versions": [
+              "0.12.3"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/PYSEC-2018-66.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/PYSEC-2018-66.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "0.12.3",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "0.12.3"
+            ],
+            "source_record_id": "PYSEC-2018-66",
+            "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-66",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          }
+        ],
+        "supplemental_git_evidence_unmapped": false
+      },
+      "release_range_disagreement": false,
+      "safe_api_symbols": [],
+      "severity": "not_calibrated",
+      "source_record_count": 2,
+      "source_record_ids": [
+        "GHSA-562c-5r94-xh97",
+        "PYSEC-2018-66"
+      ],
+      "trigger_conditions": {},
+      "vulnerability_id": "GHSA-562c-5r94-xh97"
+    },
+    {
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "affected_versions": [
+            "0.1",
+            "0.10",
+            "0.10.1",
+            "0.11",
+            "0.11.1",
+            "0.12",
+            "0.12.1",
+            "0.12.2",
+            "0.12.3",
+            "0.12.4",
+            "0.12.5",
+            "0.2",
+            "0.3",
+            "0.3.1",
+            "0.4",
+            "0.5",
+            "0.5.1",
+            "0.5.2",
+            "0.6",
+            "0.6.1",
+            "0.7",
+            "0.7.1",
+            "0.7.2",
+            "0.8",
+            "0.8.1",
+            "0.9"
+          ],
+          "source_record_ids": [
+            "GHSA-5wv5-4vpf-pj6m",
+            "PYSEC-2019-179"
+          ],
+          "variant_id": "versions_6d058becadc7"
+        }
+      ],
+      "affected_version_specifier": "<=1,!=1",
+      "affected_versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.3.1",
+        "0.4",
+        "0.5",
+        "0.5.1",
+        "0.5.2",
+        "0.6",
+        "0.6.1",
+        "0.7",
+        "0.7.1",
+        "0.7.2",
+        "0.8",
+        "0.8.1",
+        "0.9",
+        "0.10",
+        "0.10.1",
+        "0.11",
+        "0.11.1",
+        "0.12",
+        "0.12.1",
+        "0.12.2",
+        "0.12.3",
+        "0.12.4",
+        "0.12.5"
+      ],
+      "aliases": [
+        "CVE-2019-1010083",
+        "PYSEC-2019-179"
+      ],
+      "constraint_notes": [
+        "Legacy range/list disagreement flags describe JSON structure only.",
+        "Release consensus is evaluated source by source, including explicit versions.",
+        "GIT ranges are retained without a commit-to-PyPI-release mapping.",
+        "Single-interval constraints use public PEP 440 versions; disjoint unions remain unsupported."
+      ],
+      "constraint_status": "resolved",
+      "evidence_ref": "osvgrp_b6ef972cc1d3",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-5wv5-4vpf-pj6m",
+          "PYSEC-2019-179"
+        ]
+      },
+      "evidence_type": "osv_package_catalog_group",
+      "fixed_version_specifier": ">=1",
+      "fixed_versions": [
+        "1.0"
+      ],
+      "identity_group_id": "osvgrp_b6ef972cc1d3",
+      "identity_group_identifiers": [
+        "CVE-2019-1010083",
+        "GHSA-5wv5-4vpf-pj6m",
+        "PYSEC-2019-179"
+      ],
+      "range_disagreement": false,
+      "range_disagreement_basis": "legacy_structure_only",
+      "range_evidence_variants": [
+        {
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.0"
+          ],
+          "source_record_ids": [
+            "GHSA-5wv5-4vpf-pj6m",
+            "PYSEC-2019-179"
+          ],
+          "variant_id": "range_32c3edc7bc9c"
+        }
+      ],
+      "release_range_analysis": {
+        "affected_release_intervals": [
+          {
+            "lower": null,
+            "lower_inclusive": true,
+            "upper": "1",
+            "upper_inclusive": false
+          }
+        ],
+        "affected_release_set_disagreement": false,
+        "affected_version_specifier": "<=1,!=1",
+        "affected_versions": [
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.3.1",
+          "0.4",
+          "0.5",
+          "0.5.1",
+          "0.5.2",
+          "0.6",
+          "0.6.1",
+          "0.7",
+          "0.7.1",
+          "0.7.2",
+          "0.8",
+          "0.8.1",
+          "0.9",
+          "0.10",
+          "0.10.1",
+          "0.11",
+          "0.11.1",
+          "0.12",
+          "0.12.1",
+          "0.12.2",
+          "0.12.3",
+          "0.12.4",
+          "0.12.5"
+        ],
+        "analysis_version": "osv_pypi_release_consensus_v1",
+        "classification": "consistent_release_evidence",
+        "constraint_status": "resolved",
+        "fixed_version_specifier": ">=1",
+        "fixed_versions": [
+          "1.0"
+        ],
+        "range_disagreement": false,
+        "release_version_domain": "public_pep440",
+        "source_evidence": [
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "1.0"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "1",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.12.3",
+              "0.12.4",
+              "0.12.5",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9"
+            ],
+            "evidence_hash": "sha256:5d4b06acc4225f28ad8dc96d94eb3f8bc673c178eab22778083f4b146d4848fb",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "1.0"
+            ],
+            "fixed_versions": [
+              "1"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/GHSA-5wv5-4vpf-pj6m.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/GHSA-5wv5-4vpf-pj6m.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "1",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "1.0"
+            ],
+            "source_record_id": "GHSA-5wv5-4vpf-pj6m",
+            "source_url": "https://api.osv.dev/v1/vulns/GHSA-5wv5-4vpf-pj6m",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          },
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "1.0"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "1",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.12.3",
+              "0.12.4",
+              "0.12.5",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9"
+            ],
+            "evidence_hash": "sha256:5e0c626310a9e531945510da3cc8c9a7d02a0d0a8686be8f90010031e3f0e921",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "1.0"
+            ],
+            "fixed_versions": [
+              "1"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/PYSEC-2019-179.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/PYSEC-2019-179.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "1",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "1.0"
+            ],
+            "source_record_id": "PYSEC-2019-179",
+            "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2019-179",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          }
+        ],
+        "supplemental_git_evidence_unmapped": false
+      },
+      "release_range_disagreement": false,
+      "safe_api_symbols": [],
+      "severity": "not_calibrated",
+      "source_record_count": 2,
+      "source_record_ids": [
+        "GHSA-5wv5-4vpf-pj6m",
+        "PYSEC-2019-179"
+      ],
+      "trigger_conditions": {},
+      "vulnerability_id": "GHSA-5wv5-4vpf-pj6m"
+    },
+    {
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "affected_versions": [
+            "0.1",
+            "0.10",
+            "0.10.1",
+            "0.11",
+            "0.11.1",
+            "0.12",
+            "0.12.1",
+            "0.12.2",
+            "0.12.3",
+            "0.12.4",
+            "0.12.5",
+            "0.2",
+            "0.3",
+            "0.3.1",
+            "0.4",
+            "0.5",
+            "0.5.1",
+            "0.5.2",
+            "0.6",
+            "0.6.1",
+            "0.7",
+            "0.7.1",
+            "0.7.2",
+            "0.8",
+            "0.8.1",
+            "0.9",
+            "1.0",
+            "1.0.1",
+            "1.0.2",
+            "1.0.3",
+            "1.0.4",
+            "1.1.0",
+            "1.1.1",
+            "1.1.2",
+            "1.1.3",
+            "1.1.4",
+            "2.0.0",
+            "2.0.0rc1",
+            "2.0.0rc2",
+            "2.0.1",
+            "2.0.2",
+            "2.0.3",
+            "2.1.0",
+            "2.1.1",
+            "2.1.2",
+            "2.1.3",
+            "2.2.0",
+            "2.2.1",
+            "2.2.2",
+            "2.2.3",
+            "2.2.4",
+            "2.2.5",
+            "2.3.0",
+            "2.3.1",
+            "2.3.2",
+            "2.3.3",
+            "3.0.0",
+            "3.0.1",
+            "3.0.2",
+            "3.0.3",
+            "3.1.0",
+            "3.1.1",
+            "3.1.2"
+          ],
+          "source_record_ids": [
+            "GHSA-68rp-wp8r-4726",
+            "PYSEC-2026-2151"
+          ],
+          "variant_id": "versions_25d31789cf9e"
+        }
+      ],
+      "affected_version_specifier": "<=3.1.3,!=3.1.3",
+      "affected_versions": [
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.3.1",
+        "0.4",
+        "0.5",
+        "0.5.1",
+        "0.5.2",
+        "0.6",
+        "0.6.1",
+        "0.7",
+        "0.7.1",
+        "0.7.2",
+        "0.8",
+        "0.8.1",
+        "0.9",
+        "0.10",
+        "0.10.1",
+        "0.11",
+        "0.11.1",
+        "0.12",
+        "0.12.1",
+        "0.12.2",
+        "0.12.3",
+        "0.12.4",
+        "0.12.5",
+        "1.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3",
+        "1.0.4",
+        "1.1.0",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.1.4",
+        "2.0.0rc1",
+        "2.0.0rc2",
+        "2.0.0",
+        "2.0.1",
+        "2.0.2",
+        "2.0.3",
+        "2.1.0",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.2.0",
+        "2.2.1",
+        "2.2.2",
+        "2.2.3",
+        "2.2.4",
+        "2.2.5",
+        "2.3.0",
+        "2.3.1",
+        "2.3.2",
+        "2.3.3",
+        "3.0.0",
+        "3.0.1",
+        "3.0.2",
+        "3.0.3",
+        "3.1.0",
+        "3.1.1",
+        "3.1.2"
+      ],
+      "aliases": [
+        "CVE-2026-27205",
+        "PYSEC-2026-2151"
+      ],
+      "constraint_notes": [
+        "Legacy range/list disagreement flags describe JSON structure only.",
+        "Release consensus is evaluated source by source, including explicit versions.",
+        "GIT ranges are retained without a commit-to-PyPI-release mapping.",
+        "Single-interval constraints use public PEP 440 versions; disjoint unions remain unsupported."
+      ],
+      "constraint_status": "resolved",
+      "evidence_ref": "osvgrp_d488c77926bf",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-68rp-wp8r-4726",
+          "PYSEC-2026-2151"
+        ]
+      },
+      "evidence_type": "osv_package_catalog_group",
+      "fixed_version_specifier": ">=3.1.3",
+      "fixed_versions": [
+        "3.1.3"
+      ],
+      "identity_group_id": "osvgrp_d488c77926bf",
+      "identity_group_identifiers": [
+        "CVE-2026-27205",
+        "GHSA-68rp-wp8r-4726",
+        "PYSEC-2026-2151"
+      ],
+      "range_disagreement": false,
+      "range_disagreement_basis": "legacy_structure_only",
+      "range_evidence_variants": [
+        {
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "3.1.3"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "3.1.3"
+          ],
+          "source_record_ids": [
+            "GHSA-68rp-wp8r-4726",
+            "PYSEC-2026-2151"
+          ],
+          "variant_id": "range_412cbb3c6d07"
+        }
+      ],
+      "release_range_analysis": {
+        "affected_release_intervals": [
+          {
+            "lower": null,
+            "lower_inclusive": true,
+            "upper": "3.1.3",
+            "upper_inclusive": false
+          }
+        ],
+        "affected_release_set_disagreement": false,
+        "affected_version_specifier": "<=3.1.3,!=3.1.3",
+        "affected_versions": [
+          "0.1",
+          "0.2",
+          "0.3",
+          "0.3.1",
+          "0.4",
+          "0.5",
+          "0.5.1",
+          "0.5.2",
+          "0.6",
+          "0.6.1",
+          "0.7",
+          "0.7.1",
+          "0.7.2",
+          "0.8",
+          "0.8.1",
+          "0.9",
+          "0.10",
+          "0.10.1",
+          "0.11",
+          "0.11.1",
+          "0.12",
+          "0.12.1",
+          "0.12.2",
+          "0.12.3",
+          "0.12.4",
+          "0.12.5",
+          "1.0",
+          "1.0.1",
+          "1.0.2",
+          "1.0.3",
+          "1.0.4",
+          "1.1.0",
+          "1.1.1",
+          "1.1.2",
+          "1.1.3",
+          "1.1.4",
+          "2.0.0rc1",
+          "2.0.0rc2",
+          "2.0.0",
+          "2.0.1",
+          "2.0.2",
+          "2.0.3",
+          "2.1.0",
+          "2.1.1",
+          "2.1.2",
+          "2.1.3",
+          "2.2.0",
+          "2.2.1",
+          "2.2.2",
+          "2.2.3",
+          "2.2.4",
+          "2.2.5",
+          "2.3.0",
+          "2.3.1",
+          "2.3.2",
+          "2.3.3",
+          "3.0.0",
+          "3.0.1",
+          "3.0.2",
+          "3.0.3",
+          "3.1.0",
+          "3.1.1",
+          "3.1.2"
+        ],
+        "analysis_version": "osv_pypi_release_consensus_v1",
+        "classification": "consistent_release_evidence",
+        "constraint_status": "resolved",
+        "fixed_version_specifier": ">=3.1.3",
+        "fixed_versions": [
+          "3.1.3"
+        ],
+        "range_disagreement": false,
+        "release_version_domain": "public_pep440",
+        "source_evidence": [
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "3.1.3"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "3.1.3",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.12.3",
+              "0.12.4",
+              "0.12.5",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9",
+              "1.0",
+              "1.0.1",
+              "1.0.2",
+              "1.0.3",
+              "1.0.4",
+              "1.1.0",
+              "1.1.1",
+              "1.1.2",
+              "1.1.3",
+              "1.1.4",
+              "2.0.0",
+              "2.0.0rc1",
+              "2.0.0rc2",
+              "2.0.1",
+              "2.0.2",
+              "2.0.3",
+              "2.1.0",
+              "2.1.1",
+              "2.1.2",
+              "2.1.3",
+              "2.2.0",
+              "2.2.1",
+              "2.2.2",
+              "2.2.3",
+              "2.2.4",
+              "2.2.5",
+              "2.3.0",
+              "2.3.1",
+              "2.3.2",
+              "2.3.3",
+              "3.0.0",
+              "3.0.1",
+              "3.0.2",
+              "3.0.3",
+              "3.1.0",
+              "3.1.1",
+              "3.1.2"
+            ],
+            "evidence_hash": "sha256:6e1d7d9d782d3e07ca86f5a9ffe2a16f99b9ea54e99bb18dde2e56af1f950e84",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "3.1.3"
+            ],
+            "fixed_versions": [
+              "3.1.3"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/GHSA-68rp-wp8r-4726.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/GHSA-68rp-wp8r-4726.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "3.1.3",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "3.1.3"
+            ],
+            "source_record_id": "GHSA-68rp-wp8r-4726",
+            "source_url": "https://api.osv.dev/v1/vulns/GHSA-68rp-wp8r-4726",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          },
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "3.1.3"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "3.1.3",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.12.3",
+              "0.12.4",
+              "0.12.5",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9",
+              "1.0",
+              "1.0.1",
+              "1.0.2",
+              "1.0.3",
+              "1.0.4",
+              "1.1.0",
+              "1.1.1",
+              "1.1.2",
+              "1.1.3",
+              "1.1.4",
+              "2.0.0",
+              "2.0.0rc1",
+              "2.0.0rc2",
+              "2.0.1",
+              "2.0.2",
+              "2.0.3",
+              "2.1.0",
+              "2.1.1",
+              "2.1.2",
+              "2.1.3",
+              "2.2.0",
+              "2.2.1",
+              "2.2.2",
+              "2.2.3",
+              "2.2.4",
+              "2.2.5",
+              "2.3.0",
+              "2.3.1",
+              "2.3.2",
+              "2.3.3",
+              "3.0.0",
+              "3.0.1",
+              "3.0.2",
+              "3.0.3",
+              "3.1.0",
+              "3.1.1",
+              "3.1.2"
+            ],
+            "evidence_hash": "sha256:998a44d9a35e7821dbba9f4d3b26bbe60e7d51db2c550ce6e921fb2fd67054c4",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "3.1.3"
+            ],
+            "fixed_versions": [
+              "3.1.3"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/PYSEC-2026-2151.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/PYSEC-2026-2151.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "3.1.3",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "3.1.3"
+            ],
+            "source_record_id": "PYSEC-2026-2151",
+            "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-2151",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          }
+        ],
+        "supplemental_git_evidence_unmapped": false
+      },
+      "release_range_disagreement": false,
+      "safe_api_symbols": [],
+      "severity": "not_calibrated",
+      "source_record_count": 2,
+      "source_record_ids": [
+        "GHSA-68rp-wp8r-4726",
+        "PYSEC-2026-2151"
+      ],
+      "trigger_conditions": {},
+      "vulnerability_id": "GHSA-68rp-wp8r-4726"
+    },
+    {
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "affected_versions": [
+            "0.1",
+            "0.10",
+            "0.10.1",
+            "0.11",
+            "0.11.1",
+            "0.12",
+            "0.12.1",
+            "0.12.2",
+            "0.12.3",
+            "0.12.4",
+            "0.12.5",
+            "0.2",
+            "0.3",
+            "0.3.1",
+            "0.4",
+            "0.5",
+            "0.5.1",
+            "0.5.2",
+            "0.6",
+            "0.6.1",
+            "0.7",
+            "0.7.1",
+            "0.7.2",
+            "0.8",
+            "0.8.1",
+            "0.9",
+            "1.0",
+            "1.0.1",
+            "1.0.2",
+            "1.0.3",
+            "1.0.4",
+            "1.1.0",
+            "1.1.1",
+            "1.1.2",
+            "1.1.3",
+            "1.1.4",
+            "2.0.0",
+            "2.0.0rc1",
+            "2.0.0rc2",
+            "2.0.1",
+            "2.0.2",
+            "2.0.3",
+            "2.1.0",
+            "2.1.1",
+            "2.1.2",
+            "2.1.3",
+            "2.2.0",
+            "2.2.1",
+            "2.2.2",
+            "2.2.3",
+            "2.2.4",
+            "2.3.0",
+            "2.3.1"
+          ],
+          "source_record_ids": [
+            "GHSA-m2qf-hxjv-5gpq",
+            "PYSEC-2023-62"
+          ],
+          "variant_id": "versions_f2ec8292a03f"
+        }
+      ],
+      "affected_version_specifier": "",
+      "affected_versions": [],
+      "aliases": [
+        "CVE-2023-30861",
+        "PYSEC-2023-62"
+      ],
+      "constraint_notes": [
+        "Legacy range/list disagreement flags describe JSON structure only.",
+        "Release consensus is evaluated source by source, including explicit versions.",
+        "GIT ranges are retained without a commit-to-PyPI-release mapping.",
+        "Single-interval constraints use public PEP 440 versions; disjoint unions remain unsupported."
+      ],
+      "constraint_status": "unsupported_multi_interval_release_set",
+      "evidence_ref": "osvgrp_f487d44a8ffe",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-m2qf-hxjv-5gpq",
+          "PYSEC-2023-62"
+        ]
+      },
+      "evidence_type": "osv_package_catalog_group",
+      "fixed_version_specifier": "",
+      "fixed_versions": [],
+      "identity_group_id": "osvgrp_f487d44a8ffe",
+      "identity_group_identifiers": [
+        "CVE-2023-30861",
+        "GHSA-m2qf-hxjv-5gpq",
+        "PYSEC-2023-62"
+      ],
+      "range_disagreement": true,
+      "range_disagreement_basis": "legacy_structure_only",
+      "range_evidence_variants": [
+        {
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.2.5"
+                },
+                {
+                  "introduced": "2.3.0"
+                },
+                {
+                  "fixed": "2.3.2"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "70f906c51ce49c485f1d355703e9cc3386b1cc2b"
+                },
+                {
+                  "fixed": "afd63b16170b7c047f5758eb910c416511e9c965"
+                }
+              ],
+              "repo": "https://github.com/pallets/flask",
+              "type": "GIT"
+            }
+          ],
+          "fixed_versions": [
+            "2.2.5",
+            "2.3.2"
+          ],
+          "source_record_ids": [
+            "PYSEC-2023-62"
+          ],
+          "variant_id": "range_185eb5e9ca8c"
+        },
+        {
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.2.5"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "2.3.0"
+                },
+                {
+                  "fixed": "2.3.2"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.2.5",
+            "2.3.2"
+          ],
+          "source_record_ids": [
+            "GHSA-m2qf-hxjv-5gpq"
+          ],
+          "variant_id": "range_4b0fb72c25bb"
+        }
+      ],
+      "release_range_analysis": {
+        "affected_release_intervals": [
+          {
+            "lower": null,
+            "lower_inclusive": true,
+            "upper": "2.2.5",
+            "upper_inclusive": false
+          },
+          {
+            "lower": "2.3",
+            "lower_inclusive": true,
+            "upper": "2.3.2",
+            "upper_inclusive": false
+          }
+        ],
+        "affected_release_set_disagreement": false,
+        "affected_version_specifier": "",
+        "affected_versions": [],
+        "analysis_version": "osv_pypi_release_consensus_v1",
+        "classification": "equivalent_release_ranges_normalized_representation",
+        "constraint_status": "unsupported_multi_interval_release_set",
+        "fixed_version_specifier": "",
+        "fixed_versions": [],
+        "range_disagreement": false,
+        "release_version_domain": "public_pep440",
+        "source_evidence": [
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "2.3.0"
+                  },
+                  {
+                    "fixed": "2.3.2"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              },
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "2.2.5"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "2.2.5",
+                "upper_inclusive": false
+              },
+              {
+                "lower": "2.3",
+                "lower_inclusive": true,
+                "upper": "2.3.2",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "2.3.0",
+              "2.3.1",
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.12.3",
+              "0.12.4",
+              "0.12.5",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9",
+              "1.0",
+              "1.0.1",
+              "1.0.2",
+              "1.0.3",
+              "1.0.4",
+              "1.1.0",
+              "1.1.1",
+              "1.1.2",
+              "1.1.3",
+              "1.1.4",
+              "2.0.0",
+              "2.0.0rc1",
+              "2.0.0rc2",
+              "2.0.1",
+              "2.0.2",
+              "2.0.3",
+              "2.1.0",
+              "2.1.1",
+              "2.1.2",
+              "2.1.3",
+              "2.2.0",
+              "2.2.1",
+              "2.2.2",
+              "2.2.3",
+              "2.2.4"
+            ],
+            "evidence_hash": "sha256:228675194fb9812c2fe841cadc780c3a50503cb9bc7b5315e171131b5d6152c4",
+            "evidence_status": "resolved",
+            "fixed_commits": [],
+            "fixed_version_spellings": [
+              "2.2.5",
+              "2.3.2"
+            ],
+            "fixed_versions": [
+              "2.2.5",
+              "2.3.2"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/GHSA-m2qf-hxjv-5gpq.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/GHSA-m2qf-hxjv-5gpq.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "2.2.5",
+                "upper_inclusive": false
+              },
+              {
+                "lower": "2.3",
+                "lower_inclusive": true,
+                "upper": "2.3.2",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "2.3.2",
+              "2.2.5"
+            ],
+            "source_record_id": "GHSA-m2qf-hxjv-5gpq",
+            "source_url": "https://api.osv.dev/v1/vulns/GHSA-m2qf-hxjv-5gpq",
+            "status": "resolved",
+            "supplemental_range_types": [],
+            "withdrawn_at": null
+          },
+          {
+            "affected_ranges": [
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "70f906c51ce49c485f1d355703e9cc3386b1cc2b"
+                  },
+                  {
+                    "fixed": "afd63b16170b7c047f5758eb910c416511e9c965"
+                  }
+                ],
+                "repo": "https://github.com/pallets/flask",
+                "type": "GIT"
+              },
+              {
+                "events": [
+                  {
+                    "introduced": "0"
+                  },
+                  {
+                    "fixed": "2.2.5"
+                  },
+                  {
+                    "introduced": "2.3.0"
+                  },
+                  {
+                    "fixed": "2.3.2"
+                  }
+                ],
+                "type": "ECOSYSTEM"
+              }
+            ],
+            "affected_release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "2.2.5",
+                "upper_inclusive": false
+              },
+              {
+                "lower": "2.3",
+                "lower_inclusive": true,
+                "upper": "2.3.2",
+                "upper_inclusive": false
+              }
+            ],
+            "affected_versions": [
+              "0.1",
+              "0.10",
+              "0.10.1",
+              "0.11",
+              "0.11.1",
+              "0.12",
+              "0.12.1",
+              "0.12.2",
+              "0.12.3",
+              "0.12.4",
+              "0.12.5",
+              "0.2",
+              "0.3",
+              "0.3.1",
+              "0.4",
+              "0.5",
+              "0.5.1",
+              "0.5.2",
+              "0.6",
+              "0.6.1",
+              "0.7",
+              "0.7.1",
+              "0.7.2",
+              "0.8",
+              "0.8.1",
+              "0.9",
+              "1.0",
+              "1.0.1",
+              "1.0.2",
+              "1.0.3",
+              "1.0.4",
+              "1.1.0",
+              "1.1.1",
+              "1.1.2",
+              "1.1.3",
+              "1.1.4",
+              "2.0.0",
+              "2.0.0rc1",
+              "2.0.0rc2",
+              "2.0.1",
+              "2.0.2",
+              "2.0.3",
+              "2.1.0",
+              "2.1.1",
+              "2.1.2",
+              "2.1.3",
+              "2.2.0",
+              "2.2.1",
+              "2.2.2",
+              "2.2.3",
+              "2.2.4",
+              "2.3.0",
+              "2.3.1"
+            ],
+            "evidence_hash": "sha256:86797ad22fa678e6a4140f0949985f6a00708a70f5df8a1209dee42c5e6b2026",
+            "evidence_status": "resolved",
+            "fixed_commits": [
+              "70f906c51ce49c485f1d355703e9cc3386b1cc2b",
+              "afd63b16170b7c047f5758eb910c416511e9c965"
+            ],
+            "fixed_version_spellings": [
+              "2.2.5",
+              "2.3.2"
+            ],
+            "fixed_versions": [
+              "2.2.5",
+              "2.3.2"
+            ],
+            "mapped_versions_outside_release_ranges": [],
+            "normalization_issues": [],
+            "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__flask/PYSEC-2023-62.json",
+            "raw_osv_file": "output/step7_osv_record_cache_v0/flask/PYSEC-2023-62.json",
+            "release_intervals": [
+              {
+                "lower": null,
+                "lower_inclusive": true,
+                "upper": "2.2.5",
+                "upper_inclusive": false
+              },
+              {
+                "lower": "2.3",
+                "lower_inclusive": true,
+                "upper": "2.3.2",
+                "upper_inclusive": false
+              }
+            ],
+            "source_fixed_version_claims": [
+              "2.2.5",
+              "2.3.2"
+            ],
+            "source_record_id": "PYSEC-2023-62",
+            "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2023-62",
+            "status": "resolved",
+            "supplemental_range_types": [
+              "GIT"
+            ],
+            "withdrawn_at": null
+          }
+        ],
+        "supplemental_git_evidence_unmapped": true
+      },
+      "release_range_disagreement": false,
+      "safe_api_symbols": [],
+      "severity": "not_calibrated",
+      "source_record_count": 2,
+      "source_record_ids": [
+        "GHSA-m2qf-hxjv-5gpq",
+        "PYSEC-2023-62"
+      ],
+      "trigger_conditions": {},
+      "vulnerability_id": "GHSA-m2qf-hxjv-5gpq"
+    }
+  ],
+  "vulnerability_count": 5,
+  "vulnerability_group_count": 5
+}

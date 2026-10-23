@@ -1,0 +1,22 @@
+{
+  "schema_version": "avcs_manifest_constraints_v0.1",
+  "sample_id": "avcs_numpy_allow_pickle_true",
+  "distribution": "numpy",
+  "normalized_distribution": "numpy",
+  "requirements_text": "numpy",
+  "status": "resolved",
+  "constraint_kind": "unconstrained",
+  "specifier": "",
+  "matched_requirements": [
+    {
+      "name": "numpy",
+      "normalized_name": "numpy",
+      "specifier": "",
+      "extras": [],
+      "marker": "",
+      "url": "",
+      "original_text": "numpy"
+    }
+  ],
+  "invalid_lines": []
+}

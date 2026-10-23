@@ -1,0 +1,78 @@
+{
+  "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+
+  "vulnerability_id": "GHSA-9fq2-x9r6-wfmf",
+
+  "aliases": [
+    "CVE-2019-6446",
+    "PYSEC-2019-108"
+  ],
+
+  "status": "conflicted",
+
+  "matched_supported_rule_kinds": [
+    "keyword_literal_condition",
+    "omitted_keyword_historical_default"
+  ],
+
+  "candidate_rule_kinds": [
+    "keyword_literal_condition",
+    "omitted_keyword_historical_default"
+  ],
+
+  "trigger_coverage": {
+    "coverage_status": "unknown",
+    "affected_version_scope": "<1.16.3",
+    "assessed_trigger_version_scope": ">=1.10.0b1,<1.16.3",
+    "uncovered_scope_note": "GHSA-9fq2-x9r6-wfmf is retained as the primary machine-readable affected-range source with fixed version 1.16.3, while alias PYSEC-2019-108 records a conflicting fixed boundary of 1.16.1. Because the affected upper boundary remains conflicted, overall Trigger coverage is not asserted as full or partial. The lower >=1.10.0b1 bound describes only the curated allow_pickle API-semantic scope."
+  },
+
+  "eligibility_checks": {
+    "vulnerability_identity": "pass",
+    "affected_version_range": "conflicted",
+    "upstream_trigger_semantics": "pass",
+    "supported_static_expressibility": "pass",
+    "counterfactual_validation": "pass",
+    "provenance_completeness": "pass"
+  },
+
+  "review_required": false,
+
+  "rule_refs": [
+    "numpy_load_allow_pickle_true",
+    "numpy_load_omitted_allow_pickle_historical_true"
+  ],
+
+  "evidence_refs": [
+    "github_reviewed_ghsa",
+    "pysec_2019_108_conflict",
+    "numpy_1_16_2_source",
+    "numpy_1_16_3_source",
+    "numpy_1_16_3_release_notes",
+    "numpy_fix_commit",
+    "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json",
+    "output/numpy_ghsa_9fq2_x9r6_wfmf_osv_evidence_v0.json",
+    "output/numpy_pysec_2019_108_osv_evidence_v0.json",
+    "output/numpy_ghsa_9fq2_x9r6_wfmf_trigger_evidence_v0.json"
+  ],
+
+  "unsupported_reasons": [],
+
+  "positive_regression_refs": [
+    "output/numpy_allow_pickle_true_evaluation_v0.json",
+    "output/numpy_allow_pickle_omitted_evaluation_v0.json"
+  ],
+
+  "negative_regression_refs": [
+    "output/numpy_allow_pickle_false_evaluation_v0.json"
+  ],
+
+  "decision_notes": "The two static Trigger rules are supported by upstream source and controlled regressions: explicit allow_pickle=True and omission under the historical True default both match, while explicit allow_pickle=False does not. However, the alias records disagree on the fixed release: GHSA-9fq2-x9r6-wfmf records 1.16.3 while PYSEC-2019-108 records 1.16.1. The conflict is preserved rather than silently reconciled. Existing Trigger evidence continues to use the GitHub-reviewed GHSA record as its primary range source, but the eligibility classification remains conflicted until the affected-version discrepancy is explicitly resolved.",
+
+  "review": {
+    "status": "approved",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Migrated from the existing curated NumPy case. The fixed-version discrepancy between the GHSA and PYSEC alias records is intentionally preserved. Exact historical reviewer identity and review timestamp are not asserted by this migration artifact."
+  }
+}

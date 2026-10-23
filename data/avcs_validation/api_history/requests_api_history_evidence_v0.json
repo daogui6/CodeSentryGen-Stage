@@ -1,0 +1,93 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "requests",
+  "source_mode": "curated_real_api_history",
+  "status": "resolved",
+  "scope": {
+    "selected_api_form": "requests.get",
+    "selected_call_shape": "one explicit positional URL argument with no required keyword arguments",
+    "version_scope": ">=0.2.0",
+    "note": "This v0 models only the selected public requests.get(url) call form used by the controlled benchmark. Requests 0.2.0 is the first confirmed public release boundary for this selected form: the package root re-exports requests.core and requests.core defines get(url, ...). The same selected form remains present in Requests 2.32.3 and the fixed 2.32.4 release. This API scope does not redefine the vulnerability range <2.32.4."
+  },
+  "entries": [
+    {
+      "distribution": "requests",
+      "api_symbol": "requests.get",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "requests_get_one_positional",
+          "status": "resolved",
+          "version_specifier": ">=0.2.0",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "Requests 0.2.0 / 2.32.3 / 2.32.4 official release and source evidence",
+          "evidence_note": "Requests 0.2.0 is the first confirmed public release boundary for the selected requests.get(url) form. Its package root re-exports requests.core, where get(url, ...) is defined. The same one-positional-URL form remains supported immediately before and after the vulnerability fix boundary.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=0.2.0",
+            "first_confirmed_supported_version": "0.2.0",
+            "boundary_evidence": {
+              "scope_start": {
+                "version": "0.2.0",
+                "source_paths": [
+                  "requests/__init__.py",
+                  "requests/core.py"
+                ],
+                "observation": "requests.__init__ re-exports requests.core, and requests.core defines get(url, params={}, headers={}, auth=None), making requests.get available at the package root."
+              },
+              "vulnerable_boundary": {
+                "version": "2.32.3",
+                "source_path": "src/requests/api.py",
+                "observation": "requests.get remains defined as get(url, params=None, **kwargs) immediately before the fixed release."
+              },
+              "fixed_boundary": {
+                "version": "2.32.4",
+                "source_path": "src/requests/api.py",
+                "observation": "requests.get remains defined as get(url, params=None, **kwargs) in the fixed release; the security fix changes netrc host lookup semantics rather than removing this public API."
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "requests_pypi_0_2_0_history",
+      "source_type": "official_registry_release_history",
+      "url": "https://pypi.org/project/requests/0.2.1/",
+      "claim": "The Requests release history labels 0.2.0 as Birth and 0.0.1 as Frustration / Conception."
+    },
+    {
+      "source_id": "requests_v0_2_0_init",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/psf/requests/blob/v0.2.0/requests/__init__.py",
+      "claim": "Requests 0.2.0 package root imports all public symbols from requests.core."
+    },
+    {
+      "source_id": "requests_v0_2_0_core",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/psf/requests/blob/v0.2.0/requests/core.py",
+      "claim": "Requests 0.2.0 defines get(url, params={}, headers={}, auth=None) in requests.core."
+    },
+    {
+      "source_id": "requests_v2_32_3_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/psf/requests/blob/v2.32.3/src/requests/api.py",
+      "claim": "Requests 2.32.3 defines get(url, params=None, **kwargs)."
+    },
+    {
+      "source_id": "requests_v2_32_4_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/psf/requests/blob/v2.32.4/src/requests/api.py",
+      "claim": "Requests 2.32.4 continues to define get(url, params=None, **kwargs), showing that the vulnerability fix does not remove the selected public API."
+    }
+  ]
+}

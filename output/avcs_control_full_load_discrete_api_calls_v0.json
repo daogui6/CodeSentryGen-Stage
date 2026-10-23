@@ -1,0 +1,28 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_control_full_load_discrete",
+  "code_file": "data/avcs_control_full_load.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "yaml",
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.full_load",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_control_full_load.py",
+        "line": 5,
+        "column": 12
+      },
+      "call_text": "yaml.full_load(yaml_text)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,595 @@
+{
+  "schema_version": "avcs_package_kb_v0.2",
+  "kb_id": "pypi_pyyaml_v0",
+  "ecosystem": "PyPI",
+  "distribution": "PyYAML",
+  "normalized_distribution": "pyyaml",
+
+  "package_metadata": {
+    "package_name": "PyYAML",
+    "registry": "PyPI",
+    "registry_url": null,
+    "repository_url": null,
+    "homepage_url": null,
+    "notes": "Unified Package KB migration for the existing PyYAML AVCS real case."
+  },
+
+  "release_history": {
+    "status": "partial",
+    "as_of_time": "2024-07-01T00:00:00+00:00",
+    "confirmed_release_count": 29,
+    "confirmed_stable_release_count": 14,
+    "confirmed_prerelease_count": 15,
+
+    "artifacts": [
+      {
+        "role": "release_history",
+        "path": "output/pyyaml_release_history_2024_07_01_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": "2026-08-09T09:22:27.416180+00:00",
+        "notes": "Historical PyYAML release-history artifact with partial evidence status."
+      }
+    ],
+
+    "notes": "29 confirmed releases are recorded as of the historical time view, including 15 prereleases. The source artifact itself is explicitly partial."
+  },
+
+  "api_surface_history": {
+    "status": "partial",
+
+    "scope_policy": "Migrated existing real API History evidence for yaml.load, yaml.safe_load, yaml.safe_dump, and yaml.full_load. The evidence is resolved for these selected API forms but is not asserted to be a complete package-wide PyYAML public API surface.",
+
+    "artifacts": [
+      {
+        "role": "api_history_evidence",
+        "path": "output/pyyaml_api_history_evidence_with_load_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Normalized real API History evidence derived from historical PyYAML release source."
+      }
+    ],
+
+    "entries": [
+      {
+        "api_symbol": "yaml.load",
+        "api_kind": "function",
+        "status": "resolved",
+
+        "version_rules": [
+          {
+            "rule_id": "pyyaml_load_basic",
+            "status": "resolved",
+            "version_specifier": ">=3.01",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 1,
+            "required_keyword_args": [],
+            "supported_keyword_args": [
+              "Loader"
+            ],
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "output/pyyaml_api_history_evidence_with_load_v0.json"
+          }
+        ],
+
+        "deprecated_since": null,
+        "removed_since": null,
+
+        "evidence_refs": [
+          "output/pyyaml_api_history_evidence_with_load_v0.json"
+        ],
+
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved real API History evidence."
+        }
+      },
+
+      {
+        "api_symbol": "yaml.safe_load",
+        "api_kind": "function",
+        "status": "resolved",
+
+        "version_rules": [
+          {
+            "rule_id": "pyyaml_safe_load_basic",
+            "status": "resolved",
+            "version_specifier": ">=3.01",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 1,
+            "required_keyword_args": [],
+            "supported_keyword_args": [],
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "output/pyyaml_api_history_evidence_with_load_v0.json"
+          }
+        ],
+
+        "deprecated_since": null,
+        "removed_since": null,
+
+        "evidence_refs": [
+          "output/pyyaml_api_history_evidence_with_load_v0.json"
+        ],
+
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved real API History evidence."
+        }
+      },
+
+      {
+        "api_symbol": "yaml.safe_dump",
+        "api_kind": "function",
+        "status": "resolved",
+
+        "version_rules": [
+          {
+            "rule_id": "pyyaml_safe_dump_basic",
+            "status": "resolved",
+            "version_specifier": ">=3.01",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 2,
+            "required_keyword_args": [],
+            "supported_keyword_args": [],
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "output/pyyaml_api_history_evidence_with_load_v0.json"
+          },
+
+          {
+            "rule_id": "pyyaml_safe_dump_sort_keys",
+            "status": "resolved",
+            "version_specifier": ">=5.1b1",
+            "support_target": "api_parameter_support",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 2,
+            "required_keyword_args": [
+              "sort_keys"
+            ],
+            "supported_keyword_args": [
+              "sort_keys"
+            ],
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "output/pyyaml_api_history_evidence_with_load_v0.json"
+          }
+        ],
+
+        "deprecated_since": null,
+        "removed_since": null,
+
+        "evidence_refs": [
+          "output/pyyaml_api_history_evidence_with_load_v0.json"
+        ],
+
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved real API History evidence."
+        }
+      },
+
+      {
+        "api_symbol": "yaml.full_load",
+        "api_kind": "function",
+        "status": "resolved",
+
+        "version_rules": [
+          {
+            "rule_id": "pyyaml_full_load_basic",
+            "status": "resolved",
+            "version_specifier": ">=5.1b1",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 1,
+            "required_keyword_args": [],
+            "supported_keyword_args": [],
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "output/pyyaml_api_history_evidence_with_load_v0.json"
+          }
+        ],
+
+        "deprecated_since": null,
+        "removed_since": null,
+
+        "evidence_refs": [
+          "output/pyyaml_api_history_evidence_with_load_v0.json"
+        ],
+
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved real API History evidence."
+        }
+      }
+    ],
+
+    "notes": "The selected API History contains four existing public API entries. API availability evidence is kept independent from vulnerability Trigger semantics."
+  },
+
+  "vulnerability_catalog": [
+    {
+      "vulnerability_id": "PYSEC-2021-142",
+
+      "aliases": [
+        "CVE-2020-14343",
+        "GHSA-8q59-q68h-6hv4"
+      ],
+
+      "summary": null,
+      "published_at": "2021-02-09T21:15:00Z",
+      "modified_at": "2023-11-08T04:02:26.414885Z",
+      "withdrawn_at": null,
+      "severity": [],
+
+      "affected_ranges": [
+        {
+          "range_type": "ECOSYSTEM",
+          "introduced": "0",
+          "fixed": "5.4",
+          "last_affected": null,
+          "version_specifier": "<5.4",
+          "source_ref": "pysec_2021_142_osv_raw"
+        }
+      ],
+
+      "fixed_versions": [
+        "5.4"
+      ],
+
+      "source_refs": [
+        "pysec_2021_142_osv_raw",
+        "github_advisory",
+        "pyyaml_issue_420",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source",
+        "pyyaml_fix_commit",
+        "pyyaml_fix_pr",
+        "pyyaml_changelog",
+        "pyyaml_official_documentation"
+      ],
+
+      "trigger_assessment": {
+        "status": "eligible",
+        "review_required": false,
+
+        "coverage_status": "partial",
+        "affected_version_scope": "<5.4",
+        "assessed_trigger_version_scope": ">=5.1,<5.4",
+
+        "uncovered_scope_note": "The normalized Trigger evidence intentionally covers documented FullLoader/full_load semantics for >=5.1,<5.4. Pre-5.1 yaml.load semantics remain outside the frozen v0 Trigger scope and are not treated as negative evidence.",
+
+        "rule_refs": [
+          "pyyaml_full_load_untrusted",
+          "pyyaml_load_explicit_full_loader",
+          "pyyaml_load_default_full_loader"
+        ],
+
+        "evidence_refs": [
+          "github_advisory",
+          "pyyaml_issue_420",
+          "pyyaml_5_1_source",
+          "pyyaml_5_3_1_source",
+          "pyyaml_fix_commit",
+          "pyyaml_fix_pr",
+          "pyyaml_changelog",
+          "pyyaml_official_documentation"
+        ],
+
+        "unsupported_reasons": [],
+
+        "positive_regression_refs": [
+          "output/avcs_yaml_load_full_loader_evaluation_v0.json",
+          "output/avcs_yaml_load_loader_omitted_evaluation_v0.json"
+        ],
+
+        "negative_regression_refs": [
+          "output/avcs_yaml_load_safe_loader_evaluation_v0.json"
+        ],
+
+        "notes": "Eligibility is frozen by avcs_trigger_eligibility_protocol_v0.2. Trigger coverage is explicitly partial."
+      },
+
+      "review": {
+        "status": "approved",
+        "review_required": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "notes": "Migrated from the existing curated PyYAML case and controlled Trigger evaluations."
+      },
+
+      "notes": "The vulnerability affected range is broader than the currently assessed Trigger-semantic range."
+    }
+  ],
+
+  "trigger_rules": [
+    {
+      "trigger_id": "pyyaml_full_load_untrusted",
+
+      "vulnerability_ids": [
+        "PYSEC-2021-142",
+        "CVE-2020-14343",
+        "GHSA-8q59-q68h-6hv4"
+      ],
+
+      "api_symbol": "yaml.full_load",
+      "kind": "direct_api",
+      "version_scope": ">=5.1,<5.4",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "evidence_refs": [
+        "github_advisory",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ],
+
+      "source_artifact": "output/pyyaml_pysec_2021_142_trigger_evidence_v0.json",
+
+      "notes": "Direct use of yaml.full_load on untrusted input within the assessed vulnerability scope."
+    },
+
+    {
+      "trigger_id": "pyyaml_load_explicit_full_loader",
+
+      "vulnerability_ids": [
+        "PYSEC-2021-142",
+        "CVE-2020-14343",
+        "GHSA-8q59-q68h-6hv4"
+      ],
+
+      "api_symbol": "yaml.load",
+      "kind": "keyword_argument_condition",
+      "version_scope": ">=5.1,<5.4",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "keyword_argument": {
+        "name": "Loader",
+        "required_symbol": "yaml.FullLoader"
+      },
+
+      "historical_default_symbol": null,
+
+      "evidence_refs": [
+        "github_advisory",
+        "pyyaml_issue_420",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ],
+
+      "source_artifact": "output/pyyaml_pysec_2021_142_trigger_evidence_v0.json",
+
+      "notes": "Explicit yaml.FullLoader supplied to yaml.load."
+    },
+
+    {
+      "trigger_id": "pyyaml_load_default_full_loader",
+
+      "vulnerability_ids": [
+        "PYSEC-2021-142",
+        "CVE-2020-14343",
+        "GHSA-8q59-q68h-6hv4"
+      ],
+
+      "api_symbol": "yaml.load",
+      "kind": "omitted_keyword_historical_default",
+      "version_scope": ">=5.1,<5.4",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "keyword_argument": {
+        "name": "Loader",
+        "must_be_omitted": true
+      },
+
+      "historical_default_symbol": "yaml.FullLoader",
+
+      "evidence_refs": [
+        "pyyaml_issue_420",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ],
+
+      "source_artifact": "output/pyyaml_pysec_2021_142_trigger_evidence_v0.json",
+
+      "notes": "The Loader keyword is omitted and historical PyYAML semantics select FullLoader in the assessed scope."
+    }
+  ],
+
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "pysec_2021_142_osv_raw",
+        "source_type": "osv_raw_record",
+        "url": null,
+        "path": "data/avcs_validation/osv_raw/PYSEC-2021-142.json",
+        "locator": "affected / PyPI pyyaml",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The structured OSV record identifies PyYAML versions before 5.4 as affected and 5.4 as fixed."
+      },
+
+      {
+        "source_id": "github_advisory",
+        "source_type": "osv_github_advisory",
+        "url": "https://osv.dev/vulnerability/GHSA-8q59-q68h-6hv4",
+        "path": null,
+        "locator": "Details / affected PyPI package",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The advisory identifies the FullLoader/full_load unsafe processing path for untrusted YAML."
+      },
+
+      {
+        "source_id": "pyyaml_issue_420",
+        "source_type": "upstream_security_issue",
+        "url": "https://github.com/yaml/pyyaml/issues/420",
+        "path": null,
+        "locator": "Issue body",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "PyYAML 5.3.1 yaml.load defaults to FullLoader and the FullLoader path remained unsafe for untrusted input."
+      },
+
+      {
+        "source_id": "pyyaml_5_1_source",
+        "source_type": "upstream_release_source",
+        "url": "https://github.com/yaml/pyyaml/blob/5.1/lib3/yaml/__init__.py",
+        "path": null,
+        "locator": "load / full_load / safe_load",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "Historical source establishes load, full_load, FullLoader and SafeLoader semantics in PyYAML 5.1."
+      },
+
+      {
+        "source_id": "pyyaml_5_3_1_source",
+        "source_type": "upstream_release_source",
+        "url": "https://github.com/yaml/pyyaml/blob/5.3.1/lib3/yaml/__init__.py",
+        "path": null,
+        "locator": "load / full_load / safe_load",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "Historical source confirms the relevant FullLoader and SafeLoader call semantics remain present in 5.3.1."
+      },
+
+      {
+        "source_id": "pyyaml_fix_commit",
+        "source_type": "upstream_fix_commit",
+        "url": "https://github.com/yaml/pyyaml/commit/a001f2782501ad2d24986959f0239a354675f9dc",
+        "path": null,
+        "locator": "lib/yaml/constructor.py and lib3/yaml/constructor.py",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The security fix moves dangerous Python object constructors from FullConstructor to UnsafeConstructor."
+      },
+
+      {
+        "source_id": "pyyaml_fix_pr",
+        "source_type": "upstream_fix_pull_request",
+        "url": "https://github.com/yaml/pyyaml/pull/472",
+        "path": null,
+        "locator": "Potential fix for #420",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The upstream fix pull request was merged into the PyYAML 5.4 release branch."
+      },
+
+      {
+        "source_id": "pyyaml_changelog",
+        "source_type": "upstream_changelog",
+        "url": "https://github.com/yaml/pyyaml/blob/main/CHANGES",
+        "path": null,
+        "locator": "5.4 release notes",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The PyYAML 5.4 changelog records the security fix."
+      },
+
+      {
+        "source_id": "pyyaml_official_documentation",
+        "source_type": "official_documentation",
+        "url": "https://pyyaml.org/wiki/PyYAMLDocumentation",
+        "path": null,
+        "locator": "Loading YAML / safe_load",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "safe_load is the documented safe alternative for untrusted YAML input."
+      }
+    ],
+
+    "generated_from": [
+      {
+        "role": "release_history",
+        "path": "output/pyyaml_release_history_2024_07_01_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "api_history_evidence",
+        "path": "output/pyyaml_api_history_evidence_with_load_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "raw_vulnerability_evidence",
+        "path": "data/avcs_validation/osv_raw/PYSEC-2021-142.json",
+        "schema_version": null,
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Raw OSV vulnerability record."
+      },
+
+      {
+        "role": "trigger_evidence",
+        "path": "output/pyyaml_pysec_2021_142_trigger_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_trigger_evidence_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Source Trigger artifact reports resolved_with_scope; Package KB records it as resolved with explicit partial coverage metadata."
+      },
+
+      {
+        "role": "trigger_eligibility_assessment",
+        "path": "data/avcs_package_kb/trigger_eligibility/pyyaml_pysec_2021_142_eligibility_v0.json",
+        "schema_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      }
+    ],
+
+    "notes": "API History, affected-version evidence, Trigger semantics, and Trigger coverage are retained as distinct evidence layers."
+  },
+
+  "review": {
+    "status": "approved",
+    "review_required": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "protocol_version": null,
+    "notes": "Package KB migration review closed after structural/cross-reference validation and Trigger Eligibility semantic validation passed. Existing uncertainty, partial-coverage, and conflicted states are preserved rather than overridden by migration approval."
+  }
+}

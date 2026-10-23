@@ -1,0 +1,72 @@
+{
+  "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+  "vulnerability_id": "PYSEC-2024-24",
+  "aliases": [
+    "CVE-2024-23334",
+    "GHSA-5h86-8mv2-jq9f"
+  ],
+
+  "status": "eligible",
+
+  "matched_supported_rule_kinds": [
+    "keyword_literal_condition"
+  ],
+
+  "candidate_rule_kinds": [
+    "keyword_literal_condition"
+  ],
+
+  "trigger_coverage": {
+    "coverage_status": "partial",
+    "affected_version_scope": ">=1.0.5,<3.9.2",
+    "assessed_trigger_version_scope": ">=3.1.0,<3.9.2",
+    "uncovered_scope_note": "The vulnerability affected-version range begins at 1.0.5, while the selected public aiohttp.web.static API form is modeled from 3.1.0. Earlier vulnerable releases remain outside the frozen Trigger rule scope and must not be treated as negative evidence."
+  },
+
+  "eligibility_checks": {
+    "vulnerability_identity": "pass",
+    "affected_version_range": "pass",
+    "upstream_trigger_semantics": "pass",
+    "supported_static_expressibility": "pass",
+    "counterfactual_validation": "pass",
+    "provenance_completeness": "pass"
+  },
+
+  "review_required": false,
+
+  "rule_refs": [
+    "aiohttp_web_static_follow_symlinks_true"
+  ],
+
+  "evidence_refs": [
+    "osv_pysec_2024_24",
+    "aiohttp_upstream_advisory",
+    "aiohttp_3_1_0_source",
+    "aiohttp_3_1_0_changelog",
+    "aiohttp_fix_pr_8079",
+    "aiohttp_fix_commit",
+    "data/avcs_validation/api_history/aiohttp_api_history_evidence_v0.json",
+    "output/aiohttp_pysec_2024_24_osv_evidence_v1.json",
+    "output/aiohttp_pysec_2024_24_trigger_evidence_v0.json"
+  ],
+
+  "unsupported_reasons": [],
+
+  "positive_regression_refs": [
+    "output/aiohttp_follow_symlinks_true_evaluation_v0.json"
+  ],
+
+  "negative_regression_refs": [
+    "output/aiohttp_follow_symlinks_false_evaluation_v0.json",
+    "output/aiohttp_follow_symlinks_omitted_evaluation_v0.json"
+  ],
+
+  "decision_notes": "The selected Trigger rule is eligible for the assessed >=3.1.0,<3.9.2 scope. follow_symlinks=True matches the keyword_literal_condition Trigger, while follow_symlinks=False and omission do not match. The package-level vulnerability range is broader, >=1.0.5,<3.9.2, so Trigger coverage is explicitly partial. The preserved upstream advisory lower-bound wording conflict (>1.0.5 versus OSV >=1.0.5) does not alter the selected Trigger scope, which begins at 3.1.0.",
+
+  "review": {
+    "status": "approved",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Migrated from the existing curated aiohttp real case and controlled Trigger evaluations. Exact historical reviewer identity and review timestamp are not asserted by this migration artifact."
+  }
+}

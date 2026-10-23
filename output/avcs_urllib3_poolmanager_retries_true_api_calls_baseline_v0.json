@@ -1,0 +1,38 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_urllib3_poolmanager_retries_true",
+  "code_file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_true.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "urllib3",
+      "distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_true.py",
+        "line": 4,
+        "column": 8
+      },
+      "call_text": "urllib3.PoolManager(\n    retries=0,\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 0,
+        "positional_arg_values": [],
+        "keyword_arg_names": [
+          "retries"
+        ],
+        "keyword_arg_values": {
+          "retries": {
+            "source_text": "0",
+            "resolved_symbol": null,
+            "literal_value": 0
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

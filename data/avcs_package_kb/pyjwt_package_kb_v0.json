@@ -1,0 +1,338 @@
+{
+  "schema_version": "avcs_package_kb_v0.2",
+  "kb_id": "pypi_pyjwt_v0",
+  "ecosystem": "PyPI",
+  "distribution": "PyJWT",
+  "normalized_distribution": "pyjwt",
+  "package_metadata": {
+    "package_name": "PyJWT",
+    "registry": "PyPI",
+    "registry_url": null,
+    "repository_url": null,
+    "homepage_url": null,
+    "notes": "Initial unified Package KB migration for the existing PyJWT AVCS real case."
+  },
+  "release_history": {
+    "status": "resolved",
+    "as_of_time": "2026-08-20T02:00:00+00:00",
+    "confirmed_release_count": 55,
+    "confirmed_stable_release_count": 53,
+    "confirmed_prerelease_count": 2,
+    "artifacts": [
+      {
+        "role": "release_history",
+        "path": "output/pyjwt_release_history_20260820_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": "2026-08-20T10:47:55.925077+00:00",
+        "notes": "Current PyPI project JSON file evidence is complete for the recorded time view."
+      }
+    ],
+    "notes": "55 confirmed releases are recorded, including 53 stable releases and 2 prereleases."
+  },
+  "api_surface_history": {
+    "status": "partial",
+    "scope_policy": "Selected existing AVCS PyJWT public API scope only: jwt.decode algorithms keyword support and jwt.algorithms.get_default_algorithms zero-argument availability. This is not yet a complete package-wide public API surface.",
+    "artifacts": [
+      {
+        "role": "api_history_evidence",
+        "path": "output/avcs_pyjwt_api_history_evidence_fully_auto_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Automatically compiled from complete stable release-history candidates for the selected API forms."
+      }
+    ],
+    "entries": [
+      {
+        "api_symbol": "jwt.decode",
+        "api_kind": "function",
+        "status": "resolved",
+        "version_rules": [
+          {
+            "rule_id": "pyjwt_decode_algorithms_keyword",
+            "status": "resolved",
+            "version_specifier": ">=1.0.0",
+            "support_target": "api_parameter_support",
+            "required_positional_args_min": 2,
+            "required_positional_args_max": 2,
+            "required_keyword_args": [
+              "algorithms"
+            ],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "automatic_release_history_evidence",
+            "evidence_ref": "output/avcs_pyjwt_api_history_evidence_fully_auto_v0.json"
+          }
+        ],
+        "deprecated_since": null,
+        "removed_since": null,
+        "evidence_refs": [
+          "output/avcs_pyjwt_api_history_evidence_fully_auto_v0.json"
+        ],
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved automatic API History evidence."
+        }
+      },
+      {
+        "api_symbol": "jwt.algorithms.get_default_algorithms",
+        "api_kind": "function",
+        "status": "resolved",
+        "version_rules": [
+          {
+            "rule_id": "pyjwt_get_default_algorithms_zero_arg",
+            "status": "resolved",
+            "version_specifier": ">=1.0.0",
+            "support_target": "api_symbol_presence",
+            "required_positional_args_min": 0,
+            "required_positional_args_max": 0,
+            "required_keyword_args": [],
+            "supported_keyword_args": [],
+            "forbidden_keyword_args": [],
+            "accepts_var_positional": false,
+            "accepts_var_keyword": false,
+            "evidence_type": "automatic_release_history_evidence",
+            "evidence_ref": "output/avcs_pyjwt_api_history_evidence_fully_auto_v0.json"
+          }
+        ],
+        "deprecated_since": null,
+        "removed_since": null,
+        "evidence_refs": [
+          "output/avcs_pyjwt_api_history_evidence_fully_auto_v0.json"
+        ],
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved automatic API History evidence."
+        }
+      }
+    ],
+    "notes": "API availability begins at >=1.0.0 for both selected API forms. This must remain distinct from the vulnerability range >=1.5.0,<2.4.0."
+  },
+  "vulnerability_catalog": [
+    {
+      "vulnerability_id": "GHSA-ffqj-6fqr-9h24",
+      "aliases": [
+        "CVE-2022-29217",
+        "PYSEC-2022-202"
+      ],
+      "summary": null,
+      "published_at": "2022-05-24T22:17:27Z",
+      "modified_at": "2024-10-15T16:27:42.751871Z",
+      "withdrawn_at": null,
+      "severity": [],
+      "affected_ranges": [
+        {
+          "range_type": "ECOSYSTEM",
+          "introduced": "1.5.0",
+          "fixed": "2.4.0",
+          "last_affected": null,
+          "version_specifier": ">=1.5.0,<2.4.0",
+          "source_ref": "osv_ghsa_ffqj_6fqr_9h24"
+        }
+      ],
+      "fixed_versions": [
+        "2.4.0"
+      ],
+      "source_refs": [
+        "osv_ghsa_ffqj_6fqr_9h24",
+        "pysec_2022_202",
+        "pyjwt_upstream_advisory",
+        "pyjwt_fix_commit",
+        "pyjwt_2_4_0_changelog"
+      ],
+      "trigger_assessment": {
+        "status": "eligible",
+        "review_required": false,
+        "coverage_status": "full",
+        "affected_version_scope": ">=1.5.0,<2.4.0",
+        "assessed_trigger_version_scope": ">=1.5.0,<2.4.0",
+        "uncovered_scope_note": null,
+        "rule_refs": [
+          "pyjwt_decode_default_algorithms_call"
+        ],
+        "evidence_refs": [
+          "osv_ghsa_ffqj_6fqr_9h24",
+          "pysec_2022_202",
+          "pyjwt_upstream_advisory",
+          "pyjwt_fix_commit",
+          "pyjwt_2_4_0_changelog"
+        ],
+        "unsupported_reasons": [],
+        "positive_regression_refs": [
+          "output/pyjwt_default_algorithms_true_evaluation_v0.json"
+        ],
+        "negative_regression_refs": [
+          "output/pyjwt_explicit_algorithms_false_evaluation_v0.json"
+        ],
+        "notes": "Eligibility is frozen by avcs_trigger_eligibility_protocol_v0.2 with full Trigger coverage for the affected range."
+      },
+      "review": {
+        "status": "approved",
+        "review_required": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "notes": "Migrated from the existing curated and regression-validated PyJWT case."
+      },
+      "notes": "The affected-version range is vulnerability evidence and is not the API introduction range."
+    }
+  ],
+  "trigger_rules": [
+    {
+      "trigger_id": "pyjwt_decode_default_algorithms_call",
+      "vulnerability_ids": [
+        "GHSA-ffqj-6fqr-9h24",
+        "CVE-2022-29217",
+        "PYSEC-2022-202"
+      ],
+      "api_symbol": "jwt.decode",
+      "kind": "keyword_call_condition",
+      "version_scope": ">=1.5.0,<2.4.0",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+      "keyword_argument": {
+        "name": "algorithms",
+        "required_call_symbol": "jwt.algorithms.get_default_algorithms"
+      },
+      "evidence_refs": [
+        "osv_ghsa_ffqj_6fqr_9h24",
+        "pysec_2022_202",
+        "pyjwt_upstream_advisory"
+      ],
+      "source_artifact": "output/pyjwt_ghsa_ffqj_6fqr_9h24_trigger_evidence_v0.json",
+      "notes": "Static Trigger rule migrated without redefining the underlying affected-version range."
+    }
+  ],
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "osv_ghsa_ffqj_6fqr_9h24",
+        "source_type": "osv_pypi_advisory",
+        "url": "https://osv.dev/vulnerability/GHSA-ffqj-6fqr-9h24",
+        "path": null,
+        "locator": "Affected packages / PyPI pyjwt",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "PyJWT versions from 1.5.0 up to but excluding 2.4.0 are affected; 2.4.0 is fixed."
+      },
+      {
+        "source_id": "pysec_2022_202",
+        "source_type": "pypa_advisory",
+        "url": "https://osv.dev/vulnerability/PYSEC-2022-202",
+        "path": null,
+        "locator": "Affected ECOSYSTEM range",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "Independent advisory evidence records the same affected range and fixed release."
+      },
+      {
+        "source_id": "pyjwt_upstream_advisory",
+        "source_type": "upstream_security_advisory",
+        "url": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-ffqj-6fqr-9h24",
+        "path": null,
+        "locator": "Impact / vulnerable configuration / workaround",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The advisory identifies get_default_algorithms() as the relevant broad algorithms configuration."
+      },
+      {
+        "source_id": "pyjwt_fix_commit",
+        "source_type": "upstream_fix_commit",
+        "url": "https://github.com/jpadilla/pyjwt/commit/9c528670c455b8d948aff95ed50e22940d1ad3fc",
+        "path": null,
+        "locator": "jwt/algorithms.py and jwt/utils.py",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The security fix strengthens key-format validation while preserving the selected public API."
+      },
+      {
+        "source_id": "pyjwt_2_4_0_changelog",
+        "source_type": "upstream_release_changelog",
+        "url": "https://github.com/jpadilla/pyjwt/blob/2.4.0/CHANGELOG.rst",
+        "path": null,
+        "locator": "v2.4.0 Security",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "PyJWT 2.4.0 records CVE-2022-29217 as a security fix."
+      }
+    ],
+    "generated_from": [
+      {
+        "role": "release_history",
+        "path": "output/pyjwt_release_history_20260820_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "api_history_evidence",
+        "path": "output/avcs_pyjwt_api_history_evidence_fully_auto_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "vulnerability_evidence",
+        "path": "output/pyjwt_ghsa_ffqj_6fqr_9h24_osv_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "vulnerability_constraints",
+        "path": "output/pyjwt_ghsa_ffqj_6fqr_9h24_vulnerability_constraints_v0.json",
+        "schema_version": "vulnerability_constraint_v0.3",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "trigger_evidence",
+        "path": "output/pyjwt_ghsa_ffqj_6fqr_9h24_trigger_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_trigger_evidence_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "trigger_eligibility_assessment",
+        "path": "data/avcs_package_kb/trigger_eligibility/pyjwt_ghsa_ffqj_6fqr_9h24_eligibility_v0.json",
+        "schema_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      }
+    ],
+    "notes": "This Package KB aggregates existing artifacts while preserving API History, vulnerability range, and Trigger semantics as distinct evidence layers."
+  },
+  "review": {
+    "status": "approved",
+    "review_required": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "protocol_version": null,
+    "notes": "Package KB migration review closed after structural/cross-reference validation and Trigger Eligibility semantic validation passed. Existing uncertainty, partial-coverage, and conflicted states are preserved rather than overridden by migration approval."
+  }
+}

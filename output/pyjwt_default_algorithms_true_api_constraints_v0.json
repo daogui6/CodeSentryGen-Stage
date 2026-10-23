@@ -1,0 +1,112 @@
+{
+  "schema_version": "api_version_constraint_v0.1",
+  "sample_id": "avcs_pyjwt_default_algorithms_true",
+  "api_call_evidence_file": "output/pyjwt_default_algorithms_true_api_calls_v0.json",
+  "history_file": "data/avcs_validation/api_history/pyjwt_api_history_evidence_v0.json",
+  "history_schema_version": "avcs_api_history_evidence_v0.1",
+  "status": "resolved",
+  "api_call_count": 2,
+  "resolved_api_call_count": 2,
+  "unresolved_api_call_count": 0,
+  "call_constraints": [
+    {
+      "distribution": "PyJWT",
+      "normalized_distribution": "pyjwt",
+      "api_symbol": "jwt.decode",
+      "call_text": "jwt.decode(\n    token,\n    verification_key,\n    algorithms=jwt.algorithms.get_default_algorithms(),\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 2,
+        "keyword_arg_names": [
+          "algorithms"
+        ],
+        "keyword_arg_values": {
+          "algorithms": {
+            "source_text": "jwt.algorithms.get_default_algorithms()",
+            "resolved_symbol": null,
+            "resolved_call_symbol": "jwt.algorithms.get_default_algorithms"
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+        "line": 7,
+        "column": 10
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "pyjwt_decode_algorithms_keyword",
+          "version_specifier": ">=1.0.0",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyJWT 0.4.3 / 1.0.0 / 1.5.0 / 2.3.0 / 2.4.0 official source",
+          "evidence_note": "PyJWT 0.4.3 decode does not expose the algorithms argument. PyJWT 1.0.0 introduces the selected decode form with algorithms=None, and the selected form remains available through the vulnerable and fixed releases."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=1.0.0"
+      ],
+      "combined_version_specifier": ">=1.0.0",
+      "simplified_version_specifier": ">=1.0.0"
+    },
+    {
+      "distribution": "PyJWT",
+      "normalized_distribution": "pyjwt",
+      "api_symbol": "jwt.algorithms.get_default_algorithms",
+      "call_text": "jwt.algorithms.get_default_algorithms()",
+      "call_shape": {
+        "explicit_positional_arg_count": 0,
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+        "line": 10,
+        "column": 16
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "pyjwt_get_default_algorithms_zero_arg",
+          "version_specifier": ">=1.0.0",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyJWT 0.4.3 / 1.0.0 / 1.5.0 / 2.4.0 official algorithms source",
+          "evidence_note": "PyJWT 0.4.3 uses the older _register_default_algorithms helper. PyJWT 1.0.0 exposes get_default_algorithms(), and the helper remains present in 2.4.0."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=1.0.0"
+      ],
+      "combined_version_specifier": ">=1.0.0",
+      "simplified_version_specifier": ">=1.0.0"
+    }
+  ],
+  "distribution_constraints": [
+    {
+      "distribution": "PyJWT",
+      "normalized_distribution": "pyjwt",
+      "status": "resolved",
+      "api_call_count": 2,
+      "resolved_api_call_count": 2,
+      "unresolved_api_call_count": 0,
+      "resolved_api_symbols": [
+        "jwt.decode",
+        "jwt.algorithms.get_default_algorithms"
+      ],
+      "unresolved_api_symbols": [],
+      "s_api": {
+        "raw_specifier": ">=1.0.0",
+        "simplified_specifier": ">=1.0.0",
+        "evidence_rule_ids": [
+          "pyjwt_decode_algorithms_keyword",
+          "pyjwt_get_default_algorithms_zero_arg"
+        ]
+      }
+    }
+  ]
+}

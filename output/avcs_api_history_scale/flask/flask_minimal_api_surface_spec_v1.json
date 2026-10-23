@@ -1,0 +1,59 @@
+{
+  "schema_version": "avcs_python_minimal_api_surface_spec_v0.1",
+  "distribution": "Flask",
+  "package_module": "flask",
+  "selection_status": "provisional_after_presence_history_v1",
+  "selection_policy": [
+    "public API commonly used by generated code",
+    "historically discriminative when possible",
+    "statically verifiable from release source",
+    "exclude signals, context proxies, and module objects in v0"
+  ],
+  "symbols": [
+    {
+      "api_symbol": "flask.Flask",
+      "latest_target": "flask.app.Flask",
+      "role": "core_class"
+    },
+    {
+      "api_symbol": "flask.Blueprint",
+      "latest_target": "flask.blueprints.Blueprint",
+      "role": "routing_component"
+    },
+    {
+      "api_symbol": "flask.jsonify",
+      "latest_target": "flask.json.jsonify",
+      "role": "response_helper"
+    },
+    {
+      "api_symbol": "flask.url_for",
+      "latest_target": "flask.helpers.url_for",
+      "role": "routing_helper"
+    },
+    {
+      "api_symbol": "flask.send_file",
+      "latest_target": "flask.helpers.send_file",
+      "role": "file_response_helper"
+    },
+    {
+      "api_symbol": "flask.after_this_request",
+      "latest_target": "flask.ctx.after_this_request",
+      "role": "request_context_helper"
+    },
+    {
+      "api_symbol": "flask.stream_template",
+      "latest_target": "flask.templating.stream_template",
+      "role": "template_streaming"
+    }
+  ],
+  "pruning": {
+    "source_spec": "output/avcs_api_history_scale/flask/flask_minimal_api_surface_spec_v0.json",
+    "removed_symbols": [
+      {
+        "api_symbol": "flask.has_app_context",
+        "reason": "Presence boundary >=0.9 duplicates flask.after_this_request in the first existence-history pass; lower marginal version-discrimination value for the minimal v1 surface."
+      }
+    ],
+    "note": "Do not prune additional APIs solely because their existence boundaries match. Signature history may still provide independent version constraints."
+  }
+}

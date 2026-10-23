@@ -1,0 +1,384 @@
+{
+  "schema_version": "avcs_package_kb_v0.2",
+  "kb_id": "pypi_aiohttp_v0",
+  "ecosystem": "PyPI",
+  "distribution": "aiohttp",
+  "normalized_distribution": "aiohttp",
+
+  "package_metadata": {
+    "package_name": "aiohttp",
+    "registry": "PyPI",
+    "registry_url": null,
+    "repository_url": null,
+    "homepage_url": null,
+    "notes": "Unified Package KB migration for the existing aiohttp AVCS real case."
+  },
+
+  "release_history": {
+    "status": "resolved",
+    "as_of_time": "2026-08-20T02:00:00+00:00",
+    "confirmed_release_count": 312,
+    "confirmed_stable_release_count": 230,
+    "confirmed_prerelease_count": 82,
+
+    "artifacts": [
+      {
+        "role": "release_history",
+        "path": "output/aiohttp_release_history_20260820_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": "2026-08-20T03:31:02.634371+00:00",
+        "notes": "Current registry file evidence is complete for the recorded time view."
+      }
+    ],
+
+    "notes": "312 confirmed releases are recorded, including 82 prereleases."
+  },
+
+  "api_surface_history": {
+    "status": "partial",
+
+    "scope_policy": "Migrated the existing curated aiohttp.web.static public API evidence. The selected API form is modeled from aiohttp 3.1.0 and does not represent a complete package-wide aiohttp public API surface.",
+
+    "artifacts": [
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/aiohttp_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Curated real API History evidence for the selected aiohttp.web.static form."
+      }
+    ],
+
+    "entries": [
+      {
+        "api_symbol": "aiohttp.web.static",
+        "api_kind": "function",
+        "status": "resolved",
+
+        "version_rules": [
+          {
+            "rule_id": "aiohttp_web_static_two_positional",
+            "status": "resolved",
+            "version_specifier": ">=3.1.0",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 2,
+            "required_positional_args_max": 2,
+            "required_keyword_args": [],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/aiohttp_api_history_evidence_v0.json"
+          },
+
+          {
+            "rule_id": "aiohttp_web_static_follow_symlinks_keyword",
+            "status": "resolved",
+            "version_specifier": ">=3.1.0",
+            "support_target": "api_parameter_support",
+            "required_positional_args_min": 2,
+            "required_positional_args_max": 2,
+            "required_keyword_args": [
+              "follow_symlinks"
+            ],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/aiohttp_api_history_evidence_v0.json"
+          }
+        ],
+
+        "deprecated_since": null,
+        "removed_since": null,
+
+        "evidence_refs": [
+          "data/avcs_validation/api_history/aiohttp_api_history_evidence_v0.json"
+        ],
+
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved curated API History evidence."
+        }
+      }
+    ],
+
+    "notes": "The selected aiohttp.web.static API form is available from >=3.1.0. This API introduction boundary is distinct from the broader vulnerability affected range."
+  },
+
+  "vulnerability_catalog": [
+    {
+      "vulnerability_id": "PYSEC-2024-24",
+
+      "aliases": [
+        "CVE-2024-23334",
+        "GHSA-5h86-8mv2-jq9f"
+      ],
+
+      "summary": null,
+      "published_at": "2024-01-29T23:15:00Z",
+      "modified_at": "2024-02-05T20:43:19.143053Z",
+      "withdrawn_at": null,
+      "severity": [],
+
+      "affected_ranges": [
+        {
+          "range_type": "ECOSYSTEM",
+          "introduced": "1.0.5",
+          "fixed": "3.9.2",
+          "last_affected": null,
+          "version_specifier": ">=1.0.5,<3.9.2",
+          "source_ref": "osv_pysec_2024_24"
+        }
+      ],
+
+      "fixed_versions": [
+        "3.9.2"
+      ],
+
+      "source_refs": [
+        "osv_pysec_2024_24",
+        "aiohttp_upstream_advisory",
+        "aiohttp_3_1_0_source",
+        "aiohttp_3_1_0_changelog",
+        "aiohttp_fix_pr_8079",
+        "aiohttp_fix_commit"
+      ],
+
+      "trigger_assessment": {
+        "status": "eligible",
+        "review_required": false,
+
+        "coverage_status": "partial",
+        "affected_version_scope": ">=1.0.5,<3.9.2",
+        "assessed_trigger_version_scope": ">=3.1.0,<3.9.2",
+
+        "uncovered_scope_note": "The selected public aiohttp.web.static API form is modeled only from 3.1.0. Vulnerable releases before 3.1.0 remain outside the current Trigger rule scope and are not treated as negative evidence.",
+
+        "rule_refs": [
+          "aiohttp_web_static_follow_symlinks_true"
+        ],
+
+        "evidence_refs": [
+          "osv_pysec_2024_24",
+          "aiohttp_upstream_advisory",
+          "aiohttp_3_1_0_source",
+          "aiohttp_3_1_0_changelog",
+          "aiohttp_fix_pr_8079",
+          "aiohttp_fix_commit"
+        ],
+
+        "unsupported_reasons": [],
+
+        "positive_regression_refs": [
+          "output/aiohttp_follow_symlinks_true_evaluation_v0.json"
+        ],
+
+        "negative_regression_refs": [
+          "output/aiohttp_follow_symlinks_false_evaluation_v0.json",
+          "output/aiohttp_follow_symlinks_omitted_evaluation_v0.json"
+        ],
+
+        "notes": "Eligibility is frozen by avcs_trigger_eligibility_protocol_v0.2 with explicitly partial Trigger coverage."
+      },
+
+      "review": {
+        "status": "approved",
+        "review_required": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "notes": "Migrated from the existing curated aiohttp case and controlled Trigger evaluations."
+      },
+
+      "notes": "OSV records the package-level affected range as >=1.0.5,<3.9.2. The selected Trigger scope begins later at 3.1.0."
+    }
+  ],
+
+  "trigger_rules": [
+    {
+      "trigger_id": "aiohttp_web_static_follow_symlinks_true",
+
+      "vulnerability_ids": [
+        "PYSEC-2024-24",
+        "CVE-2024-23334",
+        "GHSA-5h86-8mv2-jq9f"
+      ],
+
+      "api_symbol": "aiohttp.web.static",
+      "kind": "keyword_literal_condition",
+      "version_scope": ">=3.1.0,<3.9.2",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "keyword_argument": {
+        "name": "follow_symlinks",
+        "required_literal": true
+      },
+
+      "historical_default_symbol": null,
+
+      "evidence_refs": [
+        "osv_pysec_2024_24",
+        "aiohttp_upstream_advisory",
+        "aiohttp_3_1_0_source",
+        "aiohttp_3_1_0_changelog"
+      ],
+
+      "source_artifact": "output/aiohttp_pysec_2024_24_trigger_evidence_v0.json",
+
+      "notes": "The selected static Trigger is aiohttp.web.static(..., follow_symlinks=True) within the assessed vulnerability scope."
+    }
+  ],
+
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "osv_pysec_2024_24",
+        "source_type": "osv_pypi_advisory",
+        "url": "https://osv.dev/vulnerability/PYSEC-2024-24",
+        "path": "data/avcs_validation/osv_raw/PYSEC-2024-24.json",
+        "locator": "Affected packages / PyPI aiohttp",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "OSV records aiohttp as affected from 1.0.5 up to but excluding 3.9.2, with 3.9.2 fixed."
+      },
+
+      {
+        "source_id": "aiohttp_upstream_advisory",
+        "source_type": "upstream_security_advisory",
+        "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-5h86-8mv2-jq9f",
+        "path": null,
+        "locator": "Summary / affected configuration / patched version",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The advisory identifies follow_symlinks=True on aiohttp static routes as the relevant vulnerable configuration."
+      },
+
+      {
+        "source_id": "aiohttp_3_1_0_source",
+        "source_type": "upstream_release_source",
+        "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/aiohttp/web_urldispatcher.py",
+        "path": null,
+        "locator": "__all__ / StaticDef / static",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "aiohttp 3.1.0 exposes the selected static route-definition API and supports follow_symlinks."
+      },
+
+      {
+        "source_id": "aiohttp_3_1_0_changelog",
+        "source_type": "upstream_release_changelog",
+        "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/CHANGES.rst",
+        "path": null,
+        "locator": "3.1.0 Features",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "aiohttp 3.1.0 records implementation of web.static() and RouteTableDef.static()."
+      },
+
+      {
+        "source_id": "aiohttp_fix_pr_8079",
+        "source_type": "upstream_fix_pull_request",
+        "url": "https://github.com/aio-libs/aiohttp/pull/8079",
+        "path": null,
+        "locator": "Validate static paths",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The upstream fix adds static-path validation while preserving the public static-route API."
+      },
+
+      {
+        "source_id": "aiohttp_fix_commit",
+        "source_type": "upstream_fix_commit",
+        "url": "https://github.com/aio-libs/aiohttp/commit/1c335944d6a8b1298baf179b7c0b3069f10c514b",
+        "path": null,
+        "locator": "aiohttp/web_urldispatcher.py",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The fix changes internal static-path normalization and containment validation."
+      }
+    ],
+
+    "generated_from": [
+      {
+        "role": "release_history",
+        "path": "output/aiohttp_release_history_20260820_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/aiohttp_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "vulnerability_evidence",
+        "path": "output/aiohttp_pysec_2024_24_osv_evidence_v1.json",
+        "schema_version": "avcs_vulnerability_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "vulnerability_constraints",
+        "path": "output/aiohttp_pysec_2024_24_vulnerability_constraints_v1.json",
+        "schema_version": "vulnerability_constraint_v0.3",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "trigger_evidence",
+        "path": "output/aiohttp_pysec_2024_24_trigger_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_trigger_evidence_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Source artifact reports resolved_with_scope; the Package KB preserves that scope through explicit partial Trigger coverage."
+      },
+
+      {
+        "role": "trigger_eligibility_assessment",
+        "path": "data/avcs_package_kb/trigger_eligibility/aiohttp_pysec_2024_24_eligibility_v0.json",
+        "schema_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      }
+    ],
+
+    "notes": "API History, package-level vulnerability range, Trigger semantics, and Trigger coverage remain separate evidence layers."
+  },
+
+  "review": {
+    "status": "approved",
+    "review_required": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "protocol_version": null,
+    "notes": "Package KB migration review closed after structural/cross-reference validation and Trigger Eligibility semantic validation passed. Existing uncertainty, partial-coverage, and conflicted states are preserved rather than overridden by migration approval."
+  }
+}

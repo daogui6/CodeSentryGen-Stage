@@ -1,0 +1,61 @@
+{
+  "schema_version": "avcs_python_minimal_api_surface_spec_v0.1",
+  "distribution": "SQLAlchemy",
+  "package_module": "sqlalchemy",
+  "selection_status": "provisional_before_presence_history_v0",
+  "selection_policy": [
+    "public API commonly used by generated database or ORM code",
+    "historically discriminative when possible",
+    "statically verifiable from release source",
+    "cover SQL Core, ORM, declarative mapping, and asyncio usage",
+    "include stable anchors and later-added APIs",
+    "avoid expanding to the full SQLAlchemy API surface during Step 5 scaling"
+  ],
+  "symbols": [
+    {
+      "api_symbol": "sqlalchemy.create_engine",
+      "latest_target": "sqlalchemy.engine.create_engine",
+      "role": "synchronous_engine_factory"
+    },
+    {
+      "api_symbol": "sqlalchemy.select",
+      "latest_target": "sqlalchemy.sql.expression.select",
+      "role": "core_select_constructor"
+    },
+    {
+      "api_symbol": "sqlalchemy.Table",
+      "latest_target": "sqlalchemy.schema.Table",
+      "role": "core_schema_table"
+    },
+    {
+      "api_symbol": "sqlalchemy.orm.Session",
+      "latest_target": "sqlalchemy.orm.session.Session",
+      "role": "orm_session"
+    },
+    {
+      "api_symbol": "sqlalchemy.orm.relationship",
+      "latest_target": "sqlalchemy.orm._orm_constructors.relationship",
+      "role": "orm_relationship_constructor"
+    },
+    {
+      "api_symbol": "sqlalchemy.orm.declarative_base",
+      "latest_target": "sqlalchemy.orm.decl_api.declarative_base",
+      "role": "legacy_declarative_base"
+    },
+    {
+      "api_symbol": "sqlalchemy.orm.DeclarativeBase",
+      "latest_target": "sqlalchemy.orm.decl_api.DeclarativeBase",
+      "role": "sqlalchemy_2_declarative_base"
+    },
+    {
+      "api_symbol": "sqlalchemy.ext.asyncio.create_async_engine",
+      "latest_target": "sqlalchemy.ext.asyncio.engine.create_async_engine",
+      "role": "async_engine_factory"
+    },
+    {
+      "api_symbol": "sqlalchemy.ext.asyncio.AsyncSession",
+      "latest_target": "sqlalchemy.ext.asyncio.session.AsyncSession",
+      "role": "async_orm_session"
+    }
+  ]
+}

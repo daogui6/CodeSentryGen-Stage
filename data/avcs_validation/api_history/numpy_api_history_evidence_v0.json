@@ -1,0 +1,110 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "numpy",
+  "source_mode": "curated_real_api_history",
+  "status": "resolved",
+  "scope": {
+    "selected_api_form": "numpy.load",
+    "selected_call_shape": "one explicit positional file argument with optional allow_pickle keyword",
+    "version_scope": ">=1.10.0b1",
+    "note": "This v0 models the selected numpy.load allow_pickle-related semantics from NumPy 1.10.0b1 onward. Older numpy.load releases are intentionally outside this curated API-history scope; this scope does not redefine the full vulnerability range."
+  },
+  "entries": [
+    {
+      "distribution": "numpy",
+      "api_symbol": "numpy.load",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "numpy_load_one_positional",
+          "status": "resolved",
+          "version_specifier": ">=1.10.0b1",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "NumPy 1.9.3 / 1.10.0b1 / 1.16.2 / 1.16.3 official source",
+          "evidence_note": "This controlled rule models numpy.load within the curated allow_pickle semantic scope beginning at 1.10.0b1.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=1.10.0b1",
+            "semantic_scope_start": "1.10.0b1",
+            "boundary_evidence": {
+              "before_scope": {
+                "version": "1.9.3",
+                "source_path": "numpy/lib/npyio.py",
+                "observation": "numpy.load exists but its signature does not expose allow_pickle."
+              },
+              "scope_start": {
+                "version": "1.10.0b1",
+                "source_path": "numpy/lib/npyio.py",
+                "observation": "numpy.load exposes allow_pickle=True."
+              }
+            }
+          }
+        },
+        {
+          "rule_id": "numpy_load_allow_pickle_keyword",
+          "status": "resolved",
+          "version_specifier": ">=1.10.0b1",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [
+            "allow_pickle"
+          ],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "NumPy official release source for 1.10.0b1, 1.16.2, and 1.16.3",
+          "evidence_note": "The selected numpy.load form exposes the allow_pickle keyword from the curated scope start. NumPy 1.16.2 defaults it to True and NumPy 1.16.3 changes the default to False.",
+          "derivation": {
+            "status": "resolved",
+            "method": "official_release_source",
+            "version_specifier": ">=1.10.0b1",
+            "parameter": "allow_pickle",
+            "first_curated_supported_version": "1.10.0b1",
+            "historical_default_before_1_16_3": true,
+            "default_from_1_16_3": false,
+            "security_default_change_version": "1.16.3"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "numpy_1_9_3_npyio",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/numpy/numpy/blob/v1.9.3/numpy/lib/npyio.py",
+      "claim": "numpy.load exists in NumPy 1.9.3 but does not expose an allow_pickle parameter."
+    },
+    {
+      "source_id": "numpy_1_10_0b1_npyio",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/numpy/numpy/blob/v1.10.0b1/numpy/lib/npyio.py",
+      "claim": "numpy.load exposes allow_pickle=True in NumPy 1.10.0b1."
+    },
+    {
+      "source_id": "numpy_1_16_2_npyio",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/numpy/numpy/blob/v1.16.2/numpy/lib/npyio.py",
+      "claim": "numpy.load still defaults allow_pickle to True in NumPy 1.16.2."
+    },
+    {
+      "source_id": "numpy_1_16_3_npyio",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/numpy/numpy/blob/v1.16.3/numpy/lib/npyio.py",
+      "claim": "numpy.load defaults allow_pickle to False in NumPy 1.16.3 and documents the CVE-related change."
+    },
+    {
+      "source_id": "numpy_1_16_3_release_notes",
+      "source_type": "upstream_release_notes",
+      "url": "https://github.com/numpy/numpy/blob/v1.16.3/doc/release/1.16.3-notes.rst",
+      "claim": "NumPy 1.16.3 requires explicit opt-in for unpickling while loading, in response to CVE-2019-6446."
+    }
+  ]
+}

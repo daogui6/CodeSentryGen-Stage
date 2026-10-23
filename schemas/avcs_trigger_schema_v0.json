@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodeSentry-Gen AVCS Trigger Evidence v0",
+  "description": "Schema for normalized vulnerability trigger evidence used by AVCS evaluation.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "ecosystem",
+    "distribution",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "ecosystem": {
+      "type": "string"
+    },
+    "distribution": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/triggerEntry"
+      }
+    }
+  },
+  "$defs": {
+    "triggerEntry": {
+      "type": "object",
+      "required": [
+        "vulnerability_ids",
+        "trigger_conditions"
+      ],
+      "properties": {
+        "vulnerability_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "trigger_conditions": {
+          "$ref": "#/$defs/triggerConditions"
+        },
+        "safe_api_symbols": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fix_evidence": {
+          "type": "object"
+        },
+        "provenance": {
+          "type": "object"
+        }
+      }
+    },
+    "triggerConditions": {
+      "type": "object",
+      "properties": {
+        "api_symbols": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "direct_api_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/directRule"
+          }
+        },
+        "conditional_api_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/conditionalRule"
+          }
+        },
+        "requires_untrusted_input": {
+          "type": "boolean"
+        },
+        "version_scope": {
+          "type": "string"
+        }
+      }
+    },
+    "directRule": {
+      "type": "object",
+      "required": [
+        "trigger_id",
+        "api_symbol",
+        "version_scope"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string"
+        },
+        "api_symbol": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "version_scope": {
+          "type": "string"
+        },
+        "requires_untrusted_input": {
+          "type": "boolean"
+        }
+      }
+    },
+    "conditionalRule": {
+      "type": "object",
+      "required": [
+        "trigger_id",
+        "api_symbol",
+        "kind"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string"
+        },
+        "api_symbol": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "keyword_literal_condition",
+            "keyword_call_condition",
+            "keyword_argument_condition",
+            "omitted_keyword_historical_default",
+            "positional_url_condition",
+            "receiver_producer_keyword_literal_condition"
+          ]
+        },
+        "keyword_argument": {
+          "type": "object"
+        },
+        "positional_argument": {
+          "type": "object"
+        },
+        "receiver_provenance": {
+          "type": "object"
+        },
+        "historical_default_literal": {},
+        "historical_default_symbol": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version_scope": {
+          "type": "string"
+        },
+        "requires_untrusted_input": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

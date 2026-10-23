@@ -1,0 +1,37 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_numpy_allow_pickle_true",
+  "code_file": "data/avcs_validation/avcs_numpy_allow_pickle_true.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "numpy",
+      "distribution": "numpy",
+      "api_symbol": "numpy.load",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_numpy_allow_pickle_true.py",
+        "line": 3,
+        "column": 9
+      },
+      "call_text": "np.load(\n    \"artifact.npy\",\n    allow_pickle=True,\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [
+          "allow_pickle"
+        ],
+        "keyword_arg_values": {
+          "allow_pickle": {
+            "source_text": "True",
+            "resolved_symbol": null,
+            "literal_value": true
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

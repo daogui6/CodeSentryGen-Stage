@@ -1,0 +1,185 @@
+{
+  "schema_version": "avcs_trigger_raw_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "PyYAML",
+  "vulnerability_ids": [
+    "PYSEC-2021-142",
+    "CVE-2020-14343",
+    "GHSA-8q59-q68h-6hv4"
+  ],
+  "scope": {
+    "status": "resolved_with_scope",
+    "trigger_semantics_version_scope": ">=5.1,<5.4",
+    "note": "This v0 resolves the documented FullLoader/full_load trigger path. Older pre-5.1 yaml.load semantics are intentionally left outside the normalized trigger rules."
+  },
+  "advisory_facts": {
+    "requires_affected_version": true,
+    "requires_untrusted_input": true,
+    "documented_entrypoints": [
+      "yaml.full_load",
+      "yaml.load with FullLoader"
+    ]
+  },
+  "trigger_candidates": [
+    {
+      "trigger_id": "pyyaml_full_load_untrusted",
+      "api_symbol": "yaml.full_load",
+      "kind": "direct_api",
+      "requires_untrusted_input": true,
+      "loader_semantics": "yaml.FullLoader",
+      "version_scope": ">=5.1,<5.4",
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "github_advisory",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ]
+    },
+    {
+      "trigger_id": "pyyaml_load_explicit_full_loader",
+      "api_symbol": "yaml.load",
+      "kind": "keyword_argument_condition",
+      "requires_untrusted_input": true,
+      "keyword_argument": {
+        "name": "Loader",
+        "required_symbol": "yaml.FullLoader"
+      },
+      "version_scope": ">=5.1,<5.4",
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "github_advisory",
+        "pyyaml_issue_420",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ]
+    },
+    {
+      "trigger_id": "pyyaml_load_default_full_loader",
+      "api_symbol": "yaml.load",
+      "kind": "omitted_keyword_historical_default",
+      "requires_untrusted_input": true,
+      "keyword_argument": {
+        "name": "Loader",
+        "must_be_omitted": true
+      },
+      "historical_default_symbol": "yaml.FullLoader",
+      "version_scope": ">=5.1,<5.4",
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "pyyaml_issue_420",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ]
+    }
+  ],
+  "safe_alternatives": [
+    {
+      "alternative_id": "pyyaml_safe_load",
+      "api_symbol": "yaml.safe_load",
+      "loader_semantics": "yaml.SafeLoader",
+      "suitable_for_untrusted_input": true,
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "pyyaml_official_documentation",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ]
+    },
+    {
+      "alternative_id": "pyyaml_load_safe_loader",
+      "api_symbol": "yaml.load",
+      "keyword_argument": {
+        "name": "Loader",
+        "required_symbol": "yaml.SafeLoader"
+      },
+      "suitable_for_untrusted_input": true,
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "pyyaml_official_documentation",
+        "pyyaml_5_1_source",
+        "pyyaml_5_3_1_source"
+      ]
+    }
+  ],
+  "fix_evidence": {
+    "fixed_release": "5.4",
+    "fix_commit": "a001f2782501ad2d24986959f0239a354675f9dc",
+    "fix_pr": 472,
+    "mechanism": "Move dangerous Python object-related multi-constructors from FullConstructor to UnsafeConstructor.",
+    "moved_tag_prefixes": [
+      "tag:yaml.org,2002:python/module:",
+      "tag:yaml.org,2002:python/object:",
+      "tag:yaml.org,2002:python/object/new:"
+    ],
+    "status": "resolved",
+    "confidence": "high",
+    "evidence_refs": [
+      "pyyaml_fix_commit",
+      "pyyaml_fix_pr",
+      "pyyaml_changelog"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "github_advisory",
+      "source_type": "osv_github_advisory",
+      "url": "https://osv.dev/vulnerability/GHSA-8q59-q68h-6hv4",
+      "locator": "Details / affected PyPI package",
+      "claim": "PyYAML before 5.4 can allow arbitrary code execution when untrusted YAML is processed through full_load or FullLoader."
+    },
+    {
+      "source_id": "pyyaml_issue_420",
+      "source_type": "upstream_security_issue",
+      "url": "https://github.com/yaml/pyyaml/issues/420",
+      "locator": "Issue body",
+      "claim": "PyYAML 5.3.1 load() defaults to FullLoader and FullLoader remained exploitable with untrusted input."
+    },
+    {
+      "source_id": "pyyaml_5_1_source",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/yaml/pyyaml/blob/5.1/lib3/yaml/__init__.py",
+      "locator": "load / full_load / safe_load",
+      "claim": "load() without Loader selects FullLoader; full_load() delegates to FullLoader; safe_load() delegates to SafeLoader."
+    },
+    {
+      "source_id": "pyyaml_5_3_1_source",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/yaml/pyyaml/blob/5.3.1/lib3/yaml/__init__.py",
+      "locator": "load / full_load / safe_load",
+      "claim": "The FullLoader and SafeLoader call semantics remain explicit in PyYAML 5.3.1."
+    },
+    {
+      "source_id": "pyyaml_fix_commit",
+      "source_type": "upstream_fix_commit",
+      "url": "https://github.com/yaml/pyyaml/commit/a001f2782501ad2d24986959f0239a354675f9dc",
+      "locator": "lib/yaml/constructor.py and lib3/yaml/constructor.py",
+      "claim": "The CVE fix moves dangerous Python object constructors from FullConstructor to UnsafeConstructor."
+    },
+    {
+      "source_id": "pyyaml_fix_pr",
+      "source_type": "upstream_fix_pull_request",
+      "url": "https://github.com/yaml/pyyaml/pull/472",
+      "locator": "Potential fix for #420",
+      "claim": "The upstream pull request carrying the fix was merged into the PyYAML 5.4 release branch."
+    },
+    {
+      "source_id": "pyyaml_changelog",
+      "source_type": "upstream_changelog",
+      "url": "https://github.com/yaml/pyyaml/blob/main/CHANGES",
+      "locator": "5.4 release notes",
+      "claim": "PyYAML 5.4 records PR 472 as the fix for CVE-2020-14343."
+    },
+    {
+      "source_id": "pyyaml_official_documentation",
+      "source_type": "official_documentation",
+      "url": "https://pyyaml.org/wiki/PyYAMLDocumentation",
+      "locator": "Loading YAML / safe_load",
+      "claim": "safe_load restricts construction to safe/basic YAML types and is the documented alternative for untrusted input."
+    }
+  ]
+}

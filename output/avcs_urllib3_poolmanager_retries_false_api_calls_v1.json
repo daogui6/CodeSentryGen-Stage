@@ -1,0 +1,93 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_urllib3_poolmanager_retries_false",
+  "code_file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_false.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 2,
+  "api_calls": [
+    {
+      "import_name": "urllib3",
+      "distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_false.py",
+        "line": 4,
+        "column": 8
+      },
+      "call_text": "urllib3.PoolManager(\n    retries=1,\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 0,
+        "positional_arg_values": [],
+        "keyword_arg_names": [
+          "retries"
+        ],
+        "keyword_arg_values": {
+          "retries": {
+            "source_text": "1",
+            "resolved_symbol": null,
+            "literal_value": 1
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    },
+    {
+      "import_name": "urllib3",
+      "distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager.request",
+      "binding_type": "call_result_method",
+      "location": {
+        "file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_false.py",
+        "line": 8,
+        "column": 12
+      },
+      "call_text": "http.request(\n    \"GET\",\n    \"https://example.com/start\",\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 2,
+        "positional_arg_values": [
+          {
+            "position": 0,
+            "source_text": "\"GET\"",
+            "resolved_symbol": null,
+            "literal_value": "GET"
+          },
+          {
+            "position": 1,
+            "source_text": "\"https://example.com/start\"",
+            "resolved_symbol": null,
+            "literal_value": "https://example.com/start"
+          }
+        ],
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "receiver_provenance": {
+        "receiver_name": "http",
+        "assignment_line": 4,
+        "producer_api_symbol": "urllib3.PoolManager",
+        "producer_binding_type": "module_import",
+        "producer_call_shape": {
+          "explicit_positional_arg_count": 0,
+          "positional_arg_values": [],
+          "keyword_arg_names": [
+            "retries"
+          ],
+          "keyword_arg_values": {
+            "retries": {
+              "source_text": "1",
+              "resolved_symbol": null,
+              "literal_value": 1
+            }
+          },
+          "has_star_args": false,
+          "has_star_kwargs": false
+        }
+      }
+    }
+  ]
+}

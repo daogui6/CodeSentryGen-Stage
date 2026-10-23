@@ -1,0 +1,740 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "avcs_package_kb_schema_v0.json",
+  "title": "CodeSentry-Gen AVCS Package KB Schema v0",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "schema_version",
+    "kb_id",
+    "ecosystem",
+    "distribution",
+    "normalized_distribution",
+    "package_metadata",
+    "release_history",
+    "api_surface_history",
+    "vulnerability_catalog",
+    "trigger_rules",
+    "provenance",
+    "review"
+  ],
+
+  "properties": {
+    "schema_version": {
+      "const": "avcs_package_kb_v0.2"
+    },
+
+    "kb_id": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "ecosystem": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "distribution": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "normalized_distribution": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "package_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_name"
+      ],
+      "properties": {
+        "package_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "registry": {
+          "type": ["string", "null"]
+        },
+        "registry_url": {
+          "type": ["string", "null"]
+        },
+        "repository_url": {
+          "type": ["string", "null"]
+        },
+        "homepage_url": {
+          "type": ["string", "null"]
+        },
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "release_history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "artifacts"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "resolved",
+            "partial",
+            "unresolved"
+          ]
+        },
+        "as_of_time": {
+          "type": ["string", "null"]
+        },
+        "confirmed_release_count": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "confirmed_stable_release_count": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "confirmed_prerelease_count": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact_ref"
+          }
+        },
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "api_surface_history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "scope_policy",
+        "artifacts",
+        "entries"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "resolved",
+            "partial",
+            "unresolved"
+          ]
+        },
+
+        "scope_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact_ref"
+          }
+        },
+
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/api_history_entry"
+          }
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "vulnerability_catalog": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/vulnerability_record"
+      }
+    },
+
+    "trigger_rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/trigger_rule"
+      }
+    },
+
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sources",
+        "generated_from"
+      ],
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source_ref"
+          }
+        },
+
+        "generated_from": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/artifact_ref"
+          }
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "review": {
+      "$ref": "#/$defs/review_record"
+    }
+  },
+
+  "$defs": {
+    "artifact_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "path",
+        "status"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "schema_version": {
+          "type": ["string", "null"]
+        },
+
+        "status": {
+          "enum": [
+            "resolved",
+            "partial",
+            "unresolved",
+            "not_applicable"
+          ]
+        },
+
+        "sha256": {
+          "type": ["string", "null"]
+        },
+
+        "generated_at": {
+          "type": ["string", "null"]
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "source_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "source_type"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "source_type": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "url": {
+          "type": ["string", "null"]
+        },
+
+        "path": {
+          "type": ["string", "null"]
+        },
+
+        "locator": {
+          "type": ["string", "null"]
+        },
+
+        "sha256": {
+          "type": ["string", "null"]
+        },
+
+        "acquired_at": {
+          "type": ["string", "null"]
+        },
+
+        "claim": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "api_history_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "api_symbol",
+        "status",
+        "version_rules"
+      ],
+      "properties": {
+        "api_symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "api_kind": {
+          "type": ["string", "null"]
+        },
+
+        "status": {
+          "enum": [
+            "resolved",
+            "partial",
+            "unresolved"
+          ]
+        },
+
+        "version_rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/api_version_rule"
+          }
+        },
+
+        "deprecated_since": {
+          "type": ["string", "null"]
+        },
+
+        "removed_since": {
+          "type": ["string", "null"]
+        },
+
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "review": {
+          "$ref": "#/$defs/review_record"
+        }
+      }
+    },
+
+    "api_version_rule": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "rule_id",
+        "status",
+        "version_specifier"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "status": {
+          "enum": [
+            "resolved",
+            "partial",
+            "unresolved"
+          ]
+        },
+
+        "version_specifier": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "support_target": {
+          "type": ["string", "null"]
+        },
+
+        "evidence_ref": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "affected_range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "range_type"
+      ],
+      "properties": {
+        "range_type": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "introduced": {
+          "type": ["string", "null"]
+        },
+
+        "fixed": {
+          "type": ["string", "null"]
+        },
+
+        "last_affected": {
+          "type": ["string", "null"]
+        },
+
+        "version_specifier": {
+          "type": ["string", "null"]
+        },
+
+        "source_ref": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "vulnerability_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vulnerability_id",
+        "aliases",
+        "affected_ranges",
+        "source_refs",
+        "trigger_assessment",
+        "review"
+      ],
+      "properties": {
+        "vulnerability_id": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "summary": {
+          "type": ["string", "null"]
+        },
+
+        "published_at": {
+          "type": ["string", "null"]
+        },
+
+        "modified_at": {
+          "type": ["string", "null"]
+        },
+
+        "withdrawn_at": {
+          "type": ["string", "null"]
+        },
+
+        "severity": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+
+        "affected_ranges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/affected_range"
+          }
+        },
+
+        "fixed_versions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "trigger_assessment": {
+          "$ref": "#/$defs/trigger_assessment"
+        },
+
+        "review": {
+          "$ref": "#/$defs/review_record"
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "trigger_rule": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "trigger_id",
+        "vulnerability_ids",
+        "api_symbol",
+        "kind",
+        "version_scope",
+        "status",
+        "confidence",
+        "review_required",
+        "evidence_refs"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "vulnerability_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "api_symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "version_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+
+        "status": {
+          "enum": [
+            "resolved",
+            "partial",
+            "unresolved"
+          ]
+        },
+
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+
+        "review_required": {
+          "type": "boolean"
+        },
+
+        "requires_untrusted_input": {
+          "type": ["boolean", "null"]
+        },
+
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "source_artifact": {
+          "type": ["string", "null"]
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+
+    "trigger_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "review_required",
+        "coverage_status",
+        "affected_version_scope",
+        "assessed_trigger_version_scope",
+        "uncovered_scope_note",
+        "rule_refs",
+        "evidence_refs",
+        "unsupported_reasons",
+        "positive_regression_refs",
+        "negative_regression_refs"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not_assessed",
+            "eligible",
+            "unsupported_complex",
+            "insufficient_evidence",
+            "conflicted",
+            "requires_review"
+          ]
+        },
+
+        "review_required": {
+          "type": "boolean"
+        },
+
+        "coverage_status": {
+          "enum": [
+            "full",
+            "partial",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+
+        "affected_version_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "assessed_trigger_version_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "uncovered_scope_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "rule_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "unsupported_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "positive_regression_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "negative_regression_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+
+    "review_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "review_required"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not_reviewed",
+            "in_review",
+            "approved",
+            "rejected",
+            "requires_revision"
+          ]
+        },
+
+        "review_required": {
+          "type": "boolean"
+        },
+
+        "reviewer": {
+          "type": ["string", "null"]
+        },
+
+        "reviewed_at": {
+          "type": ["string", "null"]
+        },
+
+        "protocol_version": {
+          "type": ["string", "null"]
+        },
+
+        "notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}

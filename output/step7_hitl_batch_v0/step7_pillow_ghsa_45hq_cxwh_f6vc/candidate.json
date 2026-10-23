@@ -1,0 +1,85 @@
+{
+  "schema_version": "avcs_trigger_hitl_candidate_v0.1",
+  "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+  "case_id": "step7_pillow_ghsa_45hq_cxwh_f6vc",
+  "ecosystem": "PyPI",
+  "distribution": "Pillow",
+  "vulnerability": {
+    "vulnerability_id": "GHSA-45hq-cxwh-f6vc",
+    "aliases": [
+      "BIT-pillow-2026-55379",
+      "CVE-2026-55379",
+      "PYSEC-2026-2255"
+    ],
+    "affected_version_scope": "<12.3.0",
+    "fixed_versions": [
+      "12.3.0"
+    ],
+    "source_refs": [
+      "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f",
+      "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f_constraint"
+    ]
+  },
+  "evidence_sources": [
+    {
+      "source_id": "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f",
+      "source_type": "osv_package_catalog_group",
+      "url": null,
+      "path": "output/step7_osv_catalogs_v0/pillow.json",
+      "locator": "osvgrp_9ab8ab94aa01",
+      "claim": "OSV package catalog identity group for GHSA-45hq-cxwh-f6vc; used for vulnerability identity and alias grouping. The resolved affected-version specifier is bound separately to the constraint-resolver source. source_record_ids=['GHSA-45hq-cxwh-f6vc', 'PYSEC-2026-2255']"
+    },
+    {
+      "source_id": "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f_constraint",
+      "source_type": "osv_resolved_version_constraint",
+      "url": null,
+      "path": "output/step7_osv_constraints_v0/pillow.json",
+      "locator": "GHSA-45hq-cxwh-f6vc",
+      "claim": "Resolved affected-version constraint for GHSA-45hq-cxwh-f6vc: '<12.3.0'; constraint_status='resolved'; fixed_versions=['12.3.0']."
+    }
+  ],
+  "proposal": {
+    "proposer_type": "automatic",
+    "proposer_id": "trigger_hitl_candidate_builder_v0.1",
+    "proposed_status": "requires_review",
+    "candidate_rule": null,
+    "claim_evidence_map": [
+      {
+        "claim_id": "vulnerability_identity",
+        "claim": "The vulnerability identity is GHSA-45hq-cxwh-f6vc with aliases BIT-pillow-2026-55379, CVE-2026-55379, PYSEC-2026-2255.",
+        "evidence_refs": [
+          "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f",
+          "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f_constraint"
+        ]
+      },
+      {
+        "claim_id": "affected_version_range",
+        "claim": "The recorded affected version scope is <12.3.0.",
+        "evidence_refs": [
+          "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f",
+          "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f_constraint"
+        ]
+      },
+      {
+        "claim_id": "fixed_versions",
+        "claim": "The recorded fixed version(s) are 12.3.0.",
+        "evidence_refs": [
+          "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f",
+          "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f_constraint"
+        ]
+      }
+    ],
+    "unresolved_questions": [
+      "Trigger semantics have not yet been proposed or human-reviewed."
+    ],
+    "notes": "Evidence-grounded HITL case packet assembled from Package KB. No Trigger semantics were copied from existing trigger_rules."
+  },
+  "review_gate": {
+    "status": "requires_review",
+    "review_required": true,
+    "final_truth_created": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Candidate packet only. Human review is mandatory before any Trigger knowledge can enter the formal Package KB."
+  }
+}

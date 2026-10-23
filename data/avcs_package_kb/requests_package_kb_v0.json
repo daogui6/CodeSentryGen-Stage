@@ -1,0 +1,346 @@
+{
+  "schema_version": "avcs_package_kb_v0.2",
+  "kb_id": "pypi_requests_v0",
+  "ecosystem": "PyPI",
+  "distribution": "requests",
+  "normalized_distribution": "requests",
+
+  "package_metadata": {
+    "package_name": "requests",
+    "registry": "PyPI",
+    "registry_url": null,
+    "repository_url": null,
+    "homepage_url": null,
+    "notes": "Initial unified Package KB migration for the existing Requests AVCS real case."
+  },
+
+  "release_history": {
+    "status": "partial",
+    "as_of_time": "2026-08-20T02:00:00+00:00",
+    "confirmed_release_count": 160,
+    "confirmed_stable_release_count": 159,
+    "confirmed_prerelease_count": 1,
+    "artifacts": [
+      {
+        "role": "release_history",
+        "path": "output/avcs_requests_netrc_host_confusion_true_release_history_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": "2026-08-21T11:12:34.638551+00:00",
+        "notes": "Existing Requests release-history evidence is explicitly partial. The recorded time view contains 160 confirmed releases, including one prerelease."
+      }
+    ],
+    "notes": "The existing AVCS Requests release-history artifact is retained without upgrading its partial-coverage claim."
+  },
+
+  "api_surface_history": {
+    "status": "partial",
+    "scope_policy": "Selected existing AVCS Requests public API scope only: requests.get(url) with one explicit positional URL argument. This is not yet a complete package-wide public API surface.",
+    "artifacts": [
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/requests_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Curated real API History evidence for the selected requests.get(url) call form."
+      }
+    ],
+    "entries": [
+      {
+        "api_symbol": "requests.get",
+        "api_kind": "function",
+        "status": "resolved",
+        "version_rules": [
+          {
+            "rule_id": "requests_get_one_positional",
+            "status": "resolved",
+            "version_specifier": ">=0.2.0",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 1,
+            "required_keyword_args": [],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/requests_api_history_evidence_v0.json"
+          }
+        ],
+        "deprecated_since": null,
+        "removed_since": null,
+        "evidence_refs": [
+          "data/avcs_validation/api_history/requests_api_history_evidence_v0.json"
+        ],
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved curated Requests API History evidence."
+        }
+      }
+    ],
+    "notes": "The selected requests.get(url) API form is supported from >=0.2.0. This API availability range remains distinct from the vulnerability range <2.32.4."
+  },
+
+  "vulnerability_catalog": [
+    {
+      "vulnerability_id": "GHSA-9hjg-9r4m-mvj7",
+      "aliases": [
+        "CVE-2024-47081",
+        "PYSEC-2026-1872"
+      ],
+      "summary": null,
+      "published_at": "2025-06-09T19:06:08Z",
+      "modified_at": "2026-07-07T17:56:56.234172558Z",
+      "withdrawn_at": null,
+      "severity": [],
+      "affected_ranges": [
+        {
+          "range_type": "ECOSYSTEM",
+          "introduced": "0",
+          "fixed": "2.32.4",
+          "last_affected": null,
+          "version_specifier": "<2.32.4",
+          "source_ref": "osv_ghsa_9hjg_9r4m_mvj7"
+        }
+      ],
+      "fixed_versions": [
+        "2.32.4"
+      ],
+      "source_refs": [
+        "osv_ghsa_9hjg_9r4m_mvj7",
+        "requests_upstream_advisory",
+        "requests_v2_32_3_source",
+        "requests_fix_pr_6965",
+        "requests_fix_commit",
+        "oss_security_redirect_example"
+      ],
+      "trigger_assessment": {
+        "status": "eligible",
+        "review_required": false,
+
+        "coverage_status": "full",
+        "affected_version_scope": "<2.32.4",
+        "assessed_trigger_version_scope": "<2.32.4",
+        "uncovered_scope_note": null,
+
+        "rule_refs": [
+          "requests_netrc_host_confusion"
+        ],
+
+        "evidence_refs": [
+          "osv_ghsa_9hjg_9r4m_mvj7",
+          "requests_upstream_advisory",
+          "requests_v2_32_3_source",
+          "requests_fix_pr_6965",
+          "requests_fix_commit",
+          "oss_security_redirect_example"
+        ],
+
+        "unsupported_reasons": [],
+
+        "positive_regression_refs": [
+          "output/avcs_requests_netrc_host_confusion_true_evaluation_v0.json"
+        ],
+
+        "negative_regression_refs": [
+          "output/requests_netrc_host_confusion_false_evaluation_v1.json"
+        ],
+
+        "notes": "Eligibility is frozen by avcs_trigger_eligibility_protocol_v0.2 with full version-range coverage for the curated static URL-structure rule. Full version-range coverage does not assert that runtime environment preconditions are statically satisfied."
+      },
+      "review": {
+        "status": "approved",
+        "review_required": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "notes": "Migrated from the existing curated Requests Trigger evidence and the positive/negative controlled regression pair."
+      },
+      "notes": "The vulnerability affected-version range is kept separate from requests.get API availability and from runtime exploit preconditions."
+    }
+  ],
+
+  "trigger_rules": [
+    {
+      "trigger_id": "requests_netrc_host_confusion",
+      "vulnerability_ids": [
+        "GHSA-9hjg-9r4m-mvj7",
+        "CVE-2024-47081",
+        "PYSEC-2026-1872"
+      ],
+      "api_symbol": "requests.get",
+      "kind": "positional_url_condition",
+      "version_scope": "<2.32.4",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "positional_argument": {
+        "position": 0,
+        "url_condition": "legacy_netrc_host_differs_from_hostname"
+      },
+
+      "environment_preconditions": {
+        "netrc_credentials_required": true,
+        "trust_env_must_not_be_false": true,
+        "evaluation_status": "not_statically_evaluated"
+      },
+
+      "runtime_flow_limitations": {
+        "direct_literal_url_supported": true,
+        "redirect_target_static_recovery_supported": false
+      },
+
+      "evidence_refs": [
+        "osv_ghsa_9hjg_9r4m_mvj7",
+        "requests_upstream_advisory",
+        "requests_v2_32_3_source",
+        "requests_fix_commit",
+        "oss_security_redirect_example"
+      ],
+
+      "source_artifact": "output/requests_ghsa_9hjg_9r4m_mvj7_trigger_evidence_v0.json",
+
+      "notes": "The static rule recognizes the crafted URL authority structure only. A rule match does not prove that .netrc credentials exist, trust_env is enabled, attacker-controlled input reaches the call, a redirect occurs, credentials are exposed, or exploitation succeeds."
+    }
+  ],
+
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "osv_ghsa_9hjg_9r4m_mvj7",
+        "source_type": "osv_pypi_advisory",
+        "url": "https://osv.dev/vulnerability/GHSA-9hjg-9r4m-mvj7",
+        "path": null,
+        "locator": "Affected packages / PyPI requests",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "OSV records Requests versions prior to 2.32.4 as affected and identifies 2.32.4 as the fixed release."
+      },
+      {
+        "source_id": "requests_upstream_advisory",
+        "source_type": "upstream_security_advisory",
+        "url": "https://github.com/advisories/GHSA-9hjg-9r4m-mvj7",
+        "path": null,
+        "locator": "Impact / affected versions / workaround",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The advisory states that maliciously crafted URLs may cause .netrc credentials to leak in Requests releases before 2.32.4 and identifies trust_env=False as a workaround."
+      },
+      {
+        "source_id": "requests_v2_32_3_source",
+        "source_type": "upstream_release_source",
+        "url": "https://github.com/psf/requests/blob/v2.32.3/src/requests/utils.py",
+        "path": null,
+        "locator": "get_netrc_auth",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "Requests 2.32.3 derives the .netrc lookup host from urlparse(url).netloc by splitting on a colon."
+      },
+      {
+        "source_id": "requests_fix_pr_6965",
+        "source_type": "upstream_fix_pull_request",
+        "url": "https://github.com/psf/requests/pull/6965",
+        "path": null,
+        "locator": "Only use hostname to do netrc lookup instead of netloc",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The upstream pull request applies the security fix for GHSA-9hjg-9r4m-mvj7."
+      },
+      {
+        "source_id": "requests_fix_commit",
+        "source_type": "upstream_fix_commit",
+        "url": "https://github.com/psf/requests/commit/96ba401c1296ab1dda74a2365ef36d88f7d144ef",
+        "path": null,
+        "locator": "src/requests/utils.py / get_netrc_auth",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The fix replaces the legacy netloc splitting logic with ri.hostname for .netrc lookup."
+      },
+      {
+        "source_id": "oss_security_redirect_example",
+        "source_type": "public_security_discussion",
+        "url": "https://www.openwall.com/lists/oss-security/2025/06/04/6",
+        "path": null,
+        "locator": "CVE-2024-47081 redirect example",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "Public security discussion demonstrates that a redirect may lead Requests to a crafted URL such as http://github.com:@evil.example.net, illustrating the user-info hostname-confusion structure."
+      }
+    ],
+
+    "generated_from": [
+      {
+        "role": "release_history",
+        "path": "output/avcs_requests_netrc_host_confusion_true_release_history_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/requests_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "vulnerability_evidence",
+        "path": "output/avcs_requests_netrc_host_confusion_true_vulnerability_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "vulnerability_constraints",
+        "path": "output/avcs_requests_netrc_host_confusion_true_vulnerability_constraints_v0.json",
+        "schema_version": "vulnerability_constraint_v0.3",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+      {
+        "role": "trigger_evidence",
+        "path": "output/requests_ghsa_9hjg_9r4m_mvj7_trigger_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_trigger_evidence_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "The source Trigger evidence artifact reports resolved_with_scope; this generated_from record marks the artifact as successfully resolved for Package KB migration while preserving its scope caveats in the Trigger Rule."
+      },
+      {
+        "role": "trigger_eligibility_assessment",
+        "path": "data/avcs_package_kb/trigger_eligibility/requests_ghsa_9hjg_9r4m_mvj7_eligibility_v0.json",
+        "schema_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      }
+    ],
+
+    "notes": "This Package KB aggregates the existing Requests artifacts while keeping API History, vulnerability affected-range evidence, static Trigger semantics, and runtime/environment preconditions as distinct evidence layers."
+  },
+
+  "review": {
+    "status": "approved",
+    "review_required": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "protocol_version": null,
+    "notes": "Package KB migration review closed after structural/cross-reference validation and Trigger Eligibility semantic validation passed. Existing uncertainty, partial-coverage, and conflicted states are preserved rather than overridden by migration approval."
+  }
+}

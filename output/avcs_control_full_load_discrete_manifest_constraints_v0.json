@@ -1,0 +1,22 @@
+{
+  "schema_version": "avcs_manifest_constraints_v0.1",
+  "sample_id": "avcs_control_full_load_discrete",
+  "distribution": "PyYAML",
+  "normalized_distribution": "pyyaml",
+  "requirements_text": "PyYAML",
+  "status": "resolved",
+  "constraint_kind": "unconstrained",
+  "specifier": "",
+  "matched_requirements": [
+    {
+      "name": "PyYAML",
+      "normalized_name": "pyyaml",
+      "specifier": "",
+      "extras": [],
+      "marker": "",
+      "url": "",
+      "original_text": "PyYAML"
+    }
+  ],
+  "invalid_lines": []
+}

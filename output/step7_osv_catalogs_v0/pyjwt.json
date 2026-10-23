@@ -1,0 +1,3737 @@
+{
+  "schema_version": "avcs_osv_package_catalog_v0.1",
+  "provider": "OSV",
+  "distribution": "PyJWT",
+  "normalized_distribution": "pyjwt",
+  "ecosystem": "PyPI",
+  "source_snapshot_file": "output/step7_osv_snapshots_v0/pyjwt.json",
+  "source_snapshot_schema_version": "avcs_osv_package_snapshot_v0.1",
+  "source_query_data_source": "network",
+  "source_query_queried_at": "2026-09-16T03:39:40.159656+00:00",
+  "normalizer_sample_id": "osv_catalog::PyPI::pyjwt",
+  "source_record_count": 19,
+  "resolved_source_record_count": 19,
+  "partial_source_record_count": 0,
+  "unresolved_source_record_count": 0,
+  "withdrawn_source_record_count": 0,
+  "vulnerability_group_count": 10,
+  "groups_with_range_disagreement": 4,
+  "groups_with_affected_version_list_disagreement": 3,
+  "normalized_records": [
+    {
+      "source_record_id": "GHSA-752w-5fwx-jx9f",
+      "aliases": [
+        "CVE-2026-32597",
+        "PYSEC-2026-120"
+      ],
+      "identifiers": [
+        "CVE-2026-32597",
+        "GHSA-752w-5fwx-jx9f",
+        "PYSEC-2026-120"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-03-13T20:05:04Z",
+      "modified_at": "2026-09-10T03:50:59.993704484Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.12.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.12.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-752w-5fwx-jx9f.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-752w-5fwx-jx9f.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-752w-5fwx-jx9f",
+      "evidence_hash": "sha256:3493e67d70deeda4d5893bf4b8e17b066948c9629b0ffa8918bf26d071477d9f"
+    },
+    {
+      "source_record_id": "GHSA-75c5-xw7c-p5pm",
+      "aliases": [
+        "CVE-2024-53861",
+        "PYSEC-2026-1814"
+      ],
+      "identifiers": [
+        "CVE-2024-53861",
+        "GHSA-75c5-xw7c-p5pm",
+        "PYSEC-2026-1814"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2024-12-02T18:34:11Z",
+      "modified_at": "2026-09-10T03:50:21.333090692Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.10.0"
+            },
+            {
+              "fixed": "2.10.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.10.0"
+      ],
+      "fixed_versions": [
+        "2.10.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-75c5-xw7c-p5pm.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-75c5-xw7c-p5pm.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-75c5-xw7c-p5pm",
+      "evidence_hash": "sha256:51d820448891d287569b3f257b79d92834c52a5eae7aa2377bc049e9c5ff2eb7"
+    },
+    {
+      "source_record_id": "GHSA-993g-76c3-p5m4",
+      "aliases": [
+        "CVE-2026-48522",
+        "PYSEC-2026-175"
+      ],
+      "identifiers": [
+        "CVE-2026-48522",
+        "GHSA-993g-76c3-p5m4",
+        "PYSEC-2026-175"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-06-15T19:28:41Z",
+      "modified_at": "2026-09-10T03:50:49.179286182Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.0.0",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-993g-76c3-p5m4.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-993g-76c3-p5m4.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-993g-76c3-p5m4",
+      "evidence_hash": "sha256:9d7f0790e67a99add57dfc4e69d2fc3f829a7c304a501a4ea02f56a8dff6ce52"
+    },
+    {
+      "source_record_id": "GHSA-ffqj-6fqr-9h24",
+      "aliases": [
+        "CVE-2022-29217",
+        "PYSEC-2022-202"
+      ],
+      "identifiers": [
+        "CVE-2022-29217",
+        "GHSA-ffqj-6fqr-9h24",
+        "PYSEC-2022-202"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-24T22:17:27Z",
+      "modified_at": "2024-10-15T16:27:42.751871Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.5.0"
+            },
+            {
+              "fixed": "2.4.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.2.0",
+        "2.3.0"
+      ],
+      "fixed_versions": [
+        "2.4.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-ffqj-6fqr-9h24.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-ffqj-6fqr-9h24.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-ffqj-6fqr-9h24",
+      "evidence_hash": "sha256:4d1697cae770e96c52ebb1fa8493a9b833b7016f7d0e3c9a09308256ffc71fc9"
+    },
+    {
+      "source_record_id": "GHSA-fhv5-28vv-h8m8",
+      "aliases": [
+        "CVE-2026-48524",
+        "PYSEC-2026-177"
+      ],
+      "identifiers": [
+        "CVE-2026-48524",
+        "GHSA-fhv5-28vv-h8m8",
+        "PYSEC-2026-177"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-06-15T17:28:46Z",
+      "modified_at": "2026-09-10T03:50:49.375741307Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.0.0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.0.0",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-fhv5-28vv-h8m8.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-fhv5-28vv-h8m8.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-fhv5-28vv-h8m8",
+      "evidence_hash": "sha256:f14b9ab87a831c3da5286d3fed5da2c6cb74e8b19fd1811921afe2f45bcfedf2"
+    },
+    {
+      "source_record_id": "GHSA-jq35-7prp-9v3f",
+      "aliases": [
+        "CVE-2026-48523",
+        "PYSEC-2026-176"
+      ],
+      "identifiers": [
+        "CVE-2026-48523",
+        "GHSA-jq35-7prp-9v3f",
+        "PYSEC-2026-176"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-06-15T19:27:48Z",
+      "modified_at": "2026-09-10T03:51:08.776007275Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.9.0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-jq35-7prp-9v3f.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-jq35-7prp-9v3f.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-jq35-7prp-9v3f",
+      "evidence_hash": "sha256:3f5c228247f633fb4cf807551a99ba83efff784f4187bdabe4159847ddfba2d3"
+    },
+    {
+      "source_record_id": "GHSA-r9jw-mwhq-wp62",
+      "aliases": [
+        "CVE-2017-11424",
+        "PYSEC-2017-24"
+      ],
+      "identifiers": [
+        "CVE-2017-11424",
+        "GHSA-r9jw-mwhq-wp62",
+        "PYSEC-2017-24"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-13T01:42:19Z",
+      "modified_at": "2024-12-05T05:30:36.784778Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0"
+      ],
+      "fixed_versions": [
+        "1.5.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-r9jw-mwhq-wp62.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-r9jw-mwhq-wp62.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-r9jw-mwhq-wp62",
+      "evidence_hash": "sha256:81dd8fde43ddcb9fc1eb733a85f189ae779e029963f88cd4da88a37a32ccbc31"
+    },
+    {
+      "source_record_id": "GHSA-w7vc-732c-9m39",
+      "aliases": [
+        "CVE-2026-48525",
+        "PYSEC-2026-178"
+      ],
+      "identifiers": [
+        "CVE-2026-48525",
+        "GHSA-w7vc-732c-9m39",
+        "PYSEC-2026-178"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-06-15T19:29:12Z",
+      "modified_at": "2026-09-10T03:50:50.801195449Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.8.0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-w7vc-732c-9m39.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-w7vc-732c-9m39.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-w7vc-732c-9m39",
+      "evidence_hash": "sha256:e9b622ac41472051891b5ce11fb68bf17a8402f3a119402ac5c834389e23cbc8"
+    },
+    {
+      "source_record_id": "GHSA-xgmm-8j9v-c9wx",
+      "aliases": [
+        "CVE-2026-48526",
+        "PYSEC-2026-179"
+      ],
+      "identifiers": [
+        "CVE-2026-48526",
+        "GHSA-xgmm-8j9v-c9wx",
+        "PYSEC-2026-179"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-06-15T19:28:06Z",
+      "modified_at": "2026-09-10T03:51:09.678127621Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-xgmm-8j9v-c9wx.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-xgmm-8j9v-c9wx.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-xgmm-8j9v-c9wx",
+      "evidence_hash": "sha256:320fb6de266745efd971def163c3a9de4fccd69e57a083758d0e9907334f6514"
+    },
+    {
+      "source_record_id": "PYSEC-2017-24",
+      "aliases": [
+        "CVE-2017-11424",
+        "GHSA-r9jw-mwhq-wp62"
+      ],
+      "identifiers": [
+        "CVE-2017-11424",
+        "GHSA-r9jw-mwhq-wp62",
+        "PYSEC-2017-24"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2017-08-24T16:29:00Z",
+      "modified_at": "2023-11-08T03:58:49.234860Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.5.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0"
+      ],
+      "fixed_versions": [
+        "1.5.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2017-24.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2017-24.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2017-24",
+      "evidence_hash": "sha256:9cdbaa4a318552a26a1ca4affd8fe5e364c496868411f814e1c0b9dbc6dba769"
+    },
+    {
+      "source_record_id": "PYSEC-2022-202",
+      "aliases": [
+        "CVE-2022-29217",
+        "GHSA-ffqj-6fqr-9h24"
+      ],
+      "identifiers": [
+        "CVE-2022-29217",
+        "GHSA-ffqj-6fqr-9h24",
+        "PYSEC-2022-202"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-24T15:15:00Z",
+      "modified_at": "2023-11-08T04:09:10.999573Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "GIT",
+          "repo": "https://github.com/jpadilla/pyjwt",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "9c528670c455b8d948aff95ed50e22940d1ad3fc"
+            }
+          ]
+        },
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.5.0"
+            },
+            {
+              "fixed": "2.4.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.2.0",
+        "2.3.0"
+      ],
+      "fixed_versions": [
+        "2.4.0"
+      ],
+      "fixed_commits": [
+        "9c528670c455b8d948aff95ed50e22940d1ad3fc"
+      ],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2022-202.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2022-202.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2022-202",
+      "evidence_hash": "sha256:68d82cc9645dc3fd81cd54ce309c0d77f9991bc3d610a3f4f9287c57578873a9"
+    },
+    {
+      "source_record_id": "PYSEC-2025-183",
+      "aliases": [
+        "CVE-2025-45768"
+      ],
+      "identifiers": [
+        "CVE-2025-45768",
+        "PYSEC-2025-183"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2025-07-31T21:15:27.320Z",
+      "modified_at": "2026-05-21T15:00:28.178881228Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "last_affected": "2.10.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2025-183.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2025-183.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2025-183",
+      "evidence_hash": "sha256:87387cef4d5c6f63d040fcabce4d6578c2b560a0eebab5d6076289fc82630de8"
+    },
+    {
+      "source_record_id": "PYSEC-2026-120",
+      "aliases": [
+        "CVE-2026-32597",
+        "GHSA-752w-5fwx-jx9f"
+      ],
+      "identifiers": [
+        "CVE-2026-32597",
+        "GHSA-752w-5fwx-jx9f",
+        "PYSEC-2026-120"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-03-13T19:55:09.500Z",
+      "modified_at": "2026-05-20T09:19:15.426301Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.12.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.12.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-120.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-120.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-120",
+      "evidence_hash": "sha256:81088db3971789d81d8abcca87b8fdcc11b2f3e2d5eeeed9a7b2797633b20248"
+    },
+    {
+      "source_record_id": "PYSEC-2026-175",
+      "aliases": [
+        "CVE-2026-48522",
+        "GHSA-993g-76c3-p5m4"
+      ],
+      "identifiers": [
+        "CVE-2026-48522",
+        "GHSA-993g-76c3-p5m4",
+        "PYSEC-2026-175"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-05-28T16:16:29.150Z",
+      "modified_at": "2026-06-02T12:15:09.282275410Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-175.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-175.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-175",
+      "evidence_hash": "sha256:4aa0c607b79bd3d67e5d8c5c5339fa1568c76d1d6b22ea922cb9f9e13c02c3e8"
+    },
+    {
+      "source_record_id": "PYSEC-2026-176",
+      "aliases": [
+        "CVE-2026-48523",
+        "GHSA-jq35-7prp-9v3f"
+      ],
+      "identifiers": [
+        "CVE-2026-48523",
+        "GHSA-jq35-7prp-9v3f",
+        "PYSEC-2026-176"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-05-28T16:16:29.280Z",
+      "modified_at": "2026-06-02T12:15:10.358230706Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.9.0"
+            },
+            {
+              "fixed": "2.12.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.12.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-176.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-176.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-176",
+      "evidence_hash": "sha256:9761e50bd3293c68500f9e415b5628ad31ae7600e2598b75e3b48ec453a0b045"
+    },
+    {
+      "source_record_id": "PYSEC-2026-177",
+      "aliases": [
+        "CVE-2026-48524",
+        "GHSA-fhv5-28vv-h8m8"
+      ],
+      "identifiers": [
+        "CVE-2026-48524",
+        "GHSA-fhv5-28vv-h8m8",
+        "PYSEC-2026-177"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-05-28T16:16:29.403Z",
+      "modified_at": "2026-06-02T12:15:10.363704191Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-177.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-177.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-177",
+      "evidence_hash": "sha256:6a19eca4f2db53362db06693717d01ea95441d59aba9899224228cb9104b8951"
+    },
+    {
+      "source_record_id": "PYSEC-2026-178",
+      "aliases": [
+        "CVE-2026-48525",
+        "GHSA-w7vc-732c-9m39"
+      ],
+      "identifiers": [
+        "CVE-2026-48525",
+        "GHSA-w7vc-732c-9m39",
+        "PYSEC-2026-178"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-05-28T16:16:29.533Z",
+      "modified_at": "2026-06-02T12:15:10.739334903Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.8.0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-178.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-178.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-178",
+      "evidence_hash": "sha256:a57e1fad3648d680cce4181c3749f357a3d2c97d329d55c0c91fc3f31b4571f1"
+    },
+    {
+      "source_record_id": "PYSEC-2026-179",
+      "aliases": [
+        "CVE-2026-48526",
+        "GHSA-xgmm-8j9v-c9wx"
+      ],
+      "identifiers": [
+        "CVE-2026-48526",
+        "GHSA-xgmm-8j9v-c9wx",
+        "PYSEC-2026-179"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-05-28T16:16:29.657Z",
+      "modified_at": "2026-06-02T12:15:10.840770477Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "2.13.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1.1",
+        "0.1.2",
+        "0.1.3",
+        "0.1.4",
+        "0.1.5",
+        "0.1.6",
+        "0.1.7",
+        "0.1.8",
+        "0.1.9",
+        "0.2.0",
+        "0.2.1",
+        "0.2.3",
+        "0.3.0",
+        "0.3.1",
+        "0.3.2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "1.0.0",
+        "1.0.1",
+        "1.1.0",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.4.2",
+        "1.5.0",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.6.0",
+        "1.6.1",
+        "1.6.3",
+        "1.6.4",
+        "1.7.0",
+        "1.7.1",
+        "2.0.0",
+        "2.0.0a1",
+        "2.0.0a2",
+        "2.0.1",
+        "2.1.0",
+        "2.10.0",
+        "2.10.1",
+        "2.11.0",
+        "2.12.0",
+        "2.12.1",
+        "2.2.0",
+        "2.3.0",
+        "2.4.0",
+        "2.5.0",
+        "2.6.0",
+        "2.7.0",
+        "2.8.0",
+        "2.9.0"
+      ],
+      "fixed_versions": [
+        "2.13.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-179.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-179.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-179",
+      "evidence_hash": "sha256:951604dcd57195dc106fe9dc9702aaa7324f5ec301118b9ae1f6f3dfb2b72cb3"
+    },
+    {
+      "source_record_id": "PYSEC-2026-1814",
+      "aliases": [
+        "CVE-2024-53861",
+        "GHSA-75c5-xw7c-p5pm"
+      ],
+      "identifiers": [
+        "CVE-2024-53861",
+        "GHSA-75c5-xw7c-p5pm",
+        "PYSEC-2026-1814"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2026-07-07T14:34:46.000573Z",
+      "modified_at": "2026-07-07T17:48:03.529862550Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "2.10.0"
+            },
+            {
+              "fixed": "2.10.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "2.10.0"
+      ],
+      "fixed_versions": [
+        "2.10.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pyjwt"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-1814.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-1814.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-1814",
+      "evidence_hash": "sha256:fabfd646ddb40204197be41893d4c8b53761303d5836dff06e49fac3206b991d"
+    }
+  ],
+  "vulnerability_groups": [
+    {
+      "group_id": "osvgrp_23e7997090e0",
+      "display_id": "CVE-2025-45768",
+      "identifiers": [
+        "CVE-2025-45768",
+        "PYSEC-2025-183"
+      ],
+      "source_record_ids": [
+        "PYSEC-2025-183"
+      ],
+      "source_record_count": 1,
+      "evidence_status_counts": {
+        "resolved": 1
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_82175b4146be",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "2.10.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [],
+          "source_record_ids": [
+            "PYSEC-2025-183"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_09e442aefb8b",
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2025-183"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "PYSEC-2025-183",
+          "aliases": [
+            "CVE-2025-45768"
+          ],
+          "identifiers": [
+            "CVE-2025-45768",
+            "PYSEC-2025-183"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2025-07-31T21:15:27.320Z",
+          "modified_at": "2026-05-21T15:00:28.178881228Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "last_affected": "2.10.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2025-183.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2025-183.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2025-183",
+          "evidence_hash": "sha256:87387cef4d5c6f63d040fcabce4d6578c2b560a0eebab5d6076289fc82630de8"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_5a18e4e51056",
+      "display_id": "GHSA-752w-5fwx-jx9f",
+      "identifiers": [
+        "CVE-2026-32597",
+        "GHSA-752w-5fwx-jx9f",
+        "PYSEC-2026-120"
+      ],
+      "source_record_ids": [
+        "GHSA-752w-5fwx-jx9f",
+        "PYSEC-2026-120"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_415d1fe8f98c",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.12.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.12.0"
+          ],
+          "source_record_ids": [
+            "GHSA-752w-5fwx-jx9f",
+            "PYSEC-2026-120"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_9f8833f9a869",
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "GHSA-752w-5fwx-jx9f",
+            "PYSEC-2026-120"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-752w-5fwx-jx9f",
+          "aliases": [
+            "CVE-2026-32597",
+            "PYSEC-2026-120"
+          ],
+          "identifiers": [
+            "CVE-2026-32597",
+            "GHSA-752w-5fwx-jx9f",
+            "PYSEC-2026-120"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-03-13T20:05:04Z",
+          "modified_at": "2026-09-10T03:50:59.993704484Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.12.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.12.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-752w-5fwx-jx9f.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-752w-5fwx-jx9f.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-752w-5fwx-jx9f",
+          "evidence_hash": "sha256:3493e67d70deeda4d5893bf4b8e17b066948c9629b0ffa8918bf26d071477d9f"
+        },
+        {
+          "source_record_id": "PYSEC-2026-120",
+          "aliases": [
+            "CVE-2026-32597",
+            "GHSA-752w-5fwx-jx9f"
+          ],
+          "identifiers": [
+            "CVE-2026-32597",
+            "GHSA-752w-5fwx-jx9f",
+            "PYSEC-2026-120"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-03-13T19:55:09.500Z",
+          "modified_at": "2026-05-20T09:19:15.426301Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.12.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.12.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-120.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-120.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-120",
+          "evidence_hash": "sha256:81088db3971789d81d8abcca87b8fdcc11b2f3e2d5eeeed9a7b2797633b20248"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_6c73e3300127",
+      "display_id": "GHSA-75c5-xw7c-p5pm",
+      "identifiers": [
+        "CVE-2024-53861",
+        "GHSA-75c5-xw7c-p5pm",
+        "PYSEC-2026-1814"
+      ],
+      "source_record_ids": [
+        "GHSA-75c5-xw7c-p5pm",
+        "PYSEC-2026-1814"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_6320ab6d2a85",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "2.10.0"
+                },
+                {
+                  "fixed": "2.10.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.10.1"
+          ],
+          "source_record_ids": [
+            "GHSA-75c5-xw7c-p5pm",
+            "PYSEC-2026-1814"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_871a7ec787f7",
+          "affected_versions": [
+            "2.10.0"
+          ],
+          "source_record_ids": [
+            "GHSA-75c5-xw7c-p5pm",
+            "PYSEC-2026-1814"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-75c5-xw7c-p5pm",
+          "aliases": [
+            "CVE-2024-53861",
+            "PYSEC-2026-1814"
+          ],
+          "identifiers": [
+            "CVE-2024-53861",
+            "GHSA-75c5-xw7c-p5pm",
+            "PYSEC-2026-1814"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2024-12-02T18:34:11Z",
+          "modified_at": "2026-09-10T03:50:21.333090692Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.10.0"
+                },
+                {
+                  "fixed": "2.10.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.10.0"
+          ],
+          "fixed_versions": [
+            "2.10.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-75c5-xw7c-p5pm.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-75c5-xw7c-p5pm.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-75c5-xw7c-p5pm",
+          "evidence_hash": "sha256:51d820448891d287569b3f257b79d92834c52a5eae7aa2377bc049e9c5ff2eb7"
+        },
+        {
+          "source_record_id": "PYSEC-2026-1814",
+          "aliases": [
+            "CVE-2024-53861",
+            "GHSA-75c5-xw7c-p5pm"
+          ],
+          "identifiers": [
+            "CVE-2024-53861",
+            "GHSA-75c5-xw7c-p5pm",
+            "PYSEC-2026-1814"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-07-07T14:34:46.000573Z",
+          "modified_at": "2026-07-07T17:48:03.529862550Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.10.0"
+                },
+                {
+                  "fixed": "2.10.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.10.0"
+          ],
+          "fixed_versions": [
+            "2.10.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-1814.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-1814.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-1814",
+          "evidence_hash": "sha256:fabfd646ddb40204197be41893d4c8b53761303d5836dff06e49fac3206b991d"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_035fffced917",
+      "display_id": "GHSA-993g-76c3-p5m4",
+      "identifiers": [
+        "CVE-2026-48522",
+        "GHSA-993g-76c3-p5m4",
+        "PYSEC-2026-175"
+      ],
+      "source_record_ids": [
+        "GHSA-993g-76c3-p5m4",
+        "PYSEC-2026-175"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_271b228a4332",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "2.0.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "GHSA-993g-76c3-p5m4"
+          ]
+        },
+        {
+          "variant_id": "range_cee344a2a747",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2026-175"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_668420932f92",
+          "affected_versions": [
+            "2.0.0",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "GHSA-993g-76c3-p5m4"
+          ]
+        },
+        {
+          "variant_id": "versions_06f5e108e58d",
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2026-175"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-993g-76c3-p5m4",
+          "aliases": [
+            "CVE-2026-48522",
+            "PYSEC-2026-175"
+          ],
+          "identifiers": [
+            "CVE-2026-48522",
+            "GHSA-993g-76c3-p5m4",
+            "PYSEC-2026-175"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-06-15T19:28:41Z",
+          "modified_at": "2026-09-10T03:50:49.179286182Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.0.0",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-993g-76c3-p5m4.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-993g-76c3-p5m4.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-993g-76c3-p5m4",
+          "evidence_hash": "sha256:9d7f0790e67a99add57dfc4e69d2fc3f829a7c304a501a4ea02f56a8dff6ce52"
+        },
+        {
+          "source_record_id": "PYSEC-2026-175",
+          "aliases": [
+            "CVE-2026-48522",
+            "GHSA-993g-76c3-p5m4"
+          ],
+          "identifiers": [
+            "CVE-2026-48522",
+            "GHSA-993g-76c3-p5m4",
+            "PYSEC-2026-175"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-05-28T16:16:29.150Z",
+          "modified_at": "2026-06-02T12:15:09.282275410Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-175.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-175.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-175",
+          "evidence_hash": "sha256:4aa0c607b79bd3d67e5d8c5c5339fa1568c76d1d6b22ea922cb9f9e13c02c3e8"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_f0f5790058d0",
+      "display_id": "GHSA-ffqj-6fqr-9h24",
+      "identifiers": [
+        "CVE-2022-29217",
+        "GHSA-ffqj-6fqr-9h24",
+        "PYSEC-2022-202"
+      ],
+      "source_record_ids": [
+        "GHSA-ffqj-6fqr-9h24",
+        "PYSEC-2022-202"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_4a4335c6363c",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.5.0"
+                },
+                {
+                  "fixed": "2.4.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.4.0"
+          ],
+          "source_record_ids": [
+            "GHSA-ffqj-6fqr-9h24"
+          ]
+        },
+        {
+          "variant_id": "range_46b324a2b5c8",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "9c528670c455b8d948aff95ed50e22940d1ad3fc"
+                }
+              ],
+              "repo": "https://github.com/jpadilla/pyjwt",
+              "type": "GIT"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "1.5.0"
+                },
+                {
+                  "fixed": "2.4.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.4.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2022-202"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_19a382911201",
+          "affected_versions": [
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.2.0",
+            "2.3.0"
+          ],
+          "source_record_ids": [
+            "GHSA-ffqj-6fqr-9h24",
+            "PYSEC-2022-202"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-ffqj-6fqr-9h24",
+          "aliases": [
+            "CVE-2022-29217",
+            "PYSEC-2022-202"
+          ],
+          "identifiers": [
+            "CVE-2022-29217",
+            "GHSA-ffqj-6fqr-9h24",
+            "PYSEC-2022-202"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-24T22:17:27Z",
+          "modified_at": "2024-10-15T16:27:42.751871Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.5.0"
+                },
+                {
+                  "fixed": "2.4.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.2.0",
+            "2.3.0"
+          ],
+          "fixed_versions": [
+            "2.4.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-ffqj-6fqr-9h24.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-ffqj-6fqr-9h24.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-ffqj-6fqr-9h24",
+          "evidence_hash": "sha256:4d1697cae770e96c52ebb1fa8493a9b833b7016f7d0e3c9a09308256ffc71fc9"
+        },
+        {
+          "source_record_id": "PYSEC-2022-202",
+          "aliases": [
+            "CVE-2022-29217",
+            "GHSA-ffqj-6fqr-9h24"
+          ],
+          "identifiers": [
+            "CVE-2022-29217",
+            "GHSA-ffqj-6fqr-9h24",
+            "PYSEC-2022-202"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-24T15:15:00Z",
+          "modified_at": "2023-11-08T04:09:10.999573Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "GIT",
+              "repo": "https://github.com/jpadilla/pyjwt",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "9c528670c455b8d948aff95ed50e22940d1ad3fc"
+                }
+              ]
+            },
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.5.0"
+                },
+                {
+                  "fixed": "2.4.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.2.0",
+            "2.3.0"
+          ],
+          "fixed_versions": [
+            "2.4.0"
+          ],
+          "fixed_commits": [
+            "9c528670c455b8d948aff95ed50e22940d1ad3fc"
+          ],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2022-202.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2022-202.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2022-202",
+          "evidence_hash": "sha256:68d82cc9645dc3fd81cd54ce309c0d77f9991bc3d610a3f4f9287c57578873a9"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_379d7538412d",
+      "display_id": "GHSA-fhv5-28vv-h8m8",
+      "identifiers": [
+        "CVE-2026-48524",
+        "GHSA-fhv5-28vv-h8m8",
+        "PYSEC-2026-177"
+      ],
+      "source_record_ids": [
+        "GHSA-fhv5-28vv-h8m8",
+        "PYSEC-2026-177"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_271b228a4332",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "2.0.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "GHSA-fhv5-28vv-h8m8"
+          ]
+        },
+        {
+          "variant_id": "range_cee344a2a747",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2026-177"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_668420932f92",
+          "affected_versions": [
+            "2.0.0",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "GHSA-fhv5-28vv-h8m8"
+          ]
+        },
+        {
+          "variant_id": "versions_06f5e108e58d",
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2026-177"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-fhv5-28vv-h8m8",
+          "aliases": [
+            "CVE-2026-48524",
+            "PYSEC-2026-177"
+          ],
+          "identifiers": [
+            "CVE-2026-48524",
+            "GHSA-fhv5-28vv-h8m8",
+            "PYSEC-2026-177"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-06-15T17:28:46Z",
+          "modified_at": "2026-09-10T03:50:49.375741307Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.0.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.0.0",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-fhv5-28vv-h8m8.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-fhv5-28vv-h8m8.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-fhv5-28vv-h8m8",
+          "evidence_hash": "sha256:f14b9ab87a831c3da5286d3fed5da2c6cb74e8b19fd1811921afe2f45bcfedf2"
+        },
+        {
+          "source_record_id": "PYSEC-2026-177",
+          "aliases": [
+            "CVE-2026-48524",
+            "GHSA-fhv5-28vv-h8m8"
+          ],
+          "identifiers": [
+            "CVE-2026-48524",
+            "GHSA-fhv5-28vv-h8m8",
+            "PYSEC-2026-177"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-05-28T16:16:29.403Z",
+          "modified_at": "2026-06-02T12:15:10.363704191Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-177.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-177.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-177",
+          "evidence_hash": "sha256:6a19eca4f2db53362db06693717d01ea95441d59aba9899224228cb9104b8951"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_5ee0fa051860",
+      "display_id": "GHSA-jq35-7prp-9v3f",
+      "identifiers": [
+        "CVE-2026-48523",
+        "GHSA-jq35-7prp-9v3f",
+        "PYSEC-2026-176"
+      ],
+      "source_record_ids": [
+        "GHSA-jq35-7prp-9v3f",
+        "PYSEC-2026-176"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_5f1c187c045b",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "2.9.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "GHSA-jq35-7prp-9v3f"
+          ]
+        },
+        {
+          "variant_id": "range_8d9ffcd71f8d",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "2.9.0"
+                },
+                {
+                  "fixed": "2.12.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.12.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2026-176"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_fb75b8f70356",
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "GHSA-jq35-7prp-9v3f"
+          ]
+        },
+        {
+          "variant_id": "versions_92e76b930fcd",
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2026-176"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-jq35-7prp-9v3f",
+          "aliases": [
+            "CVE-2026-48523",
+            "PYSEC-2026-176"
+          ],
+          "identifiers": [
+            "CVE-2026-48523",
+            "GHSA-jq35-7prp-9v3f",
+            "PYSEC-2026-176"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-06-15T19:27:48Z",
+          "modified_at": "2026-09-10T03:51:08.776007275Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.9.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-jq35-7prp-9v3f.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-jq35-7prp-9v3f.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-jq35-7prp-9v3f",
+          "evidence_hash": "sha256:3f5c228247f633fb4cf807551a99ba83efff784f4187bdabe4159847ddfba2d3"
+        },
+        {
+          "source_record_id": "PYSEC-2026-176",
+          "aliases": [
+            "CVE-2026-48523",
+            "GHSA-jq35-7prp-9v3f"
+          ],
+          "identifiers": [
+            "CVE-2026-48523",
+            "GHSA-jq35-7prp-9v3f",
+            "PYSEC-2026-176"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-05-28T16:16:29.280Z",
+          "modified_at": "2026-06-02T12:15:10.358230706Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.9.0"
+                },
+                {
+                  "fixed": "2.12.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.12.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-176.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-176.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-176",
+          "evidence_hash": "sha256:9761e50bd3293c68500f9e415b5628ad31ae7600e2598b75e3b48ec453a0b045"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_415b6c3d9a49",
+      "display_id": "GHSA-r9jw-mwhq-wp62",
+      "identifiers": [
+        "CVE-2017-11424",
+        "GHSA-r9jw-mwhq-wp62",
+        "PYSEC-2017-24"
+      ],
+      "source_record_ids": [
+        "GHSA-r9jw-mwhq-wp62",
+        "PYSEC-2017-24"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_659528949bd5",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.5.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.5.1"
+          ],
+          "source_record_ids": [
+            "GHSA-r9jw-mwhq-wp62",
+            "PYSEC-2017-24"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_f656e4d7216f",
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0"
+          ],
+          "source_record_ids": [
+            "GHSA-r9jw-mwhq-wp62",
+            "PYSEC-2017-24"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-r9jw-mwhq-wp62",
+          "aliases": [
+            "CVE-2017-11424",
+            "PYSEC-2017-24"
+          ],
+          "identifiers": [
+            "CVE-2017-11424",
+            "GHSA-r9jw-mwhq-wp62",
+            "PYSEC-2017-24"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-13T01:42:19Z",
+          "modified_at": "2024-12-05T05:30:36.784778Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.5.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0"
+          ],
+          "fixed_versions": [
+            "1.5.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-r9jw-mwhq-wp62.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-r9jw-mwhq-wp62.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-r9jw-mwhq-wp62",
+          "evidence_hash": "sha256:81dd8fde43ddcb9fc1eb733a85f189ae779e029963f88cd4da88a37a32ccbc31"
+        },
+        {
+          "source_record_id": "PYSEC-2017-24",
+          "aliases": [
+            "CVE-2017-11424",
+            "GHSA-r9jw-mwhq-wp62"
+          ],
+          "identifiers": [
+            "CVE-2017-11424",
+            "GHSA-r9jw-mwhq-wp62",
+            "PYSEC-2017-24"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2017-08-24T16:29:00Z",
+          "modified_at": "2023-11-08T03:58:49.234860Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.5.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0"
+          ],
+          "fixed_versions": [
+            "1.5.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2017-24.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2017-24.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2017-24",
+          "evidence_hash": "sha256:9cdbaa4a318552a26a1ca4affd8fe5e364c496868411f814e1c0b9dbc6dba769"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_9d279e91932c",
+      "display_id": "GHSA-w7vc-732c-9m39",
+      "identifiers": [
+        "CVE-2026-48525",
+        "GHSA-w7vc-732c-9m39",
+        "PYSEC-2026-178"
+      ],
+      "source_record_ids": [
+        "GHSA-w7vc-732c-9m39",
+        "PYSEC-2026-178"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_9c897b03d5a3",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "2.8.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "GHSA-w7vc-732c-9m39",
+            "PYSEC-2026-178"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_eab2904ecb1f",
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "GHSA-w7vc-732c-9m39",
+            "PYSEC-2026-178"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-w7vc-732c-9m39",
+          "aliases": [
+            "CVE-2026-48525",
+            "PYSEC-2026-178"
+          ],
+          "identifiers": [
+            "CVE-2026-48525",
+            "GHSA-w7vc-732c-9m39",
+            "PYSEC-2026-178"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-06-15T19:29:12Z",
+          "modified_at": "2026-09-10T03:50:50.801195449Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.8.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-w7vc-732c-9m39.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-w7vc-732c-9m39.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-w7vc-732c-9m39",
+          "evidence_hash": "sha256:e9b622ac41472051891b5ce11fb68bf17a8402f3a119402ac5c834389e23cbc8"
+        },
+        {
+          "source_record_id": "PYSEC-2026-178",
+          "aliases": [
+            "CVE-2026-48525",
+            "GHSA-w7vc-732c-9m39"
+          ],
+          "identifiers": [
+            "CVE-2026-48525",
+            "GHSA-w7vc-732c-9m39",
+            "PYSEC-2026-178"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-05-28T16:16:29.533Z",
+          "modified_at": "2026-06-02T12:15:10.739334903Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "2.8.0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-178.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-178.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-178",
+          "evidence_hash": "sha256:a57e1fad3648d680cce4181c3749f357a3d2c97d329d55c0c91fc3f31b4571f1"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_aa244c55c4f3",
+      "display_id": "GHSA-xgmm-8j9v-c9wx",
+      "identifiers": [
+        "CVE-2026-48526",
+        "GHSA-xgmm-8j9v-c9wx",
+        "PYSEC-2026-179"
+      ],
+      "source_record_ids": [
+        "GHSA-xgmm-8j9v-c9wx",
+        "PYSEC-2026-179"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_cee344a2a747",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "source_record_ids": [
+            "GHSA-xgmm-8j9v-c9wx",
+            "PYSEC-2026-179"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_06f5e108e58d",
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "source_record_ids": [
+            "GHSA-xgmm-8j9v-c9wx",
+            "PYSEC-2026-179"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-xgmm-8j9v-c9wx",
+          "aliases": [
+            "CVE-2026-48526",
+            "PYSEC-2026-179"
+          ],
+          "identifiers": [
+            "CVE-2026-48526",
+            "GHSA-xgmm-8j9v-c9wx",
+            "PYSEC-2026-179"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-06-15T19:28:06Z",
+          "modified_at": "2026-09-10T03:51:09.678127621Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/GHSA-xgmm-8j9v-c9wx.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/GHSA-xgmm-8j9v-c9wx.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-xgmm-8j9v-c9wx",
+          "evidence_hash": "sha256:320fb6de266745efd971def163c3a9de4fccd69e57a083758d0e9907334f6514"
+        },
+        {
+          "source_record_id": "PYSEC-2026-179",
+          "aliases": [
+            "CVE-2026-48526",
+            "GHSA-xgmm-8j9v-c9wx"
+          ],
+          "identifiers": [
+            "CVE-2026-48526",
+            "GHSA-xgmm-8j9v-c9wx",
+            "PYSEC-2026-179"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2026-05-28T16:16:29.657Z",
+          "modified_at": "2026-06-02T12:15:10.840770477Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "2.13.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1.1",
+            "0.1.2",
+            "0.1.3",
+            "0.1.4",
+            "0.1.5",
+            "0.1.6",
+            "0.1.7",
+            "0.1.8",
+            "0.1.9",
+            "0.2.0",
+            "0.2.1",
+            "0.2.3",
+            "0.3.0",
+            "0.3.1",
+            "0.3.2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "1.0.0",
+            "1.0.1",
+            "1.1.0",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.4.2",
+            "1.5.0",
+            "1.5.1",
+            "1.5.2",
+            "1.5.3",
+            "1.6.0",
+            "1.6.1",
+            "1.6.3",
+            "1.6.4",
+            "1.7.0",
+            "1.7.1",
+            "2.0.0",
+            "2.0.0a1",
+            "2.0.0a2",
+            "2.0.1",
+            "2.1.0",
+            "2.10.0",
+            "2.10.1",
+            "2.11.0",
+            "2.12.0",
+            "2.12.1",
+            "2.2.0",
+            "2.3.0",
+            "2.4.0",
+            "2.5.0",
+            "2.6.0",
+            "2.7.0",
+            "2.8.0",
+            "2.9.0"
+          ],
+          "fixed_versions": [
+            "2.13.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pyjwt"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pyjwt/PYSEC-2026-179.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pyjwt/PYSEC-2026-179.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2026-179",
+          "evidence_hash": "sha256:951604dcd57195dc106fe9dc9702aaa7324f5ec301118b9ae1f6f3dfb2b72cb3"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "pyjwt",
+  "source_mode": "curated_real_api_history",
+  "status": "resolved",
+  "scope": {
+    "selected_api_form": "jwt.decode with algorithms keyword plus optional nested jwt.algorithms.get_default_algorithms call",
+    "selected_call_shape": "two explicit positional arguments to jwt.decode with an explicit algorithms keyword; get_default_algorithms is modeled as a zero-argument nested call when present",
+    "version_scope": ">=1.0.0",
+    "note": "This v0 models only the selected PyJWT decode/algorithms static API forms. PyJWT 0.4.3 predates the algorithms keyword on decode and the get_default_algorithms helper, while 1.0.0 contains both. This API scope does not redefine the vulnerability range >=1.5.0,<2.4.0."
+  },
+  "entries": [
+    {
+      "distribution": "pyjwt",
+      "api_symbol": "jwt.decode",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyjwt_decode_algorithms_keyword",
+          "status": "resolved",
+          "version_specifier": ">=1.0.0",
+          "required_positional_args_min": 2,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [
+            "algorithms"
+          ],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyJWT 0.4.3 / 1.0.0 / 1.5.0 / 2.3.0 / 2.4.0 official source",
+          "evidence_note": "PyJWT 0.4.3 decode does not expose the algorithms argument. PyJWT 1.0.0 introduces the selected decode form with algorithms=None, and the selected form remains available through the vulnerable and fixed releases.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=1.0.0",
+            "boundary_evidence": {
+              "before_scope": {
+                "version": "0.4.3",
+                "source_path": "jwt/api.py",
+                "observation": "decode has no algorithms parameter."
+              },
+              "scope_start": {
+                "version": "1.0.0",
+                "source_path": "jwt/api.py",
+                "observation": "decode exposes algorithms=None."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "distribution": "pyjwt",
+      "api_symbol": "jwt.algorithms.get_default_algorithms",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyjwt_get_default_algorithms_zero_arg",
+          "status": "resolved",
+          "version_specifier": ">=1.0.0",
+          "required_positional_args_min": 0,
+          "required_positional_args_max": 0,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyJWT 0.4.3 / 1.0.0 / 1.5.0 / 2.4.0 official algorithms source",
+          "evidence_note": "PyJWT 0.4.3 uses the older _register_default_algorithms helper. PyJWT 1.0.0 exposes get_default_algorithms(), and the helper remains present in 2.4.0.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=1.0.0",
+            "boundary_evidence": {
+              "before_scope": {
+                "version": "0.4.3",
+                "source_path": "jwt/algorithms.py",
+                "observation": "The module uses _register_default_algorithms and does not expose get_default_algorithms."
+              },
+              "scope_start": {
+                "version": "1.0.0",
+                "source_path": "jwt/algorithms.py",
+                "observation": "get_default_algorithms() is present as a zero-argument function."
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "pyjwt_0_4_3_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/0.4.3/jwt/api.py",
+      "claim": "PyJWT 0.4.3 decode does not expose an algorithms parameter."
+    },
+    {
+      "source_id": "pyjwt_0_4_3_algorithms",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/0.4.3/jwt/algorithms.py",
+      "claim": "PyJWT 0.4.3 uses _register_default_algorithms rather than get_default_algorithms."
+    },
+    {
+      "source_id": "pyjwt_1_0_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/1.0.0/jwt/api.py",
+      "claim": "PyJWT 1.0.0 decode exposes the algorithms parameter."
+    },
+    {
+      "source_id": "pyjwt_1_0_0_algorithms",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/1.0.0/jwt/algorithms.py",
+      "claim": "PyJWT 1.0.0 contains get_default_algorithms()."
+    },
+    {
+      "source_id": "pyjwt_1_5_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/1.5.0/jwt/api_jwt.py",
+      "claim": "The selected jwt.decode algorithms form remains present at the vulnerability lower boundary."
+    },
+    {
+      "source_id": "pyjwt_2_3_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/2.3.0/jwt/api_jwt.py",
+      "claim": "The selected jwt.decode form remains present immediately before the fixed release."
+    },
+    {
+      "source_id": "pyjwt_2_4_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/2.4.0/jwt/api_jwt.py",
+      "claim": "The selected jwt.decode form remains present in the fixed release."
+    },
+    {
+      "source_id": "pyjwt_2_4_0_algorithms",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/2.4.0/jwt/algorithms.py",
+      "claim": "get_default_algorithms() remains present in the fixed release."
+    }
+  ]
+}

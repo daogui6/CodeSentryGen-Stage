@@ -1,0 +1,14 @@
+check_id,expected,actual,status
+interval_overlap_still_true,true,true,PASS
+version_evidence_mode,"""discrete_confirmed_releases""","""discrete_confirmed_releases""",PASS
+discrete_exposed_count,0,0,PASS
+has_version_exposure,false,false,PASS
+assessment_uses_discrete_result,"""no_version_overlap""","""no_version_overlap""",PASS
+candidate_suppressed_by_discrete_result,false,false,PASS
+unresolved_vulnerability_constraint_status,"""unsupported_range_shape""","""unsupported_range_shape""",PASS
+unresolved_discrete_evidence_status,"""vulnerability_constraint_unsupported_range_shape""","""vulnerability_constraint_unsupported_range_shape""",PASS
+unresolved_version_evidence_mode,"""discrete_evidence_unresolved""","""discrete_evidence_unresolved""",PASS
+unresolved_has_version_exposure,null,null,PASS
+unresolved_version_overlap,null,null,PASS
+unresolved_assessment,"""vulnerability_constraint_requires_review""","""vulnerability_constraint_requires_review""",PASS
+unresolved_candidate,false,false,PASS

@@ -1,0 +1,79 @@
+{
+  "schema_version": "avcs_api_history_seed_v0.2",
+  "ecosystem": "pypi",
+  "entries": [
+    {
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.safe_load",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyyaml_safe_load_basic",
+          "version_specifier": ">=3.01",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "official_source_tag",
+          "evidence_ref": "yaml/pyyaml@3.01:lib/yaml/__init__.py",
+          "evidence_note": "The PyYAML 3.01 source defines safe_load(stream)."
+        }
+      ]
+    },
+    {
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.safe_dump",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyyaml_safe_dump_basic",
+          "version_specifier": ">=3.01",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "official_source_tag",
+          "evidence_ref": "yaml/pyyaml@3.01:lib/yaml/__init__.py",
+          "evidence_note": "The PyYAML 3.01 source defines safe_dump(data, stream=None, **kwds)."
+        },
+        {
+          "rule_id": "pyyaml_safe_dump_sort_keys",
+          "version_specifier": ">=5.1",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [
+            "sort_keys"
+          ],
+          "supported_keyword_args": [
+            "sort_keys"
+          ],
+          "forbidden_keyword_args": [],
+          "evidence_type": "official_source_tag_comparison",
+          "evidence_ref": "yaml/pyyaml@3.13..5.1:lib/yaml/__init__.py",
+          "evidence_note": "PyYAML 5.1 exposes the sort_keys argument."
+        }
+      ]
+    },
+    {
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.full_load",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyyaml_full_load_basic",
+          "version_specifier": ">=5.1",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "official_source_tag",
+          "evidence_ref": "yaml/pyyaml@5.1:lib/yaml/__init__.py",
+          "evidence_note": "PyYAML 5.1 defines full_load(stream)."
+        }
+      ]
+    }
+  ]
+}

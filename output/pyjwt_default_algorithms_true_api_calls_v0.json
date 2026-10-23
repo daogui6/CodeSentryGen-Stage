@@ -1,0 +1,56 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_pyjwt_default_algorithms_true",
+  "code_file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 2,
+  "api_calls": [
+    {
+      "import_name": "jwt",
+      "distribution": "PyJWT",
+      "api_symbol": "jwt.decode",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+        "line": 7,
+        "column": 10
+      },
+      "call_text": "jwt.decode(\n    token,\n    verification_key,\n    algorithms=jwt.algorithms.get_default_algorithms(),\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 2,
+        "keyword_arg_names": [
+          "algorithms"
+        ],
+        "keyword_arg_values": {
+          "algorithms": {
+            "source_text": "jwt.algorithms.get_default_algorithms()",
+            "resolved_symbol": null,
+            "resolved_call_symbol": "jwt.algorithms.get_default_algorithms"
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    },
+    {
+      "import_name": "jwt",
+      "distribution": "PyJWT",
+      "api_symbol": "jwt.algorithms.get_default_algorithms",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+        "line": 10,
+        "column": 16
+      },
+      "call_text": "jwt.algorithms.get_default_algorithms()",
+      "call_shape": {
+        "explicit_positional_arg_count": 0,
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

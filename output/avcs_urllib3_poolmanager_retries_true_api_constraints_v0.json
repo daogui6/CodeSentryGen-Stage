@@ -1,0 +1,149 @@
+{
+  "schema_version": "api_version_constraint_v0.1",
+  "sample_id": "avcs_urllib3_poolmanager_retries_true",
+  "api_call_evidence_file": "output/avcs_urllib3_poolmanager_retries_true_api_calls_v0.json",
+  "history_file": "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json",
+  "history_schema_version": "avcs_api_history_evidence_v0.1",
+  "status": "resolved",
+  "api_call_count": 2,
+  "resolved_api_call_count": 2,
+  "unresolved_api_call_count": 0,
+  "call_constraints": [
+    {
+      "distribution": "urllib3",
+      "normalized_distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager",
+      "call_text": "urllib3.PoolManager(\n    retries=0,\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 0,
+        "positional_arg_values": [],
+        "keyword_arg_names": [
+          "retries"
+        ],
+        "keyword_arg_values": {
+          "retries": {
+            "source_text": "0",
+            "resolved_symbol": null,
+            "literal_value": 0
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_true.py",
+        "line": 4,
+        "column": 8
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "urllib3_poolmanager_retries_keyword",
+          "version_specifier": ">=1.9",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "urllib3 1.8.3 / 1.9 / 2.4.0 / 2.5.0 official source and release history",
+          "evidence_note": "PoolManager accepts additional connection-pool keyword arguments before urllib3 1.9, but urllib3 1.8.3 HTTPConnectionPool does not expose retries as a pool configuration parameter. urllib3 1.9 introduces retries as an explicit HTTPConnectionPool parameter and PoolManager forwards its connection_pool_kw to the pool constructor. The selected retries=0 form remains accepted at the vulnerable 2.4.0 boundary and at fixed release 2.5.0."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=1.9"
+      ],
+      "combined_version_specifier": ">=1.9",
+      "simplified_version_specifier": ">=1.9"
+    },
+    {
+      "distribution": "urllib3",
+      "normalized_distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager.request",
+      "call_text": "http.request(\n    \"GET\",\n    \"https://example.com/start\",\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 2,
+        "positional_arg_values": [
+          {
+            "position": 0,
+            "source_text": "\"GET\"",
+            "resolved_symbol": null,
+            "literal_value": "GET"
+          },
+          {
+            "position": 1,
+            "source_text": "\"https://example.com/start\"",
+            "resolved_symbol": null,
+            "literal_value": "https://example.com/start"
+          }
+        ],
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_urllib3_poolmanager_retries_true.py",
+        "line": 8,
+        "column": 12
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "urllib3_poolmanager_request_two_positional",
+          "version_specifier": ">=1.0",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "urllib3 1.0 / 2.4.0 / 2.5.0 official source and release history",
+          "evidence_note": "urllib3 1.0 introduces PoolManager and has PoolManager inherit RequestMethods, whose request(method, url, fields=None, headers=None, **urlopen_kw) supports the selected two-positional method-and-URL call form. The selected request form remains available through the vulnerable and fixed boundaries."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=1.0"
+      ],
+      "combined_version_specifier": ">=1.0",
+      "simplified_version_specifier": ">=1.0",
+      "receiver_provenance": {
+        "receiver_name": "http",
+        "assignment_line": 4,
+        "producer_api_symbol": "urllib3.PoolManager",
+        "producer_binding_type": "module_import",
+        "producer_call_shape": {
+          "explicit_positional_arg_count": 0,
+          "positional_arg_values": [],
+          "keyword_arg_names": [
+            "retries"
+          ],
+          "keyword_arg_values": {
+            "retries": {
+              "source_text": "0",
+              "resolved_symbol": null,
+              "literal_value": 0
+            }
+          },
+          "has_star_args": false,
+          "has_star_kwargs": false
+        }
+      }
+    }
+  ],
+  "distribution_constraints": [
+    {
+      "distribution": "urllib3",
+      "normalized_distribution": "urllib3",
+      "status": "resolved",
+      "api_call_count": 2,
+      "resolved_api_call_count": 2,
+      "unresolved_api_call_count": 0,
+      "resolved_api_symbols": [
+        "urllib3.PoolManager",
+        "urllib3.PoolManager.request"
+      ],
+      "unresolved_api_symbols": [],
+      "s_api": {
+        "raw_specifier": ">=1.9,>=1.0",
+        "simplified_specifier": ">=1.9",
+        "evidence_rule_ids": [
+          "urllib3_poolmanager_retries_keyword",
+          "urllib3_poolmanager_request_two_positional"
+        ]
+      }
+    }
+  ]
+}

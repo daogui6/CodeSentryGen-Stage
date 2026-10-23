@@ -1,0 +1,13 @@
+check_id,expected,actual,status
+registry_release_count,5,5,PASS
+release_count_with_files,3,3,PASS
+release_without_file_evidence,"[""0.9""]","[""0.9""]",PASS
+invalid_version_label,"[""not-a-version""]","[""not-a-version""]",PASS
+confirmed_count_as_of_time_view,2,2,PASS
+confirmed_count_after_time_view,1,1,PASS
+confirmed_versions,"[""1.0"", ""1.1rc1""]","[""1.0"", ""1.1rc1""]",PASS
+latest_confirmed_version,"""1.1rc1""","""1.1rc1""",PASS
+earliest_file_upload_time,"""2024-01-01T00:00:00+00:00""","""2024-01-01T00:00:00+00:00""",PASS
+prerelease_count,1,1,PASS
+currently_yanked_count,1,1,PASS
+history_status,"""partial""","""partial""",PASS

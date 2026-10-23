@@ -1,0 +1,32 @@
+{
+  "schema_version": "avcs_python_api_surface_history_batch_v0.1",
+  "distribution": "Pillow",
+  "surface_spec_file": "output/avcs_api_history_scale/pillow/pillow_minimal_api_surface_spec_v0.json",
+  "release_history_file": "output/avcs_api_history_scale/pillow/release_history_v0.json",
+  "selected_symbol_count": 1,
+  "completed_symbol_count": 1,
+  "error_symbol_count": 0,
+  "results": [
+    {
+      "api_symbol": "PIL.Image.open",
+      "role": "image_loader",
+      "latest_target": "PIL.Image.open",
+      "status": "completed",
+      "selected_release_count": 104,
+      "public_symbol_resolved_count": 104,
+      "public_symbol_unresolved_count": 0,
+      "supported_count": 104,
+      "unsupported_count": 0,
+      "unknown_count": 0,
+      "support_transition_count": 0,
+      "coverage_status": "complete",
+      "candidate_scope": "stable_release_history_candidate",
+      "lower_bound_status": "candidate",
+      "version_specifier": ">=1.0",
+      "boundary_version": "1.0",
+      "release_history_file": "output/avcs_api_history_scale/pillow/batch_open_retry_v0/PIL.Image.open/release_history.json",
+      "refined_history_file": "output/avcs_api_history_scale/pillow/batch_open_retry_v0/PIL.Image.open/release_history_refined.json",
+      "candidate_file": "output/avcs_api_history_scale/pillow/batch_open_retry_v0/PIL.Image.open/api_history_candidate.json"
+    }
+  ]
+}

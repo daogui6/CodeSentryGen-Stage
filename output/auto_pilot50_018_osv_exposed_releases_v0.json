@@ -1,0 +1,203 @@
+{
+  "schema_version": "avcs_exposed_releases_v0.1",
+  "release_evidence_mode": "manifest_compatible",
+  "manifest_context_status": "matched",
+  "manifest_compatible_status": "resolved_with_partial_release_history",
+  "s_manifest": "",
+  "sample_id": "auto_pilot50_018",
+  "distribution": "PyYAML",
+  "normalized_distribution": "pyyaml",
+  "time_view": "2026-06-17T08:15:25+00:00",
+  "api_compatible_status": "resolved_with_partial_release_history",
+  "s_api": ">=5.1",
+  "release_history_status": "partial",
+  "evaluation_count": 1,
+  "evaluations": [
+    {
+      "vulnerability_id": "PYSEC-2021-142",
+      "severity": "not_calibrated",
+      "status": "resolved",
+      "s_vuln": "<5.4",
+      "fixed_version_specifier": ">=5.4",
+      "confirmed_api_compatible_release_count": 18,
+      "confirmed_manifest_compatible_release_count": 18,
+      "release_candidate_count": 18,
+      "confirmed_exposed_release_count": 8,
+      "confirmed_not_affected_release_count": 10,
+      "confirmed_exposed_releases": [
+        {
+          "version": "5.1",
+          "first_upload_time": "2019-03-13T16:35:30.601054+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.1.1",
+          "first_upload_time": "2019-06-06T22:31:02.927000+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.1.2",
+          "first_upload_time": "2019-07-31T16:17:59.782738+00:00",
+          "file_count": 13,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.2b1",
+          "first_upload_time": "2019-11-26T19:16:00.866031+00:00",
+          "file_count": 13,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.2",
+          "first_upload_time": "2019-12-02T21:35:31.150155+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.3b1",
+          "first_upload_time": "2019-12-21T22:08:38.240715+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.3",
+          "first_upload_time": "2020-01-06T20:02:23.782786+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.3.1",
+          "first_upload_time": "2020-03-18T21:41:00.814795+00:00",
+          "file_count": 13,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        }
+      ],
+      "confirmed_not_affected_releases": [
+        {
+          "version": "5.4b1",
+          "first_upload_time": "2021-01-14T00:21:11.079799+00:00",
+          "file_count": 21,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.4b2",
+          "first_upload_time": "2021-01-14T21:55:12.888761+00:00",
+          "file_count": 21,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.4",
+          "first_upload_time": "2021-01-19T20:54:14.721571+00:00",
+          "file_count": 21,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.4.1",
+          "first_upload_time": "2021-01-20T22:07:31.474651+00:00",
+          "file_count": 29,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "6.0b1",
+          "first_upload_time": "2021-10-04T19:44:04.684882+00:00",
+          "file_count": 33,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "6.0",
+          "first_upload_time": "2021-10-13T19:39:42.916039+00:00",
+          "file_count": 40,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "6.0.1",
+          "first_upload_time": "2023-07-17T23:57:04.325444+00:00",
+          "file_count": 51,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "6.0.2rc1",
+          "first_upload_time": "2024-06-10T23:29:19.142288+00:00",
+          "file_count": 53,
+          "currently_yanked_file_count": 53,
+          "all_files_currently_yanked": true,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "6.0.2",
+          "first_upload_time": "2024-08-06T20:31:40.178426+00:00",
+          "file_count": 53,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "6.0.3",
+          "first_upload_time": "2025-09-25T21:31:46.040932+00:00",
+          "file_count": 73,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        }
+      ],
+      "time_unknown_exposed_release_labels": [],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_normalized_record",
+      "evidence_ref": "PYSEC-2021-142"
+    }
+  ],
+  "api_compatible_releases_file": "output/auto_pilot50_018_api_compatible_releases_v0.json",
+  "manifest_compatible_releases_file": "output/auto_pilot50_018_manifest_compatible_releases_v0.json",
+  "vulnerability_constraints_file": "output/auto_pilot50_018_osv_vulnerability_constraints_v0.json"
+}

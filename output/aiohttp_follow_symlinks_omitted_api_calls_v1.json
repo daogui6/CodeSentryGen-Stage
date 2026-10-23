@@ -1,0 +1,29 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_aiohttp_follow_symlinks_omitted",
+  "code_file": "data/avcs_validation/avcs_aiohttp_follow_symlinks_omitted.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "aiohttp",
+      "distribution": "aiohttp",
+      "api_symbol": "aiohttp.web.static",
+      "binding_type": "from_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_aiohttp_follow_symlinks_omitted.py",
+        "line": 4,
+        "column": 9
+      },
+      "call_text": "web.static(\n    \"/assets\",\n    \"./assets\",\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 2,
+        "keyword_arg_names": [],
+        "keyword_arg_values": {},
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

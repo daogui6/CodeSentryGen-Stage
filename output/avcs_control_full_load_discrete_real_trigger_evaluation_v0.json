@@ -1,0 +1,163 @@
+{
+  "schema_version": "avcs_evaluation_v0.1",
+  "sample_id": "avcs_control_full_load_discrete",
+  "sample_context_status": "sample_not_found",
+  "sample_context": {},
+  "distribution": "PyYAML",
+  "normalized_distribution": "pyyaml",
+  "status": "evaluated",
+  "evaluation_count": 1,
+  "risk_card_candidate_count": 1,
+  "evaluations": [
+    {
+      "vulnerability_id": "PYSEC-2021-142",
+      "severity": "not_calibrated",
+      "api_constraint_status": "resolved",
+      "vulnerability_constraint_status": "resolved",
+      "s_api": ">=5.1",
+      "s_vuln": "<5.4",
+      "version_evidence_mode": "discrete_confirmed_releases",
+      "discrete_evidence_status": "matched",
+      "has_version_exposure": true,
+      "confirmed_api_compatible_release_count": 18,
+      "confirmed_exposed_release_count": 10,
+      "confirmed_not_affected_release_count": 8,
+      "confirmed_exposed_releases": [
+        {
+          "version": "5.1",
+          "first_upload_time": "2019-03-13T16:35:30.601054+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.1.1",
+          "first_upload_time": "2019-06-06T22:31:02.927000+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.1.2",
+          "first_upload_time": "2019-07-31T16:17:59.782738+00:00",
+          "file_count": 13,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.2b1",
+          "first_upload_time": "2019-11-26T19:16:00.866031+00:00",
+          "file_count": 13,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.2",
+          "first_upload_time": "2019-12-02T21:35:31.150155+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.3b1",
+          "first_upload_time": "2019-12-21T22:08:38.240715+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.3",
+          "first_upload_time": "2020-01-06T20:02:23.782786+00:00",
+          "file_count": 11,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.3.1",
+          "first_upload_time": "2020-03-18T21:41:00.814795+00:00",
+          "file_count": 13,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.4b1",
+          "first_upload_time": "2021-01-14T00:21:11.079799+00:00",
+          "file_count": 21,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "5.4b2",
+          "first_upload_time": "2021-01-14T21:55:12.888761+00:00",
+          "file_count": 21,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        }
+      ],
+      "time_unknown_exposed_release_labels": [],
+      "fixed_version_specifier": ">=5.4",
+      "version_overlap": true,
+      "intersection_specifier": ">=5.1,<5.4",
+      "intersection_semantics": "interval_summary_only",
+      "overlap_status": "overlap",
+      "observed_api_symbols": [
+        "yaml.full_load"
+      ],
+      "trigger_api_symbols": [
+        "yaml.full_load"
+      ],
+      "conditional_trigger_api_symbols": [
+        "yaml.load"
+      ],
+      "conditional_trigger_rule_evaluations": [],
+      "observed_trigger_apis": [
+        "yaml.full_load"
+      ],
+      "observed_trigger_calls": [
+        {
+          "api_symbol": "yaml.full_load",
+          "call_text": "yaml.full_load(yaml_text)",
+          "location": {
+            "file": "data/avcs_control_full_load.py",
+            "line": 5,
+            "column": 12
+          },
+          "call_shape": {
+            "explicit_positional_arg_count": 1,
+            "keyword_arg_names": [],
+            "has_star_args": false,
+            "has_star_kwargs": false
+          },
+          "trigger_match_mode": "direct_api"
+        }
+      ],
+      "observed_safe_apis": [],
+      "safe_rule_evaluations": [],
+      "observed_safe_rule_calls": [],
+      "requires_untrusted_input": true,
+      "assessment": "candidate_requires_input_review",
+      "risk_card_candidate": true,
+      "evidence_ref": "PYSEC-2021-142"
+    }
+  ]
+}

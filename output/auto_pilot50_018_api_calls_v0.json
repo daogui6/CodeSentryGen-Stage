@@ -1,0 +1,48 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "auto_pilot50_018",
+  "code_file": "data/auto_generated_code_files/auto_pilot50_018.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 2,
+  "api_calls": [
+    {
+      "import_name": "yaml",
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.safe_load",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/auto_generated_code_files/auto_pilot50_018.py",
+        "line": 5,
+        "column": 16
+      },
+      "call_text": "yaml.safe_load(yaml_string)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    },
+    {
+      "import_name": "yaml",
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.safe_dump",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/auto_generated_code_files/auto_pilot50_018.py",
+        "line": 9,
+        "column": 16
+      },
+      "call_text": "yaml.safe_dump(data, sort_keys=False)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [
+          "sort_keys"
+        ],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,4508 @@
+{
+  "schema_version": "avcs_osv_package_catalog_v0.1",
+  "provider": "OSV",
+  "distribution": "numpy",
+  "normalized_distribution": "numpy",
+  "ecosystem": "PyPI",
+  "source_snapshot_file": "output/step7_osv_snapshots_v0/numpy.json",
+  "source_snapshot_schema_version": "avcs_osv_package_snapshot_v0.1",
+  "source_query_data_source": "network",
+  "source_query_queried_at": "2026-09-16T03:39:43.960966+00:00",
+  "normalizer_sample_id": "osv_catalog::PyPI::numpy",
+  "source_record_count": 16,
+  "resolved_source_record_count": 16,
+  "partial_source_record_count": 0,
+  "unresolved_source_record_count": 0,
+  "withdrawn_source_record_count": 0,
+  "vulnerability_group_count": 8,
+  "groups_with_range_disagreement": 7,
+  "groups_with_affected_version_list_disagreement": 6,
+  "normalized_records": [
+    {
+      "source_record_id": "GHSA-2fc2-6r4j-p65h",
+      "aliases": [
+        "CVE-2014-1859",
+        "PYSEC-2018-34"
+      ],
+      "identifiers": [
+        "CVE-2014-1859",
+        "GHSA-2fc2-6r4j-p65h",
+        "PYSEC-2018-34"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-14T01:08:34Z",
+      "modified_at": "2024-10-01T21:25:39.590447Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0"
+      ],
+      "fixed_versions": [
+        "1.8.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-2fc2-6r4j-p65h.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-2fc2-6r4j-p65h.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-2fc2-6r4j-p65h",
+      "evidence_hash": "sha256:d4c18aa8745ab047619e61d5d9c1030dd078ab2b29563d5fc3b8009e74d94052"
+    },
+    {
+      "source_record_id": "GHSA-5545-2q6w-2gh6",
+      "aliases": [
+        "CVE-2021-41495",
+        "PYSEC-2021-856"
+      ],
+      "identifiers": [
+        "CVE-2021-41495",
+        "GHSA-5545-2q6w-2gh6",
+        "PYSEC-2021-856"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-02-08T00:00:56Z",
+      "modified_at": "2023-11-08T04:06:59.212424Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.16.6",
+        "1.17.0",
+        "1.17.1",
+        "1.17.2",
+        "1.17.3",
+        "1.17.4",
+        "1.17.5",
+        "1.18.0",
+        "1.18.1",
+        "1.18.2",
+        "1.18.3",
+        "1.18.4",
+        "1.18.5",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.19"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-5545-2q6w-2gh6.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-5545-2q6w-2gh6.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-5545-2q6w-2gh6",
+      "evidence_hash": "sha256:e74941397ef74385a626b01d17891755b18bd6d3bc097597d77d54002bb9fe49"
+    },
+    {
+      "source_record_id": "GHSA-6p56-wp2h-9hxr",
+      "aliases": [
+        "CVE-2021-33430",
+        "PYSEC-2021-854"
+      ],
+      "identifiers": [
+        "CVE-2021-33430",
+        "GHSA-6p56-wp2h-9hxr",
+        "PYSEC-2021-854"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-01-07T00:09:39Z",
+      "modified_at": "2024-09-26T15:01:21.525444Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.21"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.16.6",
+        "1.17.0",
+        "1.17.1",
+        "1.17.2",
+        "1.17.3",
+        "1.17.4",
+        "1.17.5",
+        "1.18.0",
+        "1.18.1",
+        "1.18.2",
+        "1.18.3",
+        "1.18.4",
+        "1.18.5",
+        "1.19.0",
+        "1.19.1",
+        "1.19.2",
+        "1.19.3",
+        "1.19.4",
+        "1.19.5",
+        "1.20.0",
+        "1.20.1",
+        "1.20.2",
+        "1.20.3",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.21"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-6p56-wp2h-9hxr.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-6p56-wp2h-9hxr.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-6p56-wp2h-9hxr",
+      "evidence_hash": "sha256:a6c114c79dda453b74049c9bf68f91c8dbfcc9a9aaf60d3a842738cecfc0918f"
+    },
+    {
+      "source_record_id": "GHSA-9fq2-x9r6-wfmf",
+      "aliases": [
+        "CVE-2019-6446",
+        "PYSEC-2019-108"
+      ],
+      "identifiers": [
+        "CVE-2019-6446",
+        "GHSA-9fq2-x9r6-wfmf",
+        "PYSEC-2019-108"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-24T22:00:57Z",
+      "modified_at": "2026-07-06T15:30:15.818392869Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.16.3"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.1",
+        "1.16.2",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.16.3"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-9fq2-x9r6-wfmf.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-9fq2-x9r6-wfmf.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-9fq2-x9r6-wfmf",
+      "evidence_hash": "sha256:2664326a1b218869773bfa602ca5d606c9c1a4c51b54e2243b3a075010d012f6"
+    },
+    {
+      "source_record_id": "GHSA-cw6w-4rcx-xphc",
+      "aliases": [
+        "CVE-2014-1858",
+        "PYSEC-2018-33"
+      ],
+      "identifiers": [
+        "CVE-2014-1858",
+        "GHSA-cw6w-4rcx-xphc",
+        "PYSEC-2018-33"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-14T03:48:04Z",
+      "modified_at": "2024-10-07T21:24:52.642615Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0"
+      ],
+      "fixed_versions": [
+        "1.8.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-cw6w-4rcx-xphc.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-cw6w-4rcx-xphc.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-cw6w-4rcx-xphc",
+      "evidence_hash": "sha256:d679144eee3a8923e4e9edb8c9430b0b3459e53f3a1c64410ed15e3db57d22e8"
+    },
+    {
+      "source_record_id": "GHSA-f7c7-j99h-c22f",
+      "aliases": [
+        "CVE-2021-41496",
+        "PYSEC-2021-857"
+      ],
+      "identifiers": [
+        "CVE-2021-41496",
+        "GHSA-f7c7-j99h-c22f",
+        "PYSEC-2021-857"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-02-08T00:00:56Z",
+      "modified_at": "2023-11-08T04:06:59.274139Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.16.6",
+        "1.17.0",
+        "1.17.1",
+        "1.17.2",
+        "1.17.3",
+        "1.17.4",
+        "1.17.5",
+        "1.18.0",
+        "1.18.1",
+        "1.18.2",
+        "1.18.3",
+        "1.18.4",
+        "1.18.5",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.19"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-f7c7-j99h-c22f.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-f7c7-j99h-c22f.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-f7c7-j99h-c22f",
+      "evidence_hash": "sha256:ba3162f15e48cdc9e74d0c0f7c5335eafe20f3ffa124656a25e0557a051bb675"
+    },
+    {
+      "source_record_id": "GHSA-fpfv-jqm9-f5jm",
+      "aliases": [
+        "CVE-2021-34141",
+        "PYSEC-2021-855"
+      ],
+      "identifiers": [
+        "CVE-2021-34141",
+        "GHSA-fpfv-jqm9-f5jm",
+        "PYSEC-2021-855"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2021-12-18T00:00:41Z",
+      "modified_at": "2023-11-08T04:06:07.388275Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.22"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.16.6",
+        "1.17.0",
+        "1.17.1",
+        "1.17.2",
+        "1.17.3",
+        "1.17.4",
+        "1.17.5",
+        "1.18.0",
+        "1.18.1",
+        "1.18.2",
+        "1.18.3",
+        "1.18.4",
+        "1.18.5",
+        "1.19.0",
+        "1.19.1",
+        "1.19.2",
+        "1.19.3",
+        "1.19.4",
+        "1.19.5",
+        "1.2.0",
+        "1.2.1",
+        "1.20.0",
+        "1.20.1",
+        "1.20.2",
+        "1.20.3",
+        "1.21.0",
+        "1.21.1",
+        "1.21.2",
+        "1.21.3",
+        "1.21.4",
+        "1.21.5",
+        "1.21.6",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.22"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-fpfv-jqm9-f5jm.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-fpfv-jqm9-f5jm.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-fpfv-jqm9-f5jm",
+      "evidence_hash": "sha256:9d065761b9f698bee8bcb2618c74f1348c9dd61bbd4da4622426174a0fc0bb10"
+    },
+    {
+      "source_record_id": "GHSA-frgw-fgh6-9g52",
+      "aliases": [
+        "CVE-2017-12852",
+        "PYSEC-2017-1"
+      ],
+      "identifiers": [
+        "CVE-2017-12852",
+        "GHSA-frgw-fgh6-9g52",
+        "PYSEC-2017-1"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2022-05-13T01:42:46Z",
+      "modified_at": "2023-11-08T03:58:54.336802Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.13.3"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.13.3"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-frgw-fgh6-9g52.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-frgw-fgh6-9g52.json",
+      "source_url": "https://api.osv.dev/v1/vulns/GHSA-frgw-fgh6-9g52",
+      "evidence_hash": "sha256:9df972ff46c5c31f7f47004b2457504173f90fd3dffbccd909f2ee83f1f028f0"
+    },
+    {
+      "source_record_id": "PYSEC-2017-1",
+      "aliases": [
+        "CVE-2017-12852",
+        "GHSA-frgw-fgh6-9g52"
+      ],
+      "identifiers": [
+        "CVE-2017-12852",
+        "GHSA-frgw-fgh6-9g52",
+        "PYSEC-2017-1"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2017-08-15T16:29:00Z",
+      "modified_at": "2023-11-08T03:58:54.336802Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.13.3"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.0rc1",
+        "1.13.0rc2",
+        "1.13.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.13.3"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2017-1.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2017-1.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2017-1",
+      "evidence_hash": "sha256:b0fdc2bb47b9a7435c13ff214c17eabf08f02d15beb0ed4ba833d8dac6fc9951"
+    },
+    {
+      "source_record_id": "PYSEC-2018-33",
+      "aliases": [
+        "CVE-2014-1858",
+        "GHSA-cw6w-4rcx-xphc"
+      ],
+      "identifiers": [
+        "CVE-2014-1858",
+        "GHSA-cw6w-4rcx-xphc",
+        "PYSEC-2018-33"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2018-01-08T19:29:00Z",
+      "modified_at": "2023-11-08T03:57:35.308828Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "GIT",
+          "repo": "https://github.com/numpy/numpy",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+            }
+          ]
+        },
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0"
+      ],
+      "fixed_versions": [
+        "1.8.1"
+      ],
+      "fixed_commits": [
+        "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+      ],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2018-33.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2018-33.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-33",
+      "evidence_hash": "sha256:f112033400ec633afb7fdc2a7bca44ab2a8e87fc370364ae064661595f4b2c06"
+    },
+    {
+      "source_record_id": "PYSEC-2018-34",
+      "aliases": [
+        "CVE-2014-1859",
+        "GHSA-2fc2-6r4j-p65h"
+      ],
+      "identifiers": [
+        "CVE-2014-1859",
+        "GHSA-2fc2-6r4j-p65h",
+        "PYSEC-2018-34"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2018-01-08T19:29:00Z",
+      "modified_at": "2023-11-08T03:57:35.369858Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "GIT",
+          "repo": "https://github.com/numpy/numpy",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+            }
+          ]
+        },
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.8.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0"
+      ],
+      "fixed_versions": [
+        "1.8.1"
+      ],
+      "fixed_commits": [
+        "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+      ],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2018-34.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2018-34.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-34",
+      "evidence_hash": "sha256:f125b905d3d211492160b33e6c2c735d4eb63e842c98c113d7a8eded14f67120"
+    },
+    {
+      "source_record_id": "PYSEC-2019-108",
+      "aliases": [
+        "CVE-2019-6446",
+        "GHSA-9fq2-x9r6-wfmf"
+      ],
+      "identifiers": [
+        "CVE-2019-6446",
+        "GHSA-9fq2-x9r6-wfmf",
+        "PYSEC-2019-108"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2019-01-16T05:29:00Z",
+      "modified_at": "2026-06-10T17:02:26.371473951Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.16.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.0rc1",
+        "1.13.0rc2",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.0rc1",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.0rc1",
+        "1.15.0rc2",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.0rc1",
+        "1.16.0rc2",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.16.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2019-108.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2019-108.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2019-108",
+      "evidence_hash": "sha256:f93102424f66bf303d7a196cb225aa313c04f169bd425eced757426a1e4dc1c8"
+    },
+    {
+      "source_record_id": "PYSEC-2021-854",
+      "aliases": [
+        "CVE-2021-33430",
+        "GHSA-6p56-wp2h-9hxr"
+      ],
+      "identifiers": [
+        "CVE-2021-33430",
+        "GHSA-6p56-wp2h-9hxr",
+        "PYSEC-2021-854"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2021-12-17T19:15:00Z",
+      "modified_at": "2023-11-08T04:06:04.438690Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.10.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.10.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-854.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-854.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-854",
+      "evidence_hash": "sha256:01f0fe31b725e5e258bd720225491a5c2e72860b3cca65a4a784e234ef65a7e3"
+    },
+    {
+      "source_record_id": "PYSEC-2021-855",
+      "aliases": [
+        "CVE-2021-34141",
+        "GHSA-fpfv-jqm9-f5jm"
+      ],
+      "identifiers": [
+        "CVE-2021-34141",
+        "GHSA-fpfv-jqm9-f5jm",
+        "PYSEC-2021-855"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2021-12-17T19:15:00Z",
+      "modified_at": "2023-11-08T04:06:07.388275Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "1.9.0"
+            },
+            {
+              "fixed": "1.10.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.10.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-855.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-855.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-855",
+      "evidence_hash": "sha256:92d6dea07be06082ae06e83d5ce34cb8dff34ab8071b9b21e4beedebdbe45b16"
+    },
+    {
+      "source_record_id": "PYSEC-2021-856",
+      "aliases": [
+        "CVE-2021-41495",
+        "GHSA-5545-2q6w-2gh6"
+      ],
+      "identifiers": [
+        "CVE-2021-41495",
+        "GHSA-5545-2q6w-2gh6",
+        "PYSEC-2021-856"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2021-12-17T20:15:00Z",
+      "modified_at": "2023-11-08T04:06:59.212424Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.1"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.0rc1",
+        "1.13.0rc2",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.0rc1",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.0rc1",
+        "1.15.0rc2",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.0rc1",
+        "1.16.0rc2",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.16.6",
+        "1.17.0",
+        "1.17.0rc1",
+        "1.17.0rc2",
+        "1.17.1",
+        "1.17.2",
+        "1.17.3",
+        "1.17.4",
+        "1.17.5",
+        "1.18.0",
+        "1.18.0rc1",
+        "1.18.1",
+        "1.18.2",
+        "1.18.3",
+        "1.18.4",
+        "1.18.5",
+        "1.19.0",
+        "1.19.0rc1",
+        "1.19.0rc2",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.19.1"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-856.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-856.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-856",
+      "evidence_hash": "sha256:9725d4da3f6ecdfb97217bc93ff0967b2a1841aabb0e259bd60909d5142cacd1"
+    },
+    {
+      "source_record_id": "PYSEC-2021-857",
+      "aliases": [
+        "CVE-2021-41496",
+        "GHSA-f7c7-j99h-c22f"
+      ],
+      "identifiers": [
+        "CVE-2021-41496",
+        "GHSA-f7c7-j99h-c22f",
+        "PYSEC-2021-857"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2021-12-17T20:15:00Z",
+      "modified_at": "2023-11-08T04:06:59.274139Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.19.0"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.10.0",
+        "1.10.1",
+        "1.10.2",
+        "1.10.3",
+        "1.10.4",
+        "1.11.0",
+        "1.11.1",
+        "1.11.2",
+        "1.11.3",
+        "1.12.0",
+        "1.12.1",
+        "1.13.0",
+        "1.13.0rc1",
+        "1.13.0rc2",
+        "1.13.1",
+        "1.13.3",
+        "1.14.0",
+        "1.14.0rc1",
+        "1.14.1",
+        "1.14.2",
+        "1.14.3",
+        "1.14.4",
+        "1.14.5",
+        "1.14.6",
+        "1.15.0",
+        "1.15.0rc1",
+        "1.15.0rc2",
+        "1.15.1",
+        "1.15.2",
+        "1.15.3",
+        "1.15.4",
+        "1.16.0",
+        "1.16.0rc1",
+        "1.16.0rc2",
+        "1.16.1",
+        "1.16.2",
+        "1.16.3",
+        "1.16.4",
+        "1.16.5",
+        "1.16.6",
+        "1.17.0",
+        "1.17.0rc1",
+        "1.17.0rc2",
+        "1.17.1",
+        "1.17.2",
+        "1.17.3",
+        "1.17.4",
+        "1.17.5",
+        "1.18.0",
+        "1.18.0rc1",
+        "1.18.1",
+        "1.18.2",
+        "1.18.3",
+        "1.18.4",
+        "1.18.5",
+        "1.19.0rc1",
+        "1.19.0rc2",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0",
+        "1.8.1",
+        "1.8.2",
+        "1.9.0",
+        "1.9.1",
+        "1.9.2",
+        "1.9.3"
+      ],
+      "fixed_versions": [
+        "1.19.0"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/numpy"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-857.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-857.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-857",
+      "evidence_hash": "sha256:7b887e9c40655a82b7e7abb268c975da002220e9b3e8cf9174223be14706248b"
+    }
+  ],
+  "vulnerability_groups": [
+    {
+      "group_id": "osvgrp_b7a3d80c537b",
+      "display_id": "GHSA-2fc2-6r4j-p65h",
+      "identifiers": [
+        "CVE-2014-1859",
+        "GHSA-2fc2-6r4j-p65h",
+        "PYSEC-2018-34"
+      ],
+      "source_record_ids": [
+        "GHSA-2fc2-6r4j-p65h",
+        "PYSEC-2018-34"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_da8ab8e42475",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "GHSA-2fc2-6r4j-p65h"
+          ]
+        },
+        {
+          "variant_id": "range_f83052fe55d0",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+                }
+              ],
+              "repo": "https://github.com/numpy/numpy",
+              "type": "GIT"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2018-34"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_f6ff80c2580f",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "source_record_ids": [
+            "GHSA-2fc2-6r4j-p65h",
+            "PYSEC-2018-34"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-2fc2-6r4j-p65h",
+          "aliases": [
+            "CVE-2014-1859",
+            "PYSEC-2018-34"
+          ],
+          "identifiers": [
+            "CVE-2014-1859",
+            "GHSA-2fc2-6r4j-p65h",
+            "PYSEC-2018-34"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-14T01:08:34Z",
+          "modified_at": "2024-10-01T21:25:39.590447Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-2fc2-6r4j-p65h.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-2fc2-6r4j-p65h.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-2fc2-6r4j-p65h",
+          "evidence_hash": "sha256:d4c18aa8745ab047619e61d5d9c1030dd078ab2b29563d5fc3b8009e74d94052"
+        },
+        {
+          "source_record_id": "PYSEC-2018-34",
+          "aliases": [
+            "CVE-2014-1859",
+            "GHSA-2fc2-6r4j-p65h"
+          ],
+          "identifiers": [
+            "CVE-2014-1859",
+            "GHSA-2fc2-6r4j-p65h",
+            "PYSEC-2018-34"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2018-01-08T19:29:00Z",
+          "modified_at": "2023-11-08T03:57:35.369858Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "GIT",
+              "repo": "https://github.com/numpy/numpy",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+                }
+              ]
+            },
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "fixed_commits": [
+            "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+          ],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2018-34.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2018-34.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-34",
+          "evidence_hash": "sha256:f125b905d3d211492160b33e6c2c735d4eb63e842c98c113d7a8eded14f67120"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_9bbe0369324b",
+      "display_id": "GHSA-5545-2q6w-2gh6",
+      "identifiers": [
+        "CVE-2021-41495",
+        "GHSA-5545-2q6w-2gh6",
+        "PYSEC-2021-856"
+      ],
+      "source_record_ids": [
+        "GHSA-5545-2q6w-2gh6",
+        "PYSEC-2021-856"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_1bba4d328b72",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19"
+          ],
+          "source_record_ids": [
+            "GHSA-5545-2q6w-2gh6"
+          ]
+        },
+        {
+          "variant_id": "range_bc0cabc98578",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-856"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_4407398aae98",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-5545-2q6w-2gh6"
+          ]
+        },
+        {
+          "variant_id": "versions_d59886e94396",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.0rc1",
+            "1.17.0rc2",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.0rc1",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.0rc1",
+            "1.19.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-856"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-5545-2q6w-2gh6",
+          "aliases": [
+            "CVE-2021-41495",
+            "PYSEC-2021-856"
+          ],
+          "identifiers": [
+            "CVE-2021-41495",
+            "GHSA-5545-2q6w-2gh6",
+            "PYSEC-2021-856"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-02-08T00:00:56Z",
+          "modified_at": "2023-11-08T04:06:59.212424Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.19"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-5545-2q6w-2gh6.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-5545-2q6w-2gh6.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-5545-2q6w-2gh6",
+          "evidence_hash": "sha256:e74941397ef74385a626b01d17891755b18bd6d3bc097597d77d54002bb9fe49"
+        },
+        {
+          "source_record_id": "PYSEC-2021-856",
+          "aliases": [
+            "CVE-2021-41495",
+            "GHSA-5545-2q6w-2gh6"
+          ],
+          "identifiers": [
+            "CVE-2021-41495",
+            "GHSA-5545-2q6w-2gh6",
+            "PYSEC-2021-856"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2021-12-17T20:15:00Z",
+          "modified_at": "2023-11-08T04:06:59.212424Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.0rc1",
+            "1.17.0rc2",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.0rc1",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.0rc1",
+            "1.19.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.19.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-856.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-856.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-856",
+          "evidence_hash": "sha256:9725d4da3f6ecdfb97217bc93ff0967b2a1841aabb0e259bd60909d5142cacd1"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_0d1840fb2bcc",
+      "display_id": "GHSA-6p56-wp2h-9hxr",
+      "identifiers": [
+        "CVE-2021-33430",
+        "GHSA-6p56-wp2h-9hxr",
+        "PYSEC-2021-854"
+      ],
+      "source_record_ids": [
+        "GHSA-6p56-wp2h-9hxr",
+        "PYSEC-2021-854"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_06254f85a398",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.21"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.21"
+          ],
+          "source_record_ids": [
+            "GHSA-6p56-wp2h-9hxr"
+          ]
+        },
+        {
+          "variant_id": "range_0567d12e986d",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.10.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-854"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_6d5e7041d1bf",
+          "affected_versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.19.5",
+            "1.20.0",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-6p56-wp2h-9hxr"
+          ]
+        },
+        {
+          "variant_id": "versions_69d70ebc134d",
+          "affected_versions": [
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-854"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-6p56-wp2h-9hxr",
+          "aliases": [
+            "CVE-2021-33430",
+            "PYSEC-2021-854"
+          ],
+          "identifiers": [
+            "CVE-2021-33430",
+            "GHSA-6p56-wp2h-9hxr",
+            "PYSEC-2021-854"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-01-07T00:09:39Z",
+          "modified_at": "2024-09-26T15:01:21.525444Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.21"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.19.5",
+            "1.20.0",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.21"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-6p56-wp2h-9hxr.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-6p56-wp2h-9hxr.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-6p56-wp2h-9hxr",
+          "evidence_hash": "sha256:a6c114c79dda453b74049c9bf68f91c8dbfcc9a9aaf60d3a842738cecfc0918f"
+        },
+        {
+          "source_record_id": "PYSEC-2021-854",
+          "aliases": [
+            "CVE-2021-33430",
+            "GHSA-6p56-wp2h-9hxr"
+          ],
+          "identifiers": [
+            "CVE-2021-33430",
+            "GHSA-6p56-wp2h-9hxr",
+            "PYSEC-2021-854"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2021-12-17T19:15:00Z",
+          "modified_at": "2023-11-08T04:06:04.438690Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.10.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-854.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-854.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-854",
+          "evidence_hash": "sha256:01f0fe31b725e5e258bd720225491a5c2e72860b3cca65a4a784e234ef65a7e3"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_5617814ab687",
+      "display_id": "GHSA-9fq2-x9r6-wfmf",
+      "identifiers": [
+        "CVE-2019-6446",
+        "GHSA-9fq2-x9r6-wfmf",
+        "PYSEC-2019-108"
+      ],
+      "source_record_ids": [
+        "GHSA-9fq2-x9r6-wfmf",
+        "PYSEC-2019-108"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_370c4c9ada45",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.16.3"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.16.3"
+          ],
+          "source_record_ids": [
+            "GHSA-9fq2-x9r6-wfmf"
+          ]
+        },
+        {
+          "variant_id": "range_8b427cbe8894",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.16.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.16.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2019-108"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_20d0563ca859",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-9fq2-x9r6-wfmf"
+          ]
+        },
+        {
+          "variant_id": "versions_ca58c9d61f6f",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2019-108"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-9fq2-x9r6-wfmf",
+          "aliases": [
+            "CVE-2019-6446",
+            "PYSEC-2019-108"
+          ],
+          "identifiers": [
+            "CVE-2019-6446",
+            "GHSA-9fq2-x9r6-wfmf",
+            "PYSEC-2019-108"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-24T22:00:57Z",
+          "modified_at": "2026-07-06T15:30:15.818392869Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.16.3"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.16.3"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-9fq2-x9r6-wfmf.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-9fq2-x9r6-wfmf.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-9fq2-x9r6-wfmf",
+          "evidence_hash": "sha256:2664326a1b218869773bfa602ca5d606c9c1a4c51b54e2243b3a075010d012f6"
+        },
+        {
+          "source_record_id": "PYSEC-2019-108",
+          "aliases": [
+            "CVE-2019-6446",
+            "GHSA-9fq2-x9r6-wfmf"
+          ],
+          "identifiers": [
+            "CVE-2019-6446",
+            "GHSA-9fq2-x9r6-wfmf",
+            "PYSEC-2019-108"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2019-01-16T05:29:00Z",
+          "modified_at": "2026-06-10T17:02:26.371473951Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.16.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.16.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2019-108.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2019-108.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2019-108",
+          "evidence_hash": "sha256:f93102424f66bf303d7a196cb225aa313c04f169bd425eced757426a1e4dc1c8"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_e8946569804c",
+      "display_id": "GHSA-cw6w-4rcx-xphc",
+      "identifiers": [
+        "CVE-2014-1858",
+        "GHSA-cw6w-4rcx-xphc",
+        "PYSEC-2018-33"
+      ],
+      "source_record_ids": [
+        "GHSA-cw6w-4rcx-xphc",
+        "PYSEC-2018-33"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_da8ab8e42475",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "GHSA-cw6w-4rcx-xphc"
+          ]
+        },
+        {
+          "variant_id": "range_f83052fe55d0",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+                }
+              ],
+              "repo": "https://github.com/numpy/numpy",
+              "type": "GIT"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2018-33"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_f6ff80c2580f",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "source_record_ids": [
+            "GHSA-cw6w-4rcx-xphc",
+            "PYSEC-2018-33"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-cw6w-4rcx-xphc",
+          "aliases": [
+            "CVE-2014-1858",
+            "PYSEC-2018-33"
+          ],
+          "identifiers": [
+            "CVE-2014-1858",
+            "GHSA-cw6w-4rcx-xphc",
+            "PYSEC-2018-33"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-14T03:48:04Z",
+          "modified_at": "2024-10-07T21:24:52.642615Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-cw6w-4rcx-xphc.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-cw6w-4rcx-xphc.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-cw6w-4rcx-xphc",
+          "evidence_hash": "sha256:d679144eee3a8923e4e9edb8c9430b0b3459e53f3a1c64410ed15e3db57d22e8"
+        },
+        {
+          "source_record_id": "PYSEC-2018-33",
+          "aliases": [
+            "CVE-2014-1858",
+            "GHSA-cw6w-4rcx-xphc"
+          ],
+          "identifiers": [
+            "CVE-2014-1858",
+            "GHSA-cw6w-4rcx-xphc",
+            "PYSEC-2018-33"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2018-01-08T19:29:00Z",
+          "modified_at": "2023-11-08T03:57:35.308828Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "GIT",
+              "repo": "https://github.com/numpy/numpy",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+                }
+              ]
+            },
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "fixed_commits": [
+            "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+          ],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2018-33.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2018-33.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2018-33",
+          "evidence_hash": "sha256:f112033400ec633afb7fdc2a7bca44ab2a8e87fc370364ae064661595f4b2c06"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_2a2e13d71791",
+      "display_id": "GHSA-f7c7-j99h-c22f",
+      "identifiers": [
+        "CVE-2021-41496",
+        "GHSA-f7c7-j99h-c22f",
+        "PYSEC-2021-857"
+      ],
+      "source_record_ids": [
+        "GHSA-f7c7-j99h-c22f",
+        "PYSEC-2021-857"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_1bba4d328b72",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19"
+          ],
+          "source_record_ids": [
+            "GHSA-f7c7-j99h-c22f"
+          ]
+        },
+        {
+          "variant_id": "range_2a3dd8ddf41c",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-857"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_4407398aae98",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-f7c7-j99h-c22f"
+          ]
+        },
+        {
+          "variant_id": "versions_6e9bb8f57bdd",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.0rc1",
+            "1.17.0rc2",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.0rc1",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0rc1",
+            "1.19.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-857"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-f7c7-j99h-c22f",
+          "aliases": [
+            "CVE-2021-41496",
+            "PYSEC-2021-857"
+          ],
+          "identifiers": [
+            "CVE-2021-41496",
+            "GHSA-f7c7-j99h-c22f",
+            "PYSEC-2021-857"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-02-08T00:00:56Z",
+          "modified_at": "2023-11-08T04:06:59.274139Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.19"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-f7c7-j99h-c22f.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-f7c7-j99h-c22f.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-f7c7-j99h-c22f",
+          "evidence_hash": "sha256:ba3162f15e48cdc9e74d0c0f7c5335eafe20f3ffa124656a25e0557a051bb675"
+        },
+        {
+          "source_record_id": "PYSEC-2021-857",
+          "aliases": [
+            "CVE-2021-41496",
+            "GHSA-f7c7-j99h-c22f"
+          ],
+          "identifiers": [
+            "CVE-2021-41496",
+            "GHSA-f7c7-j99h-c22f",
+            "PYSEC-2021-857"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2021-12-17T20:15:00Z",
+          "modified_at": "2023-11-08T04:06:59.274139Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.0rc1",
+            "1.17.0rc2",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.0rc1",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0rc1",
+            "1.19.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.19.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-857.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-857.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-857",
+          "evidence_hash": "sha256:7b887e9c40655a82b7e7abb268c975da002220e9b3e8cf9174223be14706248b"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_e53d3c26b4a7",
+      "display_id": "GHSA-fpfv-jqm9-f5jm",
+      "identifiers": [
+        "CVE-2021-34141",
+        "GHSA-fpfv-jqm9-f5jm",
+        "PYSEC-2021-855"
+      ],
+      "source_record_ids": [
+        "GHSA-fpfv-jqm9-f5jm",
+        "PYSEC-2021-855"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 2,
+      "range_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_c14dffac782c",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.22"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.22"
+          ],
+          "source_record_ids": [
+            "GHSA-fpfv-jqm9-f5jm"
+          ]
+        },
+        {
+          "variant_id": "range_0567d12e986d",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.10.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-855"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_e4b3608db843",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.19.5",
+            "1.2.0",
+            "1.2.1",
+            "1.20.0",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.21.0",
+            "1.21.1",
+            "1.21.2",
+            "1.21.3",
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-fpfv-jqm9-f5jm"
+          ]
+        },
+        {
+          "variant_id": "versions_69d70ebc134d",
+          "affected_versions": [
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-855"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-fpfv-jqm9-f5jm",
+          "aliases": [
+            "CVE-2021-34141",
+            "PYSEC-2021-855"
+          ],
+          "identifiers": [
+            "CVE-2021-34141",
+            "GHSA-fpfv-jqm9-f5jm",
+            "PYSEC-2021-855"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2021-12-18T00:00:41Z",
+          "modified_at": "2023-11-08T04:06:07.388275Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.22"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.19.5",
+            "1.2.0",
+            "1.2.1",
+            "1.20.0",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.21.0",
+            "1.21.1",
+            "1.21.2",
+            "1.21.3",
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.22"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-fpfv-jqm9-f5jm.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-fpfv-jqm9-f5jm.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-fpfv-jqm9-f5jm",
+          "evidence_hash": "sha256:9d065761b9f698bee8bcb2618c74f1348c9dd61bbd4da4622426174a0fc0bb10"
+        },
+        {
+          "source_record_id": "PYSEC-2021-855",
+          "aliases": [
+            "CVE-2021-34141",
+            "GHSA-fpfv-jqm9-f5jm"
+          ],
+          "identifiers": [
+            "CVE-2021-34141",
+            "GHSA-fpfv-jqm9-f5jm",
+            "PYSEC-2021-855"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2021-12-17T19:15:00Z",
+          "modified_at": "2023-11-08T04:06:07.388275Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.10.0"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2021-855.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2021-855.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2021-855",
+          "evidence_hash": "sha256:92d6dea07be06082ae06e83d5ce34cb8dff34ab8071b9b21e4beedebdbe45b16"
+        }
+      ]
+    },
+    {
+      "group_id": "osvgrp_f471424eb980",
+      "display_id": "GHSA-frgw-fgh6-9g52",
+      "identifiers": [
+        "CVE-2017-12852",
+        "GHSA-frgw-fgh6-9g52",
+        "PYSEC-2017-1"
+      ],
+      "source_record_ids": [
+        "GHSA-frgw-fgh6-9g52",
+        "PYSEC-2017-1"
+      ],
+      "source_record_count": 2,
+      "evidence_status_counts": {
+        "resolved": 2
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_e2072e5cafc3",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.13.3"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.13.3"
+          ],
+          "source_record_ids": [
+            "GHSA-frgw-fgh6-9g52",
+            "PYSEC-2017-1"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 2,
+      "affected_version_list_disagreement": true,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_c7a6262ba06c",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-frgw-fgh6-9g52"
+          ]
+        },
+        {
+          "variant_id": "versions_0d9c96b1ac8d",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2017-1"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "GHSA-frgw-fgh6-9g52",
+          "aliases": [
+            "CVE-2017-12852",
+            "PYSEC-2017-1"
+          ],
+          "identifiers": [
+            "CVE-2017-12852",
+            "GHSA-frgw-fgh6-9g52",
+            "PYSEC-2017-1"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2022-05-13T01:42:46Z",
+          "modified_at": "2023-11-08T03:58:54.336802Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.13.3"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.13.3"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/GHSA-frgw-fgh6-9g52.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/GHSA-frgw-fgh6-9g52.json",
+          "source_url": "https://api.osv.dev/v1/vulns/GHSA-frgw-fgh6-9g52",
+          "evidence_hash": "sha256:9df972ff46c5c31f7f47004b2457504173f90fd3dffbccd909f2ee83f1f028f0"
+        },
+        {
+          "source_record_id": "PYSEC-2017-1",
+          "aliases": [
+            "CVE-2017-12852",
+            "GHSA-frgw-fgh6-9g52"
+          ],
+          "identifiers": [
+            "CVE-2017-12852",
+            "GHSA-frgw-fgh6-9g52",
+            "PYSEC-2017-1"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2017-08-15T16:29:00Z",
+          "modified_at": "2023-11-08T03:58:54.336802Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.13.3"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "fixed_versions": [
+            "1.13.3"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/numpy"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/numpy/PYSEC-2017-1.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__numpy/PYSEC-2017-1.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2017-1",
+          "evidence_hash": "sha256:b0fdc2bb47b9a7435c13ff214c17eabf08f02d15beb0ed4ba833d8dac6fc9951"
+        }
+      ]
+    }
+  ]
+}

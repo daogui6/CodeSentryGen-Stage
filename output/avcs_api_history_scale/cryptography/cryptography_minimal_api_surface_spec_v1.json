@@ -1,0 +1,70 @@
+{
+  "schema_version": "avcs_python_minimal_api_surface_spec_v0.1",
+  "distribution": "cryptography",
+  "package_module": "cryptography",
+  "selection_status": "provisional_after_presence_history_v1",
+  "selection_policy": [
+    "public API commonly used by generated code",
+    "historically discriminative when possible",
+    "statically verifiable from release source",
+    "cover multiple cryptography subdomains",
+    "include both stable anchors and potentially later-added APIs",
+    "include both direct definitions and package re-exports"
+  ],
+  "symbols": [
+    {
+      "api_symbol": "cryptography.fernet.Fernet",
+      "latest_target": "cryptography.fernet.Fernet",
+      "role": "high_level_symmetric_encryption"
+    },
+    {
+      "api_symbol": "cryptography.fernet.MultiFernet",
+      "latest_target": "cryptography.fernet.MultiFernet",
+      "role": "key_rotation"
+    },
+    {
+      "api_symbol": "cryptography.hazmat.primitives.hashes.SHA256",
+      "latest_target": "cryptography.hazmat.primitives.hashes.SHA256",
+      "role": "stable_hash_algorithm"
+    },
+    {
+      "api_symbol": "cryptography.hazmat.primitives.hashes.SHA3_256",
+      "latest_target": "cryptography.hazmat.primitives.hashes.SHA3_256",
+      "role": "later_hash_algorithm"
+    },
+    {
+      "api_symbol": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "latest_target": "cryptography.hazmat.primitives.ciphers.base.Cipher",
+      "role": "core_cipher_class"
+    }
+  ],
+  "pruning": {
+    "source_spec": "output/avcs_api_history_scale/cryptography/cryptography_minimal_api_surface_spec_v0.json",
+    "removed_symbols": [
+      {
+        "api_symbol": "cryptography.x509.Certificate",
+        "reason": "Deferred from v1 because recent releases produce assignment_target_unresolved; do not convert resolver uncertainty into API absence."
+      },
+      {
+        "api_symbol": "cryptography.x509.load_pem_x509_certificate",
+        "reason": "Deferred from v1 because recent releases produce assignment_target_unresolved; do not convert resolver uncertainty into API absence."
+      },
+      {
+        "api_symbol": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+        "reason": "Deferred from v1 because recent releases produce assignment_target_unresolved; do not overfit the resolver during Step 5 scaling."
+      },
+      {
+        "api_symbol": "cryptography.hazmat.primitives.serialization.Encoding",
+        "reason": "Deferred from v1 because a small set of releases remains unresolved; preserve as unknown rather than forcing a boundary."
+      }
+    ],
+    "presence_history": {
+      "cryptography.fernet.Fernet": ">=0.1",
+      "cryptography.fernet.MultiFernet": ">=0.7",
+      "cryptography.hazmat.primitives.hashes.SHA256": ">=0.1",
+      "cryptography.hazmat.primitives.hashes.SHA3_256": ">=2.5",
+      "cryptography.hazmat.primitives.ciphers.Cipher": ">=0.1"
+    },
+    "note": "Deferred symbols remain valid public APIs and may be revisited later. They are not classified as absent or invalid. Step 5 prioritizes reliable API-to-Version evidence without package-specific resolver overfitting."
+  }
+}

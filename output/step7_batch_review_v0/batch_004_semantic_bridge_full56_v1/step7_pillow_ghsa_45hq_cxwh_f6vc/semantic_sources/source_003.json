@@ -1,0 +1,148 @@
+{
+  "schema_version": "step7_batch_semantic_source_excerpt_v0.1",
+  "builder_id": "step7_batch_semantic_bridge_v0.1",
+  "case_id": "step7_pillow_ghsa_45hq_cxwh_f6vc",
+  "distribution": "pillow",
+  "vulnerability_id": "GHSA-45hq-cxwh-f6vc",
+  "effective_packet_source": "original_run",
+  "original_source_id": "osvref_github_commit_d3f4e4488a4f",
+  "original_source_type": "github_commit_reference",
+  "source_key": "pillow::osvref_github_commit_d3f4e4488a4f",
+  "target": {
+    "url": "https://github.com/python-pillow/Pillow/commit/0a263e6264aa5399988d9acd3bbfbca2ca3ec77d",
+    "repository": "python-pillow/Pillow",
+    "commit": "0a263e6264aa5399988d9acd3bbfbca2ca3ec77d"
+  },
+  "provenance": {
+    "path": "output/step7_batch_review_v0/shared_cache_v0/github_commit/pillow_osvref_github_commit_d3f4e4488a4f/response.json",
+    "status": "resolved",
+    "expected_sha256": "sha256:08f392fa215f0fe391f28679c8a8e0ef211277231a3831ea850d8bf902135c33",
+    "expected_size_bytes": 11573,
+    "verified": true,
+    "actual_sha256": "sha256:08f392fa215f0fe391f28679c8a8e0ef211277231a3831ea850d8bf902135c33",
+    "actual_size_bytes": 11573,
+    "cache_metadata_path": "output/step7_batch_review_v0/shared_cache_v0/github_commit/pillow_osvref_github_commit_d3f4e4488a4f/metadata.json",
+    "content_parse_status": "resolved",
+    "changed_file_count": 6,
+    "patch_unit_count": 6
+  },
+  "selected_units": [
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_001",
+      "unit_kind": "github_commit_message",
+      "text_sha256": "sha256:634178962dfc58661785016566948a221170467add8a116fa885b759f92679a2",
+      "original_size_chars": 57,
+      "selected_size_chars": 57,
+      "truncated": false,
+      "locator": {
+        "json_field": "commit.message"
+      },
+      "excerpt_sha256": "sha256:634178962dfc58661785016566948a221170467add8a116fa885b759f92679a2",
+      "excerpt": "Add decompression bomb checks to FontFile classes (#9711)"
+    },
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_002",
+      "unit_kind": "github_commit_patch",
+      "text_sha256": "sha256:8355f4c00956fe34e643df9741e2f6289d16b75210d15f4e85d14feabb93aa4d",
+      "original_size_chars": 665,
+      "selected_size_chars": 665,
+      "truncated": false,
+      "locator": {
+        "filename": "Tests/test_font_bdf.py",
+        "status": "modified"
+      },
+      "excerpt_sha256": "sha256:8355f4c00956fe34e643df9741e2f6289d16b75210d15f4e85d14feabb93aa4d",
+      "excerpt": "@@ -4,7 +4,7 @@\n \n import pytest\n \n-from PIL import BdfFontFile, FontFile\n+from PIL import BdfFontFile, FontFile, Image\n \n filename = \"Tests/images/courB08.bdf\"\n \n@@ -24,6 +24,14 @@ def test_zero_width_chars() -> None:\n     BdfFontFile.BdfFontFile(io.BytesIO(data))\n \n \n+def test_decompression_bomb() -> None:\n+    with open(filename, \"rb\") as fp:\n+        data = fp.read()\n+    b = io.BytesIO(data.replace(b\"BBX 1 1\", b\"BBX 13378 13378\"))\n+    with pytest.raises(Image.DecompressionBombError):\n+        BdfFontFile.BdfFontFile(b)\n+\n+\n def test_invalid_file() -> None:\n     with open(\"Tests/images/flower.jpg\", \"rb\") as fp:\n         with pytest.raises(SyntaxError):"
+    },
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_003",
+      "unit_kind": "github_commit_patch",
+      "text_sha256": "sha256:c3b63dc30f94253c69c2c98ec05608c73f8d161a631f7bf5893f6222b5dfd588",
+      "original_size_chars": 1198,
+      "selected_size_chars": 1198,
+      "truncated": false,
+      "locator": {
+        "filename": "Tests/test_font_pcf.py",
+        "status": "modified"
+      },
+      "excerpt_sha256": "sha256:c3b63dc30f94253c69c2c98ec05608c73f8d161a631f7bf5893f6222b5dfd588",
+      "excerpt": "@@ -1,12 +1,13 @@\n from __future__ import annotations\n \n import os\n+from io import BytesIO\n from pathlib import Path\n from typing import AnyStr\n \n import pytest\n \n-from PIL import FontFile, Image, ImageDraw, ImageFont, PcfFontFile\n+from PIL import FontFile, Image, ImageDraw, ImageFont, PcfFontFile, _binary\n \n from .helper import (\n     assert_image_equal_tofile,\n@@ -117,3 +118,21 @@ def test_high_characters(request: pytest.FixtureRequest, tmp_path: Path) -> None\n     _test_high_characters(request, tmp_path, message)\n     # accept bytes instances.\n     _test_high_characters(request, tmp_path, message.encode(\"latin1\"))\n+\n+\n+def test_decompression_bomb() -> None:\n+    with open(fontname, \"rb\") as fp:\n+        data = fp.read()\n+    b = BytesIO(\n+        data[:900]\n+        + _binary.o32le(0)  # jumbo format\n+        + _binary.o32le(1)  # number of metrics\n+        + _binary.o16le(0)  # left\n+        + _binary.o16le(65535)  # right\n+        + _binary.o16le(0)  # width\n+        + _binary.o16le(0)  # ascent\n+        + _binary.o16le(65535)  # descent\n+        + _binary.o16le(0)  # attributes\n+    )\n+    with pytest.raises(Image.DecompressionBombError):\n+        PcfFontFile.PcfFontFile(b)"
+    },
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_004",
+      "unit_kind": "github_commit_patch",
+      "text_sha256": "sha256:4c888282a65f41bf2e9b6549ef48beb792f7b2e84440a369d23e50d1bd85cd07",
+      "original_size_chars": 408,
+      "selected_size_chars": 408,
+      "truncated": false,
+      "locator": {
+        "filename": "Tests/test_fontfile.py",
+        "status": "modified"
+      },
+      "excerpt_sha256": "sha256:4c888282a65f41bf2e9b6549ef48beb792f7b2e84440a369d23e50d1bd85cd07",
+      "excerpt": "@@ -30,6 +30,13 @@ def test_compile() -> None:\n     assert font.ysize == 2\n \n \n+def test_decompression_bomb() -> None:\n+    font = FontFile.FontFile()\n+    font.glyph[0] = ((0, 0), (0, 0, 0, 0), (0, 0, 10000, 10000), Image.new(\"L\", (0, 0)))\n+    with pytest.raises(Image.DecompressionBombError):\n+        font.compile()\n+\n+\n def test_save(tmp_path: Path) -> None:\n     tempname = str(tmp_path / \"temp.pil\")\n "
+    },
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_005",
+      "unit_kind": "github_commit_patch",
+      "text_sha256": "sha256:879fa0a7fafb1b093756728736363f172dfd0cfbeb969a099457192166a066c6",
+      "original_size_chars": 378,
+      "selected_size_chars": 378,
+      "truncated": false,
+      "locator": {
+        "filename": "src/PIL/BdfFontFile.py",
+        "status": "modified"
+      },
+      "excerpt_sha256": "sha256:879fa0a7fafb1b093756728736363f172dfd0cfbeb969a099457192166a066c6",
+      "excerpt": "@@ -70,6 +70,7 @@ def bdf_char(\n     # and x and y displacement (BBxoff0, BByoff0)\n     # of the lower left corner from the origin of the character.\n     width, height, x_disp, y_disp = (int(p) for p in props[\"BBX\"].split())\n+    Image._decompression_bomb_check((width, height))\n \n     # The word DWIDTH\n     # followed by the width in x and y of the character in device pixels."
+    },
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_006",
+      "unit_kind": "github_commit_patch",
+      "text_sha256": "sha256:5ea10dc7f06e189990c95f5dae8e0931761c18929247f5e6ba3994ef7d4be225",
+      "original_size_chars": 675,
+      "selected_size_chars": 675,
+      "truncated": false,
+      "locator": {
+        "filename": "src/PIL/FontFile.py",
+        "status": "modified"
+      },
+      "excerpt_sha256": "sha256:5ea10dc7f06e189990c95f5dae8e0931761c18929247f5e6ba3994ef7d4be225",
+      "excerpt": "@@ -74,7 +74,7 @@ def compile(self) -> None:\n             if glyph:\n                 d, dst, src, im = glyph\n                 h = max(h, src[3] - src[1])\n-                w = w + (src[2] - src[0])\n+                w += src[2] - src[0]\n                 if w > WIDTH:\n                     lines += 1\n                     w = src[2] - src[0]\n@@ -89,6 +89,7 @@ def compile(self) -> None:\n         self.ysize = h\n \n         # paste glyphs into bitmap\n+        Image._decompression_bomb_check((xsize, ysize))\n         self.bitmap = Image.new(\"1\", (xsize, ysize))\n         self.metrics: list[\n             tuple[tuple[int, int], tuple[int, int, int, int], tuple[int, int, int, int]]"
+    },
+    {
+      "unit_id": "pillow::osvref_github_commit_d3f4e4488a4f::unit_007",
+      "unit_kind": "github_commit_patch",
+      "text_sha256": "sha256:c5f2c245bb48c6d7bf0b0cdc5cafdaef406d83db93748bbc80e047f51d035524",
+      "original_size_chars": 309,
+      "selected_size_chars": 309,
+      "truncated": false,
+      "locator": {
+        "filename": "src/PIL/PcfFontFile.py",
+        "status": "modified"
+      },
+      "excerpt_sha256": "sha256:c5f2c245bb48c6d7bf0b0cdc5cafdaef406d83db93748bbc80e047f51d035524",
+      "excerpt": "@@ -168,6 +168,7 @@ def append(\n         ) -> None:\n             xsize = right - left\n             ysize = ascent + descent\n+            Image._decompression_bomb_check((xsize, ysize))\n             metrics.append(\n                 (xsize, ysize, left, right, width, ascent, descent, attributes)\n             )"
+    }
+  ],
+  "input_refs": {
+    "semantic_excerpt_bundle": {
+      "path": "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_excerpt_bundle.json",
+      "sha256": "9830709ea0ed57d720c1c0adf5f1fa0423bc2e4791cb827352e61bab498607c6"
+    },
+    "review_packet": {
+      "path": "output/step7_batch_review_v0/batch_004_evidence_full56_v0/review_packets/step7_pillow_ghsa_45hq_cxwh_f6vc/review_packet.json",
+      "sha256": "ee26d8ab98759b122bf10731def0eec0ca27ba09ce4488bc851a5db4e86a2408"
+    }
+  },
+  "semantic_boundary": {
+    "evidence_only": true,
+    "source_partition_preserved": true,
+    "excerpt_is_ground_truth": false,
+    "trigger_truth_created": false,
+    "llm_proposal_created": false,
+    "human_review_created": false,
+    "eligibility_created": false,
+    "package_kb_mutated": false
+  }
+}

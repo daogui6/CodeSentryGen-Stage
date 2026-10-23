@@ -1,0 +1,324 @@
+{
+  "schema_version": "avcs_evaluation_v0.1",
+  "sample_id": "avcs_pyjwt_default_algorithms_true",
+  "sample_context_status": "matched",
+  "sample_context": {
+    "source_sample_id": null,
+    "source_dataset": "avcs_controlled_validation",
+    "prompt_id": null,
+    "source": "controlled_validation",
+    "language": "python",
+    "ecosystem": "pypi",
+    "generation_time": "2026-08-20T10:00:00+08:00",
+    "model": null
+  },
+  "distribution": "pyjwt",
+  "normalized_distribution": "pyjwt",
+  "status": "evaluated",
+  "evaluation_count": 1,
+  "risk_card_candidate_count": 1,
+  "evaluations": [
+    {
+      "vulnerability_id": "GHSA-ffqj-6fqr-9h24",
+      "severity": "not_calibrated",
+      "api_constraint_status": "resolved",
+      "vulnerability_constraint_status": "resolved",
+      "s_api": ">=1.0.0",
+      "s_vuln": ">=1.5.0,<2.4.0",
+      "version_evidence_mode": "discrete_confirmed_releases",
+      "discrete_evidence_status": "matched",
+      "has_version_exposure": true,
+      "confirmed_api_compatible_release_count": 36,
+      "confirmed_exposed_release_count": 17,
+      "confirmed_not_affected_release_count": 19,
+      "confirmed_exposed_releases": [
+        {
+          "version": "1.5.0",
+          "first_upload_time": "2017-04-19T14:38:19.329693+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.5.1",
+          "first_upload_time": "2017-06-22T14:56:55.795684+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.5.2",
+          "first_upload_time": "2017-06-22T16:31:25.126723+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.5.3",
+          "first_upload_time": "2017-09-05T18:21:33.567963+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.6.0",
+          "first_upload_time": "2018-03-03T16:53:23.811905+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.6.1",
+          "first_upload_time": "2018-03-18T13:38:21.079904+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.6.3",
+          "first_upload_time": "2018-05-19T17:13:41.890876+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.6.4",
+          "first_upload_time": "2018-05-24T02:46:59.340421+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.7.0",
+          "first_upload_time": "2018-12-02T03:49:20.038343+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "1.7.1",
+          "first_upload_time": "2018-12-07T13:40:06.872228+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.0.0a1",
+          "first_upload_time": "2020-11-02T12:52:01.009370+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.0.0a2",
+          "first_upload_time": "2020-12-20T00:11:14.640860+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": true,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.0.0",
+          "first_upload_time": "2020-12-22T14:14:33.513482+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.0.1",
+          "first_upload_time": "2021-01-17T17:57:18.527818+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.1.0",
+          "first_upload_time": "2021-04-28T12:02:52.182689+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.2.0",
+          "first_upload_time": "2021-10-06T22:30:17.608921+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        },
+        {
+          "version": "2.3.0",
+          "first_upload_time": "2021-10-16T15:54:52.964882+00:00",
+          "file_count": 2,
+          "currently_yanked_file_count": 0,
+          "all_files_currently_yanked": false,
+          "is_prerelease": false,
+          "is_devrelease": false
+        }
+      ],
+      "time_unknown_exposed_release_labels": [],
+      "fixed_version_specifier": ">=2.4.0",
+      "version_overlap": true,
+      "intersection_specifier": ">=1.5.0,<2.4.0",
+      "intersection_semantics": "interval_summary_only",
+      "overlap_status": "overlap",
+      "observed_api_symbols": [
+        "jwt.algorithms.get_default_algorithms",
+        "jwt.decode"
+      ],
+      "trigger_api_symbols": [],
+      "direct_trigger_api_symbols": [],
+      "direct_trigger_rule_evaluations": [],
+      "conditional_trigger_api_symbols": [
+        "jwt.decode"
+      ],
+      "conditional_trigger_rule_evaluations": [
+        {
+          "api_symbol": "jwt.decode",
+          "call_text": "jwt.decode(\n    token,\n    verification_key,\n    algorithms=jwt.algorithms.get_default_algorithms(),\n)",
+          "location": {
+            "file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+            "line": 7,
+            "column": 10
+          },
+          "call_shape": {
+            "explicit_positional_arg_count": 2,
+            "keyword_arg_names": [
+              "algorithms"
+            ],
+            "keyword_arg_values": {
+              "algorithms": {
+                "source_text": "jwt.algorithms.get_default_algorithms()",
+                "resolved_symbol": null,
+                "resolved_call_symbol": "jwt.algorithms.get_default_algorithms"
+              }
+            },
+            "has_star_args": false,
+            "has_star_kwargs": false
+          },
+          "trigger_rule_match": {
+            "trigger_id": "pyjwt_decode_default_algorithms_call",
+            "api_symbol": "jwt.decode",
+            "kind": "keyword_call_condition",
+            "version_scope": ">=1.5.0,<2.4.0",
+            "matched": true,
+            "reason": "keyword_call_matched",
+            "scoped_exposed_releases": [
+              "1.5.0",
+              "1.5.1",
+              "1.5.2",
+              "1.5.3",
+              "1.6.0",
+              "1.6.1",
+              "1.6.3",
+              "1.6.4",
+              "1.7.0",
+              "1.7.1",
+              "2.0.0a1",
+              "2.0.0a2",
+              "2.0.0",
+              "2.0.1",
+              "2.1.0",
+              "2.2.0",
+              "2.3.0"
+            ]
+          }
+        }
+      ],
+      "observed_trigger_apis": [
+        "jwt.decode"
+      ],
+      "observed_trigger_calls": [
+        {
+          "api_symbol": "jwt.decode",
+          "call_text": "jwt.decode(\n    token,\n    verification_key,\n    algorithms=jwt.algorithms.get_default_algorithms(),\n)",
+          "location": {
+            "file": "data/avcs_validation/avcs_pyjwt_default_algorithms_true.py",
+            "line": 7,
+            "column": 10
+          },
+          "call_shape": {
+            "explicit_positional_arg_count": 2,
+            "keyword_arg_names": [
+              "algorithms"
+            ],
+            "keyword_arg_values": {
+              "algorithms": {
+                "source_text": "jwt.algorithms.get_default_algorithms()",
+                "resolved_symbol": null,
+                "resolved_call_symbol": "jwt.algorithms.get_default_algorithms"
+              }
+            },
+            "has_star_args": false,
+            "has_star_kwargs": false
+          },
+          "trigger_match_mode": "conditional_rule",
+          "trigger_rule_match": {
+            "trigger_id": "pyjwt_decode_default_algorithms_call",
+            "api_symbol": "jwt.decode",
+            "kind": "keyword_call_condition",
+            "version_scope": ">=1.5.0,<2.4.0",
+            "matched": true,
+            "reason": "keyword_call_matched",
+            "scoped_exposed_releases": [
+              "1.5.0",
+              "1.5.1",
+              "1.5.2",
+              "1.5.3",
+              "1.6.0",
+              "1.6.1",
+              "1.6.3",
+              "1.6.4",
+              "1.7.0",
+              "1.7.1",
+              "2.0.0a1",
+              "2.0.0a2",
+              "2.0.0",
+              "2.0.1",
+              "2.1.0",
+              "2.2.0",
+              "2.3.0"
+            ]
+          }
+        }
+      ],
+      "observed_safe_apis": [],
+      "safe_rule_evaluations": [],
+      "observed_safe_rule_calls": [],
+      "requires_untrusted_input": true,
+      "assessment": "candidate_requires_input_review",
+      "risk_card_candidate": true,
+      "evidence_ref": "GHSA-ffqj-6fqr-9h24"
+    }
+  ]
+}

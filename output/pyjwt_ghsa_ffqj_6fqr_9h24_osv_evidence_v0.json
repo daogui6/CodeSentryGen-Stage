@@ -1,0 +1,69 @@
+{
+  "schema_version": "avcs_vulnerability_evidence_v0.1",
+  "normalizer_version": "osv_normalizer_v0.2",
+  "sample_id": "avcs_pyjwt_default_algorithms_true",
+  "ecosystem": "PyPI",
+  "distribution": "pyjwt",
+  "normalized_distribution": "pyjwt",
+  "vulnerability_id": "GHSA-ffqj-6fqr-9h24",
+  "aliases": [
+    "CVE-2022-29217",
+    "PYSEC-2022-202"
+  ],
+  "published_at": "2022-05-24T22:17:27Z",
+  "modified_at": "2024-10-15T16:27:42.751871Z",
+  "withdrawn_at": null,
+  "affected_ranges": [
+    {
+      "type": "ECOSYSTEM",
+      "events": [
+        {
+          "introduced": "1.5.0"
+        },
+        {
+          "fixed": "2.4.0"
+        }
+      ]
+    }
+  ],
+  "affected_versions": [
+    "1.5.0",
+    "1.5.1",
+    "1.5.2",
+    "1.5.3",
+    "1.6.0",
+    "1.6.1",
+    "1.6.3",
+    "1.6.4",
+    "1.7.0",
+    "1.7.1",
+    "2.0.0",
+    "2.0.0a1",
+    "2.0.0a2",
+    "2.0.1",
+    "2.1.0",
+    "2.2.0",
+    "2.3.0"
+  ],
+  "fixed_versions": [
+    "2.4.0"
+  ],
+  "fixed_commits": [],
+  "matched_purls": [
+    "pkg:pypi/pyjwt"
+  ],
+  "matched_affected_entry_count": 1,
+  "source": {
+    "provider": "OSV",
+    "source_record_id": "GHSA-ffqj-6fqr-9h24",
+    "source_schema_version": "1.7.3",
+    "source_url": "https://api.osv.dev/v1/vulns/GHSA-ffqj-6fqr-9h24",
+    "queried_at": null,
+    "as_of": null,
+    "db_revision": null,
+    "evidence_hash": "sha256:24f07ea0b2562f6e7dc432d38d76dec19b08f189c5b2dde6eec7bcc24972ae1d",
+    "raw_evidence_file": "data/avcs_validation/osv_raw/GHSA-ffqj-6fqr-9h24.json"
+  },
+  "evidence_status": "resolved",
+  "evidence_notes": []
+}

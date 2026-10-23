@@ -1,0 +1,37 @@
+{
+  "schema_version": "avcs_evaluation_v0.1",
+  "sample_id": "auto_pilot50_018",
+  "distribution": "PyYAML",
+  "normalized_distribution": "pyyaml",
+  "status": "evaluated",
+  "evaluation_count": 1,
+  "risk_card_candidate_count": 0,
+  "evaluations": [
+    {
+      "vulnerability_id": "CVE-2020-14343",
+      "severity": "not_calibrated",
+      "api_constraint_status": "resolved",
+      "s_api": ">=5.1",
+      "s_vuln": ">=5.1,<5.4",
+      "version_overlap": true,
+      "intersection_specifier": ">=5.1,<5.4",
+      "overlap_status": "overlap",
+      "observed_api_symbols": [
+        "yaml.safe_dump",
+        "yaml.safe_load"
+      ],
+      "trigger_api_symbols": [
+        "yaml.full_load",
+        "yaml.load"
+      ],
+      "observed_trigger_apis": [],
+      "observed_safe_apis": [
+        "yaml.safe_load"
+      ],
+      "requires_untrusted_input": true,
+      "assessment": "trigger_api_not_observed",
+      "risk_card_candidate": false,
+      "evidence_ref": "CVE-2020-14343"
+    }
+  ]
+}

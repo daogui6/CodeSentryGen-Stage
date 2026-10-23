@@ -1,0 +1,10 @@
+check_id,expected,actual,status
+status,"""resolved_with_partial_release_history""","""resolved_with_partial_release_history""",PASS
+s_api,""">=1.5,<3""",""">=1.5,<3""",PASS
+before_api_count,5,5,PASS
+compatible_count,3,3,PASS
+incompatible_count,2,2,PASS
+compatible_versions,"[""1.5"", ""2.0b1"", ""2.0""]","[""1.5"", ""2.0b1"", ""2.0""]",PASS
+incompatible_versions,"[""1.0"", ""3.0""]","[""1.0"", ""3.0""]",PASS
+time_unknown_api_compatible,"[""2.5""]","[""2.5""]",PASS
+time_unknown_api_incompatible,"[""0.9""]","[""0.9""]",PASS

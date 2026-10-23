@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CodeSentry-Gen SCEG v0",
+  "description": "A lightweight evidence graph record converted from THO mini dependency records.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "dataset_label",
+    "graph_id",
+    "nodes",
+    "evidence",
+    "edges",
+    "analysis",
+    "risk_card_links"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "dataset_label": {
+      "type": "string"
+    },
+    "graph_id": {
+      "type": "string"
+    },
+    "nodes": {
+      "type": "object",
+      "required": [
+        "sample",
+        "dependency_entity",
+        "package"
+      ],
+      "properties": {
+        "sample": {
+          "type": "object",
+          "properties": {
+            "sample_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "prompt_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "model": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "generation_time": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "dependency_entity": {
+          "type": "object",
+          "properties": {
+            "entity_id": {
+              "type": "string"
+            },
+            "raw_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "normalized_package": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source_type": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "location": {
+              "type": "object"
+            }
+          }
+        },
+        "package": {
+          "type": "object",
+          "properties": {
+            "ecosystem": {
+              "type": "string"
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "structural",
+        "registry",
+        "temporal",
+        "reachability",
+        "declaration_consistency",
+        "trigger"
+      ],
+      "properties": {
+        "structural": {
+          "type": "object"
+        },
+        "registry": {
+          "type": "object"
+        },
+        "temporal": {
+          "type": "object"
+        },
+        "reachability": {
+          "type": "object"
+        },
+        "declaration_consistency": {
+          "type": [
+            "object",
+            "null"
+          ],
+        "description": "Evidence about whether manifest declarations are consistent with direct imports and dependency-chain metadata."
+        },
+        "trigger": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Evidence that the dependency matches vulnerability trigger conditions, including API rule and matched call evidence."
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "description": "Explicit relationships among sample, dependency entity, package, evidence, and risk cards.",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "target",
+          "type"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "contains_dependency",
+              "maps_to_package",
+              "has_structural_evidence",
+              "has_registry_evidence",
+              "has_temporal_evidence",
+              "has_reachability_evidence",
+              "has_declaration_consistency_evidence",
+              "has_trigger_evidence",
+              "supports_risk_card"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "properties": {
+        "temporal_status_v2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "install_reachability_v2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "risk_candidate": {
+          "type": "boolean"
+        },
+        "risk_card_count": {
+          "type": "integer"
+        }
+      }
+    },
+    "risk_card_links": {
+      "type": "array"
+    }
+  }
+}

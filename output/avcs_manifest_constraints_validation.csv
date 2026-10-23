@@ -1,0 +1,5 @@
+﻿case_id,requirements_text,expected_status,actual_status,expected_kind,actual_kind,expected_specifier,actual_specifier,status
+unconstrained,PyYAML,resolved,resolved,unconstrained,unconstrained,,,PASS
+versioned,PyYAML>=5.4,resolved,resolved,version_specifier,version_specifier,>=5.4,>=5.4,PASS
+not_declared,requests>=2.31.0,not_declared,not_declared,not_declared,not_declared,,,PASS
+conditional,"PyYAML>=5.4; python_version >= ""3.10""",conditional,conditional,environment_marker,environment_marker,>=5.4,>=5.4,PASS

@@ -1,0 +1,136 @@
+{
+  "schema_version": "avcs_trigger_heldout_source_inventory_v0.1",
+  "batch_id": "rq1_heldout_batch_b_v0",
+  "status": "seed_only",
+  "evaluation_role": "true_heldout_generalization",
+  "ecosystem": "PyPI",
+  "purpose": "RQ1 true held-out generalization evaluation of the frozen AVCS evidence-automation pipeline",
+  "semantic_boundary": {
+    "development_cases_excluded": true,
+    "trigger_raw_available_to_pipeline": false,
+    "manual_trigger_conditions_provided": false,
+    "manual_safe_alternatives_provided": false,
+    "manual_fixed_versions_provided": false,
+    "llm_semantic_judge_used": false,
+    "initial_sources_are_identity_seeds_only": true,
+    "human_review_allowed_before_draft_freeze": false,
+    "final_heldout_claims_allowed": true,
+    "system_changes_after_failure_analysis_allowed": false
+  },
+  "cases": [
+    {
+      "case_id": "heldout_b_pydantic_pysec_2026_1812",
+      "domain": "data_validation_parsing",
+      "ecosystem": "PyPI",
+      "distribution": "pydantic",
+      "vulnerability_ids": [
+        "PYSEC-2026-1812",
+        "CVE-2024-3772",
+        "GHSA-mr82-8j83-vxmv"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_1812",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-1812"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_b_python_multipart_pysec_2026_1851",
+      "domain": "multipart_form_parsing",
+      "ecosystem": "PyPI",
+      "distribution": "python-multipart",
+      "vulnerability_ids": [
+        "PYSEC-2026-1851",
+        "CVE-2024-53981",
+        "GHSA-59g5-xgcq-4qw3"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_1851",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-1851"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_b_setuptools_pysec_2025_49",
+      "domain": "developer_tooling_packaging",
+      "ecosystem": "PyPI",
+      "distribution": "setuptools",
+      "vulnerability_ids": [
+        "PYSEC-2025-49",
+        "CVE-2025-47273",
+        "GHSA-5rjg-fvgr-3xxf"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2025_49",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2025-49"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_b_cryptography_pysec_2026_1284",
+      "domain": "cryptography_native_dependency",
+      "ecosystem": "PyPI",
+      "distribution": "cryptography",
+      "vulnerability_ids": [
+        "PYSEC-2026-1284",
+        "CVE-2024-12797",
+        "GHSA-79v4-65xg-pq4g"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_1284",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-1284"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_b_transformers_ghsa_v68g_wm8c_6x7j",
+      "domain": "ai_ml_framework",
+      "ecosystem": "PyPI",
+      "distribution": "transformers",
+      "vulnerability_ids": [
+        "GHSA-v68g-wm8c-6x7j",
+        "CVE-2023-7018",
+        "PYSEC-2023-301"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_ghsa_v68g_wm8c_6x7j",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/GHSA-v68g-wm8c-6x7j"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_b_starlette_pysec_2026_2281",
+      "domain": "web_asgi_framework",
+      "ecosystem": "PyPI",
+      "distribution": "starlette",
+      "vulnerability_ids": [
+        "PYSEC-2026-2281",
+        "CVE-2026-48818",
+        "GHSA-wqp7-x3pw-xc5r"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_2281",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-2281"
+        }
+      ]
+    }
+  ]
+}

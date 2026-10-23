@@ -1,0 +1,43 @@
+{
+  "schema_version": "avcs_trigger_llm_proposal_v0.1",
+  "case_id": "step7_pillow_ghsa_45hq_cxwh_f6vc",
+  "proposer_id": "chatgpt-gpt-5.6-sol-batch004-semantic-reaudit-v1",
+  "proposed_status": "eligible",
+  "candidate_rule": {
+    "trigger_id": "pillow_bdffontfile_decompression_bomb",
+    "vulnerability_ids": [
+      "GHSA-45hq-cxwh-f6vc",
+      "BIT-pillow-2026-55379",
+      "CVE-2026-55379",
+      "PYSEC-2026-2255"
+    ],
+    "api_symbol": "PIL.BdfFontFile.BdfFontFile",
+    "kind": "direct_api",
+    "version_scope": "<12.3.0",
+    "requires_untrusted_input": true,
+    "conditions": {},
+    "evidence_refs": [
+      "step7_osv_pillow_ghsa_45hq_cxwh_f6vc_a502839f_constraint",
+      "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_sources/source_001.json",
+      "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_sources/source_002.json",
+      "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_sources/source_003.json"
+    ],
+    "notes": "Direct API coverage is intentionally limited to the dedicated BDF loader. A match is secondary risk evidence and does not prove malicious font dimensions."
+  },
+  "claim_evidence_map": [
+    {
+      "claim_id": "v1_trigger_semantics",
+      "claim": "The dedicated BDF font-loading path accepts attacker-controlled glyph dimensions without the standard decompression-bomb protection in affected versions.",
+      "evidence_refs": [
+        "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_sources/source_001.json",
+        "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_sources/source_002.json",
+        "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_sources/source_003.json"
+      ]
+    }
+  ],
+  "unresolved_questions": [
+    "Formal Human Review is still required before this proposal may become Trigger ground truth.",
+    "Formal positive/fixed-version regression artifacts must be frozen after Human Review and before Package KB admission."
+  ],
+  "notes": "Batch004 semantic re-audit v1. Classification was reassessed against the actual frozen rule vocabulary and current matcher semantics. No target eligible rate was imposed. This remains an LLM proposal, not Human Review, Eligibility ground truth, exploit proof, or a Package KB mutation. Decision rationale: Dedicated vulnerability-relevant public API is statically extractable and can be represented by the frozen direct_api rule kind. Runtime malicious-input conditions remain explicit preconditions rather than being treated as exploit proof."
+}

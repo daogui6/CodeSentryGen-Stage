@@ -1,0 +1,240 @@
+{
+  "schema_version": "vulnerability_constraint_v0.4",
+  "source_schema_version": "avcs_osv_package_catalog_v0.1",
+  "source_mode": "osv_package_catalog",
+  "distribution": "pandas",
+  "normalized_distribution": "pandas",
+  "ecosystem": "PyPI",
+  "status": "resolved",
+  "source_record_count": 1,
+  "vulnerability_group_count": 1,
+  "groups_with_range_disagreement": 0,
+  "groups_with_affected_version_list_disagreement": 0,
+  "vulnerability_count": 1,
+  "resolved_vulnerability_count": 1,
+  "unresolved_vulnerability_count": 0,
+  "vulnerabilities": [
+    {
+      "vulnerability_id": "CVE-2020-13091",
+      "aliases": [
+        "PYSEC-2020-73"
+      ],
+      "identity_group_id": "osvgrp_fbe112ff424c",
+      "identity_group_identifiers": [
+        "CVE-2020-13091",
+        "PYSEC-2020-73"
+      ],
+      "source_record_ids": [
+        "PYSEC-2020-73"
+      ],
+      "source_record_count": 1,
+      "severity": "not_calibrated",
+      "constraint_status": "resolved",
+      "constraint_notes": [],
+      "affected_version_specifier": "<1.0.4",
+      "fixed_version_specifier": ">=1.0.4",
+      "affected_versions": [
+        "0.1",
+        "0.10.0",
+        "0.10.1",
+        "0.11.0",
+        "0.12.0",
+        "0.13.0",
+        "0.13.1",
+        "0.14.0",
+        "0.14.1",
+        "0.15.0",
+        "0.15.1",
+        "0.15.2",
+        "0.16.0",
+        "0.16.1",
+        "0.16.2",
+        "0.17.0",
+        "0.17.1",
+        "0.18.0",
+        "0.18.1",
+        "0.19.0",
+        "0.19.0rc1",
+        "0.19.1",
+        "0.19.2",
+        "0.2",
+        "0.20.0",
+        "0.20.0rc1",
+        "0.20.1",
+        "0.20.2",
+        "0.20.3",
+        "0.21.0",
+        "0.21.0rc1",
+        "0.21.1",
+        "0.22.0",
+        "0.23.0",
+        "0.23.0rc2",
+        "0.23.1",
+        "0.23.2",
+        "0.23.3",
+        "0.23.4",
+        "0.24.0",
+        "0.24.0rc1",
+        "0.24.1",
+        "0.24.2",
+        "0.25.0",
+        "0.25.0rc0",
+        "0.25.1",
+        "0.25.2",
+        "0.25.3",
+        "0.2b1",
+        "0.2beta",
+        "0.3.0",
+        "0.3.0.beta",
+        "0.3.0.beta2",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "0.5.0",
+        "0.6.0",
+        "0.6.1",
+        "0.7.0",
+        "0.7.1",
+        "0.7.2",
+        "0.7.3",
+        "0.8.0",
+        "0.8.0rc1",
+        "0.8.0rc2",
+        "0.8.1",
+        "0.9.0",
+        "0.9.1",
+        "1.0.0",
+        "1.0.0rc0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3"
+      ],
+      "fixed_versions": [
+        "1.0.4"
+      ],
+      "range_disagreement": false,
+      "affected_version_list_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_09a66eb0f684",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.0.4"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.0.4"
+          ],
+          "source_record_ids": [
+            "PYSEC-2020-73"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_abe62802533d",
+          "affected_versions": [
+            "0.1",
+            "0.10.0",
+            "0.10.1",
+            "0.11.0",
+            "0.12.0",
+            "0.13.0",
+            "0.13.1",
+            "0.14.0",
+            "0.14.1",
+            "0.15.0",
+            "0.15.1",
+            "0.15.2",
+            "0.16.0",
+            "0.16.1",
+            "0.16.2",
+            "0.17.0",
+            "0.17.1",
+            "0.18.0",
+            "0.18.1",
+            "0.19.0",
+            "0.19.0rc1",
+            "0.19.1",
+            "0.19.2",
+            "0.2",
+            "0.20.0",
+            "0.20.0rc1",
+            "0.20.1",
+            "0.20.2",
+            "0.20.3",
+            "0.21.0",
+            "0.21.0rc1",
+            "0.21.1",
+            "0.22.0",
+            "0.23.0",
+            "0.23.0rc2",
+            "0.23.1",
+            "0.23.2",
+            "0.23.3",
+            "0.23.4",
+            "0.24.0",
+            "0.24.0rc1",
+            "0.24.1",
+            "0.24.2",
+            "0.25.0",
+            "0.25.0rc0",
+            "0.25.1",
+            "0.25.2",
+            "0.25.3",
+            "0.2b1",
+            "0.2beta",
+            "0.3.0",
+            "0.3.0.beta",
+            "0.3.0.beta2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "0.5.0",
+            "0.6.0",
+            "0.6.1",
+            "0.7.0",
+            "0.7.1",
+            "0.7.2",
+            "0.7.3",
+            "0.8.0",
+            "0.8.0rc1",
+            "0.8.0rc2",
+            "0.8.1",
+            "0.9.0",
+            "0.9.1",
+            "1.0.0",
+            "1.0.0rc0",
+            "1.0.1",
+            "1.0.2",
+            "1.0.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2020-73"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_fbe112ff424c",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "PYSEC-2020-73"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "avcs_python_minimal_api_surface_spec_v0.1",
+  "distribution": "pandas",
+  "package_module": "pandas",
+  "selection_status": "provisional_after_presence_history_v1",
+  "selection_policy": [
+    "public API commonly used by generated data-analysis code",
+    "historically discriminative when possible",
+    "statically verifiable from release source",
+    "cover core tabular objects, common ingestion APIs, and later-added data transformation APIs",
+    "include both stable anchors and potentially later-added APIs",
+    "avoid expanding to the full pandas API surface during Step 5 scaling"
+  ],
+  "symbols": [
+    {
+      "api_symbol": "pandas.DataFrame",
+      "latest_target": "pandas.DataFrame",
+      "role": "core_tabular_object"
+    },
+    {
+      "api_symbol": "pandas.Series",
+      "latest_target": "pandas.Series",
+      "role": "core_series_object"
+    },
+    {
+      "api_symbol": "pandas.read_csv",
+      "latest_target": "pandas.read_csv",
+      "role": "csv_ingestion"
+    },
+    {
+      "api_symbol": "pandas.NamedAgg",
+      "latest_target": "pandas.NamedAgg",
+      "role": "named_groupby_aggregation"
+    },
+    {
+      "api_symbol": "pandas.json_normalize",
+      "latest_target": "pandas.json_normalize",
+      "role": "json_normalization"
+    },
+    {
+      "api_symbol": "pandas.read_parquet",
+      "latest_target": "pandas.read_parquet",
+      "role": "parquet_ingestion"
+    },
+    {
+      "api_symbol": "pandas.read_xml",
+      "latest_target": "pandas.read_xml",
+      "role": "xml_ingestion"
+    },
+    {
+      "api_symbol": "pandas.from_dummies",
+      "latest_target": "pandas.from_dummies",
+      "role": "dummy_variable_decoding"
+    }
+  ],
+  "pruning": {
+    "source_spec": "output/avcs_api_history_scale/pandas/pandas_minimal_api_surface_spec_v0.json",
+    "removed_symbols": [],
+    "presence_history": {
+      "pandas.DataFrame": ">=0.1",
+      "pandas.Series": ">=0.1",
+      "pandas.read_csv": ">=0.4.0",
+      "pandas.NamedAgg": ">=0.25.0",
+      "pandas.json_normalize": ">=1.0.0",
+      "pandas.read_parquet": ">=0.21.0",
+      "pandas.read_xml": ">=1.3.0",
+      "pandas.from_dummies": ">=1.5.0"
+    },
+    "note": "All eight selected pandas APIs have clean presence-history boundaries with unknown=0 after generic resolver improvements for star imports, assignment presence, and factory-generated callables. Stable anchors are retained even when existence boundaries are early because later signature or parameter history may provide independent version constraints."
+  }
+}

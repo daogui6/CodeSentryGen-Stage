@@ -1,0 +1,442 @@
+{
+  "schema_version": "avcs_package_kb_v0.2",
+  "kb_id": "pypi_numpy_v0",
+  "ecosystem": "PyPI",
+  "distribution": "numpy",
+  "normalized_distribution": "numpy",
+
+  "package_metadata": {
+    "package_name": "numpy",
+    "registry": "PyPI",
+    "registry_url": null,
+    "repository_url": null,
+    "homepage_url": null,
+    "notes": "Unified Package KB migration for the existing NumPy AVCS real case."
+  },
+
+  "release_history": {
+    "status": "partial",
+    "as_of_time": "2026-08-20T02:00:00+00:00",
+    "confirmed_release_count": 136,
+    "confirmed_stable_release_count": 134,
+    "confirmed_prerelease_count": 2,
+
+    "artifacts": [
+      {
+        "role": "release_history",
+        "path": "output/numpy_release_history_20260820_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": "2026-08-20T04:58:54.090000+00:00",
+        "notes": "The historical NumPy release-history artifact explicitly reports partial status."
+      }
+    ],
+
+    "notes": "136 confirmed releases are recorded as of the time view, including 2 prereleases. The source artifact is explicitly partial."
+  },
+
+  "api_surface_history": {
+    "status": "partial",
+
+    "scope_policy": "Migrated the existing curated numpy.load allow_pickle-related API evidence from NumPy 1.10.0b1 onward. Older numpy.load releases remain outside this selected semantic scope, and the entry does not represent a complete NumPy public API surface.",
+
+    "artifacts": [
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Curated real API History evidence for numpy.load and allow_pickle."
+      }
+    ],
+
+    "entries": [
+      {
+        "api_symbol": "numpy.load",
+        "api_kind": "function",
+        "status": "resolved",
+
+        "version_rules": [
+          {
+            "rule_id": "numpy_load_one_positional",
+            "status": "resolved",
+            "version_specifier": ">=1.10.0b1",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 1,
+            "required_keyword_args": [],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json"
+          },
+
+          {
+            "rule_id": "numpy_load_allow_pickle_keyword",
+            "status": "resolved",
+            "version_specifier": ">=1.10.0b1",
+            "support_target": "api_parameter_support",
+            "required_positional_args_min": 1,
+            "required_positional_args_max": 1,
+            "required_keyword_args": [
+              "allow_pickle"
+            ],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json"
+          }
+        ],
+
+        "deprecated_since": null,
+        "removed_since": null,
+
+        "evidence_refs": [
+          "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json"
+        ],
+
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from existing resolved curated API History evidence."
+        }
+      }
+    ],
+
+    "notes": "The allow_pickle keyword is modeled from >=1.10.0b1. Historical source records allow_pickle=True before 1.16.3 and allow_pickle=False from 1.16.3."
+  },
+
+  "vulnerability_catalog": [
+    {
+      "vulnerability_id": "GHSA-9fq2-x9r6-wfmf",
+
+      "aliases": [
+        "CVE-2019-6446",
+        "PYSEC-2019-108"
+      ],
+
+      "summary": null,
+      "published_at": "2022-05-24T22:00:57Z",
+      "modified_at": "2026-07-06T15:30:15.818392869Z",
+      "withdrawn_at": null,
+      "severity": [],
+
+      "affected_ranges": [
+        {
+          "range_type": "ECOSYSTEM",
+          "introduced": "0",
+          "fixed": "1.16.3",
+          "last_affected": null,
+          "version_specifier": "<1.16.3",
+          "source_ref": "github_reviewed_ghsa"
+        }
+      ],
+
+      "fixed_versions": [
+        "1.16.3"
+      ],
+
+      "source_refs": [
+        "github_reviewed_ghsa",
+        "pysec_2019_108_conflict",
+        "numpy_1_16_2_source",
+        "numpy_1_16_3_source",
+        "numpy_1_16_3_release_notes",
+        "numpy_fix_commit"
+      ],
+
+      "trigger_assessment": {
+        "status": "conflicted",
+        "review_required": false,
+
+        "coverage_status": "unknown",
+        "affected_version_scope": "<1.16.3",
+        "assessed_trigger_version_scope": ">=1.10.0b1,<1.16.3",
+
+        "uncovered_scope_note": "GHSA-9fq2-x9r6-wfmf records fixed version 1.16.3, while alias PYSEC-2019-108 records fixed version 1.16.1. The lower >=1.10.0b1 boundary represents the curated allow_pickle semantic scope rather than the full historical vulnerability range. Because the alias records disagree on the affected upper boundary, Trigger coverage is not classified as full or partial.",
+
+        "rule_refs": [
+          "numpy_load_allow_pickle_true",
+          "numpy_load_omitted_allow_pickle_historical_true"
+        ],
+
+        "evidence_refs": [
+          "github_reviewed_ghsa",
+          "pysec_2019_108_conflict",
+          "numpy_1_16_2_source",
+          "numpy_1_16_3_source",
+          "numpy_1_16_3_release_notes",
+          "numpy_fix_commit"
+        ],
+
+        "unsupported_reasons": [],
+
+        "positive_regression_refs": [
+          "output/numpy_allow_pickle_true_evaluation_v0.json",
+          "output/numpy_allow_pickle_omitted_evaluation_v0.json"
+        ],
+
+        "negative_regression_refs": [
+          "output/numpy_allow_pickle_false_evaluation_v0.json"
+        ],
+
+        "notes": "Eligibility is frozen by avcs_trigger_eligibility_protocol_v0.2. The Trigger rules are supported, but affected-version evidence remains conflicted."
+      },
+
+      "review": {
+        "status": "approved",
+        "review_required": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "notes": "The GHSA range is retained as the primary machine-readable range. The PYSEC fixed-version discrepancy remains explicit provenance and is not silently reconciled."
+      },
+
+      "notes": "Alias records disagree on the fixed release: GHSA identifies 1.16.3, while PYSEC-2019-108 identifies 1.16.1."
+    }
+  ],
+
+  "trigger_rules": [
+    {
+      "trigger_id": "numpy_load_allow_pickle_true",
+
+      "vulnerability_ids": [
+        "GHSA-9fq2-x9r6-wfmf",
+        "CVE-2019-6446",
+        "PYSEC-2019-108"
+      ],
+
+      "api_symbol": "numpy.load",
+      "kind": "keyword_literal_condition",
+      "version_scope": ">=1.10.0b1,<1.16.3",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "keyword_argument": {
+        "name": "allow_pickle",
+        "required_literal": true
+      },
+
+      "historical_default_symbol": null,
+
+      "evidence_refs": [
+        "github_reviewed_ghsa",
+        "numpy_1_16_2_source",
+        "numpy_1_16_3_source",
+        "numpy_1_16_3_release_notes"
+      ],
+
+      "source_artifact": "output/numpy_ghsa_9fq2_x9r6_wfmf_trigger_evidence_v0.json",
+
+      "notes": "Explicit numpy.load(..., allow_pickle=True) within the curated vulnerable semantic scope."
+    },
+
+    {
+      "trigger_id": "numpy_load_omitted_allow_pickle_historical_true",
+
+      "vulnerability_ids": [
+        "GHSA-9fq2-x9r6-wfmf",
+        "CVE-2019-6446",
+        "PYSEC-2019-108"
+      ],
+
+      "api_symbol": "numpy.load",
+      "kind": "omitted_keyword_historical_default",
+      "version_scope": ">=1.10.0b1,<1.16.3",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "keyword_argument": {
+        "name": "allow_pickle",
+        "must_be_omitted": true
+      },
+
+      "historical_default_symbol": null,
+      "historical_default_literal": true,
+
+      "evidence_refs": [
+        "numpy_1_16_2_source",
+        "numpy_1_16_3_source",
+        "numpy_1_16_3_release_notes",
+        "numpy_fix_commit"
+      ],
+
+      "source_artifact": "output/numpy_ghsa_9fq2_x9r6_wfmf_trigger_evidence_v0.json",
+
+      "notes": "Before the secure-default change, omission of allow_pickle selects the historical True default within the curated semantic scope."
+    }
+  ],
+
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "github_reviewed_ghsa",
+        "source_type": "github_reviewed_advisory",
+        "url": null,
+        "path": "data/avcs_validation/osv_raw/GHSA-9fq2-x9r6-wfmf.json",
+        "locator": "affected / PyPI numpy",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The reviewed advisory records NumPy versions before 1.16.3 as affected and 1.16.3 as fixed."
+      },
+
+      {
+        "source_id": "pysec_2019_108_conflict",
+        "source_type": "pypa_advisory_conflicting_evidence",
+        "url": null,
+        "path": "data/avcs_validation/osv_raw/PYSEC-2019-108.json",
+        "locator": "affected / PyPI numpy",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "PYSEC-2019-108 records a conflicting fixed boundary of 1.16.1."
+      },
+
+      {
+        "source_id": "numpy_1_16_2_source",
+        "source_type": "upstream_release_source",
+        "url": "https://github.com/numpy/numpy/blob/v1.16.2/numpy/lib/npyio.py",
+        "path": null,
+        "locator": "numpy.load",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "numpy.load exposes allow_pickle and defaults it to True in NumPy 1.16.2."
+      },
+
+      {
+        "source_id": "numpy_1_16_3_source",
+        "source_type": "upstream_release_source",
+        "url": "https://github.com/numpy/numpy/blob/v1.16.3/numpy/lib/npyio.py",
+        "path": null,
+        "locator": "numpy.load",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "numpy.load retains the allow_pickle parameter but changes its default to False in NumPy 1.16.3."
+      },
+
+      {
+        "source_id": "numpy_1_16_3_release_notes",
+        "source_type": "upstream_release_notes",
+        "url": "https://github.com/numpy/numpy/blob/v1.16.3/doc/release/1.16.3-notes.rst",
+        "path": null,
+        "locator": "Security / allow_pickle",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "NumPy 1.16.3 documents explicit opt-in for unpickling in response to CVE-2019-6446."
+      },
+
+      {
+        "source_id": "numpy_fix_commit",
+        "source_type": "upstream_fix_commit",
+        "url": "https://github.com/numpy/numpy/commit/89b688732b37616c9d26623f81aaee1703c30ffb",
+        "path": null,
+        "locator": "numpy/lib/npyio.py and release notes",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The upstream fix changes the default of allow_pickle from True to False."
+      }
+    ],
+
+    "generated_from": [
+      {
+        "role": "release_history",
+        "path": "output/numpy_release_history_20260820_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "primary_vulnerability_evidence",
+        "path": "output/numpy_ghsa_9fq2_x9r6_wfmf_osv_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Primary GHSA-derived affected-version evidence."
+      },
+
+      {
+        "role": "primary_vulnerability_constraints",
+        "path": "output/numpy_ghsa_9fq2_x9r6_wfmf_vulnerability_constraints_v0.json",
+        "schema_version": "vulnerability_constraint_v0.3",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Primary range uses fixed version 1.16.3."
+      },
+
+      {
+        "role": "conflicting_vulnerability_evidence",
+        "path": "output/numpy_pysec_2019_108_osv_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Alias record retained because it reports the conflicting 1.16.1 fixed boundary."
+      },
+
+      {
+        "role": "conflicting_vulnerability_constraints",
+        "path": "output/numpy_pysec_2019_108_vulnerability_constraints_v0.json",
+        "schema_version": "vulnerability_constraint_v0.3",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Secondary conflicting range uses fixed version 1.16.1."
+      },
+
+      {
+        "role": "trigger_evidence",
+        "path": "output/numpy_ghsa_9fq2_x9r6_wfmf_trigger_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_trigger_evidence_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Trigger evidence preserves the fixed-version conflict and uses GHSA as its primary range source."
+      },
+
+      {
+        "role": "trigger_eligibility_assessment",
+        "path": "data/avcs_package_kb/trigger_eligibility/numpy_ghsa_9fq2_x9r6_wfmf_eligibility_v0.json",
+        "schema_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "The assessment artifact is successfully resolved and validated; its semantic classification is conflicted because the alias records disagree on the fixed-version boundary."
+      }
+    ],
+
+    "notes": "The GHSA and PYSEC records are aliases for the same vulnerability but disagree on the fixed version. The discrepancy is preserved as provenance instead of being silently reconciled."
+  },
+
+  "review": {
+    "status": "approved",
+    "review_required": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "protocol_version": null,
+    "notes": "Package KB migration review closed after structural/cross-reference validation and Trigger Eligibility semantic validation passed. Existing uncertainty, partial-coverage, and conflicted states are preserved rather than overridden by migration approval."
+  }
+}

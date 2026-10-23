@@ -1,0 +1,139 @@
+{
+  "schema_version": "avcs_trigger_heldout_source_inventory_v0.1",
+  "batch_id": "rq1_heldout_batch_c_v0",
+  "status": "seed_only",
+  "evaluation_role": "true_heldout_generalization",
+  "ecosystem": "PyPI",
+  "purpose": "RQ1 true held-out generalization evaluation of the updated frozen AVCS evidence-automation pipeline",
+  "frozen_system_checkpoint": "c5275ee545016651401fe96a045258d40c21938a",
+  "semantic_boundary": {
+    "development_cases_excluded": true,
+    "batch_a_cases_excluded": true,
+    "batch_b_cases_excluded": true,
+    "trigger_raw_available_to_pipeline": false,
+    "manual_trigger_conditions_provided": false,
+    "manual_safe_alternatives_provided": false,
+    "manual_fixed_versions_provided": false,
+    "llm_semantic_judge_used": false,
+    "initial_sources_are_identity_seeds_only": true,
+    "human_review_allowed_before_draft_freeze": false,
+    "final_heldout_claims_allowed": true,
+    "system_changes_after_failure_analysis_allowed": false
+  },
+  "cases": [
+    {
+      "case_id": "heldout_c_werkzeug_pysec_2026_2046",
+      "domain": "web_utility_file_serving",
+      "ecosystem": "PyPI",
+      "distribution": "werkzeug",
+      "vulnerability_ids": [
+        "PYSEC-2026-2046",
+        "CVE-2025-66221",
+        "GHSA-hgf8-39gv-g3f2"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_2046",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-2046"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_c_ansible_core_ghsa_w8p5_mx5w_cpqj",
+      "domain": "automation_devops",
+      "ecosystem": "PyPI",
+      "distribution": "ansible-core",
+      "vulnerability_ids": [
+        "GHSA-w8p5-mx5w-cpqj",
+        "CVE-2026-11332",
+        "PYSEC-2026-3458"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_ghsa_w8p5_mx5w_cpqj",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/GHSA-w8p5-mx5w-cpqj"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_c_jupyter_server_ghsa_24qx_w28j_9m6p",
+      "domain": "notebook_server_infrastructure",
+      "ecosystem": "PyPI",
+      "distribution": "jupyter-server",
+      "vulnerability_ids": [
+        "GHSA-24qx-w28j-9m6p",
+        "CVE-2026-40110",
+        "PYSEC-2026-2187"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_ghsa_24qx_w28j_9m6p",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/GHSA-24qx-w28j-9m6p"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_c_scrapy_pysec_2024_258",
+      "domain": "crawler_http",
+      "ecosystem": "PyPI",
+      "distribution": "scrapy",
+      "vulnerability_ids": [
+        "PYSEC-2024-258",
+        "CVE-2024-1968",
+        "GHSA-4qqq-9vqf-3h3f"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2024_258",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2024-258"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_c_mlflow_pysec_2026_1662",
+      "domain": "ml_lifecycle_infrastructure",
+      "ecosystem": "PyPI",
+      "distribution": "mlflow",
+      "vulnerability_ids": [
+        "PYSEC-2026-1662",
+        "CVE-2023-6976",
+        "GHSA-wv8q-4f85-2p8p"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_1662",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-1662"
+        }
+      ]
+    },
+    {
+      "case_id": "heldout_c_ray_pysec_2026_130",
+      "domain": "distributed_ai_infrastructure",
+      "ecosystem": "PyPI",
+      "distribution": "ray",
+      "vulnerability_ids": [
+        "PYSEC-2026-130",
+        "CVE-2026-32981",
+        "GHSA-j3mh-qmjj-xp83"
+      ],
+      "sources": [
+        {
+          "source_id": "osv_pysec_2026_130",
+          "source_type": "osv_pypi_advisory",
+          "locator_kind": "url",
+          "url": "https://osv.dev/vulnerability/PYSEC-2026-130"
+        }
+      ]
+    }
+  ]
+}

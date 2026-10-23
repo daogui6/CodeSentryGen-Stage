@@ -1,0 +1,22 @@
+{
+  "schema_version": "avcs_manifest_constraints_v0.1",
+  "sample_id": "avcs_pyjwt_default_algorithms_true",
+  "distribution": "PyJWT",
+  "normalized_distribution": "pyjwt",
+  "requirements_text": "PyJWT",
+  "status": "resolved",
+  "constraint_kind": "unconstrained",
+  "specifier": "",
+  "matched_requirements": [
+    {
+      "name": "PyJWT",
+      "normalized_name": "pyjwt",
+      "specifier": "",
+      "extras": [],
+      "marker": "",
+      "url": "",
+      "original_text": "PyJWT"
+    }
+  ],
+  "invalid_lines": []
+}

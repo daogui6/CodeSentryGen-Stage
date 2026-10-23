@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "avcs_trigger_llm_proposal_schema_v0.json",
+  "title": "CodeSentry-Gen AVCS LLM Trigger Proposal Schema v0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "proposer_id",
+    "proposed_status",
+    "candidate_rule",
+    "claim_evidence_map",
+    "unresolved_questions",
+    "notes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "avcs_trigger_llm_proposal_v0.1"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposed_status": {
+      "enum": [
+        "eligible",
+        "unsupported_complex",
+        "insufficient_evidence",
+        "conflicted",
+        "requires_review"
+      ]
+    },
+    "candidate_rule": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/candidate_rule"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "claim_evidence_map": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim_evidence"
+      }
+    },
+    "unresolved_questions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$defs": {
+    "candidate_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_id",
+        "vulnerability_ids",
+        "api_symbol",
+        "kind",
+        "version_scope",
+        "requires_untrusted_input",
+        "conditions",
+        "evidence_refs"
+      ],
+      "properties": {
+        "trigger_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vulnerability_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "api_symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "direct_api",
+            "keyword_literal_condition",
+            "keyword_argument_condition",
+            "keyword_call_condition",
+            "omitted_keyword_historical_default",
+            "positional_url_condition",
+            "receiver_producer_keyword_literal_condition"
+          ]
+        },
+        "version_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requires_untrusted_input": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "claim_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "claim",
+        "evidence_refs"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

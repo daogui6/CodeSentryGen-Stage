@@ -1,0 +1,35 @@
+{
+  "schema_version": "osv_multisource_snapshot_audit_v1",
+  "before": {
+    "resolved": 134,
+    "statuses": {
+      "resolved": 134,
+      "source_affected_version_list_disagreement": 1,
+      "source_range_disagreement": 71,
+      "unsupported_range_shape": 2
+    },
+    "unresolved": 74
+  },
+  "after": {
+    "resolved": 171,
+    "statuses": {
+      "release_range_evidence_missing": 2,
+      "resolved": 171,
+      "source_affected_version_list_disagreement": 4,
+      "source_range_disagreement": 26,
+      "unsupported_multi_interval_release_set": 5
+    },
+    "unresolved": 37
+  },
+  "source_record_count": 402,
+  "vulnerability_identity_group_count": 208,
+  "package_count_audited": 11,
+  "identity_and_source_records_unchanged": true,
+  "processing_mode": "remerge_persisted_normalized_sources",
+  "full_original_raw_records_available": false,
+  "raw_provenance_note": "Historical catalogs retain normalized sources and original raw SHA-256 claims; untracked raw cache files are not fabricated or fetched from live OSV.",
+  "artifact_kind": "stage_scope_extract_created_2026-10-24",
+  "origin_commit": "34d43873435d49da6b928f53a76fdb316118a884",
+  "origin_path": "output/osv_multisource_repair_v2_20261011/summary.json",
+  "note": "Range-evidence statistics only; not a count of human-reviewed triggers. The exact numbers are archival results, not a claim about a spoken presentation."
+}

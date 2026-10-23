@@ -1,0 +1,519 @@
+{
+  "schema_version": "avcs_release_history_v0.1",
+  "distribution": "PyJWT",
+  "normalized_distribution": "pyjwt",
+  "time_view": "2026-08-20T02:00:00+00:00",
+  "audit_time": "2026-08-20T10:47:55.925077+00:00",
+  "registry_source": "PyPI JSON API",
+  "registry_data_source": "cache",
+  "cache_file": "output/avcs_pypi_release_cache/pyjwt.json",
+  "registry_release_count": 55,
+  "release_count_with_files": 55,
+  "release_count_without_file_evidence": 0,
+  "release_history_evidence_scope": "current_pypi_project_json_file_metadata",
+  "release_history_status": "current_registry_file_evidence_complete",
+  "confirmed_release_count_as_of_time_view": 55,
+  "confirmed_release_count_after_time_view": 0,
+  "latest_confirmed_version_as_of_time_view": "2.13.0",
+  "confirmed_releases_as_of_time_view": [
+    {
+      "version": "0.1.1",
+      "first_upload_time": "2011-02-24T21:50:33.411755+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.2",
+      "first_upload_time": "2011-03-22T02:38:08.593900+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.3",
+      "first_upload_time": "2011-04-05T20:52:44.152717+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.4",
+      "first_upload_time": "2011-04-06T05:33:46.292393+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.5",
+      "first_upload_time": "2012-10-29T03:18:09.303053+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.6",
+      "first_upload_time": "2013-08-18T03:25:48.149114+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.7",
+      "first_upload_time": "2014-01-17T21:30:32.807007+00:00",
+      "file_count": 5,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.8",
+      "first_upload_time": "2014-01-23T01:41:04.525414+00:00",
+      "file_count": 5,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.1.9",
+      "first_upload_time": "2014-02-08T06:37:50.709393+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.2.0",
+      "first_upload_time": "2014-03-26T00:30:48.085303+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.2.1",
+      "first_upload_time": "2014-04-28T17:10:41.955057+00:00",
+      "file_count": 4,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.2.3",
+      "first_upload_time": "2014-10-16T04:07:44.232633+00:00",
+      "file_count": 5,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.3.0",
+      "first_upload_time": "2014-10-22T05:37:39.113114+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.3.1",
+      "first_upload_time": "2014-12-03T13:06:50.525315+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.3.2",
+      "first_upload_time": "2014-12-13T22:27:06.577771+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.4.0",
+      "first_upload_time": "2014-12-23T12:12:43.854472+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.4.1",
+      "first_upload_time": "2015-01-08T16:23:37.229199+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.4.2",
+      "first_upload_time": "2015-02-18T19:12:05.842540+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "0.4.3",
+      "first_upload_time": "2015-02-18T20:35:20.471708+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.0.0",
+      "first_upload_time": "2015-03-18T17:10:10.104677+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.0.1",
+      "first_upload_time": "2015-03-26T21:10:29.984822+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.1.0",
+      "first_upload_time": "2015-04-15T20:54:37.983916+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.3.0",
+      "first_upload_time": "2015-05-22T15:51:18.161193+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.4.0",
+      "first_upload_time": "2015-07-17T01:30:23.158524+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.4.1",
+      "first_upload_time": "2016-07-13T11:22:41.125411+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.4.2",
+      "first_upload_time": "2016-08-08T20:07:53.180515+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.5.0",
+      "first_upload_time": "2017-04-19T14:38:19.329693+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.5.1",
+      "first_upload_time": "2017-06-22T14:56:55.795684+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.5.2",
+      "first_upload_time": "2017-06-22T16:31:25.126723+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.5.3",
+      "first_upload_time": "2017-09-05T18:21:33.567963+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.6.0",
+      "first_upload_time": "2018-03-03T16:53:23.811905+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.6.1",
+      "first_upload_time": "2018-03-18T13:38:21.079904+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.6.3",
+      "first_upload_time": "2018-05-19T17:13:41.890876+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.6.4",
+      "first_upload_time": "2018-05-24T02:46:59.340421+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.7.0",
+      "first_upload_time": "2018-12-02T03:49:20.038343+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "1.7.1",
+      "first_upload_time": "2018-12-07T13:40:06.872228+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.0.0a1",
+      "first_upload_time": "2020-11-02T12:52:01.009370+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": true,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.0.0a2",
+      "first_upload_time": "2020-12-20T00:11:14.640860+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": true,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.0.0",
+      "first_upload_time": "2020-12-22T14:14:33.513482+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.0.1",
+      "first_upload_time": "2021-01-17T17:57:18.527818+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.1.0",
+      "first_upload_time": "2021-04-28T12:02:52.182689+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.2.0",
+      "first_upload_time": "2021-10-06T22:30:17.608921+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.3.0",
+      "first_upload_time": "2021-10-16T15:54:52.964882+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.4.0",
+      "first_upload_time": "2022-05-12T18:58:19.269871+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.5.0",
+      "first_upload_time": "2022-09-17T14:01:55.968474+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.6.0",
+      "first_upload_time": "2022-10-20T01:09:09.802781+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.7.0",
+      "first_upload_time": "2023-05-09T20:04:39.903521+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.8.0",
+      "first_upload_time": "2023-07-18T20:02:21.561091+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.9.0",
+      "first_upload_time": "2024-08-01T15:01:06.481176+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.10.0",
+      "first_upload_time": "2024-11-17T10:19:46.810268+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.10.1",
+      "first_upload_time": "2024-11-28T03:43:27.893367+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.11.0",
+      "first_upload_time": "2026-01-30T19:59:54.539418+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.12.0",
+      "first_upload_time": "2026-03-12T17:15:29.257162+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.12.1",
+      "first_upload_time": "2026-03-13T19:27:35.677841+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    },
+    {
+      "version": "2.13.0",
+      "first_upload_time": "2026-05-21T19:54:35.362086+00:00",
+      "file_count": 2,
+      "currently_yanked_file_count": 0,
+      "all_files_currently_yanked": false,
+      "is_prerelease": false,
+      "is_devrelease": false
+    }
+  ],
+  "invalid_version_labels": [],
+  "release_labels_without_file_evidence": [],
+  "confirmed_prerelease_count_as_of_time_view": 2,
+  "currently_yanked_confirmed_release_count": 0
+}

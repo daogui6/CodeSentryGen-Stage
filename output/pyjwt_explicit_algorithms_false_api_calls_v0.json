@@ -1,0 +1,36 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_pyjwt_explicit_algorithms_false",
+  "code_file": "data/avcs_validation/avcs_pyjwt_explicit_algorithms_false.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "jwt",
+      "distribution": "PyJWT",
+      "api_symbol": "jwt.decode",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_pyjwt_explicit_algorithms_false.py",
+        "line": 7,
+        "column": 10
+      },
+      "call_text": "jwt.decode(\n    token,\n    verification_key,\n    algorithms=[\"RS256\"],\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 2,
+        "keyword_arg_names": [
+          "algorithms"
+        ],
+        "keyword_arg_values": {
+          "algorithms": {
+            "source_text": "[\"RS256\"]",
+            "resolved_symbol": null
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

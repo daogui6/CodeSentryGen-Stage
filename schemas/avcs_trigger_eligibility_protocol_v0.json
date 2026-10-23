@@ -1,0 +1,387 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "avcs_trigger_eligibility_protocol_v0.json",
+  "title": "CodeSentry-Gen AVCS Trigger Eligibility Protocol v0",
+
+  "x-protocol-id": "avcs_trigger_eligibility_protocol_v0.2",
+
+  "x-purpose": "Freeze the human-reviewed eligibility, unsupported, insufficient-evidence, conflicted, and review-required decision protocol for curated AVCS vulnerability Trigger knowledge.",
+
+  "x-supported-static-rule-kinds": [
+    {
+      "kind": "direct_api",
+      "description": "A direct call to a vulnerability-relevant API is statically observable."
+    },
+    {
+      "kind": "keyword_literal_condition",
+      "description": "A vulnerability-relevant keyword argument is supplied with a statically observable literal value."
+    },
+    {
+      "kind": "keyword_argument_condition",
+      "description": "A vulnerability-relevant keyword argument is supplied with a statically observable argument form."
+    },
+    {
+      "kind": "keyword_call_condition",
+      "description": "A vulnerability-relevant keyword argument is supplied by a statically observable nested call."
+    },
+    {
+      "kind": "omitted_keyword_historical_default",
+      "description": "A vulnerability-relevant keyword is omitted and historical source evidence establishes the security-relevant default for the applicable version scope."
+    },
+    {
+      "kind": "positional_url_condition",
+      "description": "A vulnerability-relevant URL or URL-like condition is statically recoverable from a positional argument."
+    },
+    {
+      "kind": "receiver_producer_keyword_literal_condition",
+      "description": "A vulnerability-relevant keyword literal condition is attached to a call whose receiver provenance is statically recoverable from a supported producer expression."
+    }
+  ],
+
+  "x-eligibility-requirements": [
+    {
+      "check": "vulnerability_identity",
+      "requirement": "The vulnerability identity and relevant aliases are resolved."
+    },
+    {
+      "check": "affected_version_range",
+      "requirement": "The affected and fixed version evidence is resolved from structured or otherwise traceable vulnerability evidence."
+    },
+    {
+      "check": "upstream_trigger_semantics",
+      "requirement": "Real upstream evidence supports the proposed Trigger semantics, such as an advisory, fix commit, regression test, historical source, changelog, or equivalent primary evidence."
+    },
+    {
+      "check": "supported_static_expressibility",
+      "requirement": "The Trigger can be represented reliably by one of the frozen supported static rule kinds."
+    },
+    {
+      "check": "counterfactual_validation",
+      "requirement": "Positive and negative regression evidence, or an equivalent counterfactual validation, supports the distinction between matched and non-matched code."
+    },
+    {
+      "check": "provenance_completeness",
+      "requirement": "The rule and its claims are traceable to explicit evidence references and source provenance."
+    }
+  ],
+
+  "x-classification-policy": {
+    "eligible": {
+      "description": "All eligibility requirements pass and human review approves the Trigger rule.",
+      "requires_supported_rule_kind": true,
+      "requires_human_approval": true
+    },
+
+    "unsupported_complex": {
+      "description": "The vulnerability and relevant semantics are sufficiently understood, but the Trigger cannot be represented reliably by the frozen supported static rule kinds.",
+      "examples": [
+        "cross_function_taint_or_data_flow",
+        "runtime_object_state",
+        "environment_dependent_state",
+        "complex_attacker_controlled_propagation",
+        "semantics_not_reliably_expressible_by_current_matcher"
+      ],
+      "requires_human_approval": true
+    },
+
+    "insufficient_evidence": {
+      "description": "Available evidence is insufficient to recover or validate reliable Trigger semantics. This must not be interpreted as evidence that no Trigger exists.",
+      "requires_human_approval": true
+    },
+
+    "conflicted": {
+      "description": "Material evidence sources conflict and the conflict cannot currently be resolved conservatively.",
+      "requires_human_approval": true
+    },
+
+    "requires_review": {
+      "description": "A candidate classification or rule exists but has not passed the required human review. LLM-generated or automatically proposed Trigger knowledge must remain in this state until reviewed.",
+      "requires_human_approval": true
+    },
+
+    "not_assessed": {
+      "description": "No eligibility decision has yet been made."
+    }
+  },
+
+  "x-human-in-the-loop-policy": {
+    "llm_may_propose_candidate_rules": true,
+    "llm_candidate_requires_review": true,
+    "llm_may_directly_create_ground_truth": false,
+    "automatic_candidate_may_directly_create_ground_truth": false,
+    "human_review_required_for_eligible": true,
+    "human_review_required_for_unsupported_complex": true,
+    "human_review_required_for_insufficient_evidence": true,
+    "human_review_required_for_conflicted": true
+  },
+
+  "x-scientific-boundary": [
+    "A missing Trigger rule does not imply that the vulnerability is absent.",
+    "A vulnerability classified as unsupported_complex remains usable for affected-version analysis.",
+    "V_exposed greater than zero does not prove that the vulnerability Trigger occurred in generated code.",
+    "A matched Trigger does not prove exploitability.",
+    "Trigger rules are secondary semantic evidence and must not replace AVCS API-to-Version reasoning.",
+    "Affected-version evidence and Trigger-semantic evidence must remain distinct.",
+    "Unresolved or insufficient evidence must not be converted into a negative label."
+  ],
+
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "protocol_version",
+    "vulnerability_id",
+    "aliases",
+    "status",
+    "matched_supported_rule_kinds",
+    "trigger_coverage",
+    "eligibility_checks",
+    "review_required",
+    "rule_refs",
+    "evidence_refs",
+    "unsupported_reasons",
+    "review"
+  ],
+
+  "properties": {
+    "protocol_version": {
+      "const": "avcs_trigger_eligibility_protocol_v0.2"
+    },
+
+    "vulnerability_id": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "status": {
+      "enum": [
+        "not_assessed",
+        "eligible",
+        "unsupported_complex",
+        "insufficient_evidence",
+        "conflicted",
+        "requires_review"
+      ]
+    },
+
+    "matched_supported_rule_kinds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "direct_api",
+          "keyword_literal_condition",
+          "keyword_argument_condition",
+          "keyword_call_condition",
+          "omitted_keyword_historical_default",
+          "positional_url_condition",
+          "receiver_producer_keyword_literal_condition"
+        ]
+      }
+    },
+
+    "candidate_rule_kinds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "trigger_coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coverage_status",
+        "affected_version_scope",
+        "assessed_trigger_version_scope",
+        "uncovered_scope_note"
+      ],
+      "properties": {
+        "coverage_status": {
+          "enum": [
+            "full",
+            "partial",
+            "unknown",
+            "not_assessed"
+          ]
+        },
+
+        "affected_version_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "assessed_trigger_version_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "uncovered_scope_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+
+    "eligibility_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vulnerability_identity",
+        "affected_version_range",
+        "upstream_trigger_semantics",
+        "supported_static_expressibility",
+        "counterfactual_validation",
+        "provenance_completeness"
+      ],
+
+      "properties": {
+        "vulnerability_identity": {
+          "$ref": "#/$defs/check_status"
+        },
+
+        "affected_version_range": {
+          "$ref": "#/$defs/check_status"
+        },
+
+        "upstream_trigger_semantics": {
+          "$ref": "#/$defs/check_status"
+        },
+
+        "supported_static_expressibility": {
+          "$ref": "#/$defs/check_status"
+        },
+
+        "counterfactual_validation": {
+          "$ref": "#/$defs/check_status"
+        },
+
+        "provenance_completeness": {
+          "$ref": "#/$defs/check_status"
+        }
+      }
+    },
+
+    "review_required": {
+      "type": "boolean"
+    },
+
+    "rule_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "unsupported_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "positive_regression_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "negative_regression_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "decision_notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+
+    "review": {
+      "$ref": "#/$defs/review_record"
+    }
+  },
+
+  "$defs": {
+    "check_status": {
+      "enum": [
+        "pass",
+        "fail",
+        "unknown",
+        "conflicted",
+        "not_applicable"
+      ]
+    },
+
+    "review_record": {
+      "type": "object",
+      "additionalProperties": false,
+
+      "required": [
+        "status",
+        "reviewer",
+        "reviewed_at",
+        "notes"
+      ],
+
+      "properties": {
+        "status": {
+          "enum": [
+            "not_reviewed",
+            "in_review",
+            "approved",
+            "rejected",
+            "requires_revision"
+          ]
+        },
+
+        "reviewer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

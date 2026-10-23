@@ -1,0 +1,67 @@
+{
+  "schema_version": "step7_batch_semantic_source_excerpt_v0.1",
+  "builder_id": "step7_batch_semantic_bridge_v0.1",
+  "case_id": "step7_pillow_ghsa_45hq_cxwh_f6vc",
+  "distribution": "pillow",
+  "vulnerability_id": "GHSA-45hq-cxwh-f6vc",
+  "effective_packet_source": "original_run",
+  "original_source_id": "osvref_github_blob_f6afce00c5ee",
+  "original_source_type": "github_source_file_reference",
+  "source_key": "pillow::osvref_github_blob_f6afce00c5ee",
+  "target": {
+    "url": "https://github.com/python-pillow/Pillow/blob/main/docs/releasenotes/12.3.0.rst",
+    "repository": "python-pillow/Pillow",
+    "ref": "main",
+    "path": "docs/releasenotes/12.3.0.rst"
+  },
+  "provenance": {
+    "path": "output/step7_batch_review_v0/shared_cache_v0/github_file/pillow_osvref_github_blob_f6afce00c5ee/content.bin",
+    "status": "resolved",
+    "expected_sha256": "sha256:9855c1fc83ab6aa1f49f61aebc561cdc74311b9e7e9a04c1e22f1c773b46383d",
+    "expected_size_bytes": 5827,
+    "verified": true,
+    "actual_sha256": "sha256:9855c1fc83ab6aa1f49f61aebc561cdc74311b9e7e9a04c1e22f1c773b46383d",
+    "actual_size_bytes": 5827,
+    "cache_metadata_path": "output/step7_batch_review_v0/shared_cache_v0/github_file/pillow_osvref_github_blob_f6afce00c5ee/metadata.json",
+    "github_blob_sha": "e600604be5d023fd283c5b66be136448fb0b9ce8",
+    "content_mode": "contents_api_base64",
+    "content_decode_status": "resolved"
+  },
+  "selected_units": [
+    {
+      "unit_id": "pillow::osvref_github_blob_f6afce00c5ee::unit_001",
+      "unit_kind": "github_source_file_text",
+      "text_sha256": "sha256:9855c1fc83ab6aa1f49f61aebc561cdc74311b9e7e9a04c1e22f1c773b46383d",
+      "original_size_chars": 5827,
+      "selected_size_chars": 5827,
+      "truncated": false,
+      "locator": {
+        "repository": "python-pillow/Pillow",
+        "ref": "main",
+        "path": "docs/releasenotes/12.3.0.rst"
+      },
+      "excerpt_sha256": "sha256:9855c1fc83ab6aa1f49f61aebc561cdc74311b9e7e9a04c1e22f1c773b46383d",
+      "excerpt": "12.3.0\n------\n\nSecurity\n========\n\n:cve:`2026-59200`: Prevent decompression bomb when parsing PDF\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nWhen parsing a PDF, ``PdfStream.decode()`` attempts to decompress data without any\nlimit. A default maximum of ``ImageFile.SAFEBLOCK`` has been added. ``PdfParser`` was\nadded in Pillow 5.1.0. Reported by `redyank <https://github.com/redyank>`__.\n\n:cve:`2026-55798`: WindowsViewer.get_command injection\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nIf an attacker has control over the path passed to\n``ImageShow.WindowsViewer.get_command()``, and the result is executed by the user, the\nattacker may be able to execute arbitrary shell commands. Reported by Bin Luo,\nUniversity of Electronic Science and Technology of China (luob87709@gmail.com).\n\n:cve:`2026-59203`: EPS image infinite loop\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nIf a negative byte count is specified for the BeginBinary byte count, an infinite loop\nis possible as Pillow seeks repeatedly backwards. This value will now be validated.\nBeginBinary parsing was only added in Pillow 12.0.0. Reported by\n`jiagongzheng-stack <https://github.com/jiagongzheng-stack>`__.\n\n:cve:`2026-59204`: JPEG2000 image memory usage\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nThe total component width was incorrectly accumulated across tiles within a JPEG2000\nimage, potentially leading to excessive memory use. This was introduced as part of an\nearlier security fix in Pillow 8.2.0, but has now been fixed. Reported by Fr3v1.\n\n:cve:`2026-54058`: McIdas out-of-bounds (OOB) read\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nMcIdas images can specify the stride, and if incorrectly set, may cause an OOB read.\nThis has been fixed. Reported by Devansh Shah, RUDRA Cybersecurity Pvt. Ltd.\n\n:cve:`2026-59198`: Out-of-bounds (OOB) read when saving 1 mode TGA images\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nSaving 1 mode images as TGA with run-length encoding can trigger an OOB read. This was\nadded in Pillow 5.2.0, but the functionality is not possible under the TGA\nspecification, so it has been removed. Reported by\n`Seratov <https://github.com/Seratov>`__.\n\n:cve:`2026-59197`: Out-of-bounds (OOB) write from large RankFilter sizes\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n:py:class:`~PIL.ImageFilter.RankFilter`, and its subclasses, can potentially write\nout-of-bounds if given a large size. This has been fixed. Reported by\n`Seratov <https://github.com/Seratov>`__.\n\n:cve:`2026-59199`: Out-of-bounds (OOB) write from ``Image.paste()``\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nLarge paste box dimensions can cause an OOB write in ``Image.crop()``,\n``Image.paste()`` and ``Image.alpha_composite()``. This has been fixed. Reported by\n`Seratov <https://github.com/Seratov>`__.\n\n:cve:`2026-59205`: Out-of-bounds (OOB) write in ``ImageCmsTransform``\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nApply a transform mode to a different image mode can trigger an OOB write in\n``ImageCmsTransform``. Errors are now raised if the mode does not match. Reported by\n`Seratov <https://github.com/Seratov>`__.\n\n:cve:`2026-54059`, :cve:`2026-54060`, :cve:`2026-55379`: Prevent FontFile decompression bomb\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nDecompression bomb checks have now been added to :py:class:`~PIL.FontFile.FontFile`,\nand its subclasses, checking the width and height of characters. Reported by Rahul\nSingh and Dinesh.\n\n:cve:`2026-55380`: Prevent GD decompression bomb\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nA decompression bomb check has been added to :py:class:`~PIL.GdImageFile.GdImageFile`.\nThis is format must be explicitly called though, rather than being accessible from\n``Image.open()``. Reported by Rahul Singh.\n\nAPI additions\n=============\n\nAdded ``scale_down`` argument to ``ImageGrab.grab()``\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n:py:meth:`~PIL.ImageGrab.grab` now accepts an optional keyword argument of\n``scale_down``. This affects macOS screenshots with a ``bbox`` on a Retina screen. By\ndefault, images will be captured at 2x. If ``scale_down`` is ``True``, they will be at\n1x.\n\nPreviously, macOS screenshots with a ``bbox`` were captured at 1x by default.\n\nAdded ``max_length`` argument to ``PdfStream.decode()``\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nWhen calling ``PdfStream.decode()``, the maximum length of data to decode can now be\nspecified. This will default to ``ImageFile.SAFEBLOCK``.\n\nOther changes\n=============\n\nPython 3.15 beta\n^^^^^^^^^^^^^^^^\n\nTo help other projects prepare for Python 3.15, wheels are now built for the 3.15 beta\nas a preview. This is not official support for Python 3.15, but rather an opportunity\nfor you to test how Pillow works with the beta and report any problems.\n\nSBOM in wheels\n^^^^^^^^^^^^^^\n\nFollowing :pep:`770`, the Software Bill-of-Materials (SBOM) has now been embedded into\nPillow's wheels.\n\nRemoved Python 3.13 free-threaded wheels\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nPython 3.13 added an experimental free-threaded mode, and Pillow 11.0.0 added\ncorresponding wheels. Now that Python 3.14 includes official support for it, Pillow has\nremoved wheels for Python 3.13 free-threaded mode.\n\nPerformance improvements\n^^^^^^^^^^^^^^^^^^^^^^^^\n\nA number of changes have been made to optimize the use of C when manipulating images.\nThis improves performance by up to 5.6 times of ``Image``'s\n``alpha_composite``, ``fill``, ``filter``, ``getchannel``, ``linear_gradient``,\n``matrix``, ``merge``, ``negative``, ``putalpha``, ``quantize``,\n``radial_gradient``, ``resample``, ``split``, and ``ImageChops`` operations.\n"
+    }
+  ],
+  "input_refs": {
+    "semantic_excerpt_bundle": {
+      "path": "output/step7_batch_review_v0/batch_004_semantic_bridge_full56_v1/step7_pillow_ghsa_45hq_cxwh_f6vc/semantic_excerpt_bundle.json",
+      "sha256": "9830709ea0ed57d720c1c0adf5f1fa0423bc2e4791cb827352e61bab498607c6"
+    },
+    "review_packet": {
+      "path": "output/step7_batch_review_v0/batch_004_evidence_full56_v0/review_packets/step7_pillow_ghsa_45hq_cxwh_f6vc/review_packet.json",
+      "sha256": "ee26d8ab98759b122bf10731def0eec0ca27ba09ce4488bc851a5db4e86a2408"
+    }
+  },
+  "semantic_boundary": {
+    "evidence_only": true,
+    "source_partition_preserved": true,
+    "excerpt_is_ground_truth": false,
+    "trigger_truth_created": false,
+    "llm_proposal_created": false,
+    "human_review_created": false,
+    "eligibility_created": false,
+    "package_kb_mutated": false
+  }
+}

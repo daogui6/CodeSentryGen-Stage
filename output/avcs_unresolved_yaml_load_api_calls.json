@@ -1,0 +1,28 @@
+{
+  "schema_version": "api_call_evidence_v0.1",
+  "sample_id": "avcs_unresolved_yaml_load",
+  "code_file": "data/avcs_validation/avcs_unresolved_yaml_load.py",
+  "parse_status": "ok",
+  "parse_error": "",
+  "api_call_count": 1,
+  "api_calls": [
+    {
+      "import_name": "yaml",
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.load",
+      "binding_type": "module_import",
+      "location": {
+        "file": "data/avcs_validation/avcs_unresolved_yaml_load.py",
+        "line": 4,
+        "column": 10
+      },
+      "call_text": "yaml.load(data)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      }
+    }
+  ]
+}

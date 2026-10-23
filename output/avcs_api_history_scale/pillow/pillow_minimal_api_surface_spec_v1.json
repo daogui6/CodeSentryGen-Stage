@@ -1,0 +1,59 @@
+{
+  "schema_version": "avcs_python_minimal_api_surface_spec_v0.1",
+  "distribution": "Pillow",
+  "package_module": "PIL",
+  "selection_status": "provisional_after_presence_history_v1",
+  "selection_policy": [
+    "public API commonly used by generated code",
+    "historically discriminative when possible",
+    "statically verifiable from release source",
+    "cover core image loading/construction and common image operations",
+    "include both stable anchors and potentially later-added APIs",
+    "avoid expanding to the full Pillow API surface during Step 5 scaling"
+  ],
+  "symbols": [
+    {
+      "api_symbol": "PIL.Image.open",
+      "latest_target": "PIL.Image.open",
+      "role": "image_loader"
+    },
+    {
+      "api_symbol": "PIL.Image.new",
+      "latest_target": "PIL.Image.new",
+      "role": "image_constructor"
+    },
+    {
+      "api_symbol": "PIL.Image.fromarray",
+      "latest_target": "PIL.Image.fromarray",
+      "role": "array_to_image"
+    },
+    {
+      "api_symbol": "PIL.ImageOps.exif_transpose",
+      "latest_target": "PIL.ImageOps.exif_transpose",
+      "role": "metadata_aware_orientation"
+    },
+    {
+      "api_symbol": "PIL.ImageOps.contain",
+      "latest_target": "PIL.ImageOps.contain",
+      "role": "aspect_ratio_resize"
+    },
+    {
+      "api_symbol": "PIL.ImageOps.pad",
+      "latest_target": "PIL.ImageOps.pad",
+      "role": "resize_and_pad"
+    }
+  ],
+  "pruning": {
+    "source_spec": "output/avcs_api_history_scale/pillow/pillow_minimal_api_surface_spec_v0.json",
+    "removed_symbols": [],
+    "presence_history": {
+      "PIL.Image.open": ">=1.0",
+      "PIL.Image.new": ">=1.0",
+      "PIL.Image.fromarray": ">=1.0",
+      "PIL.ImageOps.pad": ">=5.3.0",
+      "PIL.ImageOps.exif_transpose": ">=6.0.0",
+      "PIL.ImageOps.contain": ">=8.3.0"
+    },
+    "note": "All six selected Pillow APIs have clean presence-history boundaries with unknown=0 after retrying Pillow 2.0.0 source acquisition. Stable anchors are retained despite identical existence boundaries because later signature or parameter history may provide independent version constraints."
+  }
+}

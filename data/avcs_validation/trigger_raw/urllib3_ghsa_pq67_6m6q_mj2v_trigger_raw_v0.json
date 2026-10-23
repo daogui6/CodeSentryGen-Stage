@@ -1,0 +1,106 @@
+{
+  "schema_version": "avcs_trigger_raw_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "urllib3",
+  "vulnerability_ids": [
+    "GHSA-pq67-6m6q-mj2v",
+    "CVE-2025-50181",
+    "PYSEC-2026-1999"
+  ],
+  "evidence_ref": "urllib3 GHSA-pq67-6m6q-mj2v upstream trigger evidence chain",
+  "evidence_note": "Trigger semantics are derived from the GitHub-reviewed advisory, OSV affected range, urllib3 2.5.0 release notes, and the upstream fix commit. This v0 intentionally models only the controlled direct pattern where urllib3.PoolManager(retries=0) is assigned to a local module-level variable and request() is later invoked on that same receiver. Other advisory-listed forms such as retries=False and Retry(redirect=0) remain known but are not yet modeled.",
+  "scope": {
+    "status": "resolved_with_scope",
+    "trigger_semantics_version_scope": "<2.5.0",
+    "selected_api_form": "urllib3.PoolManager.request",
+    "selected_instance_pattern": "module-level direct call-result binding from urllib3.PoolManager(retries=0) followed by request() on the same receiver",
+    "osv_affected_version_specifier": "<2.5.0",
+    "upstream_advisory_affected_version_text_raw": "< 2.5.0",
+    "runtime_flow_limitations": {
+      "module_level_direct_call_result_binding_supported": true,
+      "retries_zero_literal_supported": true,
+      "retries_false_literal_supported": false,
+      "retry_redirect_zero_nested_call_supported": false,
+      "receiver_alias_propagation_supported": false,
+      "instance_attribute_flow_supported": false,
+      "cross_function_flow_supported": false
+    },
+    "note": "The vulnerability affects PoolManager-level redirect control through retries. The selected v0 Trigger rule models only retries=0 because that form is already represented by the controlled benchmark and can be resolved using high-confidence static literal and receiver provenance evidence. The broader advisory scope is preserved separately rather than silently claiming full trigger coverage."
+  },
+  "advisory_facts": {
+    "requires_affected_version": true,
+    "requires_untrusted_input": true,
+    "poolmanager_retries_can_fail_to_disable_redirects": true,
+    "request_level_redirect_false_is_remediation": true
+  },
+  "trigger_candidates": [
+    {
+      "trigger_id": "urllib3_poolmanager_retries_zero_request",
+      "api_symbol": "urllib3.PoolManager.request",
+      "kind": "receiver_producer_keyword_literal_condition",
+      "requires_untrusted_input": true,
+      "receiver_provenance": {
+        "producer_api_symbol": "urllib3.PoolManager",
+        "producer_keyword_argument": {
+          "name": "retries",
+          "required_literal": 0
+        }
+      },
+      "version_scope": "<2.5.0",
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "urllib3_github_advisory",
+        "urllib3_osv_ghsa",
+        "urllib3_2_5_0_release",
+        "urllib3_fix_commit"
+      ]
+    }
+  ],
+  "safe_alternatives": [],
+  "fix_evidence": {
+    "fixed_release": "2.5.0",
+    "fix_commit": "f05b1329126d5be6de501f9d1e3e36738bc08857",
+    "mechanism": "PoolManager-level retries configuration is correctly applied so that redirect behavior is controlled as intended.",
+    "public_api_removed": false,
+    "public_api_signature_changed": false,
+    "security_semantics_changed": true,
+    "status": "resolved",
+    "confidence": "high",
+    "evidence_refs": [
+      "urllib3_github_advisory",
+      "urllib3_2_5_0_release",
+      "urllib3_fix_commit"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "urllib3_github_advisory",
+      "source_type": "upstream_security_advisory",
+      "url": "https://github.com/advisories/GHSA-pq67-6m6q-mj2v",
+      "locator": "Affected usages / remediation / affected versions",
+      "claim": "The reviewed advisory states that urllib3 versions before 2.5.0 may fail to disable or restrict redirects when retries is configured on PoolManager, and lists retries=0, retries=False, and Retry(redirect=0) as affected usage forms."
+    },
+    {
+      "source_id": "urllib3_osv_ghsa",
+      "source_type": "osv_pypi_advisory",
+      "url": "https://osv.dev/vulnerability/GHSA-pq67-6m6q-mj2v",
+      "locator": "PyPI urllib3 affected range",
+      "claim": "OSV records urllib3 as affected from introduced 0 up to fixed version 2.5.0 and lists CVE-2025-50181 and PYSEC-2026-1999 as aliases."
+    },
+    {
+      "source_id": "urllib3_2_5_0_release",
+      "source_type": "upstream_release_notes",
+      "url": "https://github.com/urllib3/urllib3/releases/tag/2.5.0",
+      "locator": "Security issues",
+      "claim": "urllib3 2.5.0 states that PoolManager redirect control through the retries parameter was fixed for CVE-2025-50181."
+    },
+    {
+      "source_id": "urllib3_fix_commit",
+      "source_type": "upstream_fix_commit",
+      "url": "https://github.com/urllib3/urllib3/commit/f05b1329126d5be6de501f9d1e3e36738bc08857",
+      "locator": "PoolManager redirect and retries fix",
+      "claim": "The upstream fix commit is referenced by OSV for CVE-2025-50181."
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+  "vulnerability_id": "PYSEC-2021-142",
+  "aliases": [
+    "CVE-2020-14343",
+    "GHSA-8q59-q68h-6hv4"
+  ],
+
+  "status": "eligible",
+
+  "matched_supported_rule_kinds": [
+    "direct_api",
+    "keyword_argument_condition",
+    "omitted_keyword_historical_default"
+  ],
+
+  "candidate_rule_kinds": [
+    "direct_api",
+    "keyword_argument_condition",
+    "omitted_keyword_historical_default"
+  ],
+
+  "trigger_coverage": {
+    "coverage_status": "partial",
+    "affected_version_scope": "<5.4",
+    "assessed_trigger_version_scope": ">=5.1,<5.4",
+    "uncovered_scope_note": "The normalized Trigger evidence intentionally covers the documented FullLoader/full_load semantics for >=5.1,<5.4. Pre-5.1 yaml.load semantics remain outside the frozen v0 Trigger rule scope and must not be treated as negative evidence."
+  },
+
+  "eligibility_checks": {
+    "vulnerability_identity": "pass",
+    "affected_version_range": "pass",
+    "upstream_trigger_semantics": "pass",
+    "supported_static_expressibility": "pass",
+    "counterfactual_validation": "pass",
+    "provenance_completeness": "pass"
+  },
+
+  "review_required": false,
+
+  "rule_refs": [
+    "pyyaml_full_load_untrusted",
+    "pyyaml_load_explicit_full_loader",
+    "pyyaml_load_default_full_loader"
+  ],
+
+  "evidence_refs": [
+    "github_advisory",
+    "pyyaml_issue_420",
+    "pyyaml_5_1_source",
+    "pyyaml_5_3_1_source",
+    "pyyaml_fix_commit",
+    "pyyaml_fix_pr",
+    "pyyaml_changelog",
+    "pyyaml_official_documentation",
+    "data/avcs_validation/osv_raw/PYSEC-2021-142.json",
+    "output/pyyaml_pysec_2021_142_trigger_evidence_v0.json",
+    "output/pyyaml_api_history_evidence_with_load_v0.json"
+  ],
+
+  "unsupported_reasons": [],
+
+  "positive_regression_refs": [
+    "output/avcs_yaml_load_full_loader_evaluation_v0.json",
+    "output/avcs_yaml_load_loader_omitted_evaluation_v0.json"
+  ],
+
+  "negative_regression_refs": [
+    "output/avcs_yaml_load_safe_loader_evaluation_v0.json"
+  ],
+
+  "decision_notes": "The three frozen Trigger rules are approved only for the assessed >=5.1,<5.4 scope. The vulnerability affected-version evidence is broader (<5.4), so Trigger coverage is explicitly partial. The explicit FullLoader and omitted-Loader controlled cases provide positive counterfactual evidence, while the SafeLoader controlled case provides a negative/safe counterfactual. This assessment does not claim that pre-5.1 vulnerable versions lack Trigger semantics.",
+
+  "review": {
+    "status": "approved",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Migrated from the existing curated PyYAML real case and its controlled Trigger evaluations. Exact historical reviewer identity and review timestamp are not asserted by this migration artifact."
+  }
+}

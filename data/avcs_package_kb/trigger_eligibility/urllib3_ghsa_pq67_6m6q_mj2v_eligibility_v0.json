@@ -1,0 +1,67 @@
+{
+  "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+  "vulnerability_id": "GHSA-pq67-6m6q-mj2v",
+  "aliases": [
+    "CVE-2025-50181",
+    "PYSEC-2026-1999"
+  ],
+  "status": "eligible",
+
+  "matched_supported_rule_kinds": [
+    "receiver_producer_keyword_literal_condition"
+  ],
+
+  "candidate_rule_kinds": [
+    "receiver_producer_keyword_literal_condition"
+  ],
+
+  "trigger_coverage": {
+    "coverage_status": "full",
+    "affected_version_scope": "<2.5.0",
+    "assessed_trigger_version_scope": "<2.5.0",
+    "uncovered_scope_note": null
+  },
+
+  "eligibility_checks": {
+    "vulnerability_identity": "pass",
+    "affected_version_range": "pass",
+    "upstream_trigger_semantics": "pass",
+    "supported_static_expressibility": "pass",
+    "counterfactual_validation": "pass",
+    "provenance_completeness": "pass"
+  },
+
+  "review_required": false,
+
+  "rule_refs": [
+    "urllib3_poolmanager_retries_zero_request"
+  ],
+
+  "evidence_refs": [
+    "urllib3_github_advisory",
+    "urllib3_osv_ghsa",
+    "urllib3_2_5_0_release",
+    "urllib3_fix_commit",
+    "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json",
+    "output/urllib3_ghsa_pq67_6m6q_mj2v_trigger_evidence_v0.json"
+  ],
+
+  "unsupported_reasons": [],
+
+  "positive_regression_refs": [
+    "output/avcs_urllib3_poolmanager_retries_true_evaluation_v0.json"
+  ],
+
+  "negative_regression_refs": [
+    "output/avcs_urllib3_poolmanager_retries_false_evaluation_v1.json"
+  ],
+
+  "decision_notes": "The affected vulnerability range and the assessed static Trigger rule both cover <2.5.0. Existing upstream advisory, OSV, release, fix-commit, API History, and curated Trigger evidence support the condition in which urllib3.PoolManager is constructed with retries=0 and the resulting receiver invokes urllib3.PoolManager.request. The controlled positive and negative regressions preserve the same API-to-Version and vulnerability-exposure context: both retain S_api >=1.9 and 81 exposed releases, while changing only the producer retries literal from 0 to 1 causes the Trigger match and Risk Card candidate to disappear. requires_untrusted_input remains a semantic precondition; a static Trigger match does not prove attacker-controlled input or exploitability.",
+
+  "review": {
+    "status": "approved",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Migrated from the existing curated urllib3 Trigger evidence and the regression-validated positive/negative controlled pair. Exact historical reviewer identity and review timestamp are not asserted by this migration artifact."
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": "api_version_constraint_v0.1",
+  "sample_id": "avcs_numpy_allow_pickle_true",
+  "api_call_evidence_file": "output/numpy_allow_pickle_true_api_calls_v0.json",
+  "history_file": "data/avcs_validation/api_history/numpy_api_history_evidence_v0.json",
+  "history_schema_version": "avcs_api_history_evidence_v0.1",
+  "status": "resolved",
+  "api_call_count": 1,
+  "resolved_api_call_count": 1,
+  "unresolved_api_call_count": 0,
+  "call_constraints": [
+    {
+      "distribution": "numpy",
+      "normalized_distribution": "numpy",
+      "api_symbol": "numpy.load",
+      "call_text": "np.load(\n    \"artifact.npy\",\n    allow_pickle=True,\n)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [
+          "allow_pickle"
+        ],
+        "keyword_arg_values": {
+          "allow_pickle": {
+            "source_text": "True",
+            "resolved_symbol": null,
+            "literal_value": true
+          }
+        },
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_numpy_allow_pickle_true.py",
+        "line": 3,
+        "column": 9
+      },
+      "status": "resolved",
+      "matched_rules": [
+        {
+          "rule_id": "numpy_load_one_positional",
+          "version_specifier": ">=1.10.0b1",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "NumPy 1.9.3 / 1.10.0b1 / 1.16.2 / 1.16.3 official source",
+          "evidence_note": "This controlled rule models numpy.load within the curated allow_pickle semantic scope beginning at 1.10.0b1."
+        },
+        {
+          "rule_id": "numpy_load_allow_pickle_keyword",
+          "version_specifier": ">=1.10.0b1",
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "NumPy official release source for 1.10.0b1, 1.16.2, and 1.16.3",
+          "evidence_note": "The selected numpy.load form exposes the allow_pickle keyword from the curated scope start. NumPy 1.16.2 defaults it to True and NumPy 1.16.3 changes the default to False."
+        }
+      ],
+      "rejected_rules": [],
+      "version_specifiers": [
+        ">=1.10.0b1",
+        ">=1.10.0b1"
+      ],
+      "combined_version_specifier": ">=1.10.0b1",
+      "simplified_version_specifier": ">=1.10.0b1"
+    }
+  ],
+  "distribution_constraints": [
+    {
+      "distribution": "numpy",
+      "normalized_distribution": "numpy",
+      "status": "resolved",
+      "api_call_count": 1,
+      "resolved_api_call_count": 1,
+      "unresolved_api_call_count": 0,
+      "resolved_api_symbols": [
+        "numpy.load"
+      ],
+      "unresolved_api_symbols": [],
+      "s_api": {
+        "raw_specifier": ">=1.10.0b1",
+        "simplified_specifier": ">=1.10.0b1",
+        "evidence_rule_ids": [
+          "numpy_load_one_positional",
+          "numpy_load_allow_pickle_keyword"
+        ]
+      }
+    }
+  ]
+}

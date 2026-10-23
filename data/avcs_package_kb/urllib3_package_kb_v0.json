@@ -1,0 +1,371 @@
+{
+  "schema_version": "avcs_package_kb_v0.2",
+  "kb_id": "pypi_urllib3_v0",
+  "ecosystem": "PyPI",
+  "distribution": "urllib3",
+  "normalized_distribution": "urllib3",
+
+  "package_metadata": {
+    "package_name": "urllib3",
+    "registry": "PyPI",
+    "registry_url": null,
+    "repository_url": null,
+    "homepage_url": null,
+    "notes": "Initial unified Package KB migration for the existing urllib3 AVCS real case."
+  },
+
+  "release_history": {
+    "status": "partial",
+    "as_of_time": "2026-08-20T02:00:00+00:00",
+    "confirmed_release_count": 104,
+    "confirmed_stable_release_count": 100,
+    "confirmed_prerelease_count": 4,
+    "artifacts": [
+      {
+        "role": "release_history",
+        "path": "output/avcs_urllib3_poolmanager_retries_true_release_history_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": "2026-08-21T13:25:02.268930+00:00",
+        "notes": "Current PyPI project JSON file metadata confirms 104 releases at the time view. Four registry release labels lack current file evidence, so release history remains partial."
+      }
+    ],
+    "notes": "104 confirmed releases are recorded: 100 stable releases and 4 prereleases (2.0.0a1 through 2.0.0a4). Latest confirmed release at the recorded time view is 2.7.0."
+  },
+
+  "api_surface_history": {
+    "status": "partial",
+    "scope_policy": "Selected existing AVCS urllib3 public API scope only: urllib3.PoolManager with an explicit retries keyword and urllib3.PoolManager.request(method, url). This is not yet a complete package-wide minimal public API surface.",
+    "artifacts": [
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "Curated real API History evidence for the controlled PoolManager(retries=...) plus request(method, url) form."
+      }
+    ],
+
+    "entries": [
+      {
+        "api_symbol": "urllib3.PoolManager",
+        "api_kind": "constructor",
+        "status": "resolved",
+        "version_rules": [
+          {
+            "rule_id": "urllib3_poolmanager_retries_keyword",
+            "status": "resolved",
+            "version_specifier": ">=1.9",
+            "support_target": "api_parameter_support",
+            "required_positional_args_min": 0,
+            "required_positional_args_max": 0,
+            "required_keyword_args": [
+              "retries"
+            ],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json"
+          }
+        ],
+        "deprecated_since": null,
+        "removed_since": null,
+        "evidence_refs": [
+          "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json"
+        ],
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved curated API History evidence."
+        }
+      },
+
+      {
+        "api_symbol": "urllib3.PoolManager.request",
+        "api_kind": "method",
+        "status": "resolved",
+        "version_rules": [
+          {
+            "rule_id": "urllib3_poolmanager_request_two_positional",
+            "status": "resolved",
+            "version_specifier": ">=1.0",
+            "support_target": "api_call_shape",
+            "required_positional_args_min": 2,
+            "required_positional_args_max": 2,
+            "required_keyword_args": [],
+            "supported_keyword_args": null,
+            "forbidden_keyword_args": [],
+            "evidence_type": "real_api_history_evidence",
+            "evidence_ref": "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json"
+          }
+        ],
+        "deprecated_since": null,
+        "removed_since": null,
+        "evidence_refs": [
+          "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json"
+        ],
+        "review": {
+          "status": "approved",
+          "review_required": false,
+          "reviewer": null,
+          "reviewed_at": null,
+          "protocol_version": null,
+          "notes": "Migrated from the existing resolved curated API History evidence."
+        }
+      }
+    ],
+
+    "notes": "The request(method, url) form is available from >=1.0, while the selected PoolManager retries configuration form is constrained to >=1.9. Their combined controlled AVCS call shape therefore yields S_api >=1.9."
+  },
+
+  "vulnerability_catalog": [
+    {
+      "vulnerability_id": "GHSA-pq67-6m6q-mj2v",
+      "aliases": [
+        "CVE-2025-50181",
+        "PYSEC-2026-1999"
+      ],
+      "summary": null,
+      "published_at": "2025-06-18T17:50:00Z",
+      "modified_at": "2026-07-07T17:56:41.872294653Z",
+      "withdrawn_at": null,
+      "severity": [],
+
+      "affected_ranges": [
+        {
+          "range_type": "ECOSYSTEM",
+          "introduced": "0",
+          "fixed": "2.5.0",
+          "last_affected": null,
+          "version_specifier": "<2.5.0",
+          "source_ref": "urllib3_osv_ghsa"
+        }
+      ],
+
+      "fixed_versions": [
+        "2.5.0"
+      ],
+
+      "source_refs": [
+        "urllib3_osv_ghsa",
+        "urllib3_github_advisory",
+        "urllib3_2_5_0_release",
+        "urllib3_fix_commit"
+      ],
+
+      "trigger_assessment": {
+        "status": "eligible",
+        "review_required": false,
+
+        "coverage_status": "full",
+        "affected_version_scope": "<2.5.0",
+        "assessed_trigger_version_scope": "<2.5.0",
+        "uncovered_scope_note": null,
+
+        "rule_refs": [
+          "urllib3_poolmanager_retries_zero_request"
+        ],
+
+        "evidence_refs": [
+          "urllib3_github_advisory",
+          "urllib3_osv_ghsa",
+          "urllib3_2_5_0_release",
+          "urllib3_fix_commit"
+        ],
+
+        "unsupported_reasons": [],
+
+        "positive_regression_refs": [
+          "output/avcs_urllib3_poolmanager_retries_true_evaluation_v0.json"
+        ],
+
+        "negative_regression_refs": [
+          "output/avcs_urllib3_poolmanager_retries_false_evaluation_v1.json"
+        ],
+
+        "notes": "Eligibility is frozen by avcs_trigger_eligibility_protocol_v0.2. Full coverage here refers to the assessed rule's affected-version scope <2.5.0. The current curated v0 rule intentionally models the controlled retries=0 receiver-provenance form; other advisory-listed usage forms are not silently claimed as statically modeled."
+      },
+
+      "review": {
+        "status": "approved",
+        "review_required": false,
+        "reviewer": null,
+        "reviewed_at": null,
+        "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "notes": "Migrated from the existing curated Trigger evidence and the positive/negative counterfactual regression pair."
+      },
+
+      "notes": "Affected-version evidence remains distinct from API History and Trigger semantics. V_exposed > 0 alone does not prove that the Trigger is present."
+    }
+  ],
+
+  "trigger_rules": [
+    {
+      "trigger_id": "urllib3_poolmanager_retries_zero_request",
+
+      "vulnerability_ids": [
+        "GHSA-pq67-6m6q-mj2v",
+        "CVE-2025-50181",
+        "PYSEC-2026-1999"
+      ],
+
+      "api_symbol": "urllib3.PoolManager.request",
+      "kind": "receiver_producer_keyword_literal_condition",
+      "version_scope": "<2.5.0",
+      "status": "resolved",
+      "confidence": "high",
+      "review_required": false,
+      "requires_untrusted_input": true,
+
+      "keyword_argument": {},
+
+      "receiver_provenance": {
+        "producer_api_symbol": "urllib3.PoolManager",
+        "producer_keyword_argument": {
+          "name": "retries",
+          "required_literal": 0
+        }
+      },
+
+      "historical_default_symbol": null,
+
+      "evidence_refs": [
+        "urllib3_github_advisory",
+        "urllib3_osv_ghsa",
+        "urllib3_2_5_0_release",
+        "urllib3_fix_commit"
+      ],
+
+      "source_artifact": "output/urllib3_ghsa_pq67_6m6q_mj2v_trigger_evidence_v0.json",
+
+      "notes": "Curated v0 static Trigger rule for the controlled module-level direct binding urllib3.PoolManager(retries=0) followed by request() on the same receiver. A static match requires untrusted-input review and is not exploit proof. Advisory-listed retries=False, Retry(redirect=0), alias propagation, instance attributes, and cross-function flows are not silently treated as covered by this concrete matcher."
+    }
+  ],
+
+  "provenance": {
+    "sources": [
+      {
+        "source_id": "urllib3_github_advisory",
+        "source_type": "upstream_security_advisory",
+        "url": "https://github.com/advisories/GHSA-pq67-6m6q-mj2v",
+        "path": null,
+        "locator": "Affected usages / remediation / affected versions",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The reviewed advisory identifies urllib3 versions before 2.5.0 and describes affected PoolManager retries configurations, including retries=0."
+      },
+
+      {
+        "source_id": "urllib3_osv_ghsa",
+        "source_type": "osv_pypi_advisory",
+        "url": "https://osv.dev/vulnerability/GHSA-pq67-6m6q-mj2v",
+        "path": "data/avcs_validation/osv_raw/GHSA-pq67-6m6q-mj2v.json",
+        "locator": "PyPI urllib3 affected range",
+        "sha256": "sha256:6019f22a23bcb8a900e82b85f778eed7634fa184d222020e844e7262237bde36",
+        "acquired_at": "2026-08-22T12:34:50.3655591+08:00",
+        "claim": "OSV records urllib3 as affected before fixed version 2.5.0 and lists CVE-2025-50181 and PYSEC-2026-1999 as aliases."
+      },
+
+      {
+        "source_id": "urllib3_2_5_0_release",
+        "source_type": "upstream_release_notes",
+        "url": "https://github.com/urllib3/urllib3/releases/tag/2.5.0",
+        "path": null,
+        "locator": "Security issues",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "urllib3 2.5.0 records the PoolManager redirect-control security fix for CVE-2025-50181."
+      },
+
+      {
+        "source_id": "urllib3_fix_commit",
+        "source_type": "upstream_fix_commit",
+        "url": "https://github.com/urllib3/urllib3/commit/f05b1329126d5be6de501f9d1e3e36738bc08857",
+        "path": null,
+        "locator": "PoolManager redirect and retries fix",
+        "sha256": null,
+        "acquired_at": null,
+        "claim": "The upstream fix commit changes PoolManager redirect/retries semantics without removing the selected public API."
+      }
+    ],
+
+    "generated_from": [
+      {
+        "role": "release_history",
+        "path": "output/avcs_urllib3_poolmanager_retries_true_release_history_v0.json",
+        "schema_version": "avcs_release_history_v0.1",
+        "status": "partial",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "api_history_evidence",
+        "path": "data/avcs_validation/api_history/urllib3_api_history_evidence_v0.json",
+        "schema_version": "avcs_api_history_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "vulnerability_evidence",
+        "path": "output/avcs_urllib3_poolmanager_retries_true_vulnerability_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_evidence_v0.1",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "vulnerability_constraints",
+        "path": "output/avcs_urllib3_poolmanager_retries_true_vulnerability_constraints_v0.json",
+        "schema_version": "vulnerability_constraint_v0.3",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      },
+
+      {
+        "role": "trigger_evidence",
+        "path": "output/urllib3_ghsa_pq67_6m6q_mj2v_trigger_evidence_v0.json",
+        "schema_version": "avcs_vulnerability_trigger_evidence_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": "The source artifact itself reports resolved_with_scope; this generated_from record marks the artifact as successfully resolved for Package KB migration while preserving its scope limitations in the Trigger rule notes."
+      },
+
+      {
+        "role": "trigger_eligibility_assessment",
+        "path": "data/avcs_package_kb/trigger_eligibility/urllib3_ghsa_pq67_6m6q_mj2v_eligibility_v0.json",
+        "schema_version": "avcs_trigger_eligibility_protocol_v0.2",
+        "status": "resolved",
+        "sha256": null,
+        "generated_at": null,
+        "notes": null
+      }
+    ],
+
+    "notes": "This Package KB aggregates existing urllib3 artifacts while preserving Release History, API History, vulnerability affected ranges, and curated Trigger semantics as distinct evidence layers."
+  },
+
+  "review": {
+    "status": "approved",
+    "review_required": false,
+    "reviewer": null,
+    "reviewed_at": null,
+    "protocol_version": null,
+    "notes": "Package KB migration review closed after structural/cross-reference validation and Trigger Eligibility semantic validation passed. Existing uncertainty, partial-coverage, and conflicted states are preserved rather than overridden by migration approval."
+  }
+}

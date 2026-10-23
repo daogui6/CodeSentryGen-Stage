@@ -1,0 +1,103 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "aiohttp",
+  "source_mode": "curated_real_api_history",
+  "status": "resolved",
+  "scope": {
+    "selected_api_form": "aiohttp.web.static",
+    "selected_call_shape": "two explicit positional arguments with optional keyword arguments",
+    "version_scope": ">=3.1.0",
+    "note": "This v0 models the selected public aiohttp.web.static form used by the controlled benchmark. It does not redefine the full historical vulnerability range and does not cover all lower-level static routing APIs."
+  },
+  "entries": [
+    {
+      "distribution": "aiohttp",
+      "api_symbol": "aiohttp.web.static",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "aiohttp_web_static_two_positional",
+          "status": "resolved",
+          "version_specifier": ">=3.1.0",
+          "required_positional_args_min": 2,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "aiohttp 3.0.9/3.1.0 official source boundary and 3.1.0 changelog",
+          "evidence_note": "The selected public web.static API is absent from aiohttp 3.0.9 exports and is introduced in aiohttp 3.1.0. This rule models the controlled two-positional-argument call form.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=3.1.0",
+            "first_supported_version": "3.1.0",
+            "last_unsupported_version": "3.0.9",
+            "boundary_evidence": {
+              "last_unsupported": {
+                "version": "3.0.9",
+                "source_path": "aiohttp/web_urldispatcher.py",
+                "observation": "web_urldispatcher.__all__ does not export StaticDef or static."
+              },
+              "first_supported": {
+                "version": "3.1.0",
+                "source_path": "aiohttp/web_urldispatcher.py",
+                "observation": "web_urldispatcher.__all__ exports StaticDef and static, and defines static(prefix, path, **kwargs)."
+              }
+            }
+          }
+        },
+        {
+          "rule_id": "aiohttp_web_static_follow_symlinks_keyword",
+          "status": "resolved",
+          "version_specifier": ">=3.1.0",
+          "required_positional_args_min": 2,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [
+            "follow_symlinks"
+          ],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "aiohttp 3.1.0 official static routing source",
+          "evidence_note": "In the selected public web.static form, keyword arguments are forwarded to static-route registration; aiohttp 3.1.0 add_static explicitly supports follow_symlinks.",
+          "derivation": {
+            "status": "resolved",
+            "method": "official_release_source",
+            "version_specifier": ">=3.1.0",
+            "first_supported_version": "3.1.0",
+            "parameter": "follow_symlinks",
+            "default_text": "False"
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "aiohttp_3_0_9_web_urldispatcher",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.0.9/aiohttp/web_urldispatcher.py",
+      "claim": "The public static route-definition helper is not exported in aiohttp 3.0.9."
+    },
+    {
+      "source_id": "aiohttp_3_1_0_web_urldispatcher",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/aiohttp/web_urldispatcher.py",
+      "claim": "aiohttp 3.1.0 exports and defines static(prefix, path, **kwargs), and add_static supports follow_symlinks."
+    },
+    {
+      "source_id": "aiohttp_3_1_0_web",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/aiohttp/web.py",
+      "claim": "aiohttp.web re-exports web_urldispatcher public symbols, making the selected aiohttp.web.static form public."
+    },
+    {
+      "source_id": "aiohttp_3_1_0_changelog",
+      "source_type": "upstream_release_changelog",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/CHANGES.rst",
+      "claim": "aiohttp 3.1.0 records implementation of web.static() and RouteTableDef.static()."
+    }
+  ]
+}

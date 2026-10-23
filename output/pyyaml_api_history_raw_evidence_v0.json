@@ -1,0 +1,577 @@
+{
+  "schema_version": "pyyaml_api_history_raw_evidence_v0.1",
+  "evidence_type": "official_pypi_sdist_static_source_probe",
+  "distribution": "PyYAML",
+  "ecosystem": "pypi",
+  "queried_at": "2026-08-17T04:02:32.163994+00:00",
+  "pypi_project_json_url": "https://pypi.org/pypi/PyYAML/json",
+  "pypi_project_json_sha256": "d0c463a86ed24144dd112fd1fe43b7c208e52c7d3903c2f51c84acfb5b10c749",
+  "min_version": "3.01",
+  "max_version": "5.1",
+  "status": "partial",
+  "release_count": 23,
+  "resolved_release_count": 13,
+  "unresolved_release_count": 10,
+  "releases": [
+    {
+      "version": "3.01",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.02",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.03",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.04",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.05",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.06",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.07",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.08",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.09",
+      "status": "no_sdist"
+    },
+    {
+      "version": "3.10",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/3.10/",
+      "sdist_filename": "PyYAML-3.10.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/00/17/3b822893a1789a025d3f676a381338516a8f65e686d915b0834ecc9b4979/PyYAML-3.10.tar.gz",
+      "sdist_upload_time": "2011-07-01T22:59:26.759009Z",
+      "sdist_size": 241524,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "e713da45c96ca53a3a8b48140d4120374db622df16ab71759c9ceb5b8d46fe7c",
+      "sdist_sha256_observed": "e713da45c96ca53a3a8b48140d4120374db622df16ab71759c9ceb5b8d46fe7c",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-3.10/lib3/yaml/__init__.py",
+      "source_sha256": "4e5145115ee31b74e5177347bdff243820405bc40927ad599c147da595b51fea",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "3.11",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/3.11/",
+      "sdist_filename": "PyYAML-3.11.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/75/5e/b84feba55e20f8da46ead76f14a3943c8cb722d40360702b2365b91dec00/PyYAML-3.11.tar.gz",
+      "sdist_upload_time": "2014-03-27T01:48:59.412820Z",
+      "sdist_size": 248685,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8",
+      "sdist_sha256_observed": "c36c938a872e5ff494938b33b14aaa156cb439ec67548fcab3535bb78b0846e8",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-3.11/lib3/yaml/__init__.py",
+      "source_sha256": "09cbf3d9cbfbff2122074b1849f938ddba175118c541c28d786fae9e7f3cd248",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "3.12",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/3.12/",
+      "sdist_filename": "PyYAML-3.12.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/4a/85/db5a2df477072b2902b0eb892feb37d88ac635d36245a72a6a69b23b383a/PyYAML-3.12.tar.gz",
+      "sdist_upload_time": "2016-08-29T00:15:37.156456Z",
+      "sdist_size": 253011,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "592766c6303207a20efc445587778322d7f73b161bd994f227adaa341ba212ab",
+      "sdist_sha256_observed": "592766c6303207a20efc445587778322d7f73b161bd994f227adaa341ba212ab",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-3.12/lib3/yaml/__init__.py",
+      "source_sha256": "e775596b2aad20aadd584b9abb33ed8cfaa2c90dd7c9d8c3b03e58a3628a6da9",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "3.13b1",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/3.13b1/",
+      "sdist_filename": "PyYAML-3.13b1.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/d2/44/f2f50916afc03f48bd2bea7ff87fc73bb3d6454544b6c1267535ed87ad9b/PyYAML-3.13b1.tar.gz",
+      "sdist_upload_time": "2018-07-03T01:39:07.359172Z",
+      "sdist_size": 271292,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "8a3dd5b3cfae5240925b66884d22cf6a80d1c5991863ef0b836fda2e2bcccc49",
+      "sdist_sha256_observed": "8a3dd5b3cfae5240925b66884d22cf6a80d1c5991863ef0b836fda2e2bcccc49",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-3.13b1/lib3/yaml/__init__.py",
+      "source_sha256": "4556762897988a227e13468701a86261e96098f6f69fe9b0b47049bf0f3b4ec6",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "3.13rc1",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/3.13rc1/",
+      "sdist_filename": "PyYAML-3.13rc1.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/03/f0/fa8d547b6b36cdba50009795bf7ae4df2491677efc9cd2cab655730830bf/PyYAML-3.13rc1.tar.gz",
+      "sdist_upload_time": "2018-07-04T00:55:41.527287Z",
+      "sdist_size": 270638,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "5679fb8e06e6b7c8341a488dfc80c776675493d50b0931d174116f03e544f06c",
+      "sdist_sha256_observed": "5679fb8e06e6b7c8341a488dfc80c776675493d50b0931d174116f03e544f06c",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-3.13rc1/lib3/yaml/__init__.py",
+      "source_sha256": "4556762897988a227e13468701a86261e96098f6f69fe9b0b47049bf0f3b4ec6",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "3.13",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/3.13/",
+      "sdist_filename": "PyYAML-3.13.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/9e/a3/1d13970c3f36777c583f136c136f804d70f500168edc1edea6daa7200769/PyYAML-3.13.tar.gz",
+      "sdist_upload_time": "2018-07-05T22:52:16.800539Z",
+      "sdist_size": 270607,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf",
+      "sdist_sha256_observed": "3ef3092145e9b70e3ddd2c7ad59bdd0252a94dfe3949721633e41344de00a6bf",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-3.13/lib3/yaml/__init__.py",
+      "source_sha256": "4556762897988a227e13468701a86261e96098f6f69fe9b0b47049bf0f3b4ec6",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "4.2b1",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/4.2b1/",
+      "sdist_filename": "PyYAML-4.2b1.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/bd/da/0a49c1a31c60634b93fd1376b3b7966c4f81f2da8263f389cad5b6bbd6e8/PyYAML-4.2b1.tar.gz",
+      "sdist_upload_time": "2018-06-29T04:14:24.208480Z",
+      "sdist_size": 263460,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "ef3a0d5a5e950747f4a39ed7b204e036b37f9bddc7551c1a813b8727515a832e",
+      "sdist_sha256_observed": "ef3a0d5a5e950747f4a39ed7b204e036b37f9bddc7551c1a813b8727515a832e",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-4.2b1/lib3/yaml/__init__.py",
+      "source_sha256": "19d89adaa31667b5da4a56b64512ec077c54b0f9570bd431d86e9f824a8aad96",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=PythonDumper, **kwds)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "4.2b2",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/4.2b2/",
+      "sdist_filename": "PyYAML-4.2b2.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/0f/9d/f98ed0a460dc540f720bbe5c6e076f025595cdfa3e318fad27165db13cf9/PyYAML-4.2b2.tar.gz",
+      "sdist_upload_time": "2018-06-29T18:13:48.560626Z",
+      "sdist_size": 262665,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "406b717f739e2d00c49873068b71f5454c2420157db51b082d4d2beb17ffffb6",
+      "sdist_sha256_observed": "406b717f739e2d00c49873068b71f5454c2420157db51b082d4d2beb17ffffb6",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-4.2b2/lib3/yaml/__init__.py",
+      "source_sha256": "d0775180520d68a9b9b319f595aff56882ed35b74338e25e4c59dafca6329d69",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "4.2b4",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/4.2b4/",
+      "sdist_filename": "PyYAML-4.2b4.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/a8/c6/a8d1555e795dbd0375c3c93b576ca13bbf139db51ea604afa19a2c35fc03/PyYAML-4.2b4.tar.gz",
+      "sdist_upload_time": "2018-07-02T03:18:24.353894Z",
+      "sdist_size": 262628,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "3c17fb92c8ba2f525e4b5f7941d850e7a48c3a59b32d331e2502a3cdc6648e76",
+      "sdist_sha256_observed": "3c17fb92c8ba2f525e4b5f7941d850e7a48c3a59b32d331e2502a3cdc6648e76",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-4.2b4/lib3/yaml/__init__.py",
+      "source_sha256": "d0775180520d68a9b9b319f595aff56882ed35b74338e25e4c59dafca6329d69",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": false,
+          "signature": null
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=None, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None)",
+          "supports_sort_keys": false
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": false,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "5.1b1",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/5.1b1/",
+      "sdist_filename": "PyYAML-5.1b1.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/ff/d2/c8ef2dc18777b1a01b58513db9a11a9d32173e99b66d4e096358a825bb9a/PyYAML-5.1b1.tar.gz",
+      "sdist_upload_time": "2019-02-25T05:12:00.476442Z",
+      "sdist_size": 274025,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "b21fadf0e343c3738cc956be9d24ee7a83d3260ff1a6805f860b4f5d4645b7b9",
+      "sdist_sha256_observed": "b21fadf0e343c3738cc956be9d24ee7a83d3260ff1a6805f860b4f5d4645b7b9",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-5.1b1/lib3/yaml/__init__.py",
+      "source_sha256": "ac4f7dc0248dc5e1fd28a6411d84379b449c208269a21e3389a19f60b0cf4c8c",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": true,
+          "signature": "full_load(stream)"
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=False, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None, sort_keys=True)",
+          "supports_sort_keys": true
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": true,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "5.1b3",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/5.1b3/",
+      "sdist_filename": "PyYAML-5.1b3.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/64/47/2a103e57cc787ac798bdc4145634c9bd5fbb6628eebb05889a52e7f08dda/PyYAML-5.1b3.tar.gz",
+      "sdist_upload_time": "2019-02-28T02:48:43.590083Z",
+      "sdist_size": 273946,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "0b83c5697aed17a27efbb631a6a3846501375c6e55112a665b210f223fa69629",
+      "sdist_sha256_observed": "0b83c5697aed17a27efbb631a6a3846501375c6e55112a665b210f223fa69629",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-5.1b3/lib3/yaml/__init__.py",
+      "source_sha256": "202012c66358a836419da6cc5636c9c949660729d998869ec4a93cf7608c4bcf",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": true,
+          "signature": "full_load(stream)"
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=False, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None, sort_keys=True)",
+          "supports_sort_keys": true
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": true,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "5.1b5",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/5.1b5/",
+      "sdist_filename": "PyYAML-5.1b5.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/8e/c1/f430175cea36511aeb59a688893d9c4b479c907bebc00d5a022e188ef873/PyYAML-5.1b5.tar.gz",
+      "sdist_upload_time": "2019-03-07T22:04:37.961057Z",
+      "sdist_size": 274613,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "bc733b5a9047c3e4848c0e80eeacfa6a799139242606410260c5450d665ea58c",
+      "sdist_sha256_observed": "bc733b5a9047c3e4848c0e80eeacfa6a799139242606410260c5450d665ea58c",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-5.1b5/lib3/yaml/__init__.py",
+      "source_sha256": "b978318cd8879c04fe4356177dd3d10bec1dd64d3c075341190078cd08eb8055",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": true,
+          "signature": "full_load(stream)"
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=False, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None, sort_keys=True)",
+          "supports_sort_keys": true
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": true,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    },
+    {
+      "version": "5.1b7",
+      "status": "no_sdist"
+    },
+    {
+      "version": "5.1",
+      "status": "resolved",
+      "pypi_release_url": "https://pypi.org/project/PyYAML/5.1/",
+      "sdist_filename": "PyYAML-5.1.tar.gz",
+      "sdist_url": "https://files.pythonhosted.org/packages/9f/2c/9417b5c774792634834e730932745bc09a7d36754ca00acf1ccd1ac2594d/PyYAML-5.1.tar.gz",
+      "sdist_upload_time": "2019-03-13T16:35:50.361620Z",
+      "sdist_size": 274244,
+      "sdist_yanked": false,
+      "sdist_sha256_expected": "436bc774ecf7c103814098159fbb84c2715d25980175292c648f2da143909f95",
+      "sdist_sha256_observed": "436bc774ecf7c103814098159fbb84c2715d25980175292c648f2da143909f95",
+      "sdist_hash_verified": true,
+      "source_path": "PyYAML-5.1/lib3/yaml/__init__.py",
+      "source_sha256": "2af8b6dbcb1df5c63597f215421cad02f2317e291061b181b0f7bbf4f71ac0dd",
+      "observations": {
+        "yaml.safe_load": {
+          "defined": true,
+          "signature": "safe_load(stream)"
+        },
+        "yaml.full_load": {
+          "defined": true,
+          "signature": "full_load(stream)"
+        },
+        "yaml.safe_dump": {
+          "defined": true,
+          "signature": "safe_dump(data, stream=None, **kwds)",
+          "accepts_kwargs": true,
+          "forwards_kwargs_to_dump_all": true
+        },
+        "dump_all": {
+          "defined": true,
+          "signature": "dump_all(documents, stream=None, Dumper=Dumper, default_style=None, default_flow_style=False, canonical=None, indent=None, width=None, allow_unicode=None, line_break=None, encoding=None, explicit_start=None, explicit_end=None, version=None, tags=None, sort_keys=True)",
+          "supports_sort_keys": true
+        },
+        "yaml.safe_dump(sort_keys=...)": {
+          "supported": true,
+          "evidence_logic": "safe_dump accepts/forwards the keyword and dump_all supports sort_keys"
+        }
+      }
+    }
+  ]
+}

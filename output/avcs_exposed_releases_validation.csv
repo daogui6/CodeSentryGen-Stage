@@ -1,0 +1,15 @@
+check_id,expected,actual,status
+evaluation_count,1,1,PASS
+vulnerability_id,"""CVE-TEST-0001""","""CVE-TEST-0001""",PASS
+s_vuln,""">=1.5,<3""",""">=1.5,<3""",PASS
+api_compatible_count,4,4,PASS
+exposed_count,2,2,PASS
+not_affected_count,2,2,PASS
+exposed_versions,"[""1.5"", ""2.0""]","[""1.5"", ""2.0""]",PASS
+not_affected_versions,"[""1.0"", ""3.0""]","[""1.0"", ""3.0""]",PASS
+time_unknown_exposed,"[""2.5""]","[""2.5""]",PASS
+unresolved_constraint_status,"""unsupported_range_shape""","""unsupported_range_shape""",PASS
+unresolved_exposure_status,"""vulnerability_constraint_unsupported_range_shape""","""vulnerability_constraint_unsupported_range_shape""",PASS
+unresolved_exposed_count,null,null,PASS
+unresolved_not_affected_count,null,null,PASS
+unresolved_exposed_versions,[],[],PASS

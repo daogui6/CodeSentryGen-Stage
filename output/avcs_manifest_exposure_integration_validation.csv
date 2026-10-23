@@ -1,0 +1,4 @@
+﻿case_id,manifest_constraint,release_candidate_count,exposed_release_count,not_affected_release_count,release_evidence_mode,manifest_context_status,validation_status
+unconstrained,PyYAML,18,8,10,manifest_compatible,matched,PASS
+versioned,PyYAML>=5.4,8,0,8,manifest_compatible,matched,PASS
+sample_mismatch,PyYAML>=5.4 / wrong sample,,,,,sample_id_mismatch,PASS

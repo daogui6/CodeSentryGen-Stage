@@ -1,0 +1,74 @@
+{
+  "schema_version": "avcs_evaluation_v0.1",
+  "sample_id": "avcs_unresolved_yaml_load",
+  "sample_context_status": "matched",
+  "sample_context": {
+    "source_sample_id": null,
+    "source_dataset": "avcs_controlled_validation",
+    "prompt_id": null,
+    "source": "controlled_validation",
+    "language": "python",
+    "ecosystem": "pypi",
+    "generation_time": null,
+    "model": null
+  },
+  "distribution": "PyYAML",
+  "normalized_distribution": "pyyaml",
+  "status": "evaluated",
+  "evaluation_count": 1,
+  "risk_card_candidate_count": 0,
+  "evaluations": [
+    {
+      "vulnerability_id": "CVE-2020-14343",
+      "severity": "not_calibrated",
+      "api_constraint_status": "unresolved",
+      "vulnerability_constraint_status": "resolved",
+      "s_api": "",
+      "s_vuln": ">=5.1,<5.4",
+      "version_evidence_mode": "interval_fallback",
+      "discrete_evidence_status": "not_provided",
+      "has_version_exposure": null,
+      "confirmed_api_compatible_release_count": null,
+      "confirmed_exposed_release_count": null,
+      "confirmed_not_affected_release_count": null,
+      "confirmed_exposed_releases": [],
+      "time_unknown_exposed_release_labels": [],
+      "fixed_version_specifier": ">=5.4",
+      "version_overlap": null,
+      "intersection_specifier": "",
+      "overlap_status": "api_constraint_unresolved",
+      "observed_api_symbols": [
+        "yaml.load"
+      ],
+      "trigger_api_symbols": [
+        "yaml.full_load",
+        "yaml.load"
+      ],
+      "observed_trigger_apis": [
+        "yaml.load"
+      ],
+      "observed_trigger_calls": [
+        {
+          "api_symbol": "yaml.load",
+          "call_text": "yaml.load(data)",
+          "location": {
+            "file": "data/avcs_validation/avcs_unresolved_yaml_load.py",
+            "line": 4,
+            "column": 10
+          },
+          "call_shape": {
+            "explicit_positional_arg_count": 1,
+            "keyword_arg_names": [],
+            "has_star_args": false,
+            "has_star_kwargs": false
+          }
+        }
+      ],
+      "observed_safe_apis": [],
+      "requires_untrusted_input": true,
+      "assessment": "api_constraint_unresolved",
+      "risk_card_candidate": false,
+      "evidence_ref": "CVE-2020-14343"
+    }
+  ]
+}

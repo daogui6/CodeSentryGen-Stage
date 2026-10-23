@@ -1,0 +1,53 @@
+{
+  "schema_version": "avcs_python_api_surface_history_batch_v0.1",
+  "distribution": "cryptography",
+  "surface_spec_file": "output/avcs_api_history_scale/cryptography/cryptography_minimal_api_surface_spec_v0.json",
+  "release_history_file": "output/avcs_api_history_scale/cryptography/release_history_v0.json",
+  "selected_symbol_count": 2,
+  "completed_symbol_count": 2,
+  "error_symbol_count": 0,
+  "results": [
+    {
+      "api_symbol": "cryptography.fernet.Fernet",
+      "role": "high_level_symmetric_encryption",
+      "latest_target": "cryptography.fernet.Fernet",
+      "status": "completed",
+      "selected_release_count": 159,
+      "public_symbol_resolved_count": 159,
+      "public_symbol_unresolved_count": 0,
+      "supported_count": 159,
+      "unsupported_count": 0,
+      "unknown_count": 0,
+      "support_transition_count": 0,
+      "coverage_status": "complete",
+      "candidate_scope": "stable_release_history_candidate",
+      "lower_bound_status": "candidate",
+      "version_specifier": ">=0.1",
+      "boundary_version": "0.1",
+      "release_history_file": "output/avcs_api_history_scale/cryptography/batch_smoke_retry_v0/cryptography.fernet.Fernet/release_history.json",
+      "refined_history_file": "output/avcs_api_history_scale/cryptography/batch_smoke_retry_v0/cryptography.fernet.Fernet/release_history_refined.json",
+      "candidate_file": "output/avcs_api_history_scale/cryptography/batch_smoke_retry_v0/cryptography.fernet.Fernet/api_history_candidate.json"
+    },
+    {
+      "api_symbol": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "role": "core_cipher_class",
+      "latest_target": "cryptography.hazmat.primitives.ciphers.base.Cipher",
+      "status": "completed",
+      "selected_release_count": 159,
+      "public_symbol_resolved_count": 159,
+      "public_symbol_unresolved_count": 0,
+      "supported_count": 159,
+      "unsupported_count": 0,
+      "unknown_count": 0,
+      "support_transition_count": 0,
+      "coverage_status": "complete",
+      "candidate_scope": "stable_release_history_candidate",
+      "lower_bound_status": "candidate",
+      "version_specifier": ">=0.1",
+      "boundary_version": "0.1",
+      "release_history_file": "output/avcs_api_history_scale/cryptography/batch_smoke_retry_v0/cryptography.hazmat.primitives.ciphers.Cipher/release_history.json",
+      "refined_history_file": "output/avcs_api_history_scale/cryptography/batch_smoke_retry_v0/cryptography.hazmat.primitives.ciphers.Cipher/release_history_refined.json",
+      "candidate_file": "output/avcs_api_history_scale/cryptography/batch_smoke_retry_v0/cryptography.hazmat.primitives.ciphers.Cipher/api_history_candidate.json"
+    }
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "PyYAML",
+  "source_mode": "normalized_real_api_history",
+  "source_raw_evidence_file": "output/pyyaml_api_history_raw_evidence_v0_3.json",
+  "source_raw_schema_version": "pyyaml_api_history_raw_evidence_v0.3",
+  "source_query_time": "2026-08-17T05:26:12.864102+00:00",
+  "source_release_count": 40,
+  "status": "resolved",
+  "entries": [
+    {
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.safe_load",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyyaml_safe_load_basic",
+          "status": "resolved",
+          "version_specifier": ">=3.01",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyYAML historical release source probe",
+          "evidence_note": "Version constraint derived from per-release official source evidence.",
+          "derivation": {
+            "status": "resolved",
+            "version_specifier": ">=3.01",
+            "first_supported_version": "3.01",
+            "last_unsupported_version": null,
+            "observation_count": 40,
+            "supported_count": 40,
+            "unsupported_count": 0,
+            "unknown_count": 0,
+            "supported_versions": [
+              "3.01",
+              "3.02",
+              "3.03",
+              "3.04",
+              "3.05",
+              "3.06",
+              "3.07",
+              "3.08",
+              "3.09",
+              "3.10",
+              "3.11",
+              "3.12",
+              "3.13b1",
+              "3.13rc1",
+              "3.13",
+              "4.2b1",
+              "4.2b2",
+              "4.2b4",
+              "5.1b1",
+              "5.1b3",
+              "5.1b5",
+              "5.1b7",
+              "5.1",
+              "5.1.1",
+              "5.1.2",
+              "5.2b1",
+              "5.2",
+              "5.3b1",
+              "5.3",
+              "5.3.1",
+              "5.4b1",
+              "5.4b2",
+              "5.4",
+              "5.4.1",
+              "6.0b1",
+              "6.0",
+              "6.0.1",
+              "6.0.2rc1",
+              "6.0.2",
+              "6.0.3"
+            ],
+            "unsupported_versions": [],
+            "boundary_evidence": {
+              "first_supported": {
+                "version": "3.01",
+                "source_mode": "official_github_tag",
+                "source_path": "lib/yaml/__init__.py",
+                "source_sha256": "5ee254f1c1156b5b3928c5555a9621467c1443cf1dba555a5709864c732be45c"
+              },
+              "last_unsupported": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.safe_dump",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyyaml_safe_dump_basic",
+          "status": "resolved",
+          "version_specifier": ">=3.01",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyYAML historical release source probe",
+          "evidence_note": "Version constraint derived from per-release official source evidence.",
+          "derivation": {
+            "status": "resolved",
+            "version_specifier": ">=3.01",
+            "first_supported_version": "3.01",
+            "last_unsupported_version": null,
+            "observation_count": 40,
+            "supported_count": 40,
+            "unsupported_count": 0,
+            "unknown_count": 0,
+            "supported_versions": [
+              "3.01",
+              "3.02",
+              "3.03",
+              "3.04",
+              "3.05",
+              "3.06",
+              "3.07",
+              "3.08",
+              "3.09",
+              "3.10",
+              "3.11",
+              "3.12",
+              "3.13b1",
+              "3.13rc1",
+              "3.13",
+              "4.2b1",
+              "4.2b2",
+              "4.2b4",
+              "5.1b1",
+              "5.1b3",
+              "5.1b5",
+              "5.1b7",
+              "5.1",
+              "5.1.1",
+              "5.1.2",
+              "5.2b1",
+              "5.2",
+              "5.3b1",
+              "5.3",
+              "5.3.1",
+              "5.4b1",
+              "5.4b2",
+              "5.4",
+              "5.4.1",
+              "6.0b1",
+              "6.0",
+              "6.0.1",
+              "6.0.2rc1",
+              "6.0.2",
+              "6.0.3"
+            ],
+            "unsupported_versions": [],
+            "boundary_evidence": {
+              "first_supported": {
+                "version": "3.01",
+                "source_mode": "official_github_tag",
+                "source_path": "lib/yaml/__init__.py",
+                "source_sha256": "5ee254f1c1156b5b3928c5555a9621467c1443cf1dba555a5709864c732be45c"
+              },
+              "last_unsupported": null
+            }
+          }
+        },
+        {
+          "rule_id": "pyyaml_safe_dump_sort_keys",
+          "status": "resolved",
+          "version_specifier": ">=5.1b1",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [
+            "sort_keys"
+          ],
+          "supported_keyword_args": [
+            "sort_keys"
+          ],
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyYAML historical release source probe",
+          "evidence_note": "Version constraint derived from per-release official source evidence.",
+          "derivation": {
+            "status": "resolved",
+            "version_specifier": ">=5.1b1",
+            "first_supported_version": "5.1b1",
+            "last_unsupported_version": "4.2b4",
+            "observation_count": 40,
+            "supported_count": 22,
+            "unsupported_count": 18,
+            "unknown_count": 0,
+            "supported_versions": [
+              "5.1b1",
+              "5.1b3",
+              "5.1b5",
+              "5.1b7",
+              "5.1",
+              "5.1.1",
+              "5.1.2",
+              "5.2b1",
+              "5.2",
+              "5.3b1",
+              "5.3",
+              "5.3.1",
+              "5.4b1",
+              "5.4b2",
+              "5.4",
+              "5.4.1",
+              "6.0b1",
+              "6.0",
+              "6.0.1",
+              "6.0.2rc1",
+              "6.0.2",
+              "6.0.3"
+            ],
+            "unsupported_versions": [
+              "3.01",
+              "3.02",
+              "3.03",
+              "3.04",
+              "3.05",
+              "3.06",
+              "3.07",
+              "3.08",
+              "3.09",
+              "3.10",
+              "3.11",
+              "3.12",
+              "3.13b1",
+              "3.13rc1",
+              "3.13",
+              "4.2b1",
+              "4.2b2",
+              "4.2b4"
+            ],
+            "boundary_evidence": {
+              "first_supported": {
+                "version": "5.1b1",
+                "source_mode": "official_pypi_sdist",
+                "source_path": "PyYAML-5.1b1/lib3/yaml/__init__.py",
+                "source_sha256": "ac4f7dc0248dc5e1fd28a6411d84379b449c208269a21e3389a19f60b0cf4c8c"
+              },
+              "last_unsupported": {
+                "version": "4.2b4",
+                "source_mode": "official_pypi_sdist",
+                "source_path": "PyYAML-4.2b4/lib3/yaml/__init__.py",
+                "source_sha256": "d0775180520d68a9b9b319f595aff56882ed35b74338e25e4c59dafca6329d69"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "distribution": "PyYAML",
+      "api_symbol": "yaml.full_load",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyyaml_full_load_basic",
+          "status": "resolved",
+          "version_specifier": ">=5.1b1",
+          "required_positional_args_min": 1,
+          "required_positional_args_max": 1,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "PyYAML historical release source probe",
+          "evidence_note": "Version constraint derived from per-release official source evidence.",
+          "derivation": {
+            "status": "resolved",
+            "version_specifier": ">=5.1b1",
+            "first_supported_version": "5.1b1",
+            "last_unsupported_version": "4.2b4",
+            "observation_count": 40,
+            "supported_count": 22,
+            "unsupported_count": 18,
+            "unknown_count": 0,
+            "supported_versions": [
+              "5.1b1",
+              "5.1b3",
+              "5.1b5",
+              "5.1b7",
+              "5.1",
+              "5.1.1",
+              "5.1.2",
+              "5.2b1",
+              "5.2",
+              "5.3b1",
+              "5.3",
+              "5.3.1",
+              "5.4b1",
+              "5.4b2",
+              "5.4",
+              "5.4.1",
+              "6.0b1",
+              "6.0",
+              "6.0.1",
+              "6.0.2rc1",
+              "6.0.2",
+              "6.0.3"
+            ],
+            "unsupported_versions": [
+              "3.01",
+              "3.02",
+              "3.03",
+              "3.04",
+              "3.05",
+              "3.06",
+              "3.07",
+              "3.08",
+              "3.09",
+              "3.10",
+              "3.11",
+              "3.12",
+              "3.13b1",
+              "3.13rc1",
+              "3.13",
+              "4.2b1",
+              "4.2b2",
+              "4.2b4"
+            ],
+            "boundary_evidence": {
+              "first_supported": {
+                "version": "5.1b1",
+                "source_mode": "official_pypi_sdist",
+                "source_path": "PyYAML-5.1b1/lib3/yaml/__init__.py",
+                "source_sha256": "ac4f7dc0248dc5e1fd28a6411d84379b449c208269a21e3389a19f60b0cf4c8c"
+              },
+              "last_unsupported": {
+                "version": "4.2b4",
+                "source_mode": "official_pypi_sdist",
+                "source_path": "PyYAML-4.2b4/lib3/yaml/__init__.py",
+                "source_sha256": "d0775180520d68a9b9b319f595aff56882ed35b74338e25e4c59dafca6329d69"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

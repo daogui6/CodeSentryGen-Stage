@@ -1,0 +1,85 @@
+{
+  "package_count": 11,
+  "packages": [
+    {
+      "package": "aiohttp",
+      "total": 47,
+      "resolved": 40,
+      "unresolved": 7,
+      "status": "partial"
+    },
+    {
+      "package": "cryptography",
+      "total": 24,
+      "resolved": 16,
+      "unresolved": 8,
+      "status": "partial"
+    },
+    {
+      "package": "Flask",
+      "total": 5,
+      "resolved": 4,
+      "unresolved": 1,
+      "status": "partial"
+    },
+    {
+      "package": "numpy",
+      "total": 8,
+      "resolved": 0,
+      "unresolved": 8,
+      "status": "partial"
+    },
+    {
+      "package": "pandas",
+      "total": 1,
+      "resolved": 1,
+      "unresolved": 0,
+      "status": "resolved"
+    },
+    {
+      "package": "Pillow",
+      "total": 79,
+      "resolved": 48,
+      "unresolved": 31,
+      "status": "partial"
+    },
+    {
+      "package": "PyJWT",
+      "total": 10,
+      "resolved": 6,
+      "unresolved": 4,
+      "status": "partial"
+    },
+    {
+      "package": "PyYAML",
+      "total": 4,
+      "resolved": 2,
+      "unresolved": 2,
+      "status": "partial"
+    },
+    {
+      "package": "requests",
+      "total": 8,
+      "resolved": 5,
+      "unresolved": 3,
+      "status": "partial"
+    },
+    {
+      "package": "SQLAlchemy",
+      "total": 3,
+      "resolved": 1,
+      "unresolved": 2,
+      "status": "partial"
+    },
+    {
+      "package": "urllib3",
+      "total": 19,
+      "resolved": 11,
+      "unresolved": 8,
+      "status": "partial"
+    }
+  ],
+  "total": 208,
+  "resolved": 134,
+  "unresolved": 74
+}

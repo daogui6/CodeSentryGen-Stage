@@ -1,0 +1,384 @@
+{
+  "schema_version": "avcs_osv_package_catalog_v0.1",
+  "provider": "OSV",
+  "distribution": "pandas",
+  "normalized_distribution": "pandas",
+  "ecosystem": "PyPI",
+  "source_snapshot_file": "output/step7_osv_snapshots_v0/pandas.json",
+  "source_snapshot_schema_version": "avcs_osv_package_snapshot_v0.1",
+  "source_query_data_source": "network",
+  "source_query_queried_at": "2026-09-16T03:39:48.221840+00:00",
+  "normalizer_sample_id": "osv_catalog::PyPI::pandas",
+  "source_record_count": 1,
+  "resolved_source_record_count": 1,
+  "partial_source_record_count": 0,
+  "unresolved_source_record_count": 0,
+  "withdrawn_source_record_count": 0,
+  "vulnerability_group_count": 1,
+  "groups_with_range_disagreement": 0,
+  "groups_with_affected_version_list_disagreement": 0,
+  "normalized_records": [
+    {
+      "source_record_id": "PYSEC-2020-73",
+      "aliases": [
+        "CVE-2020-13091"
+      ],
+      "identifiers": [
+        "CVE-2020-13091",
+        "PYSEC-2020-73"
+      ],
+      "evidence_status": "resolved",
+      "published_at": "2020-05-15T19:15:00Z",
+      "modified_at": "2023-11-08T04:02:12.263851Z",
+      "withdrawn_at": null,
+      "affected_ranges": [
+        {
+          "type": "ECOSYSTEM",
+          "events": [
+            {
+              "introduced": "0"
+            },
+            {
+              "fixed": "1.0.4"
+            }
+          ]
+        }
+      ],
+      "affected_versions": [
+        "0.1",
+        "0.2beta",
+        "0.2b1",
+        "0.2",
+        "0.3.0.beta",
+        "0.3.0.beta2",
+        "0.3.0",
+        "0.4.0",
+        "0.4.1",
+        "0.4.2",
+        "0.4.3",
+        "0.5.0",
+        "0.6.0",
+        "0.6.1",
+        "0.7.0",
+        "0.7.1",
+        "0.7.2",
+        "0.7.3",
+        "0.8.0rc1",
+        "0.8.0rc2",
+        "0.8.0",
+        "0.8.1",
+        "0.9.0",
+        "0.9.1",
+        "0.10.0",
+        "0.10.1",
+        "0.11.0",
+        "0.12.0",
+        "0.13.0",
+        "0.13.1",
+        "0.14.0",
+        "0.14.1",
+        "0.15.0",
+        "0.15.1",
+        "0.15.2",
+        "0.16.0",
+        "0.16.1",
+        "0.16.2",
+        "0.17.0",
+        "0.17.1",
+        "0.18.0",
+        "0.18.1",
+        "0.19.0rc1",
+        "0.19.0",
+        "0.19.1",
+        "0.19.2",
+        "0.20.0rc1",
+        "0.20.0",
+        "0.20.1",
+        "0.20.2",
+        "0.20.3",
+        "0.21.0rc1",
+        "0.21.0",
+        "0.21.1",
+        "0.22.0",
+        "0.23.0rc2",
+        "0.23.0",
+        "0.23.1",
+        "0.23.2",
+        "0.23.3",
+        "0.23.4",
+        "0.24.0rc1",
+        "0.24.0",
+        "0.24.1",
+        "0.24.2",
+        "0.25.0rc0",
+        "0.25.0",
+        "0.25.1",
+        "0.25.2",
+        "0.25.3",
+        "1.0.0rc0",
+        "1.0.0",
+        "1.0.1",
+        "1.0.2",
+        "1.0.3"
+      ],
+      "fixed_versions": [
+        "1.0.4"
+      ],
+      "fixed_commits": [],
+      "matched_purls": [
+        "pkg:pypi/pandas"
+      ],
+      "raw_osv_file": "output/step7_osv_record_cache_v0/pandas/PYSEC-2020-73.json",
+      "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pandas/PYSEC-2020-73.json",
+      "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2020-73",
+      "evidence_hash": "sha256:5d61593f36b5a765e455a700da1c65708c245f0311f79cdac2051b11cfcb86fb"
+    }
+  ],
+  "vulnerability_groups": [
+    {
+      "group_id": "osvgrp_fbe112ff424c",
+      "display_id": "CVE-2020-13091",
+      "identifiers": [
+        "CVE-2020-13091",
+        "PYSEC-2020-73"
+      ],
+      "source_record_ids": [
+        "PYSEC-2020-73"
+      ],
+      "source_record_count": 1,
+      "evidence_status_counts": {
+        "resolved": 1
+      },
+      "range_variant_count": 1,
+      "range_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_09a66eb0f684",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.0.4"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.0.4"
+          ],
+          "source_record_ids": [
+            "PYSEC-2020-73"
+          ]
+        }
+      ],
+      "affected_version_list_variant_count": 1,
+      "affected_version_list_disagreement": false,
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_abe62802533d",
+          "affected_versions": [
+            "0.1",
+            "0.10.0",
+            "0.10.1",
+            "0.11.0",
+            "0.12.0",
+            "0.13.0",
+            "0.13.1",
+            "0.14.0",
+            "0.14.1",
+            "0.15.0",
+            "0.15.1",
+            "0.15.2",
+            "0.16.0",
+            "0.16.1",
+            "0.16.2",
+            "0.17.0",
+            "0.17.1",
+            "0.18.0",
+            "0.18.1",
+            "0.19.0",
+            "0.19.0rc1",
+            "0.19.1",
+            "0.19.2",
+            "0.2",
+            "0.20.0",
+            "0.20.0rc1",
+            "0.20.1",
+            "0.20.2",
+            "0.20.3",
+            "0.21.0",
+            "0.21.0rc1",
+            "0.21.1",
+            "0.22.0",
+            "0.23.0",
+            "0.23.0rc2",
+            "0.23.1",
+            "0.23.2",
+            "0.23.3",
+            "0.23.4",
+            "0.24.0",
+            "0.24.0rc1",
+            "0.24.1",
+            "0.24.2",
+            "0.25.0",
+            "0.25.0rc0",
+            "0.25.1",
+            "0.25.2",
+            "0.25.3",
+            "0.2b1",
+            "0.2beta",
+            "0.3.0",
+            "0.3.0.beta",
+            "0.3.0.beta2",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "0.5.0",
+            "0.6.0",
+            "0.6.1",
+            "0.7.0",
+            "0.7.1",
+            "0.7.2",
+            "0.7.3",
+            "0.8.0",
+            "0.8.0rc1",
+            "0.8.0rc2",
+            "0.8.1",
+            "0.9.0",
+            "0.9.1",
+            "1.0.0",
+            "1.0.0rc0",
+            "1.0.1",
+            "1.0.2",
+            "1.0.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2020-73"
+          ]
+        }
+      ],
+      "source_records": [
+        {
+          "source_record_id": "PYSEC-2020-73",
+          "aliases": [
+            "CVE-2020-13091"
+          ],
+          "identifiers": [
+            "CVE-2020-13091",
+            "PYSEC-2020-73"
+          ],
+          "evidence_status": "resolved",
+          "published_at": "2020-05-15T19:15:00Z",
+          "modified_at": "2023-11-08T04:02:12.263851Z",
+          "withdrawn_at": null,
+          "affected_ranges": [
+            {
+              "type": "ECOSYSTEM",
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.0.4"
+                }
+              ]
+            }
+          ],
+          "affected_versions": [
+            "0.1",
+            "0.2beta",
+            "0.2b1",
+            "0.2",
+            "0.3.0.beta",
+            "0.3.0.beta2",
+            "0.3.0",
+            "0.4.0",
+            "0.4.1",
+            "0.4.2",
+            "0.4.3",
+            "0.5.0",
+            "0.6.0",
+            "0.6.1",
+            "0.7.0",
+            "0.7.1",
+            "0.7.2",
+            "0.7.3",
+            "0.8.0rc1",
+            "0.8.0rc2",
+            "0.8.0",
+            "0.8.1",
+            "0.9.0",
+            "0.9.1",
+            "0.10.0",
+            "0.10.1",
+            "0.11.0",
+            "0.12.0",
+            "0.13.0",
+            "0.13.1",
+            "0.14.0",
+            "0.14.1",
+            "0.15.0",
+            "0.15.1",
+            "0.15.2",
+            "0.16.0",
+            "0.16.1",
+            "0.16.2",
+            "0.17.0",
+            "0.17.1",
+            "0.18.0",
+            "0.18.1",
+            "0.19.0rc1",
+            "0.19.0",
+            "0.19.1",
+            "0.19.2",
+            "0.20.0rc1",
+            "0.20.0",
+            "0.20.1",
+            "0.20.2",
+            "0.20.3",
+            "0.21.0rc1",
+            "0.21.0",
+            "0.21.1",
+            "0.22.0",
+            "0.23.0rc2",
+            "0.23.0",
+            "0.23.1",
+            "0.23.2",
+            "0.23.3",
+            "0.23.4",
+            "0.24.0rc1",
+            "0.24.0",
+            "0.24.1",
+            "0.24.2",
+            "0.25.0rc0",
+            "0.25.0",
+            "0.25.1",
+            "0.25.2",
+            "0.25.3",
+            "1.0.0rc0",
+            "1.0.0",
+            "1.0.1",
+            "1.0.2",
+            "1.0.3"
+          ],
+          "fixed_versions": [
+            "1.0.4"
+          ],
+          "fixed_commits": [],
+          "matched_purls": [
+            "pkg:pypi/pandas"
+          ],
+          "raw_osv_file": "output/step7_osv_record_cache_v0/pandas/PYSEC-2020-73.json",
+          "normalized_evidence_file": "output/step7_osv_normalized_cache_v0/pypi__pandas/PYSEC-2020-73.json",
+          "source_url": "https://api.osv.dev/v1/vulns/PYSEC-2020-73",
+          "evidence_hash": "sha256:5d61593f36b5a765e455a700da1c65708c245f0311f79cdac2051b11cfcb86fb"
+        }
+      ]
+    }
+  ]
+}

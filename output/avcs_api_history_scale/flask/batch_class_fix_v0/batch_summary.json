@@ -1,0 +1,53 @@
+{
+  "schema_version": "avcs_python_api_surface_history_batch_v0.1",
+  "distribution": "Flask",
+  "surface_spec_file": "output/avcs_api_history_scale/flask/flask_minimal_api_surface_spec_v0.json",
+  "release_history_file": "output/avcs_api_history_scale/flask/release_history_v0.json",
+  "selected_symbol_count": 2,
+  "completed_symbol_count": 2,
+  "error_symbol_count": 0,
+  "results": [
+    {
+      "api_symbol": "flask.Flask",
+      "role": "core_class",
+      "latest_target": "flask.app.Flask",
+      "status": "completed",
+      "selected_release_count": 62,
+      "public_symbol_resolved_count": 62,
+      "public_symbol_unresolved_count": 0,
+      "supported_count": 62,
+      "unsupported_count": 0,
+      "unknown_count": 0,
+      "support_transition_count": 0,
+      "coverage_status": "complete",
+      "candidate_scope": "stable_release_history_candidate",
+      "lower_bound_status": "candidate",
+      "version_specifier": ">=0.1",
+      "boundary_version": "0.1",
+      "release_history_file": "output/avcs_api_history_scale/flask/batch_class_fix_v0/flask.Flask/release_history.json",
+      "refined_history_file": "output/avcs_api_history_scale/flask/batch_class_fix_v0/flask.Flask/release_history_refined.json",
+      "candidate_file": "output/avcs_api_history_scale/flask/batch_class_fix_v0/flask.Flask/api_history_candidate.json"
+    },
+    {
+      "api_symbol": "flask.Blueprint",
+      "role": "routing_component",
+      "latest_target": "flask.blueprints.Blueprint",
+      "status": "completed",
+      "selected_release_count": 62,
+      "public_symbol_resolved_count": 52,
+      "public_symbol_unresolved_count": 10,
+      "supported_count": 52,
+      "unsupported_count": 10,
+      "unknown_count": 0,
+      "support_transition_count": 1,
+      "coverage_status": "complete",
+      "candidate_scope": "stable_release_history_candidate",
+      "lower_bound_status": "candidate",
+      "version_specifier": ">=0.7",
+      "boundary_version": "0.7",
+      "release_history_file": "output/avcs_api_history_scale/flask/batch_class_fix_v0/flask.Blueprint/release_history.json",
+      "refined_history_file": "output/avcs_api_history_scale/flask/batch_class_fix_v0/flask.Blueprint/release_history_refined.json",
+      "candidate_file": "output/avcs_api_history_scale/flask/batch_class_fix_v0/flask.Blueprint/api_history_candidate.json"
+    }
+  ]
+}

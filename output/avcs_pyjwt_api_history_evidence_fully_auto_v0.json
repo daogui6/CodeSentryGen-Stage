@@ -1,0 +1,249 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "pyjwt",
+  "source_mode": "automatic_release_history",
+  "status": "resolved",
+  "scope": {
+    "selected_api_form": "jwt.decode with algorithms keyword plus optional nested jwt.algorithms.get_default_algorithms call",
+    "selected_call_shape": "two explicit positional arguments to jwt.decode with an explicit algorithms keyword; get_default_algorithms is modeled as a zero-argument nested call when present",
+    "version_scope": ">=1.0.0",
+    "note": "This v0 models only the selected PyJWT decode/algorithms static API forms. PyJWT 0.4.3 predates the algorithms keyword on decode and the get_default_algorithms helper, while 1.0.0 contains both. This API scope does not redefine the vulnerability range >=1.5.0,<2.4.0."
+  },
+  "entries": [
+    {
+      "distribution": "pyjwt",
+      "api_symbol": "jwt.decode",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyjwt_decode_algorithms_keyword",
+          "status": "resolved",
+          "version_specifier": ">=1.0.0",
+          "required_positional_args_min": 2,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [
+            "algorithms"
+          ],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "automatic_release_history_evidence",
+          "evidence_ref": "output/avcs_pyjwt_jwt_decode_api_history_candidate_full_stable_v0.json",
+          "evidence_note": "Automatically derived from 53 releases in a complete release-history scope: 19 unsupported, 34 supported, 0 unknown. The conservative lower-bound candidate is >=1.0.0.",
+          "derivation": {
+            "status": "resolved",
+            "method": "automatic_complete_release_history_candidate",
+            "candidate_scope": "stable_release_history_candidate",
+            "version_specifier": ">=1.0.0",
+            "boundary_version": "1.0.0",
+            "source_candidate_file": "output/avcs_pyjwt_jwt_decode_api_history_candidate_full_stable_v0.json",
+            "coverage": {
+              "coverage_complete": true,
+              "coverage_status": "complete",
+              "coverage_scope": "all_confirmed_stable_releases",
+              "selected_release_count": 53,
+              "expected_release_count": 53,
+              "confirmed_release_count": 55,
+              "confirmed_prerelease_count": 2,
+              "include_prereleases": false
+            },
+            "release_state_summary": {
+              "release_count": 53,
+              "supported_count": 34,
+              "unsupported_count": 19,
+              "unknown_count": 0,
+              "support_transition_count": 1
+            },
+            "transitions": [
+              {
+                "from_version": "0.4.3",
+                "to_version": "1.0.0",
+                "from_support_status": "unsupported",
+                "to_support_status": "supported",
+                "from_analysis_mode": "keyword_forwarding",
+                "to_analysis_mode": "public_signature",
+                "from_parameter_explicit": false,
+                "to_parameter_explicit": true,
+                "transition_reason": "release_support_state_changed"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "distribution": "pyjwt",
+      "api_symbol": "jwt.algorithms.get_default_algorithms",
+      "api_kind": "function",
+      "version_rules": [
+        {
+          "rule_id": "pyjwt_get_default_algorithms_zero_arg",
+          "status": "resolved",
+          "version_specifier": ">=1.0.0",
+          "required_positional_args_min": 0,
+          "required_positional_args_max": 0,
+          "required_keyword_args": [],
+          "supported_keyword_args": [],
+          "forbidden_keyword_args": [],
+          "evidence_type": "automatic_release_history_evidence",
+          "evidence_ref": "output/avcs_pyjwt_get_default_algorithms_api_history_candidate_full_stable_v0.json",
+          "evidence_note": "Automatically derived from 53 releases in a complete release-history scope: 19 unsupported, 34 supported, 0 unknown. The conservative lower-bound candidate is >=1.0.0. All 34 supported releases resolve to one exact zero-argument public call shape.",
+          "derivation": {
+            "status": "resolved",
+            "support_target": "api_symbol_presence",
+            "method": "automatic_complete_release_history_candidate",
+            "candidate_scope": "stable_release_history_candidate",
+            "version_specifier": ">=1.0.0",
+            "boundary_version": "1.0.0",
+            "source_candidate_file": "output/avcs_pyjwt_get_default_algorithms_api_history_candidate_full_stable_v0.json",
+            "coverage": {
+              "coverage_complete": true,
+              "coverage_status": "complete",
+              "coverage_scope": "all_confirmed_stable_releases",
+              "selected_release_count": 53,
+              "expected_release_count": 53,
+              "confirmed_release_count": 55,
+              "confirmed_prerelease_count": 2,
+              "include_prereleases": false
+            },
+            "release_state_summary": {
+              "release_count": 53,
+              "supported_count": 34,
+              "unsupported_count": 19,
+              "unknown_count": 0,
+              "support_transition_count": 1
+            },
+            "call_shape_evidence": {
+              "resolved_supported_release_count": 34,
+              "unresolved_supported_release_count": 0,
+              "variant_count": 1,
+              "uniform_supported_call_shape": true,
+              "supported_call_shape": {
+                "kind": "exact_zero_argument_call",
+                "required_positional_args_min": 0,
+                "required_positional_args_max": 0,
+                "required_keyword_args": [],
+                "supported_keyword_args": [],
+                "forbidden_keyword_args": [],
+                "accepts_var_positional": false,
+                "accepts_var_keyword": false
+              }
+            },
+            "transitions": [
+              {
+                "from_version": "0.4.3",
+                "to_version": "1.0.0",
+                "from_support_status": "unsupported",
+                "to_support_status": "supported",
+                "from_analysis_mode": "public_symbol_presence",
+                "to_analysis_mode": "public_symbol_presence",
+                "from_parameter_explicit": null,
+                "to_parameter_explicit": null,
+                "transition_reason": "release_support_state_changed"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "pyjwt_0_4_3_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/0.4.3/jwt/api.py",
+      "claim": "PyJWT 0.4.3 decode does not expose an algorithms parameter."
+    },
+    {
+      "source_id": "pyjwt_0_4_3_algorithms",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/0.4.3/jwt/algorithms.py",
+      "claim": "PyJWT 0.4.3 uses _register_default_algorithms rather than get_default_algorithms."
+    },
+    {
+      "source_id": "pyjwt_1_0_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/1.0.0/jwt/api.py",
+      "claim": "PyJWT 1.0.0 decode exposes the algorithms parameter."
+    },
+    {
+      "source_id": "pyjwt_1_0_0_algorithms",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/1.0.0/jwt/algorithms.py",
+      "claim": "PyJWT 1.0.0 contains get_default_algorithms()."
+    },
+    {
+      "source_id": "pyjwt_1_5_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/1.5.0/jwt/api_jwt.py",
+      "claim": "The selected jwt.decode algorithms form remains present at the vulnerability lower boundary."
+    },
+    {
+      "source_id": "pyjwt_2_3_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/2.3.0/jwt/api_jwt.py",
+      "claim": "The selected jwt.decode form remains present immediately before the fixed release."
+    },
+    {
+      "source_id": "pyjwt_2_4_0_api",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/2.4.0/jwt/api_jwt.py",
+      "claim": "The selected jwt.decode form remains present in the fixed release."
+    },
+    {
+      "source_id": "pyjwt_2_4_0_algorithms",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/jpadilla/pyjwt/blob/2.4.0/jwt/algorithms.py",
+      "claim": "get_default_algorithms() remains present in the fixed release."
+    },
+    {
+      "source_id": "automatic_pyjwt_decode_algorithms_keyword_release_history",
+      "source_type": "generated_release_history_candidate",
+      "path": "output/avcs_pyjwt_jwt_decode_api_history_candidate_full_stable_v0.json",
+      "claim": "Complete release-history evidence derives jwt.decode with 'algorithms' as >=1.0.0."
+    },
+    {
+      "source_id": "automatic_pyjwt_get_default_algorithms_zero_arg_release_history",
+      "source_type": "generated_release_history_candidate",
+      "path": "output/avcs_pyjwt_get_default_algorithms_api_history_candidate_full_stable_v0.json",
+      "claim": "Complete release-history evidence derives jwt.algorithms.get_default_algorithms presence and an exact zero-argument public call shape as >=1.0.0."
+    }
+  ],
+  "automatic_compilation": {
+    "status": "resolved",
+    "support_target": "api_symbol_presence",
+    "base_history_file": "output/avcs_pyjwt_api_history_evidence_auto_v0.json",
+    "candidate_file": "output/avcs_pyjwt_get_default_algorithms_api_history_candidate_full_stable_v0.json",
+    "target_distribution": "pyjwt",
+    "target_api_symbol": "jwt.algorithms.get_default_algorithms",
+    "target_parameter": "",
+    "target_rule_id": "pyjwt_get_default_algorithms_zero_arg",
+    "old_version_specifier": ">=1.0.0",
+    "compiled_version_specifier": ">=1.0.0",
+    "candidate_scope": "stable_release_history_candidate",
+    "coverage_complete": true,
+    "preserved_entry_count": 2,
+    "replaced_curated_evidence": {
+      "evidence_type": "real_api_history_evidence",
+      "evidence_ref": "PyJWT 0.4.3 / 1.0.0 / 1.5.0 / 2.4.0 official algorithms source",
+      "evidence_note": "PyJWT 0.4.3 uses the older _register_default_algorithms helper. PyJWT 1.0.0 exposes get_default_algorithms(), and the helper remains present in 2.4.0.",
+      "derivation": {
+        "status": "resolved",
+        "method": "curated_boundary_and_release_evidence",
+        "version_specifier": ">=1.0.0",
+        "boundary_evidence": {
+          "before_scope": {
+            "version": "0.4.3",
+            "source_path": "jwt/algorithms.py",
+            "observation": "The module uses _register_default_algorithms and does not expose get_default_algorithms."
+          },
+          "scope_start": {
+            "version": "1.0.0",
+            "source_path": "jwt/algorithms.py",
+            "observation": "get_default_algorithms() is present as a zero-argument function."
+          }
+        }
+      }
+    }
+  }
+}

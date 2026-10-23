@@ -1,0 +1,70 @@
+{
+  "protocol_version": "avcs_trigger_eligibility_protocol_v0.2",
+  "vulnerability_id": "GHSA-9hjg-9r4m-mvj7",
+  "aliases": [
+    "CVE-2024-47081",
+    "PYSEC-2026-1872"
+  ],
+
+  "status": "eligible",
+
+  "matched_supported_rule_kinds": [
+    "positional_url_condition"
+  ],
+
+  "candidate_rule_kinds": [
+    "positional_url_condition"
+  ],
+
+  "trigger_coverage": {
+    "coverage_status": "full",
+    "affected_version_scope": "<2.32.4",
+    "assessed_trigger_version_scope": "<2.32.4",
+    "uncovered_scope_note": null
+  },
+
+  "eligibility_checks": {
+    "vulnerability_identity": "pass",
+    "affected_version_range": "pass",
+    "upstream_trigger_semantics": "pass",
+    "supported_static_expressibility": "pass",
+    "counterfactual_validation": "pass",
+    "provenance_completeness": "pass"
+  },
+
+  "review_required": false,
+
+  "rule_refs": [
+    "requests_netrc_host_confusion"
+  ],
+
+  "evidence_refs": [
+    "osv_ghsa_9hjg_9r4m_mvj7",
+    "requests_upstream_advisory",
+    "requests_v2_32_3_source",
+    "requests_fix_pr_6965",
+    "requests_fix_commit",
+    "oss_security_redirect_example",
+    "data/avcs_validation/api_history/requests_api_history_evidence_v0.json",
+    "output/requests_ghsa_9hjg_9r4m_mvj7_trigger_evidence_v0.json"
+  ],
+
+  "unsupported_reasons": [],
+
+  "positive_regression_refs": [
+    "output/avcs_requests_netrc_host_confusion_true_evaluation_v0.json"
+  ],
+
+  "negative_regression_refs": [
+    "output/requests_netrc_host_confusion_false_evaluation_v1.json"
+  ],
+
+  "decision_notes": "The affected vulnerability range and the assessed static Trigger rule both cover <2.32.4. Upstream advisory, historical source, fix PR/commit, and public security discussion support the host-confusion URL semantics. The supported positional_url_condition statically recognizes a literal URL whose legacy netloc-derived .netrc lookup host differs from the parsed hostname. Positive and negative controlled regressions preserve the same version-exposure context while distinguishing crafted and ordinary URL structures. Environment and runtime preconditions, including .netrc credential availability, trust_env state, attacker-controlled input, and redirect behavior, are not asserted as statically satisfied. Therefore an eligible rule match is semantic evidence only and does not prove actual credential exposure or exploitability.",
+
+  "review": {
+    "status": "approved",
+    "reviewer": null,
+    "reviewed_at": null,
+    "notes": "Migrated from the existing curated Requests trigger evidence and regression-validated real case. Exact historical reviewer identity and review timestamp are not asserted by this migration artifact."
+  }
+}

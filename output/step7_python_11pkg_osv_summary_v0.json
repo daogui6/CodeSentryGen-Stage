@@ -1,0 +1,118 @@
+{
+  "package_count": 11,
+  "packages": [
+    {
+      "package": "aiohttp",
+      "source_records": 93,
+      "vulnerability_groups": 47,
+      "resolved": 93,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 7,
+      "version_list_disagreement": 0
+    },
+    {
+      "package": "cryptography",
+      "source_records": 42,
+      "vulnerability_groups": 24,
+      "resolved": 42,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 8,
+      "version_list_disagreement": 4
+    },
+    {
+      "package": "Flask",
+      "source_records": 10,
+      "vulnerability_groups": 5,
+      "resolved": 10,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 1,
+      "version_list_disagreement": 0
+    },
+    {
+      "package": "numpy",
+      "source_records": 16,
+      "vulnerability_groups": 8,
+      "resolved": 16,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 7,
+      "version_list_disagreement": 6
+    },
+    {
+      "package": "pandas",
+      "source_records": 1,
+      "vulnerability_groups": 1,
+      "resolved": 1,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 0,
+      "version_list_disagreement": 0
+    },
+    {
+      "package": "Pillow",
+      "source_records": 153,
+      "vulnerability_groups": 79,
+      "resolved": 153,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 29,
+      "version_list_disagreement": 16
+    },
+    {
+      "package": "PyJWT",
+      "source_records": 19,
+      "vulnerability_groups": 10,
+      "resolved": 19,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 4,
+      "version_list_disagreement": 3
+    },
+    {
+      "package": "PyYAML",
+      "source_records": 8,
+      "vulnerability_groups": 4,
+      "resolved": 8,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 2,
+      "version_list_disagreement": 2
+    },
+    {
+      "package": "requests",
+      "source_records": 16,
+      "vulnerability_groups": 8,
+      "resolved": 16,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 3,
+      "version_list_disagreement": 1
+    },
+    {
+      "package": "SQLAlchemy",
+      "source_records": 6,
+      "vulnerability_groups": 3,
+      "resolved": 6,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 2,
+      "version_list_disagreement": 1
+    },
+    {
+      "package": "urllib3",
+      "source_records": 38,
+      "vulnerability_groups": 19,
+      "resolved": 38,
+      "partial": 0,
+      "unresolved": 0,
+      "range_disagreement": 8,
+      "version_list_disagreement": 2
+    }
+  ],
+  "total_source_records": 402,
+  "total_vulnerability_groups": 208,
+  "total_range_disagreement_groups": 71
+}

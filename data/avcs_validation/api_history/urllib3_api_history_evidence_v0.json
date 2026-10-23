@@ -1,0 +1,169 @@
+{
+  "schema_version": "avcs_api_history_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "urllib3",
+  "source_mode": "curated_real_api_history",
+  "status": "resolved",
+  "scope": {
+    "selected_api_form": "urllib3.PoolManager(retries=0) followed by urllib3.PoolManager.request(method, url)",
+    "selected_call_shape": "zero explicit positional arguments to PoolManager with an explicit retries keyword, followed by two explicit positional arguments to PoolManager.request with no required keyword arguments",
+    "version_scope": ">=1.9",
+    "note": "This v0 models only the controlled urllib3 PoolManager(retries=0) plus request(method, url) form. PoolManager and its inherited request(method, url, ...) API exist from urllib3 1.0, but the retries configuration becomes a first-class ConnectionPool retry parameter in urllib3 1.9. Therefore the combined selected call shape yields S_api >=1.9. This API scope does not redefine the vulnerability range <2.5.0."
+  },
+  "entries": [
+    {
+      "distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager",
+      "api_kind": "constructor",
+      "version_rules": [
+        {
+          "rule_id": "urllib3_poolmanager_retries_keyword",
+          "status": "resolved",
+          "version_specifier": ">=1.9",
+          "required_positional_args_min": 0,
+          "required_positional_args_max": 0,
+          "required_keyword_args": [
+            "retries"
+          ],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "urllib3 1.8.3 / 1.9 / 2.4.0 / 2.5.0 official source and release history",
+          "evidence_note": "PoolManager accepts additional connection-pool keyword arguments before urllib3 1.9, but urllib3 1.8.3 HTTPConnectionPool does not expose retries as a pool configuration parameter. urllib3 1.9 introduces retries as an explicit HTTPConnectionPool parameter and PoolManager forwards its connection_pool_kw to the pool constructor. The selected retries=0 form remains accepted at the vulnerable 2.4.0 boundary and at fixed release 2.5.0.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=1.9",
+            "boundary_evidence": {
+              "before_scope": {
+                "version": "1.8.3",
+                "source_path": "urllib3/connectionpool.py",
+                "observation": "HTTPConnectionPool.__init__ does not expose retries as a retry configuration parameter."
+              },
+              "scope_start": {
+                "version": "1.9",
+                "source_paths": [
+                  "urllib3/connectionpool.py",
+                  "urllib3/poolmanager.py"
+                ],
+                "observation": "HTTPConnectionPool.__init__ exposes retries=None and PoolManager forwards connection_pool_kw into new pools, establishing the selected PoolManager(retries=0) configuration form."
+              },
+              "vulnerable_boundary": {
+                "version": "2.4.0",
+                "source_path": "src/urllib3/poolmanager.py",
+                "observation": "PoolManager continues to accept connection_pool_kw, including the selected retries configuration immediately before the security fix."
+              },
+              "fixed_boundary": {
+                "version": "2.5.0",
+                "source_path": "src/urllib3/poolmanager.py",
+                "observation": "PoolManager continues to accept retries configuration in the fixed release; the security fix changes redirect/retry semantics rather than removing the selected public form."
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "distribution": "urllib3",
+      "api_symbol": "urllib3.PoolManager.request",
+      "api_kind": "method",
+      "version_rules": [
+        {
+          "rule_id": "urllib3_poolmanager_request_two_positional",
+          "status": "resolved",
+          "version_specifier": ">=1.0",
+          "required_positional_args_min": 2,
+          "required_positional_args_max": 2,
+          "required_keyword_args": [],
+          "supported_keyword_args": null,
+          "forbidden_keyword_args": [],
+          "evidence_type": "real_api_history_evidence",
+          "evidence_ref": "urllib3 1.0 / 2.4.0 / 2.5.0 official source and release history",
+          "evidence_note": "urllib3 1.0 introduces PoolManager and has PoolManager inherit RequestMethods, whose request(method, url, fields=None, headers=None, **urlopen_kw) supports the selected two-positional method-and-URL call form. The selected request form remains available through the vulnerable and fixed boundaries.",
+          "derivation": {
+            "status": "resolved",
+            "method": "curated_boundary_and_release_evidence",
+            "version_specifier": ">=1.0",
+            "boundary_evidence": {
+              "scope_start": {
+                "version": "1.0",
+                "source_paths": [
+                  "urllib3/__init__.py",
+                  "urllib3/poolmanager.py",
+                  "urllib3/request.py"
+                ],
+                "observation": "urllib3 1.0 exports PoolManager, PoolManager inherits RequestMethods, and RequestMethods defines request(method, url, ...)."
+              },
+              "vulnerable_boundary": {
+                "version": "2.4.0",
+                "source_path": "src/urllib3/poolmanager.py",
+                "observation": "PoolManager remains a RequestMethods subclass and documents calls such as http.request(\"GET\", url)."
+              },
+              "fixed_boundary": {
+                "version": "2.5.0",
+                "source_path": "src/urllib3/poolmanager.py",
+                "observation": "The selected PoolManager.request method-and-URL form remains available after the security fix."
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "urllib3_changes",
+      "source_type": "upstream_release_history",
+      "url": "https://github.com/urllib3/urllib3/blob/main/CHANGES.rst",
+      "claim": "urllib3 1.0 adds PoolManager and request(method, url, ...) convenience methods, while urllib3 1.9 introduces the new retry logic and Retry configuration object."
+    },
+    {
+      "source_id": "urllib3_1_0_init",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/1.0/urllib3/__init__.py",
+      "claim": "urllib3 1.0 exports PoolManager at the package root."
+    },
+    {
+      "source_id": "urllib3_1_0_poolmanager",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/1.0/urllib3/poolmanager.py",
+      "claim": "urllib3 1.0 defines PoolManager as a RequestMethods subclass."
+    },
+    {
+      "source_id": "urllib3_1_0_request",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/1.0/urllib3/request.py",
+      "claim": "urllib3 1.0 RequestMethods defines request(method, url, fields=None, headers=None, **urlopen_kw)."
+    },
+    {
+      "source_id": "urllib3_1_8_3_connectionpool",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/1.8.3/urllib3/connectionpool.py",
+      "claim": "urllib3 1.8.3 HTTPConnectionPool.__init__ does not expose retries as a retry configuration parameter."
+    },
+    {
+      "source_id": "urllib3_1_9_connectionpool",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/1.9/urllib3/connectionpool.py",
+      "claim": "urllib3 1.9 HTTPConnectionPool.__init__ explicitly exposes retries=None and stores the retry configuration."
+    },
+    {
+      "source_id": "urllib3_1_9_poolmanager",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/1.9/urllib3/poolmanager.py",
+      "claim": "urllib3 1.9 PoolManager forwards connection_pool_kw to newly created pools and documents manager.request(method, url)."
+    },
+    {
+      "source_id": "urllib3_2_4_0_poolmanager",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/2.4.0/src/urllib3/poolmanager.py",
+      "claim": "urllib3 2.4.0 preserves the selected PoolManager constructor and request method forms immediately before the fixed release."
+    },
+    {
+      "source_id": "urllib3_2_5_0_poolmanager",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/urllib3/urllib3/blob/2.5.0/src/urllib3/poolmanager.py",
+      "claim": "urllib3 2.5.0 preserves the public PoolManager form while adding the security fix for retries redirect semantics."
+    }
+  ]
+}

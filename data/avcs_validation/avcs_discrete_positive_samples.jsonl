@@ -1,0 +1,1 @@
+{"sample_id":"avcs_control_full_load_discrete","source_sample_id":"avcs_control_full_load","source_dataset":"avcs_controlled_validation","prompt_id":null,"source":"controlled_validation","language":"python","ecosystem":"pypi","generation_time":"2026-06-17T16:15:25+08:00","model":null,"requirements_text":"PyYAML"}

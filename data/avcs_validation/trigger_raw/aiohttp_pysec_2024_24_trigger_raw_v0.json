@@ -1,0 +1,124 @@
+{
+  "schema_version": "avcs_trigger_raw_evidence_v0.1",
+  "ecosystem": "pypi",
+  "distribution": "aiohttp",
+  "vulnerability_ids": [
+    "PYSEC-2024-24",
+    "CVE-2024-23334",
+    "GHSA-5h86-8mv2-jq9f"
+  ],
+  "evidence_ref": "aiohttp PYSEC-2024-24 upstream trigger evidence chain",
+  "evidence_note": "Trigger semantics are derived from OSV, the upstream aiohttp advisory, historical aiohttp API source, release notes, and the upstream fix. This record is restricted to the selected aiohttp.web.static API form and defensive configuration evidence.",
+  "scope": {
+    "status": "resolved_with_scope",
+    "trigger_semantics_version_scope": ">=3.1.0,<3.9.2",
+    "selected_api_form": "aiohttp.web.static",
+    "selected_api_form_version_scope": ">=3.1.0",
+    "osv_affected_version_specifier": ">=1.0.5,<3.9.2",
+    "upstream_advisory_affected_version_text_raw": ">1.0.5",
+    "evidence_conflicts": [
+      {
+        "field": "affected_lower_boundary",
+        "osv_value": ">=1.0.5",
+        "upstream_advisory_value": ">1.0.5",
+        "status": "preserved_not_reconciled"
+      }
+    ],
+    "note": "The vulnerability's package-level affected range is broader than this controlled trigger rule. The >=3.1.0 lower bound applies only to the selected aiohttp.web.static API form and does not redefine the full vulnerability range."
+  },
+  "advisory_facts": {
+    "requires_affected_version": true,
+    "requires_untrusted_input": true,
+    "documented_entrypoints": [
+      "aiohttp.web.static with follow_symlinks=True"
+    ]
+  },
+  "trigger_candidates": [
+    {
+      "trigger_id": "aiohttp_web_static_follow_symlinks_true",
+      "api_symbol": "aiohttp.web.static",
+      "kind": "keyword_literal_condition",
+      "requires_untrusted_input": true,
+      "keyword_argument": {
+        "name": "follow_symlinks",
+        "required_literal": true
+      },
+      "version_scope": ">=3.1.0,<3.9.2",
+      "status": "resolved",
+      "confidence": "high",
+      "evidence_refs": [
+        "osv_pysec_2024_24",
+        "aiohttp_upstream_advisory",
+        "aiohttp_3_1_0_source",
+        "aiohttp_3_1_0_changelog"
+      ]
+    }
+  ],
+  "safe_alternatives": [],
+  "fix_evidence": {
+    "fixed_release": "3.9.2",
+    "fix_commit": "1c335944d6a8b1298baf179b7c0b3069f10c514b",
+    "fix_pr": 8079,
+    "mechanism": "Add internal static-path normalization and containment validation while preserving the public static-route API.",
+    "public_api_removed": false,
+    "public_api_signature_changed": false,
+    "security_semantics_changed": true,
+    "status": "resolved",
+    "confidence": "high",
+    "evidence_refs": [
+      "aiohttp_fix_pr_8079",
+      "aiohttp_fix_commit"
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "osv_pysec_2024_24",
+      "source_type": "osv_pypi_advisory",
+      "url": "https://osv.dev/vulnerability/PYSEC-2024-24",
+      "locator": "Affected packages / PyPI aiohttp",
+      "claim": "OSV records aiohttp as affected from 1.0.5 up to but excluding 3.9.2, with 3.9.2 as the fixed PyPI release."
+    },
+    {
+      "source_id": "aiohttp_upstream_advisory",
+      "source_type": "upstream_security_advisory",
+      "url": "https://github.com/aio-libs/aiohttp/security/advisories/GHSA-5h86-8mv2-jq9f",
+      "locator": "Summary / affected configuration / patched version",
+      "claim": "The upstream advisory identifies follow_symlinks=True on aiohttp static routes as the relevant vulnerable configuration and identifies 3.9.2 as patched."
+    },
+    {
+      "source_id": "aiohttp_3_0_9_source",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.0.9/aiohttp/web_urldispatcher.py",
+      "locator": "__all__ / StaticResource",
+      "claim": "aiohttp 3.0.9 contains lower-level StaticResource follow_symlinks support but does not export the selected web.static API."
+    },
+    {
+      "source_id": "aiohttp_3_1_0_source",
+      "source_type": "upstream_release_source",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/aiohttp/web_urldispatcher.py",
+      "locator": "__all__ / StaticDef / static",
+      "claim": "aiohttp 3.1.0 exports StaticDef and the static route-definition API used by the selected aiohttp.web.static form."
+    },
+    {
+      "source_id": "aiohttp_3_1_0_changelog",
+      "source_type": "upstream_release_changelog",
+      "url": "https://github.com/aio-libs/aiohttp/blob/v3.1.0/CHANGES.rst",
+      "locator": "3.1.0 Features",
+      "claim": "aiohttp 3.1.0 release notes explicitly record implementation of web.static() and RouteTableDef.static()."
+    },
+    {
+      "source_id": "aiohttp_fix_pr_8079",
+      "source_type": "upstream_fix_pull_request",
+      "url": "https://github.com/aio-libs/aiohttp/pull/8079",
+      "locator": "Validate static paths",
+      "claim": "The upstream fix adds static-path validation without removing the public static-route API."
+    },
+    {
+      "source_id": "aiohttp_fix_commit",
+      "source_type": "upstream_fix_commit",
+      "url": "https://github.com/aio-libs/aiohttp/commit/1c335944d6a8b1298baf179b7c0b3069f10c514b",
+      "locator": "aiohttp/web_urldispatcher.py",
+      "claim": "The fix changes internal static-path normalization and containment validation."
+    }
+  ]
+}

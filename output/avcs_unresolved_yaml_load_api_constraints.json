@@ -1,0 +1,55 @@
+{
+  "schema_version": "api_version_constraint_v0.1",
+  "sample_id": "avcs_unresolved_yaml_load",
+  "api_call_evidence_file": "output/avcs_unresolved_yaml_load_api_calls.json",
+  "history_file": "config/avcs_api_history_seed.json",
+  "history_schema_version": "avcs_api_history_seed_v0.2",
+  "status": "unresolved",
+  "api_call_count": 1,
+  "resolved_api_call_count": 0,
+  "unresolved_api_call_count": 1,
+  "call_constraints": [
+    {
+      "distribution": "PyYAML",
+      "normalized_distribution": "pyyaml",
+      "api_symbol": "yaml.load",
+      "call_text": "yaml.load(data)",
+      "call_shape": {
+        "explicit_positional_arg_count": 1,
+        "keyword_arg_names": [],
+        "has_star_args": false,
+        "has_star_kwargs": false
+      },
+      "location": {
+        "file": "data/avcs_validation/avcs_unresolved_yaml_load.py",
+        "line": 4,
+        "column": 10
+      },
+      "status": "no_history_entry",
+      "matched_rules": [],
+      "rejected_rules": [],
+      "version_specifiers": [],
+      "combined_version_specifier": "",
+      "simplified_version_specifier": ""
+    }
+  ],
+  "distribution_constraints": [
+    {
+      "distribution": "PyYAML",
+      "normalized_distribution": "pyyaml",
+      "status": "unresolved",
+      "api_call_count": 1,
+      "resolved_api_call_count": 0,
+      "unresolved_api_call_count": 1,
+      "resolved_api_symbols": [],
+      "unresolved_api_symbols": [
+        "yaml.load"
+      ],
+      "s_api": {
+        "raw_specifier": "",
+        "simplified_specifier": "",
+        "evidence_rule_ids": []
+      }
+    }
+  ]
+}

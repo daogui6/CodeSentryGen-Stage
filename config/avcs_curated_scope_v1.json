@@ -1,0 +1,53 @@
+{
+  "schema_version": "codesentry_gen_avcs_curated_scope_v1",
+  "status": "frozen_for_r5_method",
+  "scope_id": "python_pypi_step7_curated_11_v1",
+  "ecosystem": "pypi",
+  "claim_scope": "avcs_curated_library_effectiveness",
+  "membership_policy": "exact_pre_r4_pilot_step7_formal_package_inventory",
+  "source_provenance": {
+    "step7_freeze_report": "output/step7_batch_review_v0/step7_freeze_v1/step7_freeze_report.json",
+    "source_stage": "Step7",
+    "source_status_required": "PASS",
+    "source_step7_frozen_required": true,
+    "selection_independence": "membership predates the r4 fresh Pilot20 generation and must not be expanded or reduced from observed r4 Pilot outcomes"
+  },
+  "packages": [
+    "aiohttp",
+    "cryptography",
+    "flask",
+    "numpy",
+    "pandas",
+    "pillow",
+    "pyjwt",
+    "pyyaml",
+    "requests",
+    "sqlalchemy",
+    "urllib3"
+  ],
+  "expected_package_count": 11,
+  "formal_freeze_requirements": {
+    "must_be_hash_bound_into_r5_method_freeze_before_fresh_generation": true,
+    "runtime_scope_must_match_method_freeze_bytes": true,
+    "fresh_results_must_not_change_membership": true,
+    "formal_freeze_status": "membership_frozen_pending_exact_method_freeze_binding"
+  },
+  "scientific_boundary": {
+    "package_identity_candidate_is_not_avcs_scope_membership": true,
+    "registry_candidate_is_not_avcs_scope_membership": true,
+    "scope_membership_is_independent_of_metric_eligibility": true,
+    "out_of_curated_scope_is_not_negative": true,
+    "out_of_curated_scope_is_not_unknown_vulnerability_evidence": true,
+    "out_of_curated_scope_is_not_metric_eligible": true,
+    "in_scope_missing_method_support_is_contract_failure": true,
+    "unknown_review_is_not_false": true,
+    "unsupported_is_not_negative": true,
+    "formal_risk_taxonomy_unchanged": true,
+    "f10_policy_unchanged": true
+  },
+  "notes": [
+    "This artifact formalizes the pre-existing Step7 11-package AVCS library scope for R5.",
+    "It does not claim these packages are the globally most popular or highest-risk PyPI packages.",
+    "Membership is frozen before any R5 leakage audit, fresh selection, or generation. Its exact bytes must be hash-bound into the R5 Method Freeze before formal fresh work."
+  ]
+}

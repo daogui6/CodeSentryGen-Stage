@@ -1,0 +1,1666 @@
+{
+  "schema_version": "vulnerability_constraint_v0.4",
+  "source_schema_version": "avcs_osv_package_catalog_v0.1",
+  "source_mode": "osv_package_catalog",
+  "distribution": "numpy",
+  "normalized_distribution": "numpy",
+  "ecosystem": "PyPI",
+  "status": "partial",
+  "source_record_count": 16,
+  "vulnerability_group_count": 8,
+  "groups_with_range_disagreement": 7,
+  "groups_with_affected_version_list_disagreement": 6,
+  "vulnerability_count": 8,
+  "resolved_vulnerability_count": 0,
+  "unresolved_vulnerability_count": 8,
+  "vulnerabilities": [
+    {
+      "vulnerability_id": "GHSA-2fc2-6r4j-p65h",
+      "aliases": [
+        "CVE-2014-1859",
+        "PYSEC-2018-34"
+      ],
+      "identity_group_id": "osvgrp_b7a3d80c537b",
+      "identity_group_identifiers": [
+        "CVE-2014-1859",
+        "GHSA-2fc2-6r4j-p65h",
+        "PYSEC-2018-34"
+      ],
+      "source_record_ids": [
+        "GHSA-2fc2-6r4j-p65h",
+        "PYSEC-2018-34"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0"
+      ],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_da8ab8e42475",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "GHSA-2fc2-6r4j-p65h"
+          ]
+        },
+        {
+          "variant_id": "range_f83052fe55d0",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+                }
+              ],
+              "repo": "https://github.com/numpy/numpy",
+              "type": "GIT"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2018-34"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_f6ff80c2580f",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "source_record_ids": [
+            "GHSA-2fc2-6r4j-p65h",
+            "PYSEC-2018-34"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_b7a3d80c537b",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-2fc2-6r4j-p65h",
+          "PYSEC-2018-34"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-5545-2q6w-2gh6",
+      "aliases": [
+        "CVE-2021-41495",
+        "PYSEC-2021-856"
+      ],
+      "identity_group_id": "osvgrp_9bbe0369324b",
+      "identity_group_identifiers": [
+        "CVE-2021-41495",
+        "GHSA-5545-2q6w-2gh6",
+        "PYSEC-2021-856"
+      ],
+      "source_record_ids": [
+        "GHSA-5545-2q6w-2gh6",
+        "PYSEC-2021-856"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_1bba4d328b72",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19"
+          ],
+          "source_record_ids": [
+            "GHSA-5545-2q6w-2gh6"
+          ]
+        },
+        {
+          "variant_id": "range_bc0cabc98578",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-856"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_4407398aae98",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-5545-2q6w-2gh6"
+          ]
+        },
+        {
+          "variant_id": "versions_d59886e94396",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.0rc1",
+            "1.17.0rc2",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.0rc1",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.0rc1",
+            "1.19.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-856"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_9bbe0369324b",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-5545-2q6w-2gh6",
+          "PYSEC-2021-856"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-6p56-wp2h-9hxr",
+      "aliases": [
+        "CVE-2021-33430",
+        "PYSEC-2021-854"
+      ],
+      "identity_group_id": "osvgrp_0d1840fb2bcc",
+      "identity_group_identifiers": [
+        "CVE-2021-33430",
+        "GHSA-6p56-wp2h-9hxr",
+        "PYSEC-2021-854"
+      ],
+      "source_record_ids": [
+        "GHSA-6p56-wp2h-9hxr",
+        "PYSEC-2021-854"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_06254f85a398",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.21"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.21"
+          ],
+          "source_record_ids": [
+            "GHSA-6p56-wp2h-9hxr"
+          ]
+        },
+        {
+          "variant_id": "range_0567d12e986d",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.10.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-854"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_6d5e7041d1bf",
+          "affected_versions": [
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.19.5",
+            "1.20.0",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-6p56-wp2h-9hxr"
+          ]
+        },
+        {
+          "variant_id": "versions_69d70ebc134d",
+          "affected_versions": [
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-854"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_0d1840fb2bcc",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-6p56-wp2h-9hxr",
+          "PYSEC-2021-854"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-9fq2-x9r6-wfmf",
+      "aliases": [
+        "CVE-2019-6446",
+        "PYSEC-2019-108"
+      ],
+      "identity_group_id": "osvgrp_5617814ab687",
+      "identity_group_identifiers": [
+        "CVE-2019-6446",
+        "GHSA-9fq2-x9r6-wfmf",
+        "PYSEC-2019-108"
+      ],
+      "source_record_ids": [
+        "GHSA-9fq2-x9r6-wfmf",
+        "PYSEC-2019-108"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_370c4c9ada45",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.16.3"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.16.3"
+          ],
+          "source_record_ids": [
+            "GHSA-9fq2-x9r6-wfmf"
+          ]
+        },
+        {
+          "variant_id": "range_8b427cbe8894",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.16.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.16.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2019-108"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_20d0563ca859",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-9fq2-x9r6-wfmf"
+          ]
+        },
+        {
+          "variant_id": "versions_ca58c9d61f6f",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2019-108"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_5617814ab687",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-9fq2-x9r6-wfmf",
+          "PYSEC-2019-108"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-cw6w-4rcx-xphc",
+      "aliases": [
+        "CVE-2014-1858",
+        "PYSEC-2018-33"
+      ],
+      "identity_group_id": "osvgrp_e8946569804c",
+      "identity_group_identifiers": [
+        "CVE-2014-1858",
+        "GHSA-cw6w-4rcx-xphc",
+        "PYSEC-2018-33"
+      ],
+      "source_record_ids": [
+        "GHSA-cw6w-4rcx-xphc",
+        "PYSEC-2018-33"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [
+        "0.9.6",
+        "0.9.8",
+        "1.0",
+        "1.0.3",
+        "1.0.4",
+        "1.0b1",
+        "1.0b4",
+        "1.0b5",
+        "1.0rc1",
+        "1.0rc2",
+        "1.0rc3",
+        "1.1.1",
+        "1.2.0",
+        "1.2.1",
+        "1.3.0",
+        "1.4.0",
+        "1.4.1",
+        "1.5.0",
+        "1.5.1",
+        "1.6.0",
+        "1.6.1",
+        "1.6.2",
+        "1.7.0",
+        "1.7.1",
+        "1.7.2",
+        "1.8.0"
+      ],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": false,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_da8ab8e42475",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "GHSA-cw6w-4rcx-xphc"
+          ]
+        },
+        {
+          "variant_id": "range_f83052fe55d0",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "0bb46c1448b0d3f5453d5182a17ea7ac5854ee15"
+                }
+              ],
+              "repo": "https://github.com/numpy/numpy",
+              "type": "GIT"
+            },
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.8.1"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.8.1"
+          ],
+          "source_record_ids": [
+            "PYSEC-2018-33"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_f6ff80c2580f",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0"
+          ],
+          "source_record_ids": [
+            "GHSA-cw6w-4rcx-xphc",
+            "PYSEC-2018-33"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_e8946569804c",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-cw6w-4rcx-xphc",
+          "PYSEC-2018-33"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-f7c7-j99h-c22f",
+      "aliases": [
+        "CVE-2021-41496",
+        "PYSEC-2021-857"
+      ],
+      "identity_group_id": "osvgrp_2a2e13d71791",
+      "identity_group_identifiers": [
+        "CVE-2021-41496",
+        "GHSA-f7c7-j99h-c22f",
+        "PYSEC-2021-857"
+      ],
+      "source_record_ids": [
+        "GHSA-f7c7-j99h-c22f",
+        "PYSEC-2021-857"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_1bba4d328b72",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19"
+          ],
+          "source_record_ids": [
+            "GHSA-f7c7-j99h-c22f"
+          ]
+        },
+        {
+          "variant_id": "range_2a3dd8ddf41c",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.19.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.19.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-857"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_4407398aae98",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-f7c7-j99h-c22f"
+          ]
+        },
+        {
+          "variant_id": "versions_6e9bb8f57bdd",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.0rc1",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.0rc1",
+            "1.15.0rc2",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.0rc1",
+            "1.16.0rc2",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.0rc1",
+            "1.17.0rc2",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.0rc1",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0rc1",
+            "1.19.0rc2",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-857"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_2a2e13d71791",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-f7c7-j99h-c22f",
+          "PYSEC-2021-857"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-fpfv-jqm9-f5jm",
+      "aliases": [
+        "CVE-2021-34141",
+        "PYSEC-2021-855"
+      ],
+      "identity_group_id": "osvgrp_e53d3c26b4a7",
+      "identity_group_identifiers": [
+        "CVE-2021-34141",
+        "GHSA-fpfv-jqm9-f5jm",
+        "PYSEC-2021-855"
+      ],
+      "source_record_ids": [
+        "GHSA-fpfv-jqm9-f5jm",
+        "PYSEC-2021-855"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_range_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on affected range evidence."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [],
+      "fixed_versions": [],
+      "range_disagreement": true,
+      "affected_version_list_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_c14dffac782c",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.22"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.22"
+          ],
+          "source_record_ids": [
+            "GHSA-fpfv-jqm9-f5jm"
+          ]
+        },
+        {
+          "variant_id": "range_0567d12e986d",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "1.9.0"
+                },
+                {
+                  "fixed": "1.10.0"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.10.0"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-855"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_e4b3608db843",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.13.3",
+            "1.14.0",
+            "1.14.1",
+            "1.14.2",
+            "1.14.3",
+            "1.14.4",
+            "1.14.5",
+            "1.14.6",
+            "1.15.0",
+            "1.15.1",
+            "1.15.2",
+            "1.15.3",
+            "1.15.4",
+            "1.16.0",
+            "1.16.1",
+            "1.16.2",
+            "1.16.3",
+            "1.16.4",
+            "1.16.5",
+            "1.16.6",
+            "1.17.0",
+            "1.17.1",
+            "1.17.2",
+            "1.17.3",
+            "1.17.4",
+            "1.17.5",
+            "1.18.0",
+            "1.18.1",
+            "1.18.2",
+            "1.18.3",
+            "1.18.4",
+            "1.18.5",
+            "1.19.0",
+            "1.19.1",
+            "1.19.2",
+            "1.19.3",
+            "1.19.4",
+            "1.19.5",
+            "1.2.0",
+            "1.2.1",
+            "1.20.0",
+            "1.20.1",
+            "1.20.2",
+            "1.20.3",
+            "1.21.0",
+            "1.21.1",
+            "1.21.2",
+            "1.21.3",
+            "1.21.4",
+            "1.21.5",
+            "1.21.6",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-fpfv-jqm9-f5jm"
+          ]
+        },
+        {
+          "variant_id": "versions_69d70ebc134d",
+          "affected_versions": [
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2021-855"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_e53d3c26b4a7",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-fpfv-jqm9-f5jm",
+          "PYSEC-2021-855"
+        ]
+      }
+    },
+    {
+      "vulnerability_id": "GHSA-frgw-fgh6-9g52",
+      "aliases": [
+        "CVE-2017-12852",
+        "PYSEC-2017-1"
+      ],
+      "identity_group_id": "osvgrp_f471424eb980",
+      "identity_group_identifiers": [
+        "CVE-2017-12852",
+        "GHSA-frgw-fgh6-9g52",
+        "PYSEC-2017-1"
+      ],
+      "source_record_ids": [
+        "GHSA-frgw-fgh6-9g52",
+        "PYSEC-2017-1"
+      ],
+      "source_record_count": 2,
+      "severity": "not_calibrated",
+      "constraint_status": "source_affected_version_list_disagreement",
+      "constraint_notes": [
+        "OSV source records in this identity group disagree on explicit affected-version lists."
+      ],
+      "affected_version_specifier": "",
+      "fixed_version_specifier": "",
+      "affected_versions": [],
+      "fixed_versions": [],
+      "range_disagreement": false,
+      "affected_version_list_disagreement": true,
+      "range_evidence_variants": [
+        {
+          "variant_id": "range_e2072e5cafc3",
+          "affected_ranges": [
+            {
+              "events": [
+                {
+                  "introduced": "0"
+                },
+                {
+                  "fixed": "1.13.3"
+                }
+              ],
+              "type": "ECOSYSTEM"
+            }
+          ],
+          "fixed_versions": [
+            "1.13.3"
+          ],
+          "source_record_ids": [
+            "GHSA-frgw-fgh6-9g52",
+            "PYSEC-2017-1"
+          ]
+        }
+      ],
+      "affected_version_list_variants": [
+        {
+          "variant_id": "versions_c7a6262ba06c",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "GHSA-frgw-fgh6-9g52"
+          ]
+        },
+        {
+          "variant_id": "versions_0d9c96b1ac8d",
+          "affected_versions": [
+            "0.9.6",
+            "0.9.8",
+            "1.0",
+            "1.0.3",
+            "1.0.4",
+            "1.0b1",
+            "1.0b4",
+            "1.0b5",
+            "1.0rc1",
+            "1.0rc2",
+            "1.0rc3",
+            "1.1.1",
+            "1.10.0",
+            "1.10.1",
+            "1.10.2",
+            "1.10.3",
+            "1.10.4",
+            "1.11.0",
+            "1.11.1",
+            "1.11.2",
+            "1.11.3",
+            "1.12.0",
+            "1.12.1",
+            "1.13.0",
+            "1.13.0rc1",
+            "1.13.0rc2",
+            "1.13.1",
+            "1.2.0",
+            "1.2.1",
+            "1.3.0",
+            "1.4.0",
+            "1.4.1",
+            "1.5.0",
+            "1.5.1",
+            "1.6.0",
+            "1.6.1",
+            "1.6.2",
+            "1.7.0",
+            "1.7.1",
+            "1.7.2",
+            "1.8.0",
+            "1.8.1",
+            "1.8.2",
+            "1.9.0",
+            "1.9.1",
+            "1.9.2",
+            "1.9.3"
+          ],
+          "source_record_ids": [
+            "PYSEC-2017-1"
+          ]
+        }
+      ],
+      "trigger_conditions": {},
+      "safe_api_symbols": [],
+      "evidence_type": "osv_package_catalog_group",
+      "evidence_ref": "osvgrp_f471424eb980",
+      "evidence_source": {
+        "provider": "OSV",
+        "source_mode": "osv_package_catalog",
+        "source_record_ids": [
+          "GHSA-frgw-fgh6-9g52",
+          "PYSEC-2017-1"
+        ]
+      }
+    }
+  ]
+}

@@ -168,7 +168,7 @@ def main() -> None:
         ),
         check(
             "OSV S_vuln",
-            "<5.4",
+            "<=5.4,!=5.4",
             vuln.get(
                 "affected_version_specifier"
             ),

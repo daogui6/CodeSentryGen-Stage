@@ -1,484 +1,845 @@
-"""
-enrich_reachability_v2.py
-
-作用：
-    CodeSentry-Gen 的安装可达性 v2 增强模块。
-    在已有依赖检测记录基础上，根据 requirements、Dockerfile 和 CI 配置，
-    判断某个依赖是否真的可能被安装进入环境。
-
-输入：
-    - temporal enriched JSONL
-      例如 output/pilot50_temporal_enriched.jsonl
-    - requirements 文件目录
-      例如 data/generated_requirements_files
-    - build evidence 目录
-      例如 data/build_evidence/{sample_id}/Dockerfile 或 ci.yml
-
-输出：
-    - reachability enriched JSONL
-      新增 install_reachability_v2 和 reachability_v2_evidence
-    - reachability summary Markdown
-
-核心字段：
-    - install_reachability：run_pilot.py 生成的原始可达性字段
-    - install_reachability_v2：v2 增强后的可达性字段
-    - reachability_v2_evidence：requirements / Docker / CI 证据链
-
-主要可达性级别：
-    - import_only：只在代码 import 中出现
-    - manifest_declared：在 requirements 中声明
-    - docker_installable：requirements 会被 Dockerfile 安装
-    - ci_installable：requirements 会被 CI 安装
-
-在整体流程中的位置：
-    enrich_temporal_status.py
-        ↓
-    enrich_reachability_v2.py
-        ↓
-    build_temporal_risk_cards.py
-
-注意：
-    Docker/CI 升级必须建立在 package 已经写入 requirements 的基础上。
-    本脚本不会覆盖原始 install_reachability，而是新增 install_reachability_v2。
-"""
+from __future__ import annotations
 
 import argparse
+import ast
+import configparser
 import json
 import re
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # Python 3.10 compatibility
+    import tomli as tomllib
 from collections import Counter
 from pathlib import Path
+from typing import Any
+
+from packaging.requirements import InvalidRequirement, Requirement
+
+from package_identity_v1 import (
+    DEFAULT_POLICY as DEFAULT_IDENTITY_POLICY,
+    PackageIdentityService,
+)
+from project_dependency_facts_v1 import (
+    FACTS_SCHEMA_VERSION,
+    collect_project_dependency_facts,
+)
+from sceg_ir_v21 import (
+    project_dependency_facts_for_sample,
+    read_json as read_sceg_json,
+    verify_ir as verify_sceg_ir,
+)
 
 
-def norm_pkg(name: str) -> str:
-    """PEP 503 风格归一化：大小写统一，- _ . 都视为同一种分隔符。"""
-    if not name:
-        return ""
-    return re.sub(r"[-_.]+", "-", str(name).strip().lower())
+ROOT = Path(__file__).resolve().parents[1]
+REACHABILITY_ORDER = {
+    "mention_only": 0,
+    "import_only": 1,
+    "manifest_declared": 2,
+    "lockfile_resolved": 3,
+    "ci_installable": 4,
+}
+LEGACY_LEVEL_ALIASES = {
+    "docker_installable": "ci_installable",
+}
 
 
-def read_jsonl(path: Path):
-    """读取 JSONL 文件，返回解析后的记录列表。"""
-    records = []
-    with path.open("r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                records.append(json.loads(line))
-    return records
+def read_jsonl(path: Path) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    with path.open("r", encoding="utf-8-sig") as handle:
+        for line_no, raw in enumerate(handle, start=1):
+            text = raw.strip()
+            if not text:
+                continue
+            value = json.loads(text)
+            if not isinstance(value, dict):
+                raise ValueError(f"{path}:{line_no}: expected object")
+            rows.append(value)
+    return rows
 
 
-def write_jsonl(path: Path, records):
-    """将记录列表写入 JSONL 文件。"""
+def write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
-        for rec in records:
-            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        for row in rows:
+            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
-def parse_requirement_name(line: str):
-    """
-    从 requirements.txt 的一行中解析出包名。
-    
-    处理以下情况：
-    - 忽略注释行和空行
-    - 去掉行内注释和环境标记（如 ; python_version >= "3.6"）
-    - 忽略 pip 参数（如 -r、--index-url）
-    - 去除 extras 标记（如 Flask[async]）
-    - 处理 Package @ URL 格式
-    - 提取版本符号前的包名
-    
-    返回归一化后的包名，如果无法解析则返回 None。
-    """
-    line = line.strip()
-    if not line or line.startswith("#"):
-        return None
-
-    # 去掉行内注释和环境标记
-    line = line.split("#", 1)[0].split(";", 1)[0].strip()
-    if not line:
-        return None
-
-    # 忽略 -r、--index-url 之类 pip 参数
-    if line.startswith("-") or line.startswith("--"):
-        return None
-
-    # 处理 Flask[async]==3.0.0
-    line = re.sub(r"\[.*?\]", "", line)
-
-    # 处理 Package @ URL
-    if " @ " in line:
-        line = line.split(" @ ", 1)[0].strip()
-
-    # 按版本符号切开
-    name = re.split(r"\s*(===|==|~=|!=|<=|>=|<|>)\s*", line, maxsplit=1)[0].strip()
-
-    if not name:
-        return None
-
-    return norm_pkg(name)
+def rel_to(path: Path, root: Path) -> str:
+    try:
+        return path.resolve().relative_to(root.resolve()).as_posix()
+    except ValueError:
+        return path.name
 
 
-def load_requirements(sample_id: str, requirements_dir: Path):
-    """
-    加载指定 sample 的 requirements 文件。
-    
-    返回：
-    - requirements 中声明过的包集合（归一化后）
-    - 命中的 requirements 文件路径列表
-    - 每个包对应的原始行证据（包含文件、行号、原始内容、包名）
-    """
-    packages = set()
-    files = []
-    lines = []
-
-    if not requirements_dir.exists():
-        return packages, files, lines
-
-    # 遍历所有包含 sample_id 的文件
-    for path in requirements_dir.glob(f"*{sample_id}*"):
-        if not path.is_file():
-            continue
-
-        files.append(path)
-
-        # 逐行解析 requirements 文件
-        for line_no, line in enumerate(path.read_text(encoding="utf-8", errors="ignore").splitlines(), start=1):
-            pkg = parse_requirement_name(line)
-            if pkg:
-                packages.add(pkg)
-                lines.append(
-                    {
-                        "file": str(path).replace("\\", "/"),
-                        "line": line_no,
-                        "raw": line.strip(),
-                        "package": pkg,
-                    }
-                )
-
-    return packages, files, lines
+def normalize_level(value: Any) -> str:
+    text = str(value or "").strip() or "import_only"
+    return LEGACY_LEVEL_ALIASES.get(text, text)
 
 
-def find_install_commands(path: Path):
-    """
-    在 Dockerfile 或 CI 配置文件里查找 pip install -r requirements.txt 命令。
-    
-    使用保守的正则匹配规则，识别以下格式的 pip install 命令：
-    - python -m pip install -r requirements.txt
-    - pip install -r requirements.txt
-    - pip3 install --requirement requirements.txt
-    
-    返回匹配到的命令列表，包含文件路径、行号和完整命令。
-    """
-    hits = []
-
-    if not path.exists() or not path.is_file():
-        return hits
-
-    # 匹配 pip install -r/--requirement requirements*.txt 的命令
-    pattern = re.compile(
-        r"(?i)(python\s+-m\s+pip|pip|pip3)\s+install\b.*(-r|--requirement)\s+\S*requirements\S*"
+def max_level(*levels: str) -> str:
+    normalized = [normalize_level(value) for value in levels]
+    return max(
+        normalized,
+        key=lambda value: REACHABILITY_ORDER.get(value, -1),
     )
 
-    for line_no, line in enumerate(path.read_text(encoding="utf-8", errors="ignore").splitlines(), start=1):
-        if pattern.search(line):
-            hits.append(
-                {
-                    "file": str(path).replace("\\", "/"),
-                    "line": line_no,
-                    "command": line.strip(),
-                }
+
+def parse_requirement_name(
+    text: str,
+    *,
+    identity_service: PackageIdentityService,
+) -> str | None:
+    stripped = str(text or "").strip()
+    if not stripped or stripped.startswith(("#", "-", "--")):
+        return None
+    stripped = stripped.split("#", 1)[0].strip()
+    try:
+        req = Requirement(stripped)
+    except InvalidRequirement:
+        return None
+    identity = identity_service.resolve(
+        raw_name=req.name,
+        source_type="manifest",
+    )
+    return identity.normalized_distribution
+
+
+def add_manifest_entry(
+    result: dict[str, list[dict[str, Any]]],
+    *,
+    package: str | None,
+    path: Path,
+    line: int | None,
+    source_kind: str,
+    sample_root: Path,
+    version: str | None = None,
+) -> None:
+    if not package:
+        return
+    result.setdefault(package, []).append(
+        {
+            "file": rel_to(path, sample_root),
+            "line": line,
+            "source_kind": source_kind,
+            "version": version,
+        }
+    )
+
+
+def collect_requirements_manifests(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    for path in sorted(sample_root.rglob("requirements*.txt")):
+        if not path.is_file():
+            continue
+        for line_no, raw in enumerate(
+            path.read_text(
+                encoding="utf-8-sig",
+                errors="ignore",
+            ).splitlines(),
+            start=1,
+        ):
+            package = parse_requirement_name(
+                raw,
+                identity_service=identity_service,
             )
-
-    return hits
-
-
-def collect_build_evidence(sample_id: str, evidence_dir: Path):
-    """
-    收集指定 sample 的构建证据（Dockerfile 和 CI 配置文件）。
-    
-    扫描 build_evidence/{sample_id}/ 目录下的文件：
-    - Dockerfile* 文件：查找 pip install 命令
-    - *.yml/*.yaml 文件：查找 pip install 命令
-    
-    返回两个列表：docker_hits 和 ci_hits。
-    """
-    sample_dir = evidence_dir / sample_id
-
-    docker_hits = []
-    ci_hits = []
-
-    if not sample_dir.exists():
-        return docker_hits, ci_hits
-
-    # Dockerfile 证据
-    for path in sample_dir.iterdir():
-        if path.is_file() and path.name.lower().startswith("dockerfile"):
-            docker_hits.extend(find_install_commands(path))
-
-    # CI 证据：先覆盖最小 controlled evidence
-    for path in sample_dir.iterdir():
-        if path.is_file() and path.suffix.lower() in [".yml", ".yaml"]:
-            ci_hits.extend(find_install_commands(path))
-
-    return docker_hits, ci_hits
+            add_manifest_entry(
+                result,
+                package=package,
+                path=path,
+                line=line_no,
+                source_kind="requirements",
+                sample_root=sample_root,
+            )
+    return result
 
 
-def decide_reachability_v2(original_level: str, requirements_declared: bool, docker_hits, ci_hits):
-    """
-    根据 v2 规则决定安装可达性级别。
-    
-    最小版规则：
-    1. 没有 requirements 声明，则不因为 Docker/CI 升级。
-    2. 有 requirements 声明，至少 manifest_declared。
-    3. Docker 有 pip install -r requirements.txt，则 docker_installable。
-    4. CI 有 pip install -r requirements.txt，则 ci_installable。
-    5. Docker 和 CI 都有时，最终标 ci_installable，但 evidence 里保留两类证据。
-    
-    优先级：ci_installable > docker_installable > manifest_declared > original_level
-    """
-    level = original_level or "import_only"
+def collect_pyproject(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    path = sample_root / "pyproject.toml"
+    if not path.exists():
+        return result
+    try:
+        data = tomllib.loads(path.read_text(encoding="utf-8-sig"))
+    except Exception:
+        return result
 
-    # 如果没有 requirements 声明，保持原级别不变
-    if not requirements_declared:
-        return level
+    project = data.get("project")
+    if isinstance(project, dict):
+        deps = project.get("dependencies")
+        if isinstance(deps, list):
+            for raw in deps:
+                package = parse_requirement_name(
+                    str(raw),
+                    identity_service=identity_service,
+                )
+                add_manifest_entry(
+                    result,
+                    package=package,
+                    path=path,
+                    line=None,
+                    source_kind="pyproject.project.dependencies",
+                    sample_root=sample_root,
+                )
 
-    # 有 requirements 声明，至少提升到 manifest_declared
-    if level in ["", "none", "mention_only", "import_only"]:
-        level = "manifest_declared"
+    tool = data.get("tool")
+    poetry = tool.get("poetry") if isinstance(tool, dict) else None
+    deps = poetry.get("dependencies") if isinstance(poetry, dict) else None
+    if isinstance(deps, dict):
+        for name, spec in deps.items():
+            if str(name).lower() == "python":
+                continue
+            # Optional Poetry dependencies are not promoted conservatively.
+            if isinstance(spec, dict) and spec.get("optional") is True:
+                continue
+            identity = identity_service.resolve(
+                raw_name=str(name),
+                source_type="manifest",
+            )
+            add_manifest_entry(
+                result,
+                package=identity.normalized_distribution,
+                path=path,
+                line=None,
+                source_kind="pyproject.poetry.dependencies",
+                sample_root=sample_root,
+            )
+    return result
 
-    # Docker 有安装命令，提升到 docker_installable
-    if docker_hits:
-        level = "docker_installable"
 
-    # CI 有安装命令，提升到 ci_installable（最高优先级）
-    if ci_hits:
-        level = "ci_installable"
+def collect_setup_cfg(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    path = sample_root / "setup.cfg"
+    if not path.exists():
+        return result
+    parser = configparser.ConfigParser()
+    try:
+        parser.read(path, encoding="utf-8")
+    except Exception:
+        return result
+    if not parser.has_option("options", "install_requires"):
+        return result
+    raw = parser.get("options", "install_requires")
+    for line in raw.splitlines():
+        package = parse_requirement_name(
+            line,
+            identity_service=identity_service,
+        )
+        add_manifest_entry(
+            result,
+            package=package,
+            path=path,
+            line=None,
+            source_kind="setup_cfg.install_requires",
+            sample_root=sample_root,
+        )
+    return result
 
-    return level
+
+def _literal_string_list(node: ast.AST) -> list[str] | None:
+    if not isinstance(node, (ast.List, ast.Tuple, ast.Set)):
+        return None
+    values: list[str] = []
+    for item in node.elts:
+        if not isinstance(item, ast.Constant) or not isinstance(
+            item.value, str
+        ):
+            return None
+        values.append(item.value)
+    return values
 
 
-def enrich(input_path: Path, output_path: Path, summary_path: Path, requirements_dir: Path, evidence_dir: Path):
-    """
-    主处理函数：为每条记录添加 v2 版本的安装可达性信息。
-    
-    处理流程：
-    1. 读取输入 JSONL 文件
-    2. 对每条记录，加载其 requirements 文件和构建证据
-    3. 判断包是否在 requirements 中声明
-    4. 根据 v2 规则计算新的可达性级别
-    5. 添加详细的证据信息到 reachability_v2_evidence 字段
-    6. 写入输出文件和摘要报告
-    
-    使用 cache 避免重复加载同一个 sample_id 的文件。
-    """
-    records = read_jsonl(input_path)
-    enriched = []
+def collect_setup_py(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    path = sample_root / "setup.py"
+    if not path.exists():
+        return result
+    try:
+        tree = ast.parse(path.read_text(encoding="utf-8-sig"))
+    except (SyntaxError, UnicodeDecodeError):
+        return result
 
-    cache = {}
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        for keyword in node.keywords:
+            if keyword.arg != "install_requires":
+                continue
+            values = _literal_string_list(keyword.value)
+            if values is None:
+                continue
+            for raw in values:
+                package = parse_requirement_name(
+                    raw,
+                    identity_service=identity_service,
+                )
+                add_manifest_entry(
+                    result,
+                    package=package,
+                    path=path,
+                    line=getattr(keyword.value, "lineno", None),
+                    source_kind="setup_py.install_requires",
+                    sample_root=sample_root,
+                )
+    return result
 
-    for rec in records:
-        new_rec = dict(rec)
 
-        sample_id = rec.get("sample_id", "")
-        package = rec.get("package", "")
-        package_norm = norm_pkg(package)
-        original_level = rec.get("install_reachability", "import_only")
+def collect_pipfile(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    path = sample_root / "Pipfile"
+    if not path.exists():
+        return result
+    try:
+        data = tomllib.loads(path.read_text(encoding="utf-8-sig"))
+    except Exception:
+        return result
+    packages = data.get("packages")
+    if not isinstance(packages, dict):
+        return result
+    for name in packages:
+        identity = identity_service.resolve(
+            raw_name=str(name),
+            source_type="manifest",
+        )
+        add_manifest_entry(
+            result,
+            package=identity.normalized_distribution,
+            path=path,
+            line=None,
+            source_kind="pipfile.packages",
+            sample_root=sample_root,
+        )
+    return result
 
-        # 缓存机制：避免重复加载同一个 sample 的文件
-        if sample_id not in cache:
-            req_pkgs, req_files, req_lines = load_requirements(sample_id, requirements_dir)
-            docker_hits, ci_hits = collect_build_evidence(sample_id, evidence_dir)
-            cache[sample_id] = {
-                "req_pkgs": req_pkgs,
-                "req_files": req_files,
-                "req_lines": req_lines,
-                "docker_hits": docker_hits,
-                "ci_hits": ci_hits,
+
+def merge_evidence_maps(
+    *values: dict[str, list[dict[str, Any]]],
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    for value in values:
+        for package, rows in value.items():
+            result.setdefault(package, []).extend(rows)
+    return result
+
+
+def collect_manifest_evidence(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+) -> dict[str, list[dict[str, Any]]]:
+    return merge_evidence_maps(
+        collect_requirements_manifests(sample_root, identity_service),
+        collect_pyproject(sample_root, identity_service),
+        collect_setup_cfg(sample_root, identity_service),
+        collect_setup_py(sample_root, identity_service),
+        collect_pipfile(sample_root, identity_service),
+    )
+
+
+def collect_lock_evidence(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+    manifest_packages: set[str],
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+
+    pipfile_lock = sample_root / "Pipfile.lock"
+    if pipfile_lock.exists():
+        try:
+            value = json.loads(
+                pipfile_lock.read_text(encoding="utf-8-sig")
+            )
+        except Exception:
+            value = {}
+        default = value.get("default") if isinstance(value, dict) else None
+        if isinstance(default, dict):
+            for name, row in default.items():
+                identity = identity_service.resolve(
+                    raw_name=str(name),
+                    source_type="manifest",
+                )
+                package = identity.normalized_distribution
+                if package not in manifest_packages:
+                    continue
+                version = (
+                    str(row.get("version") or "").strip()
+                    if isinstance(row, dict)
+                    else ""
+                )
+                if version.startswith("==") and len(version) > 2:
+                    add_manifest_entry(
+                        result,
+                        package=package,
+                        path=pipfile_lock,
+                        line=None,
+                        source_kind="pipfile_lock.default",
+                        sample_root=sample_root,
+                        version=version[2:],
+                    )
+
+    lock_candidates = [
+        path
+        for path in sample_root.rglob("*")
+        if path.is_file()
+        and (
+            path.name.lower() in {
+                "requirements.lock",
+                "requirements.txt.lock",
             }
+            or (
+                "lock" in path.name.lower()
+                and path.suffix.lower() in {".txt", ".lock"}
+            )
+        )
+    ]
+    exact_pattern = re.compile(
+        r"^\s*([A-Za-z0-9_.-]+)\s*==\s*([^\s;#]+)"
+    )
+    for path in sorted(set(lock_candidates)):
+        for line_no, raw in enumerate(
+            path.read_text(
+                encoding="utf-8-sig",
+                errors="ignore",
+            ).splitlines(),
+            start=1,
+        ):
+            match = exact_pattern.match(raw)
+            if not match:
+                continue
+            identity = identity_service.resolve(
+                raw_name=match.group(1),
+                source_type="manifest",
+            )
+            package = identity.normalized_distribution
+            if package not in manifest_packages:
+                continue
+            add_manifest_entry(
+                result,
+                package=package,
+                path=path,
+                line=line_no,
+                source_kind="requirements_lock_exact_pin",
+                sample_root=sample_root,
+                version=match.group(2),
+            )
+    return result
 
-        info = cache[sample_id]
 
-        # 判断当前包是否在 requirements 中声明
-        requirements_declared = package_norm in info["req_pkgs"]
-        matched_req_lines = [
-            x for x in info["req_lines"]
-            if x.get("package") == package_norm
-        ]
+_DIRECT_INSTALL_RE = re.compile(
+    r"(?i)(?:python\s+-m\s+)?pip(?:3)?\s+install\b(?P<args>[^\n]*)"
+)
 
-        # 判断是否可通过 Docker/CI 安装
-        docker_installable = requirements_declared and len(info["docker_hits"]) > 0
-        ci_installable = requirements_declared and len(info["ci_hits"]) > 0
 
-        # 根据 v2 规则计算新的可达性级别
-        v2_level = decide_reachability_v2(
-            original_level=original_level,
-            requirements_declared=requirements_declared,
-            docker_hits=info["docker_hits"],
-            ci_hits=info["ci_hits"],
+def collect_installability_evidence(
+    sample_root: Path,
+    identity_service: PackageIdentityService,
+    manifest_packages: set[str],
+) -> dict[str, list[dict[str, Any]]]:
+    result: dict[str, list[dict[str, Any]]] = {}
+    candidates: list[Path] = []
+    for path in sample_root.rglob("*"):
+        if not path.is_file():
+            continue
+        rel = rel_to(path, sample_root).lower()
+        if (
+            path.name.lower().startswith("dockerfile")
+            or rel.startswith(".github/workflows/")
+            or path.suffix.lower() in {".sh", ".bash", ".yml", ".yaml"}
+        ):
+            candidates.append(path)
+
+    for path in sorted(set(candidates)):
+        lines = path.read_text(
+            encoding="utf-8-sig",
+            errors="ignore",
+        ).splitlines()
+        for line_no, line in enumerate(lines, start=1):
+            match = _DIRECT_INSTALL_RE.search(line)
+            if not match:
+                continue
+            args = match.group("args")
+            is_manifest_install = bool(
+                re.search(r"(?:^|\s)(?:-r|--requirement)\s+\S+", args)
+                or re.search(r"(?:^|\s)\.\s*(?:$|\s)", args)
+            )
+            if is_manifest_install:
+                for package in sorted(manifest_packages):
+                    add_manifest_entry(
+                        result,
+                        package=package,
+                        path=path,
+                        line=line_no,
+                        source_kind="ci_manifest_install",
+                        sample_root=sample_root,
+                    )
+                continue
+
+            tokens = [
+                token.strip()
+                for token in re.split(r"\s+", args.strip())
+                if token.strip() and not token.startswith("-")
+            ]
+            for token in tokens:
+                package = parse_requirement_name(
+                    token,
+                    identity_service=identity_service,
+                )
+                add_manifest_entry(
+                    result,
+                    package=package,
+                    path=path,
+                    line=line_no,
+                    source_kind="ci_direct_install",
+                    sample_root=sample_root,
+                )
+    return result
+
+
+def identity_package(record: dict[str, Any]) -> str:
+    identity = record.get("package_identity")
+    if isinstance(identity, dict):
+        package = str(
+            identity.get("normalized_distribution") or ""
+        ).strip()
+        if package:
+            return package
+    return str(record.get("package") or "").strip()
+
+
+def enrich(
+    *,
+    input_path: Path,
+    output_path: Path,
+    summary_path: Path,
+    project_snapshots_dir: Path | None,
+    identity_policy_path: Path,
+    sceg_ir_path: Path | None = None,
+    requirements_dir: Path | None = None,
+    evidence_dir: Path | None = None,
+) -> None:
+    records = read_jsonl(input_path)
+    enriched: list[dict[str, Any]] = []
+    cache: dict[str, dict[str, Any]] = {}
+
+    sceg_ir: dict[str, Any] | None = None
+    if sceg_ir_path is not None:
+        sceg_ir = read_sceg_json(sceg_ir_path)
+        verify_sceg_ir(sceg_ir)
+        if sceg_ir.get("schema_version") != "2.1":
+            raise ValueError(
+                "Reachability requires SCEG schema_version 2.1"
+            )
+    elif project_snapshots_dir is None:
+        raise ValueError(
+            "Reachability requires canonical --sceg-ir or legacy "
+            "--project-snapshots-dir"
         )
 
-        # 添加 v2 级别的可达性字段
-        new_rec["install_reachability_v2"] = v2_level
-        
-        # 添加详细的证据信息
+    for rec in records:
+        sample_id = str(rec.get("sample_id") or "").strip()
+        if not sample_id:
+            raise ValueError("Reachability record missing sample_id")
+
+        if sample_id not in cache:
+            if sceg_ir is not None:
+                project_facts = project_dependency_facts_for_sample(
+                    sceg_ir,
+                    sample_id,
+                )
+                if project_facts.get("schema_version") != FACTS_SCHEMA_VERSION:
+                    raise ValueError(
+                        f"{sample_id}: unexpected canonical project facts schema"
+                    )
+                identity_policy_version = str(
+                    (
+                        sceg_ir.get("package_identity_contract") or {}
+                    ).get("policy_version")
+                    or ""
+                )
+                if not identity_policy_version:
+                    raise ValueError(
+                        f"{sample_id}: SCEG identity policy version missing"
+                    )
+                snapshots_root = str(
+                    (
+                        sceg_ir.get("source_inputs") or {}
+                    ).get("project_snapshots_dir")
+                    or ""
+                ).strip()
+                project_snapshot = (
+                    f"{snapshots_root.rstrip('/')}/{sample_id}"
+                    if snapshots_root
+                    else None
+                )
+                cache[sample_id] = {
+                    "identity_policy_version": identity_policy_version,
+                    "project_facts": project_facts,
+                    "manifests": project_facts["manifests"],
+                    "locks": project_facts["locks"],
+                    "installable": project_facts["installability"],
+                    "project_snapshot": project_snapshot,
+                    "sceg_source_snapshot_id": sceg_ir.get(
+                        "source_snapshot_id"
+                    ),
+                    "canonical_sceg_input": True,
+                }
+            else:
+                assert project_snapshots_dir is not None
+                sample_root = project_snapshots_dir / sample_id
+                if not sample_root.exists():
+                    raise FileNotFoundError(
+                        f"Project snapshot missing for {sample_id}: "
+                        f"{sample_root}"
+                    )
+                identity_service = PackageIdentityService(
+                    policy_path=identity_policy_path,
+                    project_root=sample_root,
+                )
+                project_facts = collect_project_dependency_facts(
+                    sample_root,
+                    identity_policy_path=identity_policy_path,
+                )
+                if project_facts.get("identity_policy_version") != (
+                    identity_service.policy_version
+                ):
+                    raise ValueError(
+                        f"{sample_id}: project dependency fact identity drift"
+                    )
+                cache[sample_id] = {
+                    "identity_policy_version": (
+                        identity_service.policy_version
+                    ),
+                    "project_facts": project_facts,
+                    "manifests": project_facts["manifests"],
+                    "locks": project_facts["locks"],
+                    "installable": project_facts["installability"],
+                    "project_snapshot": rel_to(sample_root, ROOT),
+                    "sceg_source_snapshot_id": None,
+                    "canonical_sceg_input": False,
+                }
+
+        info = cache[sample_id]
+        package = identity_package(rec)
+        identity = rec.get("package_identity")
+        if not isinstance(identity, dict):
+            raise ValueError(
+                f"{sample_id}/{package}: package_identity missing"
+            )
+        if identity.get("policy_version") != (
+            info["identity_policy_version"]
+        ):
+            raise ValueError(
+                f"{sample_id}/{package}: identity policy drift"
+            )
+
+        identity_status = str(identity.get("identity_status") or "")
+        original = normalize_level(
+            rec.get("install_reachability")
+        )
+
+        manifest_rows = info["manifests"].get(package, [])
+        lock_rows = info["locks"].get(package, [])
+        install_rows = info["installable"].get(package, [])
+
+        if identity_status != "distribution_candidate":
+            level = original
+        elif install_rows:
+            level = "ci_installable"
+        elif lock_rows:
+            level = "lockfile_resolved"
+        elif manifest_rows:
+            level = "manifest_declared"
+        else:
+            level = max_level(original, "import_only")
+
+        new_rec = dict(rec)
+        new_rec["install_reachability_v2"] = level
+        new_rec["reachability_policy_version"] = (
+            "codesentry_gen_reachability_r0_r4_v1"
+        )
         new_rec["reachability_v2_evidence"] = {
             "sample_id": sample_id,
             "package": package,
-            "package_normalized": package_norm,
-            "original_install_reachability": original_level,
-            "install_reachability_v2": v2_level,
-            "requirements_declared": requirements_declared,
-            "requirements_files": [str(p).replace("\\", "/") for p in info["req_files"]],
-            "matched_requirement_lines": matched_req_lines,
-            "docker_installable": docker_installable,
-            "docker_install_commands": info["docker_hits"] if docker_installable else [],
-            "ci_installable": ci_installable,
-            "ci_install_commands": info["ci_hits"] if ci_installable else [],
-            "note": "v2 does not overwrite install_reachability; CI has priority over Docker when both evidence types exist.",
+            "identity_policy_version": identity.get("policy_version"),
+            "project_dependency_facts_schema": FACTS_SCHEMA_VERSION,
+            "identity_status": identity_status,
+            "original_install_reachability": original,
+            "install_reachability_v2": level,
+            "manifest_declared": bool(manifest_rows),
+            "manifest_evidence": manifest_rows,
+            "lockfile_resolved": bool(lock_rows),
+            "lockfile_evidence": lock_rows,
+            "ci_installable": bool(install_rows),
+            "ci_install_evidence": install_rows,
+            # Historical fields retained for downstream compatibility only.
+            "docker_installable": False,
+            "docker_install_commands": [],
+            "ci_install_commands": install_rows,
+            "project_snapshot": info["project_snapshot"],
+            "path_policy": "project_snapshot_relative_only",
+            "canonical_sceg_input": info["canonical_sceg_input"],
+            "sceg_source_snapshot_id": info[
+                "sceg_source_snapshot_id"
+            ],
+            "project_source_reread_after_sceg": (
+                False if info["canonical_sceg_input"] else None
+            ),
+            "r5_install_script_executable_implemented": False,
         }
-
+        new_rec["install_time_evidence"] = {
+            "status": "unknown",
+            "t_install": None,
+            "source": None,
+            "reason": (
+                "R2-R4 evidence proves install reachability only; it does not "
+                "prove observed or scheduled installation time."
+            ),
+        }
         enriched.append(new_rec)
 
     write_jsonl(output_path, enriched)
-    write_summary(summary_path, input_path, output_path, records, enriched)
-
-
-def write_summary(summary_path: Path, input_path: Path, output_path: Path, old_records, new_records):
-    """
-    生成 v2 增强的摘要报告。
-    
-    报告内容包括：
-    - 基本统计信息（输入输出路径、总记录数、变更记录数等）
-    - 原始 install_reachability 分布
-    - 新的 install_reachability_v2 分布
-    - 发生变更的记录详情表格
-    - pilot50_047 受控样本的证据检查
-    - 说明注释
-    
-    以 Markdown 格式写入摘要文件。
-    """
-    # 统计原始和新版本的可达性级别分布
-    old_counter = Counter(r.get("install_reachability", "import_only") for r in old_records)
-    v2_counter = Counter(r.get("install_reachability_v2", "import_only") for r in new_records)
-
-    # 收集变更记录和统计数据
-    changed = []
-    docker_count = 0
-    ci_count = 0
-    both_count = 0
-    controlled_047 = []
-
-    for old, new in zip(old_records, new_records):
-        old_level = old.get("install_reachability", "import_only")
-        new_level = new.get("install_reachability_v2", "import_only")
-        ev = new.get("reachability_v2_evidence", {})
-
-        # 记录发生变化的条目
-        if old_level != new_level:
-            changed.append(new)
-
-        # 统计各类证据数量
-        if ev.get("docker_installable"):
-            docker_count += 1
-        if ev.get("ci_installable"):
-            ci_count += 1
-        if ev.get("docker_installable") and ev.get("ci_installable"):
-            both_count += 1
-
-        # 收集受控样本 pilot50_047 的记录
-        if ev.get("sample_id") == "pilot50_047":
-            controlled_047.append(new)
-
-    # 生成 Markdown 格式的摘要报告
-    lines = []
-    lines.append("# Install Reachability v2 Summary")
-    lines.append("")
-    lines.append(f"- input: `{input_path}`")
-    lines.append(f"- output: `{output_path}`")
-    lines.append(f"- total_records: {len(new_records)}")
-    lines.append(f"- changed_records: {len(changed)}")
-    lines.append(f"- docker_installable_records: {docker_count}")
-    lines.append(f"- ci_installable_records: {ci_count}")
-    lines.append(f"- both_docker_and_ci_evidence_records: {both_count}")
-    lines.append("")
-    lines.append("## Original install_reachability")
-    lines.append("")
-    for k, v in sorted(old_counter.items()):
-        lines.append(f"- {k}: {v}")
-
-    lines.append("")
-    lines.append("## install_reachability_v2")
-    lines.append("")
-    for k, v in sorted(v2_counter.items()):
-        lines.append(f"- {k}: {v}")
-
-    lines.append("")
-    lines.append("## Changed Records")
-    lines.append("")
-    if not changed:
-        lines.append("No records changed.")
-    else:
-        lines.append("| sample_id | package | original | v2 | requirements | docker | ci |")
-        lines.append("|---|---|---|---|---|---|---|")
-        for rec in changed:
-            ev = rec.get("reachability_v2_evidence", {})
-            lines.append(
-                f"| {ev.get('sample_id')} | {ev.get('package')} | "
-                f"{ev.get('original_install_reachability')} | {ev.get('install_reachability_v2')} | "
-                f"{ev.get('requirements_declared')} | {ev.get('docker_installable')} | {ev.get('ci_installable')} |"
-            )
-
-    lines.append("")
-    lines.append("## Controlled Evidence Check: pilot50_047")
-    lines.append("")
-    if not controlled_047:
-        lines.append("No records found for pilot50_047.")
-    else:
-        lines.append("| package | original | v2 | requirements | docker | ci |")
-        lines.append("|---|---|---|---|---|---|")
-        for rec in controlled_047:
-            ev = rec.get("reachability_v2_evidence", {})
-            lines.append(
-                f"| {ev.get('package')} | {ev.get('original_install_reachability')} | "
-                f"{ev.get('install_reachability_v2')} | {ev.get('requirements_declared')} | "
-                f"{ev.get('docker_installable')} | {ev.get('ci_installable')} |"
-            )
-
-    lines.append("")
-    lines.append("## Notes")
-    lines.append("")
-    lines.append("- The original `install_reachability` field is preserved.")
-    lines.append("- v2 adds `install_reachability_v2` and `reachability_v2_evidence`.")
-    lines.append("- Docker/CI upgrade requires the package to be declared in requirements.")
-    lines.append("- If both Docker and CI evidence exist, the final level is `ci_installable`, while both evidence types are recorded.")
-
-    summary_path.parent.mkdir(parents=True, exist_ok=True)
-    summary_path.write_text("\n".join(lines), encoding="utf-8")
-
-
-def main():
-    """命令行入口：解析参数并执行 enrich 流程。"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", required=True, help="输入的 JSONL 文件路径")
-    parser.add_argument("--output", required=True, help="输出的 JSONL 文件路径")
-    parser.add_argument("--summary", required=True, help="输出的摘要报告路径")
-    parser.add_argument("--requirements-dir", default="data/generated_requirements_files", 
-                        help="requirements 文件所在目录")
-    parser.add_argument("--evidence-dir", default="data/build_evidence", 
-                        help="构建证据文件所在目录（Dockerfile 和 CI 配置）")
-    args = parser.parse_args()
-
-    enrich(
-        input_path=Path(args.input),
-        output_path=Path(args.output),
-        summary_path=Path(args.summary),
-        requirements_dir=Path(args.requirements_dir),
-        evidence_dir=Path(args.evidence_dir),
+    write_summary(
+        summary_path=summary_path,
+        input_path=input_path,
+        output_path=output_path,
+        old_records=records,
+        new_records=enriched,
     )
 
-    print("[OK] reachability v2 enriched")
-    print(f"[OK] output: {args.output}")
-    print(f"[OK] summary: {args.summary}")
+
+def write_summary(
+    *,
+    summary_path: Path,
+    input_path: Path,
+    output_path: Path,
+    old_records: list[dict[str, Any]],
+    new_records: list[dict[str, Any]],
+) -> None:
+    counter = Counter(
+        str(row.get("install_reachability_v2") or "unknown")
+        for row in new_records
+    )
+    lines = [
+        "# Install Reachability R0-R4 Summary",
+        "",
+        f"- input: `{input_path.name}`",
+        f"- output: `{output_path.name}`",
+        f"- total_records: {len(new_records)}",
+        "- policy: `codesentry_gen_reachability_r0_r4_v1`",
+        "- R5 install-script execution: not implemented",
+        "",
+        "## Levels",
+        "",
+    ]
+    for key in (
+        "mention_only",
+        "import_only",
+        "manifest_declared",
+        "lockfile_resolved",
+        "ci_installable",
+    ):
+        lines.append(f"- {key}: {counter.get(key, 0)}")
+    lines.extend(
+        [
+            "",
+            "## Scientific boundary",
+            "",
+            "- Package matching consumes the shared PackageIdentityService identity.",
+            "- Manifest names remain literal distribution identities.",
+            "- Lockfile resolution upgrades only direct manifest packages with an exact resolved version.",
+            "- Docker/CI/shell installation evidence maps to R4 ci_installable.",
+            "- Optional/dynamic/transitive cases are not promoted when evidence is insufficient.",
+            "- Installability does not establish t_install.",
+            "- Evidence paths are project-snapshot relative.",
+        ]
+    )
+    summary_path.parent.mkdir(parents=True, exist_ok=True)
+    summary_path.write_text(
+        "\n".join(lines) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", required=True, type=Path)
+    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--summary", required=True, type=Path)
+    parser.add_argument(
+        "--project-snapshots-dir",
+        required=False,
+        type=Path,
+        default=None,
+        help=(
+            "Legacy standalone fallback only. Formal repaired E2E uses "
+            "--sceg-ir as the canonical post-extraction input."
+        ),
+    )
+    parser.add_argument(
+        "--sceg-ir",
+        required=False,
+        type=Path,
+        default=None,
+        help="Canonical SCEG 2.1 input for formal repaired E2E.",
+    )
+    parser.add_argument(
+        "--identity-policy",
+        type=Path,
+        default=DEFAULT_IDENTITY_POLICY,
+    )
+    # Legacy args stay accepted for historical commands but are not the
+    # repair-line evidence source.
+    parser.add_argument("--requirements-dir", default=None)
+    parser.add_argument("--evidence-dir", default=None)
+    args = parser.parse_args()
+
+    def resolve(path: Path) -> Path:
+        return path if path.is_absolute() else ROOT / path
+
+    enrich(
+        input_path=resolve(args.input),
+        output_path=resolve(args.output),
+        summary_path=resolve(args.summary),
+        project_snapshots_dir=(
+            resolve(args.project_snapshots_dir)
+            if args.project_snapshots_dir is not None
+            else None
+        ),
+        identity_policy_path=resolve(args.identity_policy),
+        sceg_ir_path=(
+            resolve(args.sceg_ir)
+            if args.sceg_ir is not None
+            else None
+        ),
+        requirements_dir=(
+            resolve(Path(args.requirements_dir))
+            if args.requirements_dir
+            else None
+        ),
+        evidence_dir=(
+            resolve(Path(args.evidence_dir))
+            if args.evidence_dir
+            else None
+        ),
+    )
+    print("REACHABILITY R0-R4 ENRICHMENT PASS")
+    print("output =", resolve(args.output))
+    print("summary =", resolve(args.summary))
 
 
 if __name__ == "__main__":

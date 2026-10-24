@@ -1,0 +1,66 @@
+{
+  "schema_version": "codesentry_gen_core_runtime_environment_v1",
+  "status": "f11_closed_clean_checkout_validated",
+  "python": {
+    "implementation": "CPython",
+    "required_major_minor": "3.10",
+    "version_specifier": "==3.10.*",
+    "validated_version": "3.10.20",
+    "final_freeze_records_exact_patch": true
+  },
+  "direct_requirements_file": "requirements.txt",
+  "direct_dependencies": [
+    {
+      "distribution": "requests",
+      "marker": null
+    },
+    {
+      "distribution": "packaging",
+      "marker": null
+    },
+    {
+      "distribution": "jsonschema",
+      "marker": null
+    },
+    {
+      "distribution": "tomli",
+      "marker": "python_version < '3.11'"
+    }
+  ],
+  "exact_lock": {
+    "status": "validated_and_tracked",
+    "file": "requirements-core-lock.txt",
+    "validated_python_version": "3.10.20",
+    "package_count": 13,
+    "exporter": "src/export_core_environment_lock.py",
+    "evidence_directory": "output/f11_reproducibility",
+    "promotion_basis": [
+      "F-11 smoke 5/5 PASS before lock promotion",
+      "Core Audit F-01 through F-09 regression 11/11 PASS before lock promotion",
+      "environment capture PASS with missing=[]",
+      "clean-worktree exact-lock smoke 6/6 PASS at 9cbe39389ae77c3c1ced993cace95bba6e8205a6",
+      "clean-worktree Core Audit regression 12/12 PASS at 9cbe39389ae77c3c1ced993cace95bba6e8205a6",
+      "hash-bound Package-KB provenance closure tracked and F-06 clean-worktree PASS"
+    ]
+  },
+  "fresh_checkout": {
+    "status": "PASS",
+    "validated_git_commit": "9cbe39389ae77c3c1ced993cace95bba6e8205a6",
+    "validated_python_version": "3.10.20",
+    "smoke_command": "python -m unittest discover -s tests -p \"test_*.py\"",
+    "smoke_result": "6/6 PASS",
+    "core_regression_command": "python src/run_core_regression.py",
+    "core_regression_result": "12/12 PASS",
+    "git_status_after_validation": "clean_detached_HEAD",
+    "formal_step9_allowed": false
+  },
+  "scientific_boundary": {
+    "exact_versions_must_come_from_a_validated_environment": true,
+    "do_not_guess_lock_versions": true,
+    "final_core_freeze_closure_records_runtime_versions": true,
+    "fresh_checkout_smoke_does_not_run_formal_step9": true,
+    "f11_not_closed_until_clean_checkout_validation": false,
+    "f11_closed_without_changing_f10_semantics": true,
+    "hash_bound_package_kb_provenance_must_be_checkout_reproducible": true
+  }
+}

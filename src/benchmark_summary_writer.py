@@ -33,12 +33,22 @@ def write_benchmark_summary(
     ecosystem_counter = Counter(row.get("ecosystem", "unknown") for row in records)
     status_counter = Counter(row.get("status", "unknown") for row in records)
     risk_type_counter = Counter(row.get("risk_type") or "none" for row in records)
+    risk_channel_counter = Counter(
+        row.get("risk_channel", "none") for row in records
+    )
     auto_label_counter = Counter(row.get("auto_label", "unknown") for row in records)
     review_status_counter = Counter(row.get("review_status", "unknown") for row in records)
     reachability_counter = Counter(row.get("install_reachability", "unknown") for row in records)
 
     risk_records = [row for row in records if row.get("auto_label") == "risk"]
-    normal_records = [row for row in records if row.get("auto_label") != "risk"]
+    auxiliary_records = [
+        row for row in records if row.get("auto_label") == "auxiliary_review"
+    ]
+    normal_records = [
+        row
+        for row in records
+        if row.get("auto_label") == "normal_or_unconfirmed"
+    ]
 
     sample_ids = sorted({row.get("sample_id", "unknown") for row in records})
     prompt_ids = sorted({row.get("prompt_id", "unknown") for row in records})
@@ -55,6 +65,7 @@ def write_benchmark_summary(
     lines.append(f"- Prompt 数量：{len(prompt_ids)}")
     lines.append(f"- 依赖记录数量：{len(records)}")
     lines.append(f"- 自动标记为风险的记录数量：{len(risk_records)}")
+    lines.append(f"- 辅助复核记录数量：{len(auxiliary_records)}")
     lines.append(f"- 正常或未确认记录数量：{len(normal_records)}")
     lines.append("")
 
@@ -88,6 +99,14 @@ def write_benchmark_summary(
     lines.append("|---|---:|")
     for risk_type, count in risk_type_counter.most_common():
         lines.append(f"| {risk_type} | {count} |")
+    lines.append("")
+
+    lines.append("### 4.1 风险通道分布")
+    lines.append("")
+    lines.append("| 通道 | 数量 |")
+    lines.append("|---|---:|")
+    for channel, count in risk_channel_counter.most_common():
+        lines.append(f"| {channel} | {count} |")
     lines.append("")
 
     lines.append("## 5. 安装可达性分布")

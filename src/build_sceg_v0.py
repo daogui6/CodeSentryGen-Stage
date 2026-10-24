@@ -259,14 +259,22 @@ def build_risk_card_index(risk_cards):
         introduced_by = card.get("introduced_by") or {}
 
         # 不同版本 Risk Card 里的包名字段可能不完全一样。
-        # 所以这里按优先级尝试几种来源：
-        # 1. introduced_by.entity
+        # Step8 AVCS Risk Card 显式提供 distribution；API 场景下
+        # introduced_by.entity 是 API symbol，不能当作包名。
+        # 所以 package identity 优先级是：
+        # 1. card.distribution
         # 2. card.package
-        # 3. 从 title 里去掉固定前缀后提取
+        # 3. introduced_by.package
+        # 4. legacy introduced_by.entity
+        # 5. legacy temporal title
         package = (
-            introduced_by.get("entity")
+            card.get("distribution")
             or card.get("package")
-            or card.get("title", "").replace("Temporal dependency risk:", "").strip()
+            or introduced_by.get("package")
+            or introduced_by.get("entity")
+            or card.get("title", "").replace(
+                "Temporal dependency risk:", ""
+            ).strip()
         )
 
         key = (sample_id, norm_name(package))
@@ -279,6 +287,7 @@ def build_sceg_edges(
     risk_card_links,
     declaration_consistency_evidence,
     trigger_evidence,
+    avcs_evidence,
 ):
     """
     构建 SCEG v0 的边关系。
@@ -377,6 +386,22 @@ def build_sceg_edges(
                 "description": (
                     "The dependency entity has vulnerability "
                     "trigger evidence from AVCS."
+                ),
+            }
+        )
+
+    # Step8 AVCS Risk Card 自带版本集合、API constraint、
+    # advisory provenance 和 unknown boundary。把这些 provenance 作为
+    # SCEG evidence 挂到 dependency entity，而不是只保留一条 card link。
+    if isinstance(avcs_evidence, list) and avcs_evidence:
+        edges.append(
+            {
+                "source": entity_id,
+                "target": "avcs_evidence",
+                "type": "has_avcs_evidence",
+                "description": (
+                    "The dependency entity has Step8 AVCS version, API-history, "
+                    "vulnerability, and decision provenance."
                 ),
             }
         )
@@ -492,6 +517,29 @@ def build_sceg_record(record, risk_index, dataset_label: str):
     linked_cards = risk_index.get((sample_id, norm_name(package)), [])
 
     risk_card_links = []
+    avcs_evidence = []
+
+    for card in linked_cards:
+        if (
+            card.get("pipeline_origin") == "AVCS"
+            or str(card.get("schema_version", "")).startswith(
+                "step8_avcs_risk_card_"
+            )
+        ):
+            avcs_evidence.append(
+                {
+                    "risk_id": card.get("risk_id"),
+                    "distribution": card.get("distribution"),
+                    "vulnerability_id": card.get("vulnerability_id"),
+                    "actionability": card.get("actionability"),
+                    "decision": card.get("decision"),
+                    "version_evidence": card.get("version_evidence"),
+                    "provenance": card.get("evidence"),
+                    "unknowns": card.get("unknowns"),
+                    "trigger_evidence": card.get("trigger_evidence"),
+                    "repair": card.get("repair"),
+                }
+            )
 
     for card in linked_cards:
         risk_card_link = {
@@ -501,6 +549,10 @@ def build_sceg_record(record, risk_index, dataset_label: str):
             "subtype": card.get("subtype"),
             "status": card.get("status"),
             "severity": card.get("severity"),
+            "pipeline_origin": card.get("pipeline_origin"),
+            "distribution": card.get("distribution"),
+            "vulnerability_id": card.get("vulnerability_id"),
+            "actionability": card.get("actionability"),
         }
 
         # THO 时态风险仍保留 numeric confidence。
@@ -570,15 +622,22 @@ def build_sceg_record(record, risk_index, dataset_label: str):
         )
     )
 
-    # SCEG 顶层 risk_candidate 综合当前三类风险来源：
+    # 第四类风险候选：
+    # 已经由 Step8 AVCS 正式生成 Risk Card 的版本暴露。
+    # 这里不要求 Trigger 命中；Trigger 仍只是 secondary evidence。
+    avcs_risk_candidate = bool(avcs_evidence)
+
+    # SCEG 顶层 risk_candidate 综合四类风险来源：
     #
     # 1. THO temporal risk
     # 2. declaration consistency risk
-    # 3. AVCS vulnerability trigger risk
+    # 3. legacy/frozen Trigger risk evidence
+    # 4. Step8 AVCS formal Risk Card
     risk_candidate = (
             temporal_risk_candidate
             or declaration_risk_candidate
             or trigger_risk_candidate
+            or avcs_risk_candidate
     )
 
     # -------------------------
@@ -669,6 +728,11 @@ def build_sceg_record(record, risk_index, dataset_label: str):
                 declaration_consistency_evidence
             ),
             "trigger": trigger_evidence,
+            "avcs": (
+                avcs_evidence
+                if avcs_evidence
+                else None
+            ),
         },
 
         # edges 表示 SCEG 里的边关系。
@@ -679,6 +743,7 @@ def build_sceg_record(record, risk_index, dataset_label: str):
             risk_card_links,
             declaration_consistency_evidence,
             trigger_evidence,
+            avcs_evidence,
         ),
 
         # analysis 表示当前 THO mini 对这条依赖的判断结果。
@@ -687,6 +752,8 @@ def build_sceg_record(record, risk_index, dataset_label: str):
             "temporal_status_v2": temporal_status,
             "install_reachability_v2": reachability,
             "risk_candidate": risk_candidate,
+            "avcs_risk_candidate": avcs_risk_candidate,
+            "avcs_evidence_count": len(avcs_evidence),
             "risk_card_count": len(risk_card_links),
         },
 

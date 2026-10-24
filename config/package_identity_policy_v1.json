@@ -1,0 +1,61 @@
+{
+  "schema_version": "codesentry_gen_package_identity_policy_v1",
+  "policy_version": "package_identity_v1",
+  "status": "active_repair_line",
+  "ecosystem": "pypi",
+  "mapping_file": "config/package_identity_mapping_v1.json",
+  "mapping_provenance": [
+    "config/import_mapping.json",
+    "config/step9_import_mapping_overlay_v2.json"
+  ],
+  "manifest_identity_mode": "literal_distribution_name",
+  "import_mapping_mode": "curated_longest_prefix_then_literal_fallback",
+  "stdlib_policy": "python_runtime_stdlib_module_names",
+  "local_module_policy": "project_snapshot_top_level_and_src_layout_plus_explicit_repo_context_local_modules",
+  "private_registry_policy": {
+    "mode": "explicit_project_config_only",
+    "evidence_files": [
+      "pip.conf",
+      "pip.ini",
+      ".pypirc",
+      ".config/pip/pip.conf",
+      "requirements*.txt",
+      "Pipfile",
+      "pyproject.toml",
+      "Dockerfile*",
+      ".github/workflows/*",
+      "shell/yaml install config"
+    ],
+    "semantics": "If an explicit non-PyPI registry is present, only names not already covered by the curated public mapping are marked private_unknown. Registry absence is never used to infer private identity."
+  },
+  "identity_statuses": [
+    "stdlib",
+    "local_module",
+    "private_unknown",
+    "distribution_candidate"
+  ],
+  "avcs_candidate_statuses": [
+    "distribution_candidate"
+  ],
+  "scientific_boundary": {
+    "manifest_names_are_not_import_mapped": true,
+    "stdlib_is_not_avcs_candidate": true,
+    "local_module_is_not_avcs_candidate": true,
+    "unmapped_import_is_not_called_private_or_public_before_registry_evidence": true,
+    "private_unknown_is_not_negative_evidence": true,
+    "private_unknown_is_not_avcs_candidate": true,
+    "legacy_false_positive_hint_is_diagnostic_only": true,
+    "legacy_false_positive_hint_does_not_exclude_avcs": true,
+    "missing_repo_context_is_not_proof_of_not_local": true,
+    "import_only_with_unresolved_local_context_is_not_formal_risk": true,
+    "manifest_or_install_evidence_can_establish_external_dependency_intent": true
+  },
+  "legacy_false_positive_policy": {
+    "file": "config/false_positive_packages.csv",
+    "role": "diagnostic_hint_only",
+    "changes_identity_status": false,
+    "changes_registry_query": false,
+    "changes_avcs_candidate": false,
+    "rationale": "Historical THO false-positive evidence must not globally suppress legitimate distributions from registry or AVCS version-risk analysis."
+  }
+}

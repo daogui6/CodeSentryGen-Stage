@@ -28,7 +28,8 @@ build_temporal_risk_cards.py
 
 主要风险规则：
     - nonexistent_now：
-      包当前在 PyPI 明确不存在，生成 temporal_package_hallucination。
+      包在审计时 PyPI 返回不存在；保留为 operational THO candidate，
+      但在缺少生成时证据与 GT adjudication 时不进入 formal main metric。
     - created_after_tg：
       包首次发布时间晚于代码生成时间，生成 hijackable_dependency 子类型。
     - existed_at_tg / filtered_false_positive / registry_query_error：
@@ -51,8 +52,11 @@ build_temporal_risk_cards.py
 import json
 import argparse
 import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 from collections import Counter
+
+from package_identity_v1 import identity_has_unresolved_local_context
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,21 +67,149 @@ DEFAULT_OUTPUT_PATH = BASE_DIR / "output" / "temporal_risk_cards_v2_pilot50_reac
 DEFAULT_SUMMARY_PATH = BASE_DIR / "output" / "temporal_risk_summary_pilot50_reachability_v2.md"
 
 
+THO_NUMERIC_CONFIDENCE_SEMANTICS = {
+    "scale_type": "ordinal_rule_strength",
+    "calibrated_probability": False,
+    "probability_interpretation_allowed": False,
+    "cross_method_comparison_allowed": False,
+    "ranking_scope": "within_frozen_tho_rule_set_only",
+    "calibration_status": "not_calibrated_against_ground_truth",
+    "requires_ground_truth_calibration_before_probability_claims": True,
+}
+
+
+def attach_numeric_confidence_semantics(
+    card: dict,
+    decision: dict,
+) -> None:
+    """Preserve legacy rule scores while forbidding probability claims."""
+    if "confidence" not in decision:
+        return
+    confidence = decision["confidence"]
+    if (
+        isinstance(confidence, bool)
+        or not isinstance(confidence, (int, float))
+        or not 0.0 <= float(confidence) <= 1.0
+    ):
+        raise ValueError("THO ordinal confidence must be numeric in [0,1]")
+    card["confidence"] = confidence
+    card["confidence_semantics"] = dict(
+        THO_NUMERIC_CONFIDENCE_SEMANTICS
+    )
+
 # 高可达性级别集合：表示包可以通过某种方式安装
 HIGH_REACHABILITY = {
-    "manifest_declared",      # 在依赖清单中声明
-    "lockfile_resolved",      # 在锁文件中解析
-    "docker_installable",     # docker 环境中可安装
-    "ci_installable",         # CI 环境中可安装
-    "install_script_executable",  # 安装脚本可执行
+    "manifest_declared",
+    "lockfile_resolved",
+    "ci_installable",
+    "install_script_executable",
 }
 
 def get_reachability(record):
     """
-    优先使用 install_reachability_v2。
-    如果没有 v2 字段，则回退到旧的 install_reachability。
+    Repair-line canonical reachability follows the advisor R0-R5 names.
+    Historical docker_installable is accepted only as an alias of R4
+    ci_installable; new reachability enrichment never emits it.
     """
-    return record.get("install_reachability_v2") or record.get("install_reachability", "unknown")
+    value = (
+        record.get("install_reachability_v2")
+        or record.get("install_reachability", "unknown")
+    )
+    return (
+        "ci_installable"
+        if value == "docker_installable"
+        else value
+    )
+
+
+def parse_datetime(value):
+    if not value:
+        return None
+    text = str(value).strip()
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        result = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if result.tzinfo is None:
+        result = result.replace(tzinfo=timezone.utc)
+    return result.astimezone(timezone.utc)
+
+
+def get_install_time_evidence(record):
+    """
+    t_install 与 install reachability 是两个不同概念。
+    当前 repair line 只有显式 observed/scheduled 时间证据时，
+    才允许形成 temporal hijack opportunity claim。
+    """
+    raw = record.get("install_time_evidence")
+    if not isinstance(raw, dict):
+        raw = {}
+
+    status = str(raw.get("status") or "unknown").strip().lower()
+    t_install = raw.get("t_install")
+    if status not in {"observed", "scheduled", "unknown"}:
+        status = "unknown"
+
+    parsed = parse_datetime(t_install)
+    if status in {"observed", "scheduled"} and parsed is None:
+        return {
+            "status": "unknown",
+            "t_install": None,
+            "source": raw.get("source"),
+            "reason": (
+                "observed/scheduled install status lacked a parseable "
+                "t_install timestamp"
+            ),
+        }
+
+    return {
+        "status": status,
+        "t_install": t_install if parsed is not None else None,
+        "source": raw.get("source"),
+        "reason": raw.get("reason"),
+    }
+
+
+def get_registry_snapshot_ref(record):
+    """Return the persisted registry snapshot path used by this observation."""
+    pypi = record.get("pypi") or {}
+    explicit = (
+        pypi.get("registry_snapshot_ref")
+        or record.get("registry_snapshot_ref")
+    )
+    if explicit:
+        return str(explicit)
+
+    raw_snapshot_file = pypi.get("raw_snapshot_file")
+    registry_run_id = pypi.get("registry_run_id")
+    if raw_snapshot_file and registry_run_id:
+        return (
+            f"output/{registry_run_id}/tho/registry_snapshot/"
+            f"{raw_snapshot_file}"
+        )
+    if raw_snapshot_file:
+        return str(raw_snapshot_file)
+    return None
+
+
+def has_temporal_hijack_window(record):
+    """
+    导师定义：t_g < t_reg <= t_install，且 reachability >= R2。
+    created_after_tg 已经保证 t_g < t_reg；这里只验证显式 t_install。
+    """
+    install = get_install_time_evidence(record)
+    if install["status"] not in {"observed", "scheduled"}:
+        return False, install
+
+    pypi = record.get("pypi") or {}
+    t_reg = parse_datetime(pypi.get("first_release_time"))
+    t_install = parse_datetime(install.get("t_install"))
+    if t_reg is None or t_install is None:
+        return False, install
+
+    return t_reg <= t_install, install
 
 def is_manifest_only_without_import(record):
     """
@@ -182,8 +314,9 @@ def classify_risk(record: dict):
     根据 temporal_status_v2 和安装可达性进行风险分类。
 
     THO 最小版本分类规则：
-    1. nonexistent_now + manifest_declared 及以上 => high severity
-    2. created_after_tg + manifest_declared 及以上 => high severity  
+    1. nonexistent_now + manifest_declared 及以上 => high operational severity，
+       但 audit-time 404 单独不能形成 formal ground-truth positive
+    2. created_after_tg + manifest_declared 及以上 => high severity
     3. nonexistent_now / created_after_tg + import_only => medium severity
     4. existed_at_tg / filtered_false_positive 不生成风险卡
 
@@ -193,6 +326,19 @@ def classify_risk(record: dict):
     """
     temporal_status = record.get("temporal_status_v2") or record.get("status")
     reachability = get_reachability(record)
+
+    # Missing repository context is not proof that an import is non-local.
+    # For import-only observations, keep this as unknown/no blocking. Once a
+    # manifest/lock/CI-install fact exists, external dependency intent is
+    # independently established and normal THO classification may proceed.
+    if (
+        identity_has_unresolved_local_context(
+            record.get("package_identity")
+        )
+        and str(record.get("source_type") or "") == "import"
+        and reachability in {"mention_only", "import_only"}
+    ):
+        return None
 
     # 过滤掉误报和本地私有包，不生成风险卡
     if temporal_status in {"filtered_false_positive", "local_or_private_unknown"}:
@@ -355,61 +501,194 @@ def classify_risk(record: dict):
     if temporal_status == "existed_at_tg":
         return None
 
-    # 包在审计时不存在于 PyPI
-    if temporal_status == "nonexistent_now":
+    # 生命周期删除/yank 在导师设计中属于 TemporalStatus，但当前 decision
+    # table 没有定义其主指标风险等级。保留状态、不给正式 positive。
+    if temporal_status == "deleted_or_yanked":
+        return None
+
+    # historical snapshot / release evidence 可证明 t_g 时无可用版本。
+    if temporal_status == "nonexistent_at_tg":
         if reachability in HIGH_REACHABILITY:
-            # 高可达性：高风险，可能是幻觉包但可通过其他方式安装
             return {
                 "risk_type": "temporal_package_hallucination",
-                "subtype": None,
+                "subtype": "nonexistent_at_generation",
                 "status": "confirmed",
                 "severity": "high",
                 "confidence": 0.95,
-                "reason": "Package is install-reachable but does not exist in PyPI at audit time."
+                "claim_strength": "generation_time_nonexistence",
+                "reason": (
+                    "Historical registry/release evidence proves that no "
+                    "usable package version existed at generation time and "
+                    "the dependency is install-reachable."
+                ),
             }
-        else:
-            # 低可达性：中等风险，仅被导入但无法安装
-            return {
-                "risk_type": "temporal_package_hallucination",
-                "subtype": None,
-                "status": "probable",
-                "severity": "medium",
-                "confidence": 0.80,
-                "reason": "Package is imported but does not exist in PyPI at audit time."
-            }
-
-    # 包在生成时间之后创建，存在劫持风险
-    if temporal_status == "created_after_tg":
-        if reachability in HIGH_REACHABILITY:
-            # 高可达性：高风险，新发布的包可能被恶意劫持
-            return {
-                "risk_type": "temporal_package_hallucination",
-                "subtype": "hijackable_dependency",
-                "status": "probable",
-                "severity": "high",
-                "confidence": 0.90,
-                "reason": "Package exists now, but its first release time is later than generation_time and it is install-reachable."
-            }
-        else:
-            # 低可达性：中等风险
-            return {
-                "risk_type": "temporal_package_hallucination",
-                "subtype": "hijackable_dependency",
-                "status": "probable",
-                "severity": "medium",
-                "confidence": 0.75,
-                "reason": "Package exists now, but its first release time is later than generation_time."
-            }
-
-    # 时序状态不确定
-    if temporal_status == "temporal_unknown":
         return {
             "risk_type": "temporal_package_hallucination",
-            "subtype": None,
+            "subtype": "nonexistent_at_generation",
+            "status": "probable",
+            "severity": "medium",
+            "confidence": 0.80,
+            "claim_strength": "generation_time_nonexistence_r1",
+            "reason": (
+                "Historical evidence proves nonexistence at generation time, "
+                "but install reachability is below the R2+ boundary."
+            ),
+        }
+
+    # 同名包存在但 import/API 语义与目标生态不匹配。
+    if temporal_status == "wrong_ecosystem":
+        if reachability in HIGH_REACHABILITY:
+            return {
+                "risk_type": "temporal_package_hallucination",
+                "subtype": "wrong_ecosystem",
+                "status": "probable",
+                "severity": "high",
+                "confidence": 0.85,
+                "claim_strength": "ecosystem_identity_mismatch",
+                "reason": (
+                    "The observed package name is install-reachable, but "
+                    "explicit evidence shows its import/API semantics do not "
+                    "match the target ecosystem identity."
+                ),
+            }
+        return {
+            "risk_type": "temporal_package_hallucination",
+            "subtype": "wrong_ecosystem",
+            "status": "probable",
+            "severity": "medium",
+            "confidence": 0.75,
+            "claim_strength": "ecosystem_identity_mismatch_r1",
+            "reason": (
+                "Explicit ecosystem semantic mismatch evidence exists, but "
+                "install reachability is below the R2+ boundary."
+            ),
+        }
+
+    # Audit-time registry absence is an operational THO candidate, but it
+    # does not establish the generation-time ground truth required for the
+    # formal benchmark positive. Preserve the risk type and operational
+    # severity while routing the card to auxiliary review.
+    if temporal_status == "nonexistent_now":
+        identity = (
+            record.get("package_identity")
+            if isinstance(record.get("package_identity"), dict)
+            else {}
+        )
+        is_install_reachable = reachability in HIGH_REACHABILITY
+        return {
+            "risk_type": "temporal_package_hallucination",
+            "subtype": "audit_time_registry_absence",
+            "status": "probable",
+            "severity": "high" if is_install_reachable else "medium",
+            "formal_eligible": False,
+            "claim_strength": "audit_time_absence_only",
+            "evidence_level": "audit_time_registry_observation",
+            "review_priority": "high" if is_install_reachable else "medium",
+            "unknowns": {
+                "generation_time_registry_state": "unproven",
+                "later_deletion_or_yank": "not_ruled_out",
+                "private_registry_status": identity.get(
+                    "private_registry_status", "unknown"
+                ),
+                "local_module_exclusion_status": identity.get(
+                    "local_module_exclusion_status", "unknown"
+                ),
+                "import_distribution_mapping_source": identity.get(
+                    "mapping_source", "unknown"
+                ),
+                "import_distribution_mapping_confidence": identity.get(
+                    "mapping_confidence", "unknown"
+                ),
+                "ground_truth_adjudication": "required",
+            },
+            "reason": (
+                "The package returned registry absence at audit time"
+                + (
+                    " and is install-reachable"
+                    if is_install_reachable
+                    else ""
+                )
+                + ". This is an operational risk candidate, but audit-time "
+                "absence alone does not prove generation-time nonexistence "
+                "or satisfy formal hallucination ground truth."
+            ),
+        }
+
+    # 包在生成时间之后创建。只有存在显式 t_install 证据并满足
+    # t_g < t_reg <= t_install 时，才允许 claim temporal hijack opportunity。
+    if temporal_status == "created_after_tg":
+        if reachability in HIGH_REACHABILITY:
+            hijack_window, install_time = has_temporal_hijack_window(record)
+
+            if hijack_window and install_time["status"] == "observed":
+                return {
+                    "risk_type": "temporal_package_hallucination",
+                    "subtype": "temporal_hijack_opportunity",
+                    "status": "confirmed",
+                    "severity": "high",
+                    "confidence": 0.95,
+                    "claim_strength": "confirmed_hijack_opportunity",
+                    "reason": (
+                        "Package was created after generation and an observed "
+                        "installation time establishes t_g < t_reg <= t_install."
+                    ),
+                }
+
+            if hijack_window and install_time["status"] == "scheduled":
+                return {
+                    "risk_type": "temporal_package_hallucination",
+                    "subtype": "temporal_hijack_opportunity",
+                    "status": "probable",
+                    "severity": "high",
+                    "confidence": 0.90,
+                    "claim_strength": "probable_hijack_opportunity",
+                    "reason": (
+                        "Package was created after generation and a scheduled "
+                        "installation time establishes t_g < t_reg <= t_install."
+                    ),
+                }
+
+            return {
+                "risk_type": "temporal_package_hallucination",
+                "subtype": "install_reachable_temporal_hallucination",
+                "status": "probable",
+                "severity": "high",
+                "confidence": 0.85,
+                "claim_strength": "bounded_temporal_hallucination",
+                "reason": (
+                    "Package exists now but was first released after generation "
+                    "and is install-reachable. t_install is unknown or does not "
+                    "establish a hijack window, so no hijack-opportunity claim "
+                    "is made."
+                ),
+            }
+
+        return {
+            "risk_type": "temporal_package_hallucination",
+            "subtype": "created_after_generation",
+            "status": "probable",
+            "severity": "medium",
+            "confidence": 0.75,
+            "claim_strength": "created_after_generation_only",
+            "reason": (
+                "Package exists now but was first released after generation. "
+                "Install reachability is below the R2+ evidence boundary."
+            ),
+        }
+
+    # 时序状态不确定只能进入 auxiliary/review，不得使用正式主风险 type。
+    if temporal_status == "temporal_unknown":
+        return {
+            "risk_type": "temporal_uncertainty_review",
+            "subtype": "generation_registry_time_overlap",
             "status": "weak",
             "severity": "low",
             "confidence": 0.50,
-            "reason": "Package temporal status is uncertain because release time overlaps with generation time uncertainty."
+            "claim_strength": "review_only",
+            "reason": (
+                "Package temporal status is uncertain because release time "
+                "overlaps with the declared generation-time uncertainty."
+            ),
         }
 
     return None
@@ -433,8 +712,19 @@ def build_risk_card(record: dict, decision: dict) -> dict:
 
     if decision["risk_type"] == "dependency_declaration_mismatch":
         title = f"Dependency declaration mismatch: {record.get('package')}"
+    elif decision["risk_type"] == "temporal_uncertainty_review":
+        title = f"Temporal dependency review: {record.get('package')}"
     else:
         title = f"Temporal dependency risk: {record.get('package')}"
+
+    default_formal_eligible = (
+        decision["risk_type"] == "temporal_package_hallucination"
+        and temporal_status != "temporal_unknown"
+    )
+    formal_eligible = bool(
+        decision.get("formal_eligible", default_formal_eligible)
+    )
+    channel = "formal" if formal_eligible else "auxiliary"
 
     card = {
         "schema_version": "pilot_v0.2",  # 风险卡片 schema 版本
@@ -445,6 +735,8 @@ def build_risk_card(record: dict, decision: dict) -> dict:
         "title": title,
         "type": decision["risk_type"],
         "subtype": decision["subtype"],
+        "channel": channel,
+        "formal_eligible": formal_eligible,
         "status": decision["status"],
         "severity": decision["severity"],
         # 风险引入位置信息
@@ -476,9 +768,13 @@ def build_risk_card(record: dict, decision: dict) -> dict:
             "temporal": [
                 {
                     "generation_time": record.get("generation_time"),
+                    "generation_time_uncertainty_seconds": record.get(
+                        "generation_time_uncertainty_seconds"
+                    ),
                     "first_release_time": pypi.get("first_release_time"),
                     "audit_time": pypi.get("audit_time"),
                     "temporal_status": temporal_status,
+                    "install_time_evidence": get_install_time_evidence(record),
                 }
             ],
             "ecosystem": [
@@ -491,6 +787,13 @@ def build_risk_card(record: dict, decision: dict) -> dict:
                     "reference_false_positive": record.get("reference_false_positive"),
                 }
             ],
+            "registry_snapshot_ref": get_registry_snapshot_ref(record),
+            "registry_evidence_integrity": {
+                "raw_response_sha256": pypi.get("raw_response_sha256"),
+                "snapshot_record_sha256": pypi.get(
+                    "snapshot_record_sha256"
+                ),
+            },
             "manifest_only": (
                 record.get(
                     "manifest_only_evidence"
@@ -510,17 +813,24 @@ def build_risk_card(record: dict, decision: dict) -> dict:
             "observable_labels": build_observable_labels(record),
             "hypotheses": build_hypotheses(record),
         },
+        "generation_time_uncertainty_seconds": record.get(
+            "generation_time_uncertainty_seconds"
+        ),
+        "install_time_evidence": get_install_time_evidence(record),
+        "claim_strength": decision.get("claim_strength"),
+        "unknowns": (
+            decision.get("unknowns")
+            if isinstance(decision.get("unknowns"), dict)
+            else {}
+        ),
         # 修复建议
         "repair": build_repair(record),
     }
 
-    # THO 时态风险目前仍保留原有 numeric confidence。
-    # manifest-only 声明一致性风险改用离散证据等级，
-    # 不再强行提供没有实验依据的概率数值。
-    if "confidence" in decision:
-        card["confidence"] = decision[
-            "confidence"
-        ]
+    # Backward-compatible numeric values are ordinal rule strength only.
+    # They are not calibrated probabilities and may not support probability
+    # claims or cross-method comparisons.
+    attach_numeric_confidence_semantics(card, decision)
 
     if "evidence_level" in decision:
         card["evidence_level"] = decision[
@@ -550,6 +860,15 @@ def build_observable_labels(record: dict):
 
     if temporal_status == "created_after_tg":
         labels.append("created_after_generation")
+
+    if temporal_status == "nonexistent_at_tg":
+        labels.append("nonexistent_at_generation")
+
+    if temporal_status == "wrong_ecosystem":
+        labels.append("wrong_ecosystem")
+
+    if temporal_status == "deleted_or_yanked":
+        labels.append("deleted_or_yanked")
 
     if get_reachability(record) in HIGH_REACHABILITY:
         labels.append("install_reachable")
@@ -588,27 +907,55 @@ def build_hypotheses(record: dict):
     temporal_status = record.get("temporal_status_v2") or record.get("status")
 
     if temporal_status == "created_after_tg":
-        # 生成后创建的包：可能是注册劫持或 LLM 幻觉
-        return [
-            {
-                "name": "registry_hijack",
-                "rank": 1,
-                "rationale": "The package was first released after generation_time and is install-reachable."
-            },
+        hijack_window, install_time = has_temporal_hijack_window(record)
+        hypotheses = [
             {
                 "name": "llm_hallucination",
-                "rank": 2,
-                "rationale": "The package name appeared in generated code before it existed in PyPI."
+                "rank": 1,
+                "rationale": (
+                    "The package name appeared in generated code before its "
+                    "first observed PyPI release."
+                ),
             }
         ]
+        if hijack_window:
+            hypotheses.insert(
+                0,
+                {
+                    "name": "registry_hijack_opportunity",
+                    "rank": 1,
+                    "rationale": (
+                        "Explicit "
+                        f"{install_time['status']} t_install evidence "
+                        "establishes t_reg <= t_install."
+                    ),
+                },
+            )
+            hypotheses[1]["rank"] = 2
+        else:
+            hypotheses.append(
+                {
+                    "name": "future_registry_hijack_possible",
+                    "rank": 2,
+                    "rationale": (
+                        "The package is install-reachable, but t_install is "
+                        "not observed/scheduled; this is not a confirmed or "
+                        "probable hijack-opportunity claim."
+                    ),
+                }
+            )
+        return hypotheses
 
     if temporal_status == "nonexistent_now":
-        # 当前不存在的包：主要是 LLM 幻觉
         return [
             {
-                "name": "llm_hallucination",
+                "name": "unknown",
                 "rank": 1,
-                "rationale": "The package is referenced by generated code but does not exist in PyPI at audit time."
+                "rationale": (
+                    "Audit-time registry absence cannot distinguish "
+                    "generation-time hallucination from later deletion/yank, "
+                    "private or local resolution, or mapping error."
+                ),
             }
         ]
 
@@ -639,12 +986,16 @@ def build_repair(record: dict):
         }
 
     if temporal_status == "nonexistent_now":
-        # 不存在的包：建议移除或审查
         return {
-            "action": "remove_or_review",
+            "action": "review_temporal_and_identity_evidence",
             "command": None,
             "patch": None,
-            "verify": "Remove or replace this dependency, then rerun dependency installation and tests."
+            "verify": (
+                "Check generation-time registry/release history, later "
+                "deletion or yank, import-to-distribution mapping, and "
+                "local/private resolution before classifying or removing "
+                "the dependency."
+            ),
         }
 
     if temporal_status == "created_after_tg":
@@ -783,7 +1134,8 @@ def main():
     lines.append("\n## 5. 说明\n")
     lines.append(
         "本步骤根据 `temporal_status_v2` 和安装可达性字段生成 THO 最小版风险卡片；如果存在 `install_reachability_v2`，则优先使用 v2 字段。"
-        "`nonexistent_now` 表示包在审计时 PyPI 当前不存在；"
+        "`nonexistent_now` 表示包在审计时 PyPI 当前不存在；该状态保留为 auxiliary operational candidate，"
+        "在缺少生成时 registry/release 证据和 GT adjudication 时不计入 formal main metric。"
         "`created_after_tg` 表示包当前存在，但首次发布时间晚于代码生成时间。"
         "当前输出用于 pilot 阶段验证风险链路，不用于估计真实 LLM 风险比例。"
     )

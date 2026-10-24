@@ -28,7 +28,16 @@ def write_summary_report(
         if row.get("status") in normal_statuses
     )
 
-    risk_count = len(risk_rows)
+    formal_risk_rows = [
+        card
+        for card in risk_rows
+        if card.get("channel") == "formal"
+        and card.get("formal_eligible") is True
+    ]
+    auxiliary_rows = [
+        card for card in risk_rows if card not in formal_risk_rows
+    ]
+    risk_count = len(formal_risk_rows)
 
     lines = []
 
@@ -40,7 +49,8 @@ def write_summary_report(
     lines.append(f"- 样本数量：{len(sample_ids)}")
     lines.append(f"- 依赖记录数量：{len(all_rows)}")
     lines.append(f"- 正常或已过滤依赖数量：{normal_count}")
-    lines.append(f"- 风险卡片数量：{risk_count}")
+    lines.append(f"- 正式可计入风险卡片数量：{risk_count}")
+    lines.append(f"- 辅助复核卡片数量：{len(auxiliary_rows)}")
     lines.append("")
 
     lines.append("## 2. 状态分布")
@@ -77,8 +87,8 @@ def write_summary_report(
     if not risk_rows:
         lines.append("本次运行未生成风险卡片。")
     else:
-        lines.append("| 样本 ID | 包名 | 原始 import 名 | 风险类型 | 状态 | 严重程度 | 安装可达性 | 证据等级 |")
-        lines.append("|---|---|---|---|---|---|---|---|")
+        lines.append("| 样本 ID | 包名 | 原始 import 名 | 风险类型 | 通道 | 正式可计入 | 状态 | 严重程度 | 安装可达性 | 证据等级 |")
+        lines.append("|---|---|---|---|---|---|---|---|---|---|")
 
         for card in risk_rows:
             lines.append(
@@ -87,6 +97,8 @@ def write_summary_report(
                 + f"{card.get('package', '')} | "
                 + f"{card.get('raw_name', '')} | "
                 + f"{card.get('type', '')} | "
+                + f"{card.get('channel', 'auxiliary')} | "
+                + f"{card.get('formal_eligible') is True} | "
                 + f"{card.get('status', '')} | "
                 + f"{card.get('severity', '')} | "
                 + f"{card.get('install_reachability', '')} | "
@@ -109,6 +121,11 @@ def write_summary_report(
             lines.append(f"- 样本 ID：{card.get('sample_id', '')}")
             lines.append(f"- 原始名称：{card.get('raw_name', '')}")
             lines.append(f"- 风险类型：{card.get('type', '')}")
+            lines.append(f"- 输出通道：{card.get('channel', 'auxiliary')}")
+            lines.append(
+                f"- 正式可计入：{card.get('formal_eligible') is True}"
+            )
+            lines.append(f"- Claim 强度：{card.get('claim_strength', '')}")
             lines.append(f"- 当前状态：{card.get('status', '')}")
             lines.append(f"- 严重程度：{card.get('severity', '')}")
             lines.append(f"- 置信度：{card.get('confidence', '')}")
@@ -139,7 +156,9 @@ def write_summary_report(
     lines.append("")
     lines.append(
         "当前阶段的风险证据主要来自审计时刻的 PyPI 当前状态，"
-        "还没有完整实现 created_after_tg 判断、完整 THO 时态推理、CI/Dockerfile 级安装可达性分析或 AVCS。"
+        "单独的 current 404 仅进入 auxiliary review，不作为 generation-time "
+        "package hallucination 的正式标签。第一阶段输出仍不等同于完整 THO、"
+        "CI/Dockerfile 级安装可达性分析或 AVCS。"
     )
     lines.append("")
     lines.append(

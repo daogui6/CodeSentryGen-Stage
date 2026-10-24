@@ -1,0 +1,758 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/risk_card_schema_v2_1.json",
+  "title": "CodeSentry-Gen Unified Risk Card v2.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "risk_id",
+    "risk_identity",
+    "source_risk_id",
+    "sample_id",
+    "type",
+    "internal_type",
+    "channel",
+    "formal_positive",
+    "status",
+    "severity",
+    "package",
+    "introduced_by",
+    "time_view",
+    "pipeline_origin",
+    "evidence",
+    "unknowns",
+    "coverage",
+    "repair",
+    "scientific_boundary",
+    "source_card",
+    "source_risk_ids",
+    "source_cards",
+    "vulnerability_instances",
+    "evidence_refs",
+    "aggregation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "risk_card_v2.1"
+    },
+    "risk_id": {
+      "type": "string",
+      "pattern": "^risk_[0-9a-f]{20}$"
+    },
+    "risk_identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_risk_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sample_id": {
+      "type": "string"
+    },
+    "type": {
+      "enum": [
+        "temporal_package_hallucination",
+        "api_induced_vulnerable_dependency",
+        "temporal_drift",
+        "dependency_declaration_mismatch",
+        "temporal_uncertainty_review",
+        "manifest_vulnerable_dependency",
+        "lockfile_vulnerable_dependency"
+      ]
+    },
+    "internal_type": {
+      "type": "string"
+    },
+    "channel": {
+      "enum": [
+        "formal",
+        "auxiliary"
+      ]
+    },
+    "formal_positive": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "severity": {},
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ecosystem",
+        "name",
+        "normalized_name"
+      ],
+      "properties": {
+        "ecosystem": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "normalized_name": {
+          "type": "string"
+        }
+      }
+    },
+    "introduced_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "line",
+        "column",
+        "entity",
+        "source_type"
+      ],
+      "properties": {
+        "file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "line": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "column": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "entity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "time_view": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generation_time",
+        "generation_time_uncertainty_seconds",
+        "audit_time",
+        "knowledge_time",
+        "vulnerability_published_at",
+        "temporal_classification"
+      ],
+      "properties": {
+        "generation_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generation_time_uncertainty_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "audit_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "knowledge_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "vulnerability_published_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "temporal_classification": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evaluation_contract": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "schema_version",
+                "view_id",
+                "target_generation_time",
+                "release_state_cutoff",
+                "evidence_cutoff",
+                "evidence_snapshot_sha256",
+                "output_namespace",
+                "retrospective_only",
+                "formal_generation_metric_eligible",
+                "view_specific_metric_channel",
+                "may_overwrite_other_view",
+                "oracle_may_enter_formal_denominator"
+              ],
+              "properties": {
+                "schema_version": {
+                  "const": "codesentry_gen_time_view_contract_v1"
+                },
+                "view_id": {
+                  "enum": [
+                    "as_of_tg",
+                    "as_of_audit",
+                    "oracle_now"
+                  ]
+                },
+                "target_generation_time": {
+                  "type": "string"
+                },
+                "release_state_cutoff": {
+                  "type": "string"
+                },
+                "evidence_cutoff": {
+                  "type": "string"
+                },
+                "evidence_snapshot_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "output_namespace": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "retrospective_only": {
+                  "type": "boolean"
+                },
+                "formal_generation_metric_eligible": {
+                  "type": "boolean"
+                },
+                "view_specific_metric_channel": {
+                  "enum": [
+                    "generation_time",
+                    "audit_time",
+                    "oracle_retrospective"
+                  ]
+                },
+                "may_overwrite_other_view": {
+                  "const": false
+                },
+                "oracle_may_enter_formal_denominator": {
+                  "const": false
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "schema_version",
+                "view_id",
+                "main_experiment_eligible",
+                "reason",
+                "may_overwrite_other_view",
+                "oracle_may_enter_formal_denominator"
+              ],
+              "properties": {
+                "schema_version": {
+                  "const": "codesentry_gen_time_view_contract_v1"
+                },
+                "view_id": {
+                  "const": "legacy_implicit"
+                },
+                "main_experiment_eligible": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "may_overwrite_other_view": {
+                  "const": false
+                },
+                "oracle_may_enter_formal_denominator": {
+                  "const": false
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "pipeline_origin": {
+      "enum": [
+        "THO",
+        "AVCS"
+      ]
+    },
+    "evidence": {
+      "type": "object"
+    },
+    "unknowns": {
+      "type": "object"
+    },
+    "repair": {
+      "type": "object"
+    },
+    "scientific_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknown_is_not_false",
+        "temporal_unknown_is_not_positive",
+        "install_reachability_is_not_install_time",
+        "trigger_match_is_not_exploit_proof",
+        "auxiliary_findings_excluded_from_main_metrics"
+      ],
+      "properties": {
+        "unknown_is_not_false": {
+          "const": true
+        },
+        "temporal_unknown_is_not_positive": {
+          "const": true
+        },
+        "install_reachability_is_not_install_time": {
+          "const": true
+        },
+        "trigger_match_is_not_exploit_proof": {
+          "const": true
+        },
+        "auxiliary_findings_excluded_from_main_metrics": {
+          "const": true
+        }
+      }
+    },
+    "source_card": {
+      "type": "object"
+    },
+    "source_risk_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object"
+      }
+    },
+    "vulnerability_instances": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "vulnerability_id",
+          "published_at",
+          "published_at_status",
+          "severity",
+          "evidence_refs",
+          "repair",
+          "repair_status",
+          "source_risk_ids"
+        ],
+        "properties": {
+          "vulnerability_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "published_at": {},
+          "published_at_status": {
+            "type": "string"
+          },
+          "severity": {},
+          "evidence_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "repair": {
+            "type": "object"
+          },
+          "repair_status": {
+            "type": "string"
+          },
+          "source_risk_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "source_card_count",
+        "vulnerability_count",
+        "severity_status",
+        "repair_status",
+        "input_order_independent"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "single_source",
+            "aggregated"
+          ]
+        },
+        "source_card_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "vulnerability_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "severity_status": {
+          "enum": [
+            "empty",
+            "single_value",
+            "multiple_values"
+          ]
+        },
+        "repair_status": {
+          "enum": [
+            "empty",
+            "identical",
+            "compatible_merged",
+            "conflict_review_required"
+          ]
+        },
+        "input_order_independent": {
+          "const": true
+        }
+      }
+    },
+    "coverage": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema_version",
+            "support_status",
+            "coverage_outcome",
+            "main_metric_eligible",
+            "formal_positive",
+            "generation_metric",
+            "audit_drift_metric",
+            "evaluation_time_view",
+            "blocking_unknown_reasons",
+            "coverage_annotations",
+            "avcs_package_scope",
+            "package_kb_scope",
+            "observed_call_coverage",
+            "manifest_coverage",
+            "vulnerability_coverage",
+            "trigger_coverage",
+            "time_analysis",
+            "scientific_boundary"
+          ],
+          "properties": {
+            "schema_version": {
+              "const": "avcs_final_output_coverage_v1"
+            },
+            "support_status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "coverage_outcome": {
+              "enum": [
+                "formal_positive",
+                "formal_negative",
+                "unknown_review",
+                "auxiliary_only",
+                "syntax_unavailable",
+                "unsupported",
+                "no_avcs_candidate",
+                "unsupported_in_scope",
+                "out_of_curated_scope"
+              ]
+            },
+            "main_metric_eligible": {
+              "type": "boolean"
+            },
+            "formal_positive": {
+              "type": "boolean"
+            },
+            "generation_metric": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "channel",
+                    "outcome",
+                    "eligible",
+                    "formal_positive"
+                  ],
+                  "properties": {
+                    "channel": {
+                      "const": "generation_time"
+                    },
+                    "outcome": {
+                      "enum": [
+                        "formal_positive",
+                        "formal_negative",
+                        "unknown_review",
+                        "auxiliary_only",
+                        "syntax_unavailable",
+                        "unsupported",
+                        "no_avcs_candidate",
+                        "unsupported_in_scope",
+                        "out_of_curated_scope",
+                        "not_applicable"
+                      ]
+                    },
+                    "eligible": {
+                      "type": "boolean"
+                    },
+                    "formal_positive": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            },
+            "audit_drift_metric": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "channel",
+                    "outcome",
+                    "eligible",
+                    "formal_positive"
+                  ],
+                  "properties": {
+                    "channel": {
+                      "const": "audit_time"
+                    },
+                    "outcome": {
+                      "enum": [
+                        "formal_positive",
+                        "formal_negative",
+                        "unknown_review",
+                        "auxiliary_only",
+                        "syntax_unavailable",
+                        "unsupported",
+                        "no_avcs_candidate",
+                        "unsupported_in_scope",
+                        "out_of_curated_scope",
+                        "not_applicable"
+                      ]
+                    },
+                    "eligible": {
+                      "type": "boolean"
+                    },
+                    "formal_positive": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              ]
+            },
+            "syntax_parse_status": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "analysis_support": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "evaluation_time_view": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "view_specific_metric_outcome": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "blocking_unknown_reasons": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "coverage_annotations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "package_kb_scope": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "observed_call_coverage": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "manifest_coverage": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "vulnerability_coverage": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "trigger_coverage": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "time_analysis": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "scientific_boundary": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "coverage_is_explanatory_not_additional_risk_evidence",
+                "unknown_is_not_false",
+                "selected_scope_is_not_package_wide",
+                "trigger_match_is_not_exploit_proof"
+              ],
+              "properties": {
+                "coverage_is_explanatory_not_additional_risk_evidence": {
+                  "const": true
+                },
+                "unknown_is_not_false": {
+                  "const": true
+                },
+                "syntax_unavailable_is_not_negative": {
+                  "const": true
+                },
+                "syntax_unavailable_is_not_metric_eligible": {
+                  "const": true
+                },
+                "selected_scope_is_not_package_wide": {
+                  "const": true
+                },
+                "trigger_match_is_not_exploit_proof": {
+                  "const": true
+                },
+                "non_generation_view_is_not_main_metric_eligible": {
+                  "const": true
+                },
+                "audit_drift_metric_is_separate_from_generation_metric": {
+                  "const": true
+                }
+              }
+            },
+            "avcs_package_scope": {
+              "type": [
+                "object",
+                "null"
+              ]
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "required": [
+                  "coverage_outcome"
+                ],
+                "properties": {
+                  "coverage_outcome": {
+                    "enum": [
+                      "formal_positive",
+                      "formal_negative"
+                    ]
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "generation_metric": {
+                    "type": "object"
+                  },
+                  "audit_drift_metric": {
+                    "type": "object"
+                  },
+                  "evaluation_time_view": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

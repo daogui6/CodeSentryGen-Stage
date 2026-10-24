@@ -1,0 +1,6 @@
+# Developer/CI tools layered on the validated scientific core lock.
+# Do not replace or regenerate requirements-core-lock.txt from this file.
+-r requirements-core-lock.txt
+-r requirements-workflow-parser.txt
+ruff==0.13.2
+

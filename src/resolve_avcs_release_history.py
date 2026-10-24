@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,6 +21,21 @@ def parse_datetime(value: str) -> datetime | None:
 
     if value.endswith("Z"):
         value = value[:-1] + "+00:00"
+
+    # Windows PowerShell's round-trip ISO format may emit seven fractional
+    # second digits (100-ns ticks), while Python 3.10's fromisoformat accepts
+    # at most microseconds. Preserve the timestamp semantics by truncating
+    # only the excess precision before parsing.
+    match = re.match(
+        r"^(?P<prefix>.*?\.)(?P<fraction>\d+)(?P<tz>Z|[+-]\d{2}:\d{2})$",
+        value,
+    )
+    if match and len(match.group("fraction")) > 6:
+        value = (
+            match.group("prefix")
+            + match.group("fraction")[:6]
+            + match.group("tz")
+        )
 
     try:
         result = datetime.fromisoformat(value)

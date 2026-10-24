@@ -141,6 +141,13 @@
             "null"
           ],
           "description": "Evidence that the dependency matches vulnerability trigger conditions, including API rule and matched call evidence."
+        },
+        "avcs": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Formal AVCS evidence retained from Step8 Risk Cards."
         }
       }
     },
@@ -172,6 +179,7 @@
               "has_reachability_evidence",
               "has_declaration_consistency_evidence",
               "has_trigger_evidence",
+              "has_avcs_evidence",
               "supports_risk_card"
             ]
           },

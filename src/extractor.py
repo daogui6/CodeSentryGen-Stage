@@ -40,6 +40,8 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Iterable, List, Optional
 
+from python_binding_context_v1 import BindingContexts
+
 
 @dataclass
 class DependencyEntity:
@@ -94,6 +96,8 @@ def extract_imports_from_code(code: str, file_name: str = "generated.py") -> Lis
         import numpy as np
         from bs4 import BeautifulSoup
         from googleapiclient.discovery import build
+        importlib.import_module("requests")
+        __import__("requests")
 
     抽取规则：
         只抽 top-level 名称。
@@ -141,7 +145,9 @@ def extract_imports_from_code(code: str, file_name: str = "generated.py") -> Lis
         #   from pathlib import Path
         #   from googleapiclient.discovery import build
         elif isinstance(node, ast.ImportFrom):
-            if not node.module:
+            # Relative imports identify project-local modules; their spelling
+            # must never be mapped into a public registry distribution.
+            if node.level or not node.module:
                 continue
 
             top_name = node.module.split(".")[0]
@@ -179,6 +185,22 @@ def extract_imports_from_code(code: str, file_name: str = "generated.py") -> Lis
                                   + ", ".join(alias_names),
                 )
             )
+
+    # The API producer uses this same lexical resolver. Only a proved loader
+    # and literal module identity become dependency facts; dynamic names stay
+    # explicit uncertainty in the API/SCEG extraction metadata.
+    contexts = BindingContexts(tree, source_code=code)
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        dynamic = contexts.dynamic_import(node)
+        if dynamic and dynamic["status"] == "resolved":
+            entities.append(DependencyEntity(
+                raw_name=dynamic["import_path"].split(".")[0],
+                source_type="import", file=file_name, line=node.lineno,
+                import_path=dynamic["import_path"],
+                original_text=ast.get_source_segment(code, node) or "",
+            ))
 
     return entities
 

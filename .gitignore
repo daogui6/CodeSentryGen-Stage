@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 output/stage_migration_verification_*/
+.venv/
+venv/
+output/local_validation/

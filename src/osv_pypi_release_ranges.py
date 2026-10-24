@@ -268,7 +268,9 @@ def analyze_sources(records: list[dict[str, Any]], ecosystem: str = "PyPI") -> d
     result: dict[str, Any] = {
         "analysis_version": ANALYSIS_VERSION,
         "release_version_domain": "public_pep440",
-        "range_disagreement": len(range_keys) > 1,
+        # A source's claim includes both ranges and explicitly affected labels.
+        # Different components are not a conflict when their complete sets agree.
+        "range_disagreement": len(range_keys) > 1 and len(set_keys) > 1,
         "affected_release_set_disagreement": len(set_keys) > 1,
         "source_evidence": sources, "constraint_status": "resolved",
         "classification": "consistent_release_evidence",
@@ -278,7 +280,7 @@ def analyze_sources(records: list[dict[str, Any]], ecosystem: str = "PyPI") -> d
         "supplemental_git_evidence_unmapped": any(
             "GIT" in row["supplemental_range_types"] for row in sources),
     }
-    if len(range_keys) > 1:
+    if len(set_keys) > 1 and len(range_keys) > 1:
         result.update(classification="true_release_range_conflict",
                       constraint_status="source_range_disagreement")
     elif len(set_keys) > 1:
@@ -296,7 +298,10 @@ def analyze_sources(records: list[dict[str, Any]], ecosystem: str = "PyPI") -> d
         supplemental_keys = {_key(sorted([
             entry for entry in row["affected_ranges"] if entry["type"] == "GIT"
         ], key=_key)) for row in sources}
-        if len(raw_release_keys) > 1:
+        if len(range_keys) > 1:
+            result["classification"] = "equivalent_affected_release_sets"
+            result["source_range_component_disagreement"] = True
+        elif len(raw_release_keys) > 1:
             result["classification"] = "equivalent_release_ranges_normalized_representation"
         elif len(supplemental_keys) > 1:
             result["classification"] = "equivalent_release_ranges_with_supplemental_git"

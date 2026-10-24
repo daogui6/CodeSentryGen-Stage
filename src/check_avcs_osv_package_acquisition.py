@@ -504,7 +504,7 @@ def main() -> None:
 
             check(
                 "target S_vuln",
-                "<2.5.0",
+                "<=2.5,!=2.5",
                 target_constraint.get(
                     "affected_version_specifier"
                 ),
@@ -512,7 +512,7 @@ def main() -> None:
 
             check(
                 "target fixed specifier",
-                ">=2.5.0",
+                ">=2.5",
                 target_constraint.get(
                     "fixed_version_specifier"
                 ),

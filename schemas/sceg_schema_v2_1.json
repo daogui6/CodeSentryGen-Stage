@@ -1,0 +1,428 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/sceg_schema_v2_1.json",
+  "title": "CodeSentry-Gen Supply Chain Evidence Graph 2.1",
+  "description": "Serializable shared evidence IR consumed by THO and AVCS.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ir_kind",
+    "ir_stage",
+    "dataset_label",
+    "extractor_version",
+    "source_snapshot_id",
+    "created_at",
+    "source_inputs",
+    "node_type_contract",
+    "edge_type_contract",
+    "evidence_kind_contract",
+    "time_view_contexts",
+    "extractor_runs",
+    "package_identity_contract",
+    "consumer_contract",
+    "nodes",
+    "evidence",
+    "edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "2.1"
+    },
+    "ir_kind": {
+      "const": "SupplyChainEvidenceGraph"
+    },
+    "ir_stage": {
+      "enum": [
+        "base",
+        "analyzed"
+      ]
+    },
+    "dataset_label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extractor_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_snapshot_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "finalized_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_inputs": {
+      "type": "object"
+    },
+    "node_type_contract": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "edge_type_contract": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_kind_contract": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "time_view_contexts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "extractor_runs": {
+      "type": "object"
+    },
+    "consumer_contract": {
+      "type": "object",
+      "required": [
+        "THO",
+        "AVCS"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "THO": {
+          "type": "string"
+        },
+        "AVCS": {
+          "type": "string"
+        }
+      }
+    },
+    "analysis_summary": {
+      "type": "object"
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/edge"
+      }
+    },
+    "package_identity_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "policy_file",
+        "policy_version",
+        "policy_sha256",
+        "mapping_file",
+        "mapping_sha256",
+        "ecosystem",
+        "dependency_records_carry_identity",
+        "dependency_identity_is_validated",
+        "api_calls_carry_identity",
+        "api_identity_is_validated",
+        "manifest_identity_is_literal_distribution",
+        "project_dependency_facts_schema",
+        "project_dependency_facts_shared_with_pilot_reachability_avcs",
+        "avcs_candidate_status"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "codesentry_gen_package_identity_contract_v1"
+        },
+        "policy_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "policy_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "mapping_file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mapping_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ecosystem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dependency_records_carry_identity": {
+          "const": true
+        },
+        "dependency_identity_is_validated": {
+          "const": true
+        },
+        "api_calls_carry_identity": {
+          "const": true
+        },
+        "api_identity_is_validated": {
+          "const": true
+        },
+        "manifest_identity_is_literal_distribution": {
+          "const": true
+        },
+        "project_dependency_facts_schema": {
+          "const": "codesentry_gen_project_dependency_facts_v1"
+        },
+        "project_dependency_facts_shared_with_pilot_reachability_avcs": {
+          "const": true
+        },
+        "avcs_candidate_status": {
+          "const": "distribution_candidate"
+        }
+      }
+    },
+    "project_dependency_contexts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "installability_unresolved",
+          "project_snapshot_available"
+        ],
+        "properties": {
+          "installability_unresolved": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "project_snapshot_available": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "file_name",
+        "line",
+        "column"
+      ],
+      "properties": {
+        "file": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "file_name": {
+          "type": "string"
+        },
+        "line": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "column": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "type",
+        "sample_id",
+        "source_scope",
+        "location",
+        "payload"
+      ],
+      "properties": {
+        "node_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "Sample",
+            "Package",
+            "Import",
+            "ManifestDep",
+            "DependencyEntity",
+            "InstallCommand",
+            "APICall",
+            "Version",
+            "Vulnerability",
+            "Evidence",
+            "PromptMention",
+            "ContextMention",
+            "Risk"
+          ]
+        },
+        "sample_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_scope": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/$defs/location"
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_id",
+        "kind",
+        "source",
+        "source_url",
+        "db_revision",
+        "queried_at",
+        "as_of",
+        "confidence",
+        "payload",
+        "evidence_hash"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "registry",
+            "vulnerability",
+            "api_surface",
+            "manifest",
+            "code",
+            "prompt",
+            "context",
+            "temporal",
+            "reachability"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "db_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "queried_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "as_of": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence": {
+          "type": "string"
+        },
+        "payload": {},
+        "evidence_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "edge_id",
+        "type",
+        "source",
+        "target",
+        "payload"
+      ],
+      "properties": {
+        "edge_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "contains",
+            "maps_to_package",
+            "installs",
+            "uses_api",
+            "api_of",
+            "mentions",
+            "supports",
+            "contradicts",
+            "requires_version",
+            "has_version",
+            "affected_by",
+            "introduced_by",
+            "derives_risk"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "string",
+          "minLength": 1
+        },
+        "payload": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

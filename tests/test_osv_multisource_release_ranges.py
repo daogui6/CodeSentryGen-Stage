@@ -1,6 +1,3 @@
-"""Stage extraction of original range-repair tests; excludes later integration tests.
-Created 2026-10-24 from commit 34d43873435d49da6b928f53a76fdb316118a884.
-"""
 from __future__ import annotations
 
 import copy
@@ -18,6 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from build_osv_package_catalog import build_identity_groups  # noqa: E402
+from audit_osv_multisource_snapshot import run_audit  # noqa: E402
+from migrate_step7_vulnerabilities_to_package_kb import build_vulnerability_record  # noqa: E402
 from normalize_osv_vulnerability import normalize_osv_vulnerability  # noqa: E402
 from osv_pypi_release_ranges import analyze_sources  # noqa: E402
 from resolve_avcs_exposed_releases import build_exposed_release_view  # noqa: E402
@@ -30,6 +29,7 @@ from resolve_vulnerability_constraints import (  # noqa: E402
     build_single_osv_specifier,
     resolve_normalized_osv_evidence,
 )
+from run_step8_unified_avcs import exposed_releases_for_vulnerability  # noqa: E402
 
 
 def ecosystem(*events: dict[str, str]) -> dict:
@@ -126,6 +126,65 @@ class OSVMultisourceReleaseRangeTests(unittest.TestCase):
         self.assertTrue(row["release_range_disagreement"])
         self.assertEqual(row["affected_version_specifier"], "")
         self.assertEqual(row["fixed_version_specifier"], "")
+
+    def test_range_plus_explicit_boundary_matches_complete_affected_set(self) -> None:
+        for upper in ("2", "2rc1", "2.post1"):
+            records = [source("GHSA-A", [ecosystem({"introduced": "0"}, {"limit": upper})], [upper]),
+                       source("PYSEC-B", [ecosystem({"introduced": "0"}, {"last_affected": upper})])]
+            with self.subTest(upper=upper):
+                row = constraint(*records)
+                self.assertEqual(row["constraint_status"], "resolved")
+                self.assertEqual(row["affected_version_specifier"], "<=" + upper)
+                self.assertFalse(row["release_range_disagreement"])
+                self.assertEqual(row["fixed_version_specifier"], "")
+                self.assertEqual(row["fixed_versions"], [])
+                analysis = row["release_range_analysis"]
+                self.assertEqual(analysis["classification"], "equivalent_affected_release_sets")
+                self.assertTrue(analysis["source_range_component_disagreement"])
+                self.assertFalse(analysis["affected_release_set_disagreement"])
+                for version in ("0.dev0", "1", "2rc1", "2", "2.post1", "3"):
+                    for record in records:
+                        self.assertEqual(member(row, version), reference_affected(record, version))
+                self.assertEqual(row["source_record_ids"], ["GHSA-A", "PYSEC-B"])
+                for original, retained in zip(records, analysis["source_evidence"]):
+                    for key in ("affected_ranges", "affected_versions", "evidence_hash", "source_url"):
+                        self.assertEqual(retained[key], original[key])
+                self.assertEqual(row, constraint(*reversed(records)))
+
+    def test_boundary_completion_never_unions_conflicts_or_invents_a_fix(self) -> None:
+        exclusive = source("GHSA-A", [ecosystem({"introduced": "0"}, {"limit": "2"})])
+        inclusive = source("PYSEC-B", [ecosystem({"introduced": "0"}, {"last_affected": "2"})])
+        self.assertEqual(constraint(exclusive, inclusive)["constraint_status"], "source_range_disagreement")
+        extra = {**exclusive, "affected_versions": ["2.post1"]}
+        self.assertNotEqual(constraint(extra, inclusive)["constraint_status"], "resolved")
+        # A source that calls a version both fixed and affected is internally
+        # contradictory, even if another source supports that affected point.
+        contradictory = source("GHSA-A", [ecosystem({"introduced": "0"}, {"fixed": "2"})], ["2"])
+        row = constraint(contradictory, inclusive)
+        self.assertNotEqual(row["constraint_status"], "resolved")
+        self.assertEqual(row["affected_version_specifier"], "")
+        self.assertEqual(row["fixed_version_specifier"], "")
+        for record in (exclusive, inclusive):
+            row = constraint(record, {**record, "source_record_id": "OTHER", "evidence_status": "partial"})
+            self.assertNotEqual(row["constraint_status"], "resolved")
+
+    def test_complete_affected_set_flows_unchanged_to_package_kb_and_discrete_avcs(self) -> None:
+        records = [source("GHSA-A", [ecosystem({"introduced": "0"}, {"limit": "2"})], ["2.0"]),
+                   source("PYSEC-B", [ecosystem({"introduced": "0"}, {"last_affected": "2.0.0"})])]
+        row = constraint(*records)
+        self.assertEqual(row["constraint_status"], "resolved")
+        kb_row = build_vulnerability_record(package="example", case={"display_id": "GHSA-A"},
+                    constraint=row, source_id="catalog", constraint_source_id="constraint")
+        labels = ["0.dev0", "1", "2rc1", "2", "2.post1", "3"]
+        releases = [{"version": version} for version in labels]
+        exposed, status = exposed_releases_for_vulnerability(releases, kb_row)
+        self.assertEqual(status, "resolved")
+        self.assertEqual([entry["version"] for entry in exposed], labels[:4])
+        self.assertEqual(kb_row["source_refs"], ["catalog", "constraint"])
+        view = build_exposed_release_view({"sample_id": "s", "normalized_distribution": "example",
+                    "confirmed_api_compatible_releases": releases}, {"vulnerabilities": [row]})
+        self.assertEqual(view["evaluations"][0]["status"], "resolved")
+        self.assertEqual(view["evaluations"][0]["confirmed_exposed_release_count"], 4)
 
     def test_enumerated_versions_inside_common_range_can_differ(self) -> None:
         ranges = [ecosystem({"introduced": "0"}, {"fixed": "2"})]
@@ -291,6 +350,18 @@ class OSVMultisourceReleaseRangeTests(unittest.TestCase):
         row = resolve_normalized_osv_evidence("example", evidence)["vulnerabilities"][0]
         self.assertEqual(row["constraint_status"], "incomplete_normalized_evidence")
 
+    def test_single_adapter_and_package_kb_avcs_use_the_same_corrected_set(self) -> None:
+        ranges = [ecosystem({"introduced": "0"}, {"fixed": "2"})]
+        row = constraint(source("GHSA-A", ranges))
+        specifier, status = build_single_osv_specifier(ranges)
+        self.assertEqual((specifier, status), (row["affected_version_specifier"], "resolved"))
+        kb_row = build_vulnerability_record(package="example", case={"display_id": "GHSA-A"},
+                    constraint=row, source_id="catalog", constraint_source_id="constraint")
+        releases = [{"version": v} for v in ["1", "2rc1", "2", "2.post1"]]
+        exposed, status = exposed_releases_for_vulnerability(releases, kb_row)
+        self.assertEqual(status, "resolved")
+        self.assertEqual([r["version"] for r in exposed], ["1", "2rc1"])
+        self.assertEqual(kb_row["source_refs"], ["catalog", "constraint"])
 
     def test_unresolved_constraint_remains_unknown_in_discrete_avcs(self) -> None:
         row = constraint(source("GHSA-A", [git_range()]))
@@ -354,6 +425,27 @@ class OSVMultisourceReleaseRangeTests(unittest.TestCase):
         self.assertEqual(row["fixed_versions"], [])
         self.assertEqual(row["fixed_version_specifier"], "")
 
+    def test_snapshot_replay_is_deterministic_and_cannot_overwrite_history(self) -> None:
+        if not (ROOT / "output/step7_osv_catalogs_v0").exists():
+            self.skipTest("historical snapshots unavailable in this checkout")
+        historical_files = sorted((ROOT / "output/step7_osv_catalogs_v0").glob("*.json"))
+        original_bytes = {path: path.read_bytes() for path in historical_files}
+        with tempfile.TemporaryDirectory() as folder:
+            first, second = Path(folder) / "one", Path(folder) / "two"
+            # Immutable input commit is fixed; current implementation identity
+            # is separately captured by file hashes in each replay manifest.
+            sha = "69e1543712a795ab3ae65c719674afe933c9b6ff"
+            a = run_audit(ROOT, first, sha)
+            b = run_audit(ROOT, second, sha)
+            self.assertEqual(a, b)
+            self.assertEqual({p.relative_to(first): p.read_bytes() for p in first.rglob("*.json")},
+                             {p.relative_to(second): p.read_bytes() for p in second.rglob("*.json")})
+            self.assertTrue(a["identity_and_source_records_unchanged"])
+            with self.assertRaises(ValueError):
+                run_audit(ROOT, first, sha)
+            with self.assertRaises(ValueError):
+                run_audit(ROOT, ROOT / "output/step7_osv_constraints_v0", sha)
+        self.assertEqual({path: path.read_bytes() for path in historical_files}, original_bytes)
 
     def test_withdrawn_or_partial_evidence_cannot_be_promoted(self) -> None:
         record = source("GHSA-A", [ecosystem({"introduced": "0"}, {"fixed": "2"})])

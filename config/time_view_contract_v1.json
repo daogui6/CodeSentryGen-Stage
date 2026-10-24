@@ -1,0 +1,39 @@
+{
+  "schema_version": "codesentry_gen_time_view_policy_v1",
+  "status": "active_for_future_runs_historical_outputs_unchanged",
+  "views": {
+    "as_of_tg": {
+      "target": "generation_time",
+      "evidence_cutoff": "generation_time",
+      "metric_channel": "generation_time",
+      "formal_generation_metric_eligible": true
+    },
+    "as_of_audit": {
+      "target": "generation_time",
+      "evidence_cutoff": "post_generation_audit_time",
+      "metric_channel": "audit_time_separate",
+      "formal_generation_metric_eligible": false
+    },
+    "oracle_now": {
+      "target": "generation_time",
+      "evidence_cutoff": "explicit_retrospective_snapshot_time",
+      "metric_channel": "oracle_retrospective_separate",
+      "formal_generation_metric_eligible": false,
+      "retrospective_only": true
+    }
+  },
+  "mandatory_binding": [
+    "view_id",
+    "target_generation_time",
+    "evidence_cutoff",
+    "evidence_snapshot_sha256",
+    "output_namespace"
+  ],
+  "safety": {
+    "implicit_view_main_experiment_eligible": false,
+    "cross_view_overwrite_forbidden": true,
+    "oracle_in_formal_denominator_forbidden": true,
+    "historical_output_rewrite_forbidden": true,
+    "new_method_freeze_required_before_main_experiment": true
+  }
+}

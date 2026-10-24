@@ -1,0 +1,3 @@
+# Prospective workflow parser extension; the historical core lock stays intact.
+# Install alongside requirements-core-lock.txt for the corrected source runtime.
+PyYAML==6.0.3

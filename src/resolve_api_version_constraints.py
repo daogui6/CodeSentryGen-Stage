@@ -385,6 +385,16 @@ def resolve_single_call(
                 )
                 matched = False
 
+            exclusion_semantics = rule.get(
+                "exclusion_semantics",
+                {},
+            )
+            if not isinstance(
+                exclusion_semantics,
+                dict,
+            ):
+                exclusion_semantics = {}
+
             rule_evidence = {
                 "rule_id": rule.get(
                     "rule_id",
@@ -405,15 +415,22 @@ def resolve_single_call(
                     "evidence_note",
                     "",
                 ),
+                "exclusion_semantics": (
+                    exclusion_semantics
+                ),
             }
 
             if matched:
                 matched_rules.append(
                     rule_evidence
                 )
-                version_specifiers.append(
-                    version_specifier
-                )
+                if (
+                    exclusion_semantics.get("status")
+                    == "proven_false_outside_specifier"
+                ):
+                    version_specifiers.append(
+                        version_specifier
+                    )
             else:
                 rejected_rules.append(
                     {
@@ -446,7 +463,23 @@ def resolve_single_call(
         )
     )
 
-    base_result["status"] = "resolved"
+    has_explicit_false_semantics = any(
+        (
+            rule.get("exclusion_semantics", {}).get("status")
+            in {
+                "proven_false_outside_specifier",
+                "explicit_release_states",
+            }
+        )
+        for rule in matched_rules
+        if isinstance(rule, dict)
+    )
+
+    base_result["status"] = (
+        "resolved"
+        if has_explicit_false_semantics
+        else "resolved_non_excluding"
+    )
     base_result[
         "combined_version_specifier"
     ] = combined
@@ -500,11 +533,104 @@ def build_distribution_constraints(
         ]
 
         version_specifiers: list[str] = []
+        exclusion_rules: list[dict[str, Any]] = []
+        contributing_calls: list[dict[str, Any]] = []
 
         for call in resolved_calls:
             version_specifiers.extend(
                 call["version_specifiers"]
             )
+            matched_rule_ids = sorted(
+                {
+                    str(rule.get("rule_id") or "").strip()
+                    for rule in call.get("matched_rules", [])
+                    if isinstance(rule, dict)
+                    and str(rule.get("rule_id") or "").strip()
+                }
+            )
+            contributing_calls.append(
+                {
+                    "api_symbol": call.get("api_symbol"),
+                    "call_text": call.get("call_text"),
+                    "location": call.get("location", {}),
+                    "version_specifiers": list(
+                        call.get("version_specifiers", [])
+                    ),
+                    "matched_rule_ids": matched_rule_ids,
+                }
+            )
+            for rule in call.get(
+                "matched_rules",
+                [],
+            ):
+                semantics = rule.get(
+                    "exclusion_semantics",
+                    {},
+                )
+                if not isinstance(
+                    semantics,
+                    dict,
+                ):
+                    continue
+                if (
+                    semantics.get("status")
+                    not in {
+                        "proven_false_outside_specifier",
+                        "explicit_release_states",
+                    }
+                ):
+                    continue
+                exclusion_rules.append(
+                    {
+                        "rule_id": rule.get(
+                            "rule_id",
+                            "",
+                        ),
+                        "version_specifier": rule.get(
+                            "version_specifier",
+                            "",
+                        ),
+                        "exclusion_semantics_status": (
+                            semantics.get("status")
+                        ),
+                        "coverage": {
+                            "coverage_complete": semantics.get(
+                                "coverage_complete"
+                            ),
+                            "coverage_scope": semantics.get(
+                                "coverage_scope"
+                            ),
+                            "include_prereleases": semantics.get(
+                                "include_prereleases"
+                            ),
+                            "unknown_count": semantics.get(
+                                "unknown_count"
+                            ),
+                        },
+                        "proof_source": semantics.get(
+                            "proof_source",
+                            "",
+                        ),
+                        "false_versions": semantics.get(
+                            "false_versions",
+                            [],
+                        ),
+                        "unknown_versions": semantics.get(
+                            "unknown_versions",
+                            [],
+                        ),
+                    }
+                )
+
+        contributing_calls.sort(
+            key=lambda row: (
+                str((row.get("location") or {}).get("file") or ""),
+                int((row.get("location") or {}).get("line") or 0),
+                int((row.get("location") or {}).get("column") or 0),
+                str(row.get("api_symbol") or ""),
+                str(row.get("call_text") or ""),
+            )
+        )
 
         combined = combine_specifiers(
             version_specifiers
@@ -553,6 +679,7 @@ def build_distribution_constraints(
                     call["api_symbol"]
                     for call in unresolved_calls
                 ],
+                "contributing_calls": contributing_calls,
                 "s_api": {
                     "raw_specifier": combined,
                     "simplified_specifier": (
@@ -565,6 +692,7 @@ def build_distribution_constraints(
                             "matched_rules"
                         ]
                     ],
+                    "exclusion_rules": exclusion_rules,
                 },
             }
         )

@@ -3,12 +3,22 @@ from __future__ import annotations
 import argparse
 import ast
 import json
+from python_binding_context_v1 import BindingContexts
 from pathlib import Path
 from typing import Any
-from normalizer import (
-    load_import_mapping,
-    map_import_path_to_distribution,
+from package_identity_v1 import (
+    DEFAULT_POLICY as DEFAULT_IDENTITY_POLICY,
+    PackageIdentityService,
 )
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def repo_relative(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except ValueError:
+        return path.name
 
 def attribute_chain(node: ast.AST) -> str | None:
     """
@@ -29,214 +39,6 @@ def attribute_chain(node: ast.AST) -> str | None:
     return None
 
 
-def collect_import_bindings(
-    tree: ast.AST,
-) -> tuple[dict[str, str], dict[str, str]]:
-    """
-    收集当前文件中的 import 绑定。
-
-    module_bindings 示例：
-    import yaml as y
-    y -> yaml
-
-    symbol_bindings 示例：
-    from yaml import safe_load as load
-    load -> yaml.safe_load
-    """
-    module_bindings: dict[str, str] = {}
-    symbol_bindings: dict[str, str] = {}
-
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Import):
-            for alias in node.names:
-                if alias.asname:
-                    # import google.cloud.storage as storage
-                    # 本地名称 storage 对应完整模块 google.cloud.storage
-                    local_name = alias.asname
-                    imported_module = alias.name
-                else:
-                    # import google.cloud.storage
-                    # Python 实际绑定到当前作用域的是顶层名称 google
-                    local_name = alias.name.split(".")[0]
-                    imported_module = local_name
-
-                module_bindings[local_name] = imported_module
-
-        elif isinstance(node, ast.ImportFrom) and node.module:
-            for alias in node.names:
-                if alias.name == "*":
-                    continue
-
-                local_name = alias.asname or alias.name
-                symbol_bindings[local_name] = f"{node.module}.{alias.name}"
-
-    return module_bindings, symbol_bindings
-
-def collect_module_call_result_bindings(
-    tree: ast.AST,
-    source_code: str,
-    module_bindings: dict[str, str],
-    symbol_bindings: dict[str, str],
-) -> dict[str, list[dict[str, Any]]]:
-    """
-    收集模块顶层最直接的：
-
-        x = imported_api(...)
-
-    调用结果绑定。
-
-    例如：
-
-        import urllib3
-
-        http = urllib3.PoolManager(
-            retries=0,
-        )
-
-    记录：
-
-        http
-        -> urllib3.PoolManager
-
-    注意：
-    这里仅记录静态可观察的赋值来源，
-    不判断这个调用是不是漏洞相关构造器。
-
-    v0 仅处理模块顶层、
-    单一 Name 目标的直接赋值。
-    """
-
-    if not isinstance(
-        tree,
-        ast.Module,
-    ):
-        return {}
-
-    bindings: dict[
-        str,
-        list[dict[str, Any]],
-    ] = {}
-
-    for statement in tree.body:
-        target_name: str | None = None
-        value: ast.AST | None = None
-
-        if (
-            isinstance(
-                statement,
-                ast.Assign,
-            )
-            and len(
-                statement.targets
-            )
-            == 1
-            and isinstance(
-                statement.targets[0],
-                ast.Name,
-            )
-        ):
-            target_name = (
-                statement.targets[0].id
-            )
-            value = statement.value
-
-        elif (
-            isinstance(
-                statement,
-                ast.AnnAssign,
-            )
-            and isinstance(
-                statement.target,
-                ast.Name,
-            )
-        ):
-            target_name = (
-                statement.target.id
-            )
-            value = statement.value
-
-        if target_name is None:
-            continue
-
-        event: dict[str, Any] = {
-            "assignment_line":
-                getattr(
-                    statement,
-                    "lineno",
-                    None,
-                ),
-
-            "producer_import_root":
-                None,
-
-            "producer_api_symbol":
-                None,
-
-            "producer_binding_type":
-                None,
-
-            "producer_call_shape":
-                None,
-        }
-
-        if isinstance(
-            value,
-            ast.Call,
-        ):
-            resolved = resolve_call_symbol(
-                value,
-                module_bindings=(
-                    module_bindings
-                ),
-                symbol_bindings=(
-                    symbol_bindings
-                ),
-            )
-
-            if resolved is not None:
-                (
-                    producer_import_root,
-                    producer_api_symbol,
-                    producer_binding_type,
-                ) = resolved
-
-                event[
-                    "producer_import_root"
-                ] = producer_import_root
-
-                event[
-                    "producer_api_symbol"
-                ] = producer_api_symbol
-
-                event[
-                    "producer_binding_type"
-                ] = producer_binding_type
-
-                event[
-                    "producer_call_shape"
-                ] = build_call_shape(
-                    value,
-                    source_code=(
-                        source_code
-                    ),
-                    module_bindings=(
-                        module_bindings
-                    ),
-                    symbol_bindings=(
-                        symbol_bindings
-                    ),
-                )
-
-        bindings.setdefault(
-            target_name,
-            [],
-        ).append(
-            event
-        )
-
-    return bindings
-
-
 def find_call_result_binding(
     call_node: ast.Call,
     receiver_name: str,
@@ -250,7 +52,7 @@ def find_call_result_binding(
 ) -> dict[str, Any] | None:
     """
     找到某次方法调用之前，
-    receiver 最近一次模块顶层直接赋值。
+    receiver 在可信词法作用域中的最近一次直接赋值。
 
     例如：
 
@@ -290,7 +92,11 @@ def find_call_result_binding(
             )
             or 0
         )
-        < call_line
+        < call_line or (
+            int(event.get("assignment_line", 0) or 0) == call_line
+            and event.get("assignment_column") is not None
+            and int(event["assignment_column"]) <= call_node.col_offset
+        )
     ]
 
     if not candidates:
@@ -574,6 +380,14 @@ def build_call_shape(
     对变量、动态表达式等无法静态确认的值，
     不猜测 literal_value。
     """
+    # Arguments can mutate a binding after the callable was evaluated.
+    # Keep the callable identity, but do not invent symbols for later values.
+    mutated = {item.target.id for argument in [*call_node.args,
+               *[keyword.value for keyword in call_node.keywords]]
+               for item in ast.walk(argument) if isinstance(item, ast.NamedExpr)
+               and isinstance(item.target, ast.Name)}
+    module_bindings = {name: value for name, value in module_bindings.items() if name not in mutated}
+    symbol_bindings = {name: value for name, value in symbol_bindings.items() if name not in mutated}
     explicit_positional_arg_count = sum(
         not isinstance(
             argument,
@@ -810,15 +624,30 @@ def build_call_shape(
 
 def extract_api_calls(
     code_path: Path,
-    mapping_path: Path,
+    mapping_path: Path | None = None,
     sample_id: str | None = None,
+    identity_policy_path: Path = DEFAULT_IDENTITY_POLICY,
+    project_root: Path | None = None,
 ) -> dict[str, Any]:
     """从单个 Python 文件中抽取高置信 API 调用。"""
-    source_code = code_path.read_text(
-        encoding="utf-8-sig",
-        errors="ignore",
+    identity_service = PackageIdentityService(
+        policy_path=identity_policy_path,
+        project_root=project_root,
     )
-    mapping = load_import_mapping(mapping_path)
+    raw_bytes = code_path.read_bytes()
+    try:
+        source_code = raw_bytes.decode("utf-8-sig")
+    except UnicodeDecodeError as exc:
+        return {
+            "schema_version": "api_call_evidence_v0.1",
+            "sample_id": sample_id or code_path.stem,
+            "code_file": repo_relative(code_path),
+            "parse_status": "decode_error",
+            "parse_error": str(exc),
+            "identity_policy_version": identity_service.policy_version,
+            "api_call_count": 0,
+            "api_calls": [],
+        }
 
     try:
         tree = ast.parse(source_code, filename=str(code_path))
@@ -826,40 +655,50 @@ def extract_api_calls(
         return {
             "schema_version": "api_call_evidence_v0.1",
             "sample_id": sample_id or code_path.stem,
-            "code_file": str(code_path).replace("\\", "/"),
+            "code_file": repo_relative(code_path),
             "parse_status": "syntax_error",
             "parse_error": str(exc),
+            "identity_policy_version": identity_service.policy_version,
+            "api_call_count": 0,
             "api_calls": [],
         }
 
-    module_bindings, symbol_bindings = (
-        collect_import_bindings(
-            tree
-        )
-    )
-
-    call_result_bindings = (
-        collect_module_call_result_bindings(
-            tree=tree,
-            source_code=(
-                source_code
-            ),
-            module_bindings=(
-                module_bindings
-            ),
-            symbol_bindings=(
-                symbol_bindings
-            ),
-        )
-    )
+    contexts = BindingContexts(tree, resolve_call_symbol, build_call_shape, source_code)
 
     api_calls: list[dict[str, Any]] = []
+    binding_unresolved: list[dict[str, Any]] = []
+    dynamic_imports: list[dict[str, Any]] = []
 
     for node in ast.walk(tree):
         if not isinstance(node, ast.Call):
             continue
 
-        resolved = resolve_call_symbol(
+        dynamic = contexts.dynamic_import(node)
+        if dynamic is not None:
+            fact = {**dynamic, "location": {"file": repo_relative(code_path),
+                    "line": node.lineno, "column": node.col_offset + 1},
+                    "call_text": ast.get_source_segment(source_code, node) or ""}
+            if dynamic["status"] == "resolved":
+                identity = identity_service.resolve(
+                    raw_name=dynamic["import_path"].split(".")[0], source_type="import",
+                    import_path=dynamic["import_path"],
+                )
+                fact["package_identity"] = identity.to_dict()
+            else:
+                binding_unresolved.append({
+                    "raw_chain": attribute_chain(node.func), "reason": dynamic["reason"],
+                    "candidate_distributions": [], "unresolved_scope": "sample",
+                    "requested_module": dynamic["requested_module"],
+                    "location": fact["location"],
+                })
+            dynamic_imports.append(fact)
+            continue  # A module loader is dependency evidence, not a package API factory.
+        if node in contexts.mutation_calls:
+            continue  # Mutation machinery cannot establish a public package API.
+
+        module_bindings, symbol_bindings, call_result_bindings = contexts.for_call(node)
+
+        resolved = contexts.dynamic_api_call(node) or resolve_call_symbol(
             node,
             module_bindings=(
                 module_bindings
@@ -872,14 +711,28 @@ def extract_api_calls(
             ),
         )
         if resolved is None:
+            candidates = []
+            for import_root in contexts.possible_roots(node):
+                candidate = identity_service.resolve(raw_name=import_root, source_type="import")
+                if candidate.avcs_candidate:
+                    candidates.append(candidate.normalized_distribution)
+            if candidates:
+                binding_unresolved.append({
+                    "raw_chain": attribute_chain(node.func),
+                    "reason": "lexical_or_temporal_binding_not_proven",
+                    "candidate_distributions": sorted(set(candidates)),
+                    "location": {"file": repo_relative(code_path),
+                                 "line": node.lineno, "column": node.col_offset + 1},
+                })
             continue
 
         import_name, api_symbol, binding_type = resolved
-        distribution = map_import_path_to_distribution(
+        identity = identity_service.resolve(
             raw_name=import_name,
+            source_type="import",
             import_path=api_symbol,
-            mapping=mapping,
         )
+        distribution = identity.distribution
 
         call_record: dict[
             str,
@@ -891,6 +744,12 @@ def extract_api_calls(
             "distribution":
                 distribution,
 
+            "normalized_distribution":
+                identity.normalized_distribution,
+
+            "package_identity":
+                identity.to_dict(),
+
             "api_symbol":
                 api_symbol,
 
@@ -899,11 +758,8 @@ def extract_api_calls(
 
             "location": {
                 "file":
-                    str(
+                    repo_relative(
                         code_path
-                    ).replace(
-                        "\\",
-                        "/",
                     ),
 
                 "line":
@@ -1004,15 +860,21 @@ def extract_api_calls(
             row["api_symbol"],
         )
     )
+    binding_unresolved.sort(key=lambda row: (row["location"]["line"], row["location"]["column"]))
+    dynamic_imports.sort(key=lambda row: (row["location"]["line"], row["location"]["column"]))
 
     return {
         "schema_version": "api_call_evidence_v0.1",
         "sample_id": sample_id or code_path.stem,
-        "code_file": str(code_path).replace("\\", "/"),
+        "code_file": repo_relative(code_path),
         "parse_status": "ok",
         "parse_error": "",
+        "identity_policy_version": identity_service.policy_version,
         "api_call_count": len(api_calls),
         "api_calls": api_calls,
+        "binding_resolution_policy": "lexical_source_order_v2_dynamic_import_mutation",
+        "binding_unresolved": binding_unresolved,
+        "dynamic_imports": dynamic_imports,
     }
 
 
@@ -1025,15 +887,31 @@ def main() -> None:
     parser.add_argument(
         "--mapping",
         type=Path,
-        default=Path("config/import_mapping.json"),
+        default=None,
+        help="Deprecated compatibility argument; identity uses --identity-policy.",
     )
+    parser.add_argument(
+        "--identity-policy",
+        type=Path,
+        default=Path("config/package_identity_policy_v1.json"),
+    )
+    parser.add_argument("--project-root", type=Path, default=None)
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
+
+    identity_policy = args.identity_policy
+    if not identity_policy.is_absolute():
+        identity_policy = Path(__file__).resolve().parents[1] / identity_policy
+    project_root = args.project_root
+    if project_root is not None and not project_root.is_absolute():
+        project_root = Path(__file__).resolve().parents[1] / project_root
 
     result = extract_api_calls(
         code_path=args.code,
         mapping_path=args.mapping,
         sample_id=args.sample_id,
+        identity_policy_path=identity_policy,
+        project_root=project_root,
     )
 
     args.out.parent.mkdir(parents=True, exist_ok=True)

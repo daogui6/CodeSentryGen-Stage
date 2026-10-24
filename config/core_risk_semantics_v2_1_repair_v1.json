@@ -1,0 +1,116 @@
+{
+  "schema_version": "codesentry_gen_core_risk_semantics_v2.1",
+  "status": "repair_line_active",
+  "formal_main_risk_types": [
+    "temporal_package_hallucination",
+    "api_induced_vulnerable_dependency",
+    "temporal_drift"
+  ],
+  "auxiliary_risk_types": [
+    "dependency_declaration_mismatch",
+    "temporal_uncertainty_review",
+    "manifest_vulnerable_dependency",
+    "lockfile_vulnerable_dependency"
+  ],
+  "formal_type_aliases": {},
+  "avcs_formal_risk_time_views": {
+    "api_induced_vulnerable_dependency": {
+      "view_id": "as_of_tg",
+      "metric_channel": "generation_time"
+    },
+    "temporal_drift": {
+      "view_id": "as_of_audit",
+      "metric_channel": "audit_time"
+    }
+  },
+  "temporal_status_policy": {
+    "formal_positive_statuses": [
+      "nonexistent_at_tg",
+      "created_after_tg",
+      "wrong_ecosystem"
+    ],
+    "auxiliary_audit_statuses": [
+      "nonexistent_now"
+    ],
+    "review_only_statuses": [
+      "temporal_unknown",
+      "registry_unknown",
+      "registry_query_error",
+      "generation_time_unknown",
+      "local_or_private_unknown",
+      "deleted_or_yanked"
+    ],
+    "non_risk_statuses": [
+      "existed_at_tg",
+      "filtered_false_positive"
+    ],
+    "temporal_unknown_enters_main_positive": false
+  },
+  "install_time_policy": {
+    "statuses": [
+      "observed",
+      "scheduled",
+      "unknown"
+    ],
+    "default_status": "unknown",
+    "installability_implies_install_time": false,
+    "hijack_opportunity_requires": [
+      "created_after_tg",
+      "install_reachability_at_least_R2",
+      "t_install_status_observed_or_scheduled",
+      "t_reg_lte_t_install"
+    ],
+    "unknown_install_time_claim": "install_reachable_temporal_hallucination"
+  },
+  "generation_time_uncertainty": {
+    "integration_smoke_default_seconds": 0,
+    "formal_run_requires_explicit_protocol_value": true,
+    "formal_protocol_field": "evaluation_time_views.generation_time_uncertainty_seconds",
+    "zero_is_allowed_only_when_declared_explicitly": true
+  },
+  "risk_identity_fields": [
+    "sample_id",
+    "risk_type",
+    "normalized_package",
+    "location.file",
+    "location.line",
+    "location.column",
+    "generation_time",
+    "audit_time",
+    "knowledge_time",
+    "temporal_classification"
+  ],
+  "unified_risk_card_schema": "schemas/risk_card_schema_v2_1.json",
+  "scientific_boundaries": {
+    "unknown_is_not_false": true,
+    "temporal_unknown_is_not_positive": true,
+    "install_reachability_is_not_install_time": true,
+    "trigger_match_is_not_exploit_proof": true,
+    "auxiliary_findings_excluded_from_main_metrics": true,
+    "api_interval_manual_validation_is_global_quality_prerequisite": true,
+    "api_interval_manual_validation_is_independent_sufficient_condition": false,
+    "api_induced_actionability_policy": "C_AND_(A_OR_B)",
+    "api_induced_case_level_evidence": [
+      "reduction_exposure_threshold_pair",
+      "fixed_excluded"
+    ],
+    "f10_advisor_confirmation_pending": false,
+    "f10_advisor_confirmed": true,
+    "f10_advisor_confirmed_policy": "C_AND_(A_OR_B)",
+    "f10_policy_status": "final_advisor_confirmed_exposure_prerequisite_explicit",
+    "f10_vulnerable_exposure_prerequisite": "V_exposed_count > 0",
+    "f10_formal_reporting_rule": "V_EXPOSED_NONEMPTY_AND_C_AND_(A_OR_B)",
+    "numeric_confidence_is_calibrated_probability": false,
+    "numeric_confidence_probability_claim_forbidden": true
+  },
+  "confidence_policy": {
+    "numeric_field": "confidence",
+    "semantic_type": "ordinal_rule_strength",
+    "calibrated_probability": false,
+    "probability_interpretation_allowed": false,
+    "cross_method_comparison_allowed": false,
+    "ranking_scope": "within_frozen_tho_rule_set_only",
+    "historical_numeric_values_changed": false,
+    "future_probability_claim_requires_ground_truth_calibration": true
+  }
+}

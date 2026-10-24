@@ -145,22 +145,54 @@ def get_generation_time(record: dict):
     return parse_datetime(record.get("generation_time"))
 
 
-def classify_temporal_status(record: dict, uncertainty_days: int = 0) -> str:
+def has_proven_generation_time_nonexistence(record: dict) -> bool:
+    """Return whether an authoritative ``as_of_tg`` view proves absence.
+
+    Current registry existence is an audit-time observation.  It must not
+    erase an independently observed or completely reconstructed
+    generation-time absence fact.
+    """
+    registry_view_tg = record.get("registry_view_tg")
+    return (
+        isinstance(registry_view_tg, dict)
+        and registry_view_tg.get("exists") is False
+        and registry_view_tg.get("evidence_status")
+        in {"observed", "reconstructed_complete", "proven"}
+    )
+
+
+def has_proven_generation_time_existence(record: dict) -> bool:
+    """Keep observed generation-time presence distinct from current releases.
+
+    A current registry's earliest retained release can move when historical
+    files disappear. It cannot override an authoritative presence at t_g.
+    """
+    view = record.get("registry_view_tg")
+    return (isinstance(view, dict) and view.get("exists") is True
+            and view.get("evidence_status") in {"observed", "reconstructed_complete", "proven"})
+
+
+def classify_temporal_status(
+    record: dict,
+    uncertainty_days: float = 0,
+    *,
+    uncertainty_seconds: float | None = None,
+) -> str:
     """
     根据生成时间和首次发布时间对样本进行时态状态分类
     
-    分类优先级（从高到低）：
-    1. filtered_false_positive: 主流程已过滤的误报
-    2. local_or_private_unknown: 本地或私有模块
-    3. nonexistent_now: PyPI 当前不存在的包
-    4. registry_unknown: PyPI 注册表信息未知
-    5. created_after_tg: 包在代码生成之后创建（时态风险）
-    6. temporal_unknown: 时间关系不明确（在不确定区间内）
-    7. existed_at_tg: 代码生成时包已存在
+    分类边界：
+    1. 先保留 filtered/local/private/wrong-ecosystem/lifecycle 事实；
+    2. 当前 404 若同时有明确 as_of_tg 不存在证明，分类为
+       nonexistent_at_tg；否则仅分类为 nonexistent_now；
+    3. 当前存在时，优先用 release time 形成更具体的
+       created_after_tg，再处理其他 generation-time 状态；
+    4. 缺失或冲突证据保持 unknown，不猜测正式 positive。
     
     Args:
         record: 数据记录字典，包含 status、pypi、generation_time 等字段
-        uncertainty_days: 时间不确定性的天数容差，默认 0
+        uncertainty_days: 兼容旧调用的天数容差，默认 0
+        uncertainty_seconds: 新语义入口；提供时优先于 uncertainty_days
         
     Returns:
         str: 时态状态分类标签
@@ -171,9 +203,36 @@ def classify_temporal_status(record: dict, uncertainty_days: int = 0) -> str:
     if record.get("false_positive_filtered") is True or old_status == "filtered_false_positive":
         return "filtered_false_positive"
 
-    # 优先级2: 本地模块过滤
-    if record.get("local_module_filtered") is True:
+    # 优先级2: 本地或显式私有 registry 上下文保持 unknown。
+    identity = record.get("package_identity")
+    identity_status = (
+        str(identity.get("identity_status") or "")
+        if isinstance(identity, dict)
+        else ""
+    )
+    if (
+        record.get("local_module_filtered") is True
+        or old_status in {"local_module", "private_unknown"}
+        or identity_status in {"local_module", "private_unknown"}
+    ):
         return "local_or_private_unknown"
+
+    # 明确的生态语义不匹配证据优先保留为 wrong_ecosystem。
+    # 不从普通 404/名字相似性中猜测该状态。
+    if (
+        old_status == "wrong_ecosystem"
+        or record.get("wrong_ecosystem") is True
+        or record.get("ecosystem_semantic_mismatch") is True
+    ):
+        return "wrong_ecosystem"
+
+    # deleted_or_yanked 仅在上游/registry snapshot 已提供显式生命周期
+    # 证据时保留；当前 repair line 不从普通不存在状态反推删除。
+    if (
+        old_status == "deleted_or_yanked"
+        or record.get("deleted_or_yanked") is True
+    ):
+        return "deleted_or_yanked"
 
     # 获取 PyPI 信息
     pypi = record.get("pypi")
@@ -188,11 +247,25 @@ def classify_temporal_status(record: dict, uncertainty_days: int = 0) -> str:
 
     if pypi.get("error"):
         return "registry_query_error"
+
+    if (
+        pypi.get("lifecycle_status") == "deleted_or_yanked"
+        or pypi.get("deleted_or_yanked") is True
+    ):
+        return "deleted_or_yanked"
     
     exists_now = pypi.get("exists_now")
 
-    # 优先级4: 包当前不存在于 PyPI
+    # generation-time existence and current existence are distinct temporal
+    # observations.  When an authoritative as_of_tg view proves absence,
+    # retain that stronger fact even if the audit-time registry also returns
+    # 404.  The current observation remains available in pypi.exists_now.
     if exists_now is False:
+        if (
+            has_proven_generation_time_nonexistence(record)
+            or old_status == "nonexistent_at_tg"
+        ):
+            return "nonexistent_at_tg"
         return "nonexistent_now"
 
     # 优先级5: 存在状态未知
@@ -207,18 +280,39 @@ def classify_temporal_status(record: dict, uncertainty_days: int = 0) -> str:
     if generation_time is None:
         return "generation_time_unknown"
 
+    if has_proven_generation_time_existence(record):
+        return "existed_at_tg"
+
     # 首次发布时间缺失
     if first_release_time is None:
         return "registry_unknown"
 
-    # 计算不确定性区间
-    delta = timedelta(days=uncertainty_days)
+    # 计算 generation-time 不确定性区间。新修复线统一使用秒，
+    # 旧 uncertainty_days 仅作为兼容入口。负值没有科学意义，直接拒绝。
+    if uncertainty_seconds is None:
+        resolved_uncertainty_seconds = float(uncertainty_days) * 86400.0
+    else:
+        resolved_uncertainty_seconds = float(uncertainty_seconds)
+
+    if resolved_uncertainty_seconds < 0:
+        raise ValueError("generation-time uncertainty must be >= 0")
+
+    delta = timedelta(seconds=resolved_uncertainty_seconds)
     lower_bound = generation_time - delta
     upper_bound = generation_time + delta
 
     # 优先级6: 包创建于代码生成之后（时态风险样本）
     if first_release_time > upper_bound:
         return "created_after_tg"
+
+    # 若历史 snapshot 明确证明 t_g 时没有可用版本，但当前最早 release
+    # 时间不足以形成 created_after_tg 的更具体结论，则保留
+    # nonexistent_at_tg。该状态必须来自显式历史证据，不靠猜测。
+    if has_proven_generation_time_nonexistence(record):
+        return "nonexistent_at_tg"
+
+    if old_status == "nonexistent_at_tg":
+        return "nonexistent_at_tg"
 
     # 优先级7: 时间在不确定区间内，无法确定先后关系
     if lower_bound <= first_release_time <= upper_bound:
@@ -258,9 +352,21 @@ def parse_args():
 
     parser.add_argument(
         "--uncertainty-days",
-        type=int,
-        default=0,
-        help="generation_time 的不确定天数，默认 0"
+        type=float,
+        default=None,
+        help=(
+            "Legacy compatibility option. Generation-time uncertainty in "
+            "days. Do not combine with --uncertainty-seconds."
+        ),
+    )
+    parser.add_argument(
+        "--uncertainty-seconds",
+        type=float,
+        default=None,
+        help=(
+            "Generation-time uncertainty Δt in seconds. Repair-line E2E "
+            "passes this explicitly."
+        ),
     )
 
     return parser.parse_args()
@@ -292,6 +398,27 @@ def main():
     if not summary_path.is_absolute():
         summary_path = BASE_DIR / summary_path
 
+    if (
+        args.uncertainty_days is not None
+        and args.uncertainty_seconds is not None
+    ):
+        raise ValueError(
+            "Use only one of --uncertainty-days or --uncertainty-seconds"
+        )
+
+    if args.uncertainty_seconds is not None:
+        resolved_uncertainty_seconds = float(args.uncertainty_seconds)
+        uncertainty_source = "explicit_seconds"
+    elif args.uncertainty_days is not None:
+        resolved_uncertainty_seconds = float(args.uncertainty_days) * 86400.0
+        uncertainty_source = "legacy_days"
+    else:
+        resolved_uncertainty_seconds = 0.0
+        uncertainty_source = "legacy_default_zero"
+
+    if resolved_uncertainty_seconds < 0:
+        raise ValueError("generation-time uncertainty must be >= 0")
+
     enriched_records = []
     status_counter = Counter()  # 新状态分布统计
     old_status_counter = Counter()  # 原始状态分布统计
@@ -302,14 +429,22 @@ def main():
         old_status_counter[old_status] += 1
 
         # 进行时态状态分类
-        temporal_status_v2 = classify_temporal_status(record, uncertainty_days=args.uncertainty_days)
+        temporal_status_v2 = classify_temporal_status(
+            record,
+            uncertainty_seconds=resolved_uncertainty_seconds,
+        )
 
         # 添加新字段，不覆盖原始 status
         record["temporal_status_v2"] = temporal_status_v2
+        record["generation_time_uncertainty_seconds"] = (
+            resolved_uncertainty_seconds
+        )
+        record["generation_time_uncertainty_source"] = uncertainty_source
 
         # 保留说明字段，便于后续理解和解释
         record["temporal_status_v2_note"] = (
-            "computed from generation_time and PyPI first_release_time; "
+            "computed from generation_time and PyPI first_release_time with "
+            f"explicit Δt={resolved_uncertainty_seconds}s; "
             "does not overwrite original status"
         )
 
@@ -329,7 +464,12 @@ def main():
     lines.append("# 时态状态增强结果\n")
     lines.append(f"- 输入文件：`{input_path.relative_to(BASE_DIR)}`")
     lines.append(f"- 输出文件：`{output_path.relative_to(BASE_DIR)}`")
-    lines.append(f"- 总记录数：{len(enriched_records)}\n")
+    lines.append(f"- 总记录数：{len(enriched_records)}")
+    lines.append(
+        f"- generation_time_uncertainty_seconds: "
+        f"{resolved_uncertainty_seconds}"
+    )
+    lines.append(f"- uncertainty_source: {uncertainty_source}\n")
 
     # 原始状态分布
     lines.append("## 1. 原始 status 分布\n")
@@ -387,3 +527,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

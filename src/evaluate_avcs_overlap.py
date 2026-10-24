@@ -1224,7 +1224,14 @@ def match_conditional_trigger_rule(
                 "required_symbol",
                 "",
             )
-        )
+        ).strip()
+
+        argument_form = str(
+            keyword_rule.get(
+                "argument_form",
+                "",
+            )
+        ).strip()
 
         if not keyword_name:
             base_result[
@@ -1245,6 +1252,74 @@ def match_conditional_trigger_rule(
             ] = (
                 "required_keyword_"
                 "not_observed"
+            )
+
+            return base_result
+
+        #
+        # The frozen protocol defines
+        # keyword_argument_condition as a
+        # statically observable argument form.
+        #
+        # Historical rules use required_symbol.
+        # Batch001 additionally needs a bounded
+        # string-literal form.  Keep both forms
+        # under the same frozen rule kind.
+        #
+        if argument_form:
+            if (
+                argument_form
+                != "string_literal"
+            ):
+                base_result[
+                    "reason"
+                ] = (
+                    "keyword_argument_form_"
+                    "unresolved"
+                )
+
+                return base_result
+
+            (
+                literal_resolved,
+                actual_literal,
+            ) = get_keyword_argument_literal(
+                call=call,
+                keyword_name=keyword_name,
+            )
+
+            if not literal_resolved:
+                base_result[
+                    "reason"
+                ] = (
+                    "keyword_literal_"
+                    "unresolved"
+                )
+
+                return base_result
+
+            if not isinstance(
+                actual_literal,
+                str,
+            ):
+                base_result[
+                    "reason"
+                ] = (
+                    "keyword_argument_form_"
+                    "not_matched"
+                )
+
+                return base_result
+
+            base_result[
+                "matched"
+            ] = True
+
+            base_result[
+                "reason"
+            ] = (
+                "keyword_string_literal_"
+                "matched"
             )
 
             return base_result
@@ -1585,6 +1660,192 @@ def match_conditional_trigger_rule(
             "keyword_literal_condition"
         )
     ):
+        #
+        # Variant A:
+        #
+        # The receiver provenance identifies a
+        # supported producer expression, while the
+        # vulnerability-relevant literal belongs to
+        # the consumer call itself.
+        #
+        # Example:
+        #
+        #   pool = proxy.connection_from_url(...)
+        #   pool.urlopen(
+        #       ...,
+        #       assert_same_host=False,
+        #   )
+        #
+        consumer_receiver_rule = (
+            rule.get(
+                "receiver_producer",
+                {},
+            )
+        )
+
+        if (
+            isinstance(
+                consumer_receiver_rule,
+                dict,
+            )
+            and consumer_receiver_rule
+        ):
+            required_producer_api = str(
+                consumer_receiver_rule.get(
+                    "api_symbol",
+                    "",
+                )
+            ).strip()
+
+            if not required_producer_api:
+                base_result[
+                    "reason"
+                ] = (
+                    "producer_api_symbol_"
+                    "missing_from_rule"
+                )
+
+                return base_result
+
+            receiver_provenance = (
+                call.get(
+                    "receiver_provenance",
+                    {},
+                )
+            )
+
+            if not isinstance(
+                receiver_provenance,
+                dict,
+            ) or not receiver_provenance:
+                base_result[
+                    "reason"
+                ] = (
+                    "receiver_provenance_"
+                    "unresolved"
+                )
+
+                return base_result
+
+            actual_producer_api = str(
+                receiver_provenance.get(
+                    "producer_api_symbol",
+                    "",
+                )
+            ).strip()
+
+            if (
+                actual_producer_api
+                != required_producer_api
+            ):
+                base_result[
+                    "reason"
+                ] = (
+                    "receiver_producer_api_"
+                    "not_matched"
+                )
+
+                return base_result
+
+            if not keyword_name:
+                base_result[
+                    "reason"
+                ] = (
+                    "keyword_name_missing_"
+                    "from_rule"
+                )
+
+                return base_result
+
+            if (
+                "required_literal"
+                not in keyword_rule
+            ):
+                base_result[
+                    "reason"
+                ] = (
+                    "required_literal_"
+                    "missing_from_rule"
+                )
+
+                return base_result
+
+            if not call_uses_keyword(
+                call=call,
+                keyword_name=keyword_name,
+            ):
+                base_result[
+                    "reason"
+                ] = (
+                    "required_keyword_"
+                    "not_observed"
+                )
+
+                return base_result
+
+            (
+                literal_resolved,
+                actual_literal,
+            ) = get_keyword_argument_literal(
+                call=call,
+                keyword_name=keyword_name,
+            )
+
+            if not literal_resolved:
+                base_result[
+                    "reason"
+                ] = (
+                    "keyword_literal_"
+                    "unresolved"
+                )
+
+                return base_result
+
+            required_literal = (
+                keyword_rule[
+                    "required_literal"
+                ]
+            )
+
+            if (
+                type(actual_literal)
+                is not type(required_literal)
+                or actual_literal
+                != required_literal
+            ):
+                base_result[
+                    "reason"
+                ] = (
+                    "keyword_literal_"
+                    "not_matched"
+                )
+
+                return base_result
+
+            base_result[
+                "matched"
+            ] = True
+
+            base_result[
+                "reason"
+            ] = (
+                "receiver_producer_consumer_"
+                "keyword_literal_matched"
+            )
+
+            return base_result
+
+        #
+        # Variant B:
+        #
+        # Existing frozen behavior.  The literal
+        # condition belongs to the producer call.
+        #
+        # Example:
+        #
+        #   http = urllib3.PoolManager(retries=0)
+        #   http.request(...)
+        #
         receiver_rule = (
             rule.get(
                 "receiver_provenance",

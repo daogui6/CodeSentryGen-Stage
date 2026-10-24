@@ -27,6 +27,6 @@ Candidate/Proposal 的待审核状态由 review_gate 表达。接口测试使用
 
 代码变更运行相关的定向回归。纯文档变更检查链接、命令参数、文件来源和历史正文保真；结果描述准确区分实际执行与引用记录。
 
-新仓库 Git 历史记录阶段导入及后续维护；早期研发来源通过 [SOURCE_VERSIONS](docs/SOURCE_VERSIONS.md) 中的精确提交追溯。提交说明应包含变更内容、验证范围和重要限制。
+Git 历史记录源码快照导入及维护；实现与历史工件的来源通过 [SOURCE_VERSIONS](docs/SOURCE_VERSIONS.md) 中的精确提交追溯。提交说明应包含变更内容、验证范围和重要限制。
 
 凭据通过环境变量或本地配置提供，提交内容中排除 API Key、Token 和个人敏感数据。

@@ -1,6 +1,6 @@
 # 运行与验证
 
-本版将最新非第三层核心与既有第三层阶段材料组合。运行前请按 README 安装 `requirements-dev.txt`；该文件引用精确核心依赖及工作流解析依赖。
+本文说明本版本的运行入口、验证覆盖及结果含义。运行前请按 [README](../README.md) 安装 `requirements-dev.txt`；该文件引用精确核心依赖及工作流解析依赖。
 
 ## 当前验收命令
 
@@ -20,7 +20,7 @@ python -X utf8 scripts/run_stage_validation.py
 | OSV 重放 | 11 包、208 组、171 resolved /37 unresolved |
 | Candidate/Proposal | 格式及待审核门；不调用模型、不创建人工结论 |
 
-本轮在 Linux CPython 3.10.20 上已实际运行完整分发验收入口并通过，包括130项当前回归、六包 KB、Candidate/Proposal、AVCS 分步执行、旧 Trigger、四条 THO/SCEG 2.1 及 OSV 重放。整合原仓库另有304项完整离线 Core 回归；它的正式实验材料不全部分发，因此不能把304项原仓库结果直接当作本快照的验收数量。新版 Windows 检出仍需在本地运行上述同一命令；此前旧快照的 Windows PASS 不替代本版验证。
+2026-10-24，Windows Python 3.10 本地环境与 Linux CPython 3.10.20 的 GitHub Actions 均已通过上述验收入口。覆盖130项回归、六包 KB、Candidate/Proposal、AVCS 分步执行、静态 Trigger、四条 THO/SCEG 2.1 控制输入及 OSV 重放。验证过程调用模型次数为0，未启动正式实验。
 
 ## 结果解释
 
@@ -36,6 +36,11 @@ python -X utf8 scripts/run_stage_validation.py
 
 早期 PowerShell 文件保留历史参考，其中部分参数和路径属于当时的 v0 流程。本版本复现以当前跨平台 Python 验收入口为准。
 
-## 干净检出复核记录
+## 验证记录
 
-[GitHub Actions 40082183364](https://github.com/daogui6/CodeSentryGen-Pilot/actions/runs/40082183364) 对分发候选 `819867e76172b80d929e8f1ad5c290201eea3863` 干净检出，逐文件核对959项分发内容，并将199个核心文件与整合主线逐字节比较；130项回归及完整分发验收均通过。最终说明性文档与其清单另按提交记录维护，功能源码不因该说明更新而改变。
+| 环境 | 验证对象与记录 | 结果 |
+| --- | --- | --- |
+| Windows Python 3.10 | 本地检出，离线验收运行标识 `20261024T102513086154Z` | PASS；130项回归及完整离线链路 |
+| Linux CPython 3.10.20 | 提交 [`ffee142`](https://github.com/daogui6/CodeSentryGen-Stage/commit/ffee142ac25f819e7bbf2fb9ca1ed7482546334f)，[GitHub Actions 40086080616](https://github.com/daogui6/CodeSentryGen-Stage/actions/runs/40086080616) | PASS；干净检出及同一验收入口 |
+
+文件一致性由 [STAGE_FILE_MANIFEST.json](STAGE_FILE_MANIFEST.json) 和包含它的 Git 提交共同记录。文档维护后的执行状态以对应提交的 Actions 记录为准；历史输出仍按其原始输入和运行环境解释。

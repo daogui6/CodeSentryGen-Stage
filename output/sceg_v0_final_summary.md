@@ -1,5 +1,12 @@
 # SCEG v0 Final Summary
 
+<!-- csg-reader-context:start; original-sha256=b63510c36b8e602dc3a2bf2982b4d2e2b2d29616490ebe50560a47313d81167f -->
+
+> **记录定位：历史验证存档。** 声明一致性增强后的历史汇总：279 条图记录、12 张关联卡、1706 条边。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 ALL_PASS = True
 
 - schema: `schemas\sceg_schema_v0.json`

@@ -1,5 +1,12 @@
 # 时态状态增强结果
 
+<!-- csg-reader-context:start; original-sha256=ab4899dbdd823a30e3e0ed6391a8b4562f5c448e9a2dffe83926221b40043102 -->
+
+> **记录定位：历史验证存档。** 15 条 hard negative 依赖记录的时态状态、过滤与本地模块状态。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 - 输入文件：`output\hard_negative_validation_pilot_results.jsonl`
 - 输出文件：`output\hard_negative_validation_temporal_enriched.jsonl`
 - 总记录数：15

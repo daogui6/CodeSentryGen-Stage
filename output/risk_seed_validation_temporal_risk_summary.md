@@ -1,5 +1,12 @@
 # temporal risk cards v2 生成结果
 
+<!-- csg-reader-context:start; original-sha256=bff86b1e5eed32115ded5c05a34a7b5f1fa265f19429822fc5e3a9e7883a89fd -->
+
+> **记录定位：历史验证存档。** 四条受控输入生成的时态风险卡存档。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 - 输入文件：`output\risk_seed_validation_reachability_v2_enriched.jsonl`
 - 输出文件：`output\risk_seed_validation_temporal_risk_cards_v2.jsonl`
 - 输入记录数：4

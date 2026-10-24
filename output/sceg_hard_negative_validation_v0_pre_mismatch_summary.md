@@ -1,5 +1,12 @@
 # SCEG v0 Build Summary
 
+<!-- csg-reader-context:start; original-sha256=04e32f272c31deb87366e6f9c28c9741ebd32f44c52f50c3da69f9229c38d602 -->
+
+> **记录定位：历史验证存档。** pre_mismatch 口径下的 hard negative SCEG 构建记录。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 - input: `output\hard_negative_validation_reachability_v2_enriched.jsonl`
 - output: `output\sceg_hard_negative_validation_v0_pre_mismatch.jsonl`
 - input_records: 15

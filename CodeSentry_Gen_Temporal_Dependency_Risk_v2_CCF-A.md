@@ -1,5 +1,11 @@
 # CodeSentry-Gen v2.1：面向 LLM 生成代码的时态依赖风险检测
 
+<!-- csg-reader-context:start; original-sha256=9430bf9332eb2847f74454ef4dad19284e1af4e539c69e3151e968f8e0ab8675 -->
+
+> **文档定位：总体设计参考原文。** 本文保存问题定义、目标架构和评估方案，正文按来源原样保留。设计版本 v2.1 与本阶段实际 SCEG v0 的范围分别说明于[实现范围](docs/STAGE_SCOPE.md)；当前源码入口和复现流程见 [README](README.md) 与[运行与验证说明](docs/VALIDATION.md)。
+
+<!-- csg-reader-context:end -->
+
 > 生成日期：2026-05-06
 > 版本说明：多 sub-agent 两轮评审后收敛版
 > 目标定位：优先投稿 FSE/ASE/ICSE Technical Track 或 SEIP；若转 Security 顶会，则进一步收敛为 package hallucination/slopsquatting 攻防论文

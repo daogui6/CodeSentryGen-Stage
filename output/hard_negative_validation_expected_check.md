@@ -1,5 +1,12 @@
 # Hard Negative Validation Expected Check
 
+<!-- csg-reader-context:start; original-sha256=bd7698b78f9be775e8ba564970fbec69fe18d5392687b1f42c7ab4f4d9673702 -->
+
+> **记录定位：历史验证存档。** 13 个 hard negative 样本、15 条依赖记录的预期与实际结果核对。此口径中的 3 张卡属于依赖声明不一致，时间类风险数为 0。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 ## 1. Summary
 
 - samples: 13

@@ -1,31 +1,32 @@
-# Repository Guidelines
+# 仓库维护与复现规范
 
-## Project Structure & Module Organization
+本文件面向仓库维护者和开发工具。项目概览、研究范围及运行入口见 [README](README.md)，复现流程见[运行与验证说明](docs/VALIDATION.md)。
 
-- `src/` contains the Python pipeline: prompt generation, dependency extraction, import-to-distribution normalization, PyPI evidence, `temporal_status_v2`, `install_reachability_v2`, and Risk Card generation.
-- `config/` stores mappings and reference lists. Never commit credentials; load API keys from environment variables.
-- `data/` contains prompts, generated code, requirements sidecars, controlled seeds, hard negatives, and build evidence.
-- `scripts/` provides PowerShell validation workflows. `output/` contains historical experiment artifacts; `archive/` contains retired implementations and results.
-- `schemas/`, `reference/`, and `docs/` hold schemas, upstream datasets, and research notes.
+## 目录与接口
 
-## Build, Test, and Development Commands
+- src：Python 分析与证据处理模块。
+- config、data：配置、冻结输入、知识样例与构建证据。
+- schemas：Candidate、Proposal、Package KB 和 SCEG 数据约束。
+- scripts、tests：分步工作流与回归检查。
+- output：历史输出及阶段证据；新增运行使用独立副本和运行专用目录。
+- docs：阶段范围、来源与复现说明。
 
-Install dependencies with `pip install -r requirements.txt`. Run the base detector with `python src/run_pilot.py`. Run THO regression validation with `powershell -ExecutionPolicy Bypass -File .\scripts\run_all_tho_validation.ps1`; run THO plus SCEG validation with `powershell -ExecutionPolicy Bypass -File .\scripts\run_full_validation_with_sceg.ps1`. Use focused checks such as `python src/check_import_path_mapping.py` after mapping changes.
+采用四空格缩进、snake_case 函数名、PascalCase 类名和明确的类型标注。保持既有 JSON/JSONL 字段与命令行参数兼容。API、Schema 字段及风险类型保留源码中的英文名称。
 
-## Coding Style & Compatibility
+## 研究记录与验证
 
-Use four-space indentation, `snake_case` for functions and files, `PascalCase` for classes, type hints where practical, and `pathlib.Path` for paths. Keep existing JSON/JSONL fields and CLI interfaces compatible whenever possible. Avoid broad refactors without a concrete reason. Never overwrite historical files in `output/`; use dataset- or run-specific names.
+结果应记录输入、执行环境、实际命令、输出位置与适用范围。失败结果和未知状态按实际情况保留。版本范围解析、Trigger 候选分类、人工审核和知识准入分别记录。
 
-## Testing & Evidence Integrity
+历史设计文档和历史验证正文作为来源材料保存。文档整理可以补充阅读说明；历史表格、计数、时间和结论保持其原有证据口径。
 
-Run the relevant focused test or regression workflow after every code change. Never fabricate command output, test results, or experiment data. If a test fails, preserve and report the failure and its cause. For import-to-distribution mapping, `temporal_status_v2`, `install_reachability`, manifest-only mismatch, or Risk Cards, document field meanings, evidence semantics, and likely false-positive/false-negative risks.
+Candidate/Proposal 的待审核状态由 review_gate 表达。接口测试使用明确标注的临时输入，并保留审核状态；测试输出写入运行专用目录。
 
-## Collaboration Workflow
+## 变更与提交
 
-Default to Chinese for communication and explanations. Before changing code, read the relevant files and present a plan. For complex tasks, analyze alternatives and wait for user confirmation before implementation. After each code change, explain what it implements, why it is needed, where it sits in the CodeSentry-Gen pipeline, its inputs, outputs, key logic, compatibility impact, and detection risks.
+修改前阅读相关源码与记录，说明变更目的、影响范围和验证方法。较大范围的方案调整先给出影响分析，再按当前任务授权实施。
 
-End every task with: modified files, major changes, commands executed, test results, and remaining issues.
+代码变更运行相关的定向回归。纯文档变更检查链接、命令参数、文件来源和历史正文保真；结果描述准确区分实际执行与引用记录。
 
-## Commits & Pull Requests
+新仓库 Git 历史记录阶段导入及后续维护；早期研发来源通过 [SOURCE_VERSIONS](docs/SOURCE_VERSIONS.md) 中的精确提交追溯。提交说明应包含变更内容、验证范围和重要限制。
 
-This checkout has no accessible Git history, so no repository-specific convention can be verified. Use concise imperative commits, for example `fix: preserve reachability evidence`. PRs should describe scope, affected pipeline stages and fields, validation commands/results, compatibility risks, and any intentionally unchanged historical outputs.
+凭据通过环境变量或本地配置提供，提交内容中排除 API Key、Token 和个人敏感数据。

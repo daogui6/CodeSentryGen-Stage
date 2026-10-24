@@ -1,5 +1,12 @@
 # THO Validation Final Summary v2
 
+<!-- csg-reader-context:start; original-sha256=75e712938d433d6807e3f1c6024a7caa45322d6ab43dcc709515b2bdc41ec5c6 -->
+
+> **记录定位：历史验证存档。** 受控正例、自然生成负对照和 hard negatives 三类历史验证结果的汇总。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 ## 1. Validation Overview
 
 | validation | dataset | samples/records | temporal_status_v2 | reachability_v2 | risk_cards | pass |

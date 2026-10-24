@@ -1,5 +1,12 @@
 # SCEG v0 Build Summary
 
+<!-- csg-reader-context:start; original-sha256=b121e6da78f3b3ecadf4455289551991841aa83699e469393698787c69870312 -->
+
+> **记录定位：历史验证存档。** pre_mismatch 口径下四条受控正例的 SCEG 构建记录。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 - input: `output\risk_seed_validation_reachability_v2_enriched.jsonl`
 - output: `output\sceg_risk_seed_validation_v0_pre_mismatch.jsonl`
 - input_records: 4

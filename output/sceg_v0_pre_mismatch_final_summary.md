@@ -1,5 +1,12 @@
 # SCEG v0 Pre-Mismatch Final Summary
 
+<!-- csg-reader-context:start; original-sha256=c3343f8d86245945d69d50306ef72d69f2347408c5a8ce74f13dcaf402c15dc7 -->
+
+> **记录定位：历史验证存档。** pre_mismatch 历史汇总：279 条图记录、4 张关联卡、1678 条边。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 ALL_PASS = True
 
 - schema: `E:\AAA_Yan\CodeSentryGen_Pilot\schemas\sceg_schema_v0.json`

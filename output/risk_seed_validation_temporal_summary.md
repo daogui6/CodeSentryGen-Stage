@@ -1,5 +1,12 @@
 # 时态状态增强结果
 
+<!-- csg-reader-context:start; original-sha256=43d145822999ccdb3b4228a8e6703d6addf5d23747d822bf7671681286b9d51d -->
+
+> **记录定位：历史验证存档。** 两条 nonexistent_now 与两条 created_after_tg 受控输入的时态判定。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 - 输入文件：`output\risk_seed_validation_pilot_results.jsonl`
 - 输出文件：`output\risk_seed_validation_temporal_enriched.jsonl`
 - 总记录数：4

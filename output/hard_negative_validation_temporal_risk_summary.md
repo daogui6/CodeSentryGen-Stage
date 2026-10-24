@@ -1,5 +1,12 @@
 # temporal risk cards v2 生成结果
 
+<!-- csg-reader-context:start; original-sha256=0f22bad068f2fa441f3dcffe0a816bf97017e193464ace7fced9041d96b2d9d9 -->
+
+> **记录定位：历史验证存档。** hard negative 存档中的 3 张卡均为依赖声明不一致，按对应风险类型解释。
+> 本页正文和表格保留原记录口径；当前阶段复现命令与覆盖范围见[运行与验证说明](../docs/VALIDATION.md)，项目入口见 [README](../README.md)。
+
+<!-- csg-reader-context:end -->
+
 - 输入文件：`output\hard_negative_validation_reachability_v2_enriched.jsonl`
 - 输出文件：`output\hard_negative_validation_temporal_risk_cards_v2.jsonl`
 - 输入记录数：15
